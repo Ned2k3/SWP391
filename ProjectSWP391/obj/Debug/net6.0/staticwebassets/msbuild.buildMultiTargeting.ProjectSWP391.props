@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ProjectSWP391.props" />
+</Project>
