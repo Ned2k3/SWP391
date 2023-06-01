@@ -18,6 +18,19 @@ namespace ProjectSWP391.Controllers
             return View();
         }
 
+        public IActionResult Productlist()
+        {
+            return View();
+        }
+        public IActionResult Servicelist()
+        {
+            return View();
+        }
+        public IActionResult Bloglist()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
