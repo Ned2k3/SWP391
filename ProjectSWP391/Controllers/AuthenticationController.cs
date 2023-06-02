@@ -8,12 +8,12 @@ namespace ProjectSWP391.Controllers
     public class AuthenticationController : Controller
     {
         private readonly SWP391Context context;
-        public AuthenticationController (SWP391Context _context)
+        public AuthenticationController(SWP391Context _context)
         {
             context = _context;
         }
 
-      
+
         public IActionResult Login()
         {
             return View();
@@ -37,31 +37,32 @@ namespace ProjectSWP391.Controllers
             }
             else
             {
+                HttpContext.Session.SetString("userID", a.AccountId.ToString());
                 //message
                 if (account.Role == 1)
                 {
-                    return View("~/Views/Home/Admin.cshtml");
+                    return View("~/Views/AdminManagement/ADashBoard.cshtml");
                 }
                 else if (account.Role == 2)
                 {
-                    return View("~/Views/Home/Employee.cshtml");
+                    return View("~/Views/EmployeeManagement/EDashBoard.cshtml");
                 }
                 else
                 {
-                    return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/CustomerManagement/LandingPage.cshtml");
                 }
                 //return View();
             }
-              
+
         }
         public IActionResult Register()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Register(string email,string password)
+        public IActionResult Register(string email, string password)
         {
-            
+
             if (context.Accounts.Any(x => x.Email == email))
             {
                 ViewBag.ErrorMsg = "Account has existed";
@@ -69,11 +70,11 @@ namespace ProjectSWP391.Controllers
             }
             else
             {
-                Account c = new Account ();
+                Account c = new Account();
                 c.Password = password;
-                c.Email= email;
+                c.Email = email;
                 c.IsActive = true;
-                
+
                 context.Add(c);
                 context.SaveChanges();
                 //Session["Email"] = a.Email.ToString();

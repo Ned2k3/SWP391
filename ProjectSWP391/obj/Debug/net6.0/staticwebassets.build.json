@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tW6SLsgpGHYvu6K0Vj4+I4n9T4rN1snDv93gTtrZPtY=",
+  "Hash": "a3AmLFfPADC5DGnLfJIyY1D3miCOvMlLUtz3/NaGlXE=",
   "Source": "ProjectSWP391",
   "BasePath": "_content/ProjectSWP391",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "E:\\SWP391\\ProjectSWP391\\wwwroot\\css\\style.css",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\SWP391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "E:\\SWP391\\ProjectSWP391\\wwwroot\\favicon.ico",
