@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page1";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row" style="height: fit-content; margin-top: 50px">
+                <div class="col-md-6 col-lg-7 col-xl-7 ">
+                    <img class="img-responsive" src="https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?cs=srgb&dl=pexels-delbeautybox-853427.jpg&fm=jpg" alt="smart beauty" width="98%"/>
+                </div>
+
+                <div class="col-md-6 col-lg-5 col-xl-5 pt-0">
+                    <h2 style="font-weight: bold;">Intro</h2>
+                    <p style="text-align: justify; font-size: 20px">As a professional beauty take care system, our duty is to bring the best service and products to everyone. We are  
+                       proudly to give our customers many extensions which help trade informations, booking service or buying our products
+                    through our website.<span style="color: red;"> Smart Beauty, the key to paradise!</span>
+                </p>
+                </div>
+            </div>
+
+            <hr style="width: 80%; height: 5px; margin-left: 10%; margin-top: 50px; margin-bottom: 50px;"/>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-12 col lg-12" style="text-align: center;">
+                    <h2 style="text-align: center">I Want To Book A New Service</h2>
+                    <form asp-controller="Booking" asp-action="Load">
+                    <button id="booking_btn">
+                        ➜
+                    </button>
+                    </form>
+                    
+                    <style>
+                        #booking_btn{
+                            width: 70px;
+                            height: 70px;
+                            background-color: lavender;
+                            border-radius: 10px;
+                            margin-top: 50px;
+                            margin-bottom: 50px;
+                        }
+                        #booking_btn:hover{
+                            background-color: lightgray;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+</html>
+

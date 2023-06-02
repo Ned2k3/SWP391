@@ -4,34 +4,35 @@ using System.Diagnostics;
 
 namespace ProjectSWP391.Controllers
 {
-    public class HomeController : Controller
+    public class CustomerManagementController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<CustomerManagementController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public CustomerManagementController(ILogger<CustomerManagementController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult LandingPage()
+        {
+
+            return View("~/Views/CustomerManagement/LandingPage.cshtml");
+        }
+
+        public IActionResult ProductList()
+        {
+            return View();
+        }
+        public IActionResult ServiceList()
+        {
+            return View();
+        }
+        public IActionResult BlogList()
         {
             return View();
         }
 
-        public IActionResult Productlist()
-        {
-            return View();
-        }
-        public IActionResult Servicelist()
-        {
-            return View();
-        }
-        public IActionResult Bloglist()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult BookingService(int serviceID)
         {
             return View();
         }

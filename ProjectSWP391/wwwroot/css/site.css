@@ -1,18 +1,57 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 18px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    padding-top: 50px;
 }
+
+.navbar-brand {
+    margin-left: 4%;
+}
+
+.header {
+    background: #242526;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    min-height: 80px;
+    padding: 0px;
+}
+
+main {
+    min-height: fit-content;
+}
+
+footer {
+    height: 60px;
+}
+
+ul {
+    margin-left: 50px;
+}
+
+    ul li {
+        margin-right: 20px;
+        font-size: 18px;
+        width: 80px;
+        height: 45px;
+        text-align: center;
+    }
+
+        ul li:hover {
+            background: #3a3b3c;
+            border-radius: 10px;
+        }
