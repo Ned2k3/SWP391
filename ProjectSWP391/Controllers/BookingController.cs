@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectSWP391.Models;
+using ProjectSWP391.Models.ServiceModel;
+
 
 namespace ProjectSWP391.Controllers
 {
@@ -6,7 +9,12 @@ namespace ProjectSWP391.Controllers
     {
         public IActionResult Load()
         {
-            if (HttpContext.Session.GetString("userID") == null) ViewData["isGuest"] = true;
+            ViewData["user"] = Global.CurrentUser;
+            List<Account> accounts;
+            using(var context = new SWP391Context())
+            {
+                accounts = context.Accounts.Where(i => i.Role == 2).ToList();
+            }
             return View();
         }
     }

@@ -4,7 +4,7 @@
 <body>
     @{
         //Confirm continue as guest or login
-        if((bool)ViewData["isGuest"] == true)
+        if(ViewData["user"] == null)
         {
             <div class="container" id="message_box" style="width: 20%; height: 16%; position: fixed; top: 42%; left: 40%; border: 2px solid black;
                                   border-radius: 5px; background-color: lightgray; z-index: 1; text-align: center;">
@@ -15,6 +15,7 @@
                 <script>
                     function Ok(){
                         document.getElementById("message_box").style.display = "none";
+                        var s = document.getElementById("navbar_brand").innerHTML = "";
                     }
                 </script>
                 </div>
