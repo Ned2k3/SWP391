@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
+using ProjectSWP391.Models.ServiceModel;
 using System.Linq;
 
 namespace ProjectSWP391.Controllers
@@ -37,7 +38,7 @@ namespace ProjectSWP391.Controllers
             }
             else
             {
-                HttpContext.Session.SetString("userID", a.AccountId.ToString());
+                Global.CurrentUser = a;
                 //message
                 if (account.Role == 1)
                 {
