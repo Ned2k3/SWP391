@@ -32,7 +32,7 @@ namespace ProjectSWP391.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server = DESKTOP-CQSD6QJ\\NED; database = SWP391;uid=sa;password=27062003x; TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("server = LAPTOP-T9H2667A; database = SWP391;uid=sa;password=123456; TrustServerCertificate=True");
             }
         }
 
