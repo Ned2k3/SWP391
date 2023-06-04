@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gz8q0C6aA6kEFwP05QHLuSwqxK7lIYdz2Z+dOYsJQaPyULUUJ2ge1sd+eFRaRQF3ePzQgPafKa5rxAoWC22w+w==",
+  "dgSpecHash": "zlUWmm7j4s8TTZpYd2Pu6M2oxJTPk5FhlJshEWphQoMogPtijN65tPjwLVWCOCMDM6dYcHmDozds2SLPbDxBDQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Documents\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj",
+  "projectFilePath": "E:\\SWP391\\ProjectSWP391\\ProjectSWP391.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

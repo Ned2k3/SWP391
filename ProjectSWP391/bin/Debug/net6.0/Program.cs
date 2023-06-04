@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SWP391Context>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("PRNDB")));
+
 builder.Services.AddSession(cfg =>
 {
     cfg.Cookie.Name = "SWP391";
