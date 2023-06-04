@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProjectSWP391.Models;
 using ProjectSWP391.Models.ServiceModel;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace ProjectSWP391.Controllers
 {
@@ -28,7 +30,10 @@ namespace ProjectSWP391.Controllers
                 ViewBag.ErrorMsg = "User must enter an Email and Pasword!";
                 return View();
             }
-            var account = context.Accounts.Where(b => b.Email == a.Email && b.Password == a.Password).SingleOrDefault();
+            //Decryption here
+            string endcrypt = EncryptionHelper.Encrypt(a.Password);
+
+            var account = context.Accounts.Where(b => b.Email == a.Email && b.Password == endcrypt).SingleOrDefault();
             //var account = context.Accounts.ToList();
             if (account == null)
             {
@@ -71,22 +76,34 @@ namespace ProjectSWP391.Controllers
             }
             else
             {
-                Account c = new Account();
-                c.Password = password;
-                c.Email = email;
-                c.IsActive = true;
+                if (ModelState.IsValid)
+                {
+                    //encryption
+                    string encrypted = EncryptionHelper.Encrypt(password);
+                    Account c = new Account();
+                    c.Password = encrypted;
+                    c.Email = email;
+                    c.IsActive = true;
 
-                context.Add(c);
-                context.SaveChanges();
-                //Session["Email"] = a.Email.ToString();
-                //Session["Username"] = a.FullName.ToString();
-                ViewBag.ErrorMsg = "Create Account Success";
+                    context.Add(c);
+                    context.SaveChanges();
+                    //Session["Email"] = a.Email.ToString();
+                    //Session["Username"] = a.FullName.ToString();
+                    ViewBag.ErrorMsg = "Create Account Success";
+                }
+                else
+                {
+                    ViewBag.ErrorMsg = "User enter wrong email format";
+                }
             }
             return View();
         }
         public IActionResult Logout()
         {
-            return View();
+            //xoa sesion, logout
+            //quay ve trang list de login lai
+            //HttpContext.Session.Get().Clear();
+            return View("~/Views/CustomerManagement/LandingPage.cshtml");
         }
 
         #region will delete when merge
@@ -99,5 +116,7 @@ namespace ProjectSWP391.Controllers
             return View();
         }
         #endregion
+
+
     }
 }
