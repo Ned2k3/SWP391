@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProjectSWP391.Models;
 using ProjectSWP391.Models.ServiceModel;
 using System.Linq;
