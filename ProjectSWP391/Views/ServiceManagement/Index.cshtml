@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ProjectSWP391.Models.Service>
+
+@{
+    ViewData["Title"] = "Service Management";
+}
+
+<h1>Service Management</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Active
+            </th>
+            <th>
+                Category
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Scategory.ScategoryName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ServiceId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ServiceId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ServiceId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
