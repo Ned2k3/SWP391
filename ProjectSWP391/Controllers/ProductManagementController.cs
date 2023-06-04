@@ -1,11 +1,11 @@
-﻿using DEMOSWP391.Models;
+﻿using ProjectSWP391.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DEMOSWP391.Controllers
 {
-    public class ProductController : Controller
+    public class ProductManagementController : Controller
     {
-        swp391Context context = new swp391Context();
+        SWP391Context context = new SWP391Context();
         public IActionResult Index()
         {
             var lsProduct = context.Products.ToList(); 

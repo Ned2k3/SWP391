@@ -44,21 +44,19 @@ footer {
     margin-left: 50px;
 }
 
-    ul li {
-        margin-right: 20px;
-        font-size: 18px;
-        width: fit-content;
-        height: 45px;
-        justify-content: center;
-    }
+.left_nav li {
+    margin-right: 20px;
+    font-size: 18px;
+    width: fit-content;
+    height: 45px;
+    justify-content: center;
+}
 
-        .left_nav li:hover {
-            background: #3a3b3c;
-            border-radius: 10px;
-        }
-        .right_nav .nav-item:hover{
-            color: blue;
-        }
+.left_nav li:hover {
+    background: #3a3b3c;
+    border-radius: 10px;
+}
+
 
 .dropdown-toggle::after {
     display: inline-block;

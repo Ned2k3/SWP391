@@ -30,7 +30,12 @@ namespace ProjectSWP391.Controllers
         }
         public IActionResult ServiceList()
         {
-            return View();
+            List<Service> services;
+            using (var context = new SWP391Context())
+            {
+                services = context.Services.ToList();
+            }
+            return View(services);
         }
         public IActionResult BlogList()
         {
