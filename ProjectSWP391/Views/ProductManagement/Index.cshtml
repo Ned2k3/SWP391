@@ -1,0 +1,168 @@
+﻿@model IEnumerable<DEMOSWP391.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Manager</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h3>Smart Beauty</h3>
+        </div>
+        <!-- end header -->
+        <div id="wp-content">
+            <div id="sidebar">
+                <ul>
+                    <li><a href="#">Staff</a></li>
+                    <li><a href="#">Customer</a></li>
+                    <li><a href="#">Product</a> </li>
+                    <li><a href="#">Service</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div id="content">
+                <div id="wpc-search">
+                    <input type="search" class="search-input" placeholder="Search..." />
+                </div>
+                <div>
+                    <a href="#">Add new product</a>
+                </div>
+                <div id="detailContent">
+                    <table border="1px black">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Quantity)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Image)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Pcategory)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Image)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Pcategory.PcategoryId)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!-- end content -->
+        <div id="footer">
+            <p>Copyright &copy; by Smart Beaty</p>
+        </div>
+        <!-- end footer -->
+    </div>
+</body>
+<!-- #region Style -->
+<style>
+    #wrapper {
+        width: 960px;
+        margin: 0px auto;
+    }
+
+    #header {
+        background: #f5f5f5;
+        text-align: center;
+    }
+
+    #wp-content {
+        display: flex;
+        min-height: 650px;
+    }
+
+    .search-input {
+        width: 400px;
+    }
+
+    #wp-content table {
+        margin: 20px 0px;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: center;
+    }
+
+    #sidebar {
+        flex-basis: 29%;
+    }
+
+        #sidebar ul {
+            padding-top: 10px;
+        }
+
+        #sidebar li {
+            padding-top: 15px;
+        }
+
+        #sidebar a {
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            font-size: 24px;
+        }
+
+    #content {
+        flex-basis: 70%;
+    }
+
+    #footer {
+        background: gray;
+        padding: 15px 0px;
+        text-align: center;
+    }
+</style>
+
+</html>
