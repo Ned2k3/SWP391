@@ -13,14 +13,14 @@
 <body>
     <center> <h1> Register Form </h1> </center>
 
-    <form action="/Authentication/Register" method="post" onsubmit="return validateForm()">
+    <form id="registerForm" action="/Authentication/Register" method="post" onsubmit="return validateForm()">
         <div class="container">
             <label>Email : </label>
             <input type="text" placeholder="Email" asp-for="Email">
             <label>Password : </label>
-            <input id="password" type="password" placeholder="Enter Password" asp-for="Password"/>
+            <input id="password" type="password" placeholder="Enter Password" asp-for="Password" />
             <label>Re-Enter Password : </label>
-            <input id="rePassword" type="password" placeholder="Re-Enter Password"/>
+            <input id="rePassword" type="password" placeholder="Re-Enter Password" />
             <button type="submit">Register</button>
             <button type="button" class="cancelbtn"> Cancel</button><br>
             <label style=" font-size:medium;color:red">@ViewBag.ErrorMsg</label><br />
@@ -76,13 +76,19 @@
 
 <script>
     function validateForm() {
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("rePassword").value;
 
-        if (password !== confirmPassword) {
-            @ViewBag.ErrorMsg = "Password does not matched!";
+        // Get references to the input fields
+        var passwordField = document.getElementById("password");
+        var rePasswordField = document.getElementById("rePassword");
+        if (passwordField.value !== rePasswordField.value) {
+            // Passwords do not match
+            alert("Passwords do not match!");
             return false; // Prevent form submission
         }
+
         return true; // Allow form submission
     }
+
+
+
 </script>

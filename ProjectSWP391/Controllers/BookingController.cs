@@ -9,7 +9,8 @@ namespace ProjectSWP391.Controllers
     {
         public IActionResult Load()
         {
-            ViewData["user"] = Global.CurrentUser;
+            ViewData["Title"] = "Booking service";
+            ViewBag.Customer = Global.CurrentUser;
             List<Account> accounts;
             using(var context = new SWP391Context())
             {

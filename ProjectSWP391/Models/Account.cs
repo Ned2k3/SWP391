@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectSWP391.Models
 {
@@ -14,8 +15,12 @@ namespace ProjectSWP391.Models
         }
         //phone va role la null real
         public int? AccountId { get; set; }
-        public string? Email { get; set; }
-        public string? Password { get; set; }
+
+        [Required]
+        [EmailAddress(ErrorMessage = "Invalid email format. Please enter a valid email address.")]
+        public string Email { get; set; }
+
+        public string Password { get; set; }
         public int? Phone { get; set; }
         public string? FullName { get; set; }
         public int? Role { get; set; }

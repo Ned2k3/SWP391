@@ -21,7 +21,12 @@ namespace ProjectSWP391.Controllers
 
         public IActionResult ProductList()
         {
-            return View();
+            List<Product> products;
+            using(var context = new SWP391Context())
+            {
+                products = context.Products.ToList();
+            }
+            return View(products);
         }
         public IActionResult ServiceList()
         {
