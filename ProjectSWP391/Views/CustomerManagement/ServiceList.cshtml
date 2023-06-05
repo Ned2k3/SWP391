@@ -37,17 +37,17 @@
                     foreach (var item in Model)
                     {
                         <div class="col mb-5">
-                            <a asp-action="Details(@item.ServiceId)" asp-controller="ServiceManagement">
+                            <a href="/ServiceManagement/Details?id=@item.ServiceId" style="text-decoration: none;">
                                 <div class="card h-100">
                                     <!-- Product image-->
                                     <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                                     <!-- Product details-->
                                     <div class="card-body p-4">
-                                        <div class="text-center">
+                                        <div class="text-center text-danger">
                                             <!-- Product name-->
-                                            <h5 class="fw-bolder">@item.ServiceName</h5>
+                                            <h5 class="fw-bolder text-dark">@item.ServiceName</h5>
                                             <!-- Product price-->
-                                    @item.Price
+                                        @item.Price VND
                                         </div>
                                     </div>
                                     <!-- Product actions-->
