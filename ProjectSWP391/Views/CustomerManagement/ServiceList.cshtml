@@ -19,7 +19,7 @@
     <header class="bg-dark py-4 mt-2">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Products </h1>
+                <h1 class="display-4 fw-bolder">Service</h1>
                 <p class="lead fw-normal text-white-50 mb-0">You can book for best quality services here!</p>
             </div>
         </div>
@@ -30,17 +30,26 @@
             <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
                 @if (Model.Count == 0)
                 {
-                    <p>No product found!</p>
+                    <p class="text-center">No service found!</p>
                 }
                 else
                 {
                     foreach (var item in Model)
                     {
-                        <div class="col mb-5">
+                        <div class="col mb-5" style="z-index: 0;">
                             <a href="/ServiceManagement/Details?id=@item.ServiceId" style="text-decoration: none;">
                                 <div class="card h-100">
                                     <!-- Product image-->
-                                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                    @{
+                                        if(item.Image == null)
+                                        {
+                                            <img class="card-img-top border-bottom" src="/image/brand_logo.png" alt="..." />
+                                        }
+                                        else
+                                        {
+                                            <img class="card-img-top border-bottom" src="@item.Image" alt="@item.ServiceName" />
+                                        }
+                                    }
                                     <!-- Product details-->
                                     <div class="card-body p-4">
                                         <div class="text-center text-danger">
@@ -52,7 +61,7 @@
                                     </div>
                                     <!-- Product actions-->
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" asp-controller="Booking" asp-action="Load">Book</a></div>
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Booking/Load?sID=@item.ServiceId">Book</a></div>
                                     </div>
                                 </div>
                             </a>

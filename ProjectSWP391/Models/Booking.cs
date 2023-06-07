@@ -12,9 +12,9 @@ namespace ProjectSWP391.Models
         public int? ServiceId { get; set; }
         public string Content { get; set; }
 
-        public virtual Account Customer { get; set; }
-        public virtual Account Employee { get; set; }
-        public virtual Service Service { get; set; }
-        public virtual Shift Shift { get; set; }
+        public virtual Account? Customer { get; set; }
+        public virtual Account? Employee { get; set; }
+        public virtual Service? Service { get; set; }
+        public virtual Shift? Shift { get; set; }
     }
 }

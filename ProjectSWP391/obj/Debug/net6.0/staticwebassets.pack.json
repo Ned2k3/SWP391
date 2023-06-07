@@ -21,6 +21,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\wwwroot\\image\\Facebook_Avatar.jpg",
+      "PackagePath": "staticwebassets\\image\\Facebook_Avatar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\wwwroot\\image\\brand_logo.png",
+      "PackagePath": "staticwebassets\\image\\brand_logo.png"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

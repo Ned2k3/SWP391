@@ -1,51 +1,130 @@
-﻿
+﻿@using ProjectSWP391.Models;
+@model Booking;
 <body>
-    <h1 style="text-align: center; font-weight: bold;">Booking Service</h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-lg-4 col-xl-4 border-right">
-                <h2 style="text-align: center;">Customer Details</h2>
-                @if(ViewBag.Customer != null)
-                {
-                    <p>Customer Name: @ViewBag.Customer.FullName</p>
-                    <p>Email: @ViewBag.Customer.Email</p>
-                    <p>Phone: @ViewBag.Customer.Phone</p>
-                }
-                else
-                {
-                    <p>Customer Name: Guest</p>
-                    <p>Email: </p>
-                    <p>Phone: </p>
-                }
-            </div>
-
-            <div class="col-md-8 col-lg-8 col-xl-8">
-
-            </div>
-        </div>
-    </div>
     @{
         //Confirm continue as guest or login
-        if(ViewBag.Customer == null)
+        if (Model.Customer == null)
         {
             <div class="container" id="message_box" style="width: 20%; height: 16%; position: fixed; top: 42%; left: 40%; border: 2px solid black;
-                                  border-radius: 5px; background-color: lightgray; z-index: 1; text-align: center;">
+                                          border-radius: 5px; background-color: lightgray; z-index: 10; text-align: center;">
+                <br>
                 <p style="font-weight: bold;">Continue as guest?</p>
                 <div class="row">
-                <div class="col-md-6 col-lg-6 col-xl-6">
-                <a onclick="Ok()" role="button">Continue</a>
-                <script>
-                    function Ok(){
-                        document.getElementById("message_box").style.display = "none";
-                        var s = document.getElementById("navbar_brand").innerHTML = "";
-                    }
-                </script>
-                </div>
+                    <div class="col-md-6 col-lg-6 col-xl-6">
+                        <a onclick="Ok()" role="button">Continue</a>
+                        <script>
+                            function Ok() {
+                                document.getElementById("message_box").style.display = "none";
+                                document.getElementById("detail_form").style.visibility = "visible";
+                            }
+                        </script>
+                    </div>
                     <div class="col-md-6 col-lg-6 col-xl-6">
                         <a asp-controller="Authentication" asp-action="Login" style="text-decoration: none;">Login</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" id="detail_form" style="visibility: hidden;">
+                <div class="row row-cols-2 justify-content-center">
+                    <div class="col mt-1" style="width: fit-content;">
+                        <h3>Please provide information before booking</h3>
+                        <form asp-action="Load" asp-controller="Booking" style="margin-left: 6%; margin-top: 40px;" method="post">
+                            <label>Full Name:</label><br>
+                            <input type="text" placeholder="Example: Nguyen Van A" name="fullname" required><br>
+                            <label>Email:</label><br>
+                            <input type="email" placeholder="This is optional" name="email"><br>
+                            <label>Phone:</label><br>
+                            <input type="tel" name="phone" placeholder="Example: 0969645417" required><br>
+                            @{
+                                if (Model.Service != null)
+                                {
+                                    <input style="display: none;" type="text" value="@Model.Service.ServiceId" name="serviceID">
+                                }
+                            }
+                            <input type="submit" value="Confirm" style="border-radius: 5px; height: 30px;">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h1 style="text-align: center; font-weight: bold;">Booking Service</h1>
+            <div class="container">
+                <div class="row" style="height: fit-content;">
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        <div style="border-radius: 10px; border: 1px solid black; width: 100%; justify-content: center; padding: 10px;">
+                            <h2 style="text-align: center;">Customer Details</h2>
+                            <table>
+                                <tr>
+                                    <th>Name:</th>
+                                    <td>@Model.Customer.FullName</td>
+                                </tr>
+                                @{
+                                    if (Model.Customer.Email == null)
+                                    {
+                                        <tr>
+                                            <th>Email:</th>
+                                            <td>N/A</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <th>Email:</th>
+                                            <td>@Model.Customer.Email</td>
+                                        </tr>
+                                    }
+                                }
+                                <tr>
+                                    <th>Phone:</th>
+                                    <td>@Model.Customer.Phone</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="border-radius: 10px; border: 1px solid black; width: 100%; margin-top: 20px;">
+                            @{
+                                if(Model.Service == null)
+                                {
+                                    <h2>Null service</h2>
+                                }
+                                else
+                                {
+                                    <a href="/CustomerManagement/ServiceList">Choose service</a>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 col-lg-8 col-xl-8">
                     </div>
                 </div>
             </div>
         }
     }
 </body>
+<style>
+    label{
+        font-weight: bold;
+    }
+    input{
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 2px solid green;
+        width: 90%;
+    }
+    input:valid{
+            border-bottom: 2px solid green;
+    }
+    input:invalid{
+            border-bottom: 2px solid red;
+    }
+    .col{
+        padding-top: 20px;
+    }
+    tbody{
+        width: 100%;
+        text-align: center;
+    }
+</style>
