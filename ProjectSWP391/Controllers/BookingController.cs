@@ -35,6 +35,7 @@ namespace ProjectSWP391.Controllers
             return View(booking);
         }
 
+        //when guest provide their details
         [HttpPost]
         public IActionResult Load()
         {

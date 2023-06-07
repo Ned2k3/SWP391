@@ -41,7 +41,7 @@ namespace ProjectSWP391.Controllers
             }
             else
             {
-                Global.CurrentUser = a;
+                Global.CurrentUser = account;
                 //message
                 if (account.Role == 1)
                 {
@@ -101,6 +101,7 @@ namespace ProjectSWP391.Controllers
             //xoa sesion, logout
             //quay ve trang list de login lai
             //HttpContext.Session.Get().Clear();
+            Global.CurrentUser = null;
             return View("~/Views/CustomerManagement/LandingPage.cshtml");
         }
 
