@@ -4,10 +4,18 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <CodeAnalysisRuleSet>..\.sonarlint\testcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Entity\" />
+    <Compile Remove="Models\Entity\**" />
+    <Content Remove="Models\Entity\**" />
+    <EmbeddedResource Remove="Models\Entity\**" />
+    <None Remove="Models\Entity\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\.sonarlint\test\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
 
   <ItemGroup>

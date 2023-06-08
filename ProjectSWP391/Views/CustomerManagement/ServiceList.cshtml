@@ -38,30 +38,34 @@
                     {
                         <div class="col mb-5" style="z-index: 0;">
                             <a href="/ServiceManagement/Details?id=@item.ServiceId" style="text-decoration: none;">
-                                <div class="card h-100">
+                                <div class="card h-100" style="flex-direction: unset; align-content: space-between; flex-wrap: wrap; justify-content: center; border: 1px solid #f7f7f7;">
                                     <!-- Product image-->
                                     @{
                                         if(item.Image == null)
                                         {
-                                            <img class="card-img-top border-bottom" src="/image/brand_logo.png" alt="..." />
+                                            <img class="card-img-top border-bottom" style="height: 300px;" src="/image/brand_logo.png" alt="..." />
                                         }
                                         else
                                         {
-                                            <img class="card-img-top border-bottom" src="@item.Image" alt="@item.ServiceName" />
+                                            <img class="card-img-top border-bottom" style="height: 300px;" src="@item.Image" alt="@item.ServiceName" />
                                         }
                                     }
                                     <!-- Product details-->
-                                    <div class="card-body p-4">
-                                        <div class="text-center text-danger">
+                                    <div class="card-body p-4" style="min-height: 100px;">
+                                        <div class="text-center">
                                             <!-- Product name-->
-                                            <h5 class="fw-bolder text-dark">@item.ServiceName</h5>
+                                            <div style="height: 70px; overflow: hidden; text-overflow: ellipsis; white-space: pre-line;">
+                                                <h6 class="fw-bolder text-dark text-start">@item.ServiceName</h6>
+                                            </div>
                                             <!-- Product price-->
-                                        @item.Price VND
+                                            <div style="min-height: 30px;padding-top: 15px;">
+                                                <span class="text-danger">$@(Math.Round(item.Price, 2))</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Booking/Load?sID=@item.ServiceId">Book</a></div>
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mb-3">
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Booking/Load?sID=@item.ServiceId">Book Now</a></div>
                                     </div>
                                 </div>
                             </a>
