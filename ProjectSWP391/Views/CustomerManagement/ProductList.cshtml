@@ -1,5 +1,7 @@
 ﻿@using ProjectSWP391.Models
-@model List<Product>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model X.PagedList.IPagedList<Product>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,8 +82,73 @@
                     }
                 }
             </div>
+            <!-- paging here -->
+            @*@Html.PagedListPager(Model, page => Url.Action("ProductList", new { page }),
+            new PagedListRenderOptions
+            {
+            DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded, // Display link to the first page if needed
+            DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded, // Display link to the last page if needed
+            LinkToFirstPageFormat = "<<", // Custom format for the link to the first page
+            LinkToLastPageFormat = " >>", // Custom format for the link to the last page
+            LinkToPreviousPageFormat = "< ", // Custom format for the link to the previous page
+            LinkToNextPageFormat = " >", // Custom format for the link to the next page
+            MaximumPageNumbersToDisplay = 3, // Maximum number of page numbers to display
+            DisplayEllipsesWhenNotShowingAllPageNumbers = false, // Display ellipses when not showing all page numbers
+            ContainerDivClasses = new[] { "pagination" }, // CSS classes for the container div
+            UlElementClasses = new[] { "pagination-list" }, // CSS classes for the <ul> element
+            LiElementClasses = new[] { "page-item" }, // CSS classes for each <li> element
+            })*@
+            <div class="row">
+                <div class="pagination">
+                    @if (Model.PageCount > 1)
+                    {
+                        <ul class="pagination-list">
+                            <li class="page-item fw-bold text-primary">@Html.ActionLink("First","ProductList",new { page = 1, Model.PageSize})</li>
+                            @if (Model.HasPreviousPage)
+                            {
+                                <li class="page-item fw-bold">@Html.ActionLink("<", "ProductList", new { page = Model.PageNumber - 1, Model.PageSize })</li>
+                            }
+
+                            @for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "ProductList", new { page = i, Model.PageSize })</li>
+                            }
+
+                            @if (Model.HasNextPage)
+                            {
+                                <li class="page-item fw-bold">@Html.ActionLink(">", "ProductList", new { page = Model.PageNumber + 1, Model.PageSize })</li>
+                            }
+                            <li class="page-item fw-bold text-primary">@Html.ActionLink("Last","ProductList",new { page = Model.PageCount, Model.PageSize})</li>
+                        </ul>
+                    }
+                </div>
+            </div>
         </div>
     </section>
+    <style>
+        .pagination{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .pagination-list{
+            display: inherit;
+            width: fit-content;
+            list-style: none;
+        }
+        .page-item{
+            min-width: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .page-item a{
+            text-decoration: none;
+            color: black;
+        }
+        .page-item.active a{
+                color: #756DC7;
+        }
+     </style>
 </body>
 </html>
 

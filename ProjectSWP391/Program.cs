@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 using System.Configuration;
+using X.PagedList.Mvc.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 

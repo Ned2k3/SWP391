@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace ProjectSWP391.Controllers
 {
@@ -19,14 +22,23 @@ namespace ProjectSWP391.Controllers
             return View("~/Views/CustomerManagement/LandingPage.cshtml");
         }
 
-        public IActionResult ProductList()
+        public IActionResult ProductList(int? page)
         {
-            List<Product> products;
-            using(var context = new SWP391Context())
+            // Nếu page = null thì đặt lại là 1.
+            if (page == null) page = 1;
+
+            using (var context = new SWP391Context())
             {
-                products = context.Products.ToList();
+                var products = context.Products.OrderBy(p => p.ProductId);
+
+                // số product hiển thị trên 1 trang
+                int pageSize = 8;
+
+                int pageNumber = (page ?? 1);
+
+                // 5. Trả về các Link được phân trang theo kích thước và số trang.
+                return View(products.ToPagedList(pageNumber, pageSize));
             }
-            return View(products);
         }
         public IActionResult ServiceList()
         {
