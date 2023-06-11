@@ -41,7 +41,8 @@ namespace ProjectSWP391.Controllers
         {
             var session = HttpContext.Session;
             Account? acc = new Account();
-            int step = Convert.ToInt32(Request.Form["step"]);
+            int step = 0;
+            if(Request.Form["step"].ToString() == null) step = Convert.ToInt32(Request.Form["step"]);
             //guest enter phone number from landing page
             if (step == 0)
             {
