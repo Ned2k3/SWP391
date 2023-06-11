@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 using System.Diagnostics;
@@ -18,8 +19,13 @@ namespace ProjectSWP391.Controllers
 
         public IActionResult LandingPage()
         {
-
-            return View("~/Views/CustomerManagement/LandingPage.cshtml");
+            using(var context = new SWP391Context())
+            {
+                List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
+                List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
+                ViewBag.ServiceList = services;
+                return View(products);
+            }  
         }
 
         public IActionResult ProductList(int? page)
@@ -40,21 +46,25 @@ namespace ProjectSWP391.Controllers
                 return View(products.ToPagedList(pageNumber, pageSize));
             }
         }
-        public IActionResult ServiceList()
+        public IActionResult ServiceList(int? page)
         {
-            List<Service> services;
+            // Nếu page = null thì đặt lại là 1.
+            if (page == null) page = 1;
+
             using (var context = new SWP391Context())
             {
-                services = context.Services.ToList();
+                var services = context.Services.OrderBy(s => s.ServiceId);
+
+                // số service hiển thị trên 1 trang
+                int pageSize = 8;
+
+                int pageNumber = (page ?? 1);
+
+                // 5. Trả về các Link được phân trang theo kích thước và số trang.
+                return View(services.ToPagedList(pageNumber, pageSize));
             }
-            return View(services);
         }
         public IActionResult BlogList()
-        {
-            return View();
-        }
-
-        public IActionResult BookingService(int serviceID)
         {
             return View();
         }

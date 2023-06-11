@@ -23,7 +23,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
-//app.UseSession();
+app.UseSession();
 app.UseStaticFiles();
 
 app.UseRouting();

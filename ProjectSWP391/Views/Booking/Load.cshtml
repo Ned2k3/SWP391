@@ -1,48 +1,23 @@
 ﻿@using ProjectSWP391.Models;
 @model Booking;
+
 <body>
     @{
-        //Confirm continue as guest or login
-        if (Model.Customer == null)
+        if(Model.Customer == null)
         {
-            <div class="container" id="message_box" style="width: 20%; height: 16%; position: fixed; top: 42%; left: 40%; border: 2px solid black;
-                                          border-radius: 5px; background-color: lightgray; z-index: 10; text-align: center;">
-                <br>
-                <p style="font-weight: bold;">Continue as guest?</p>
-                <div class="row">
-                    <div class="col-md-6 col-lg-6 col-xl-6">
-                        <a onclick="Ok()" role="button">Continue</a>
-                        <script>
-                            function Ok() {
-                                document.getElementById("message_box").style.display = "none";
-                                document.getElementById("detail_form").style.visibility = "visible";
-                            }
-                        </script>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-6">
-                        <a asp-controller="Authentication" asp-action="Login" style="text-decoration: none;">Login</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container" id="detail_form" style="visibility: hidden;">
-                <div class="row row-cols-2 justify-content-center">
-                    <div class="col mt-1" style="width: fit-content;">
+            <div class="container">
+                <div class="row row-cols-2 justify-content-center pt-4">
+                    <div class="col mt-1" style="padding-top: 100px;">
                         <h3>Please provide information before booking</h3>
-                        <form asp-action="Load" asp-controller="Booking" style="margin-left: 6%; margin-top: 40px;" method="post">
-                            <label>Full Name:</label><br>
-                            <input type="text" placeholder="Example: Nguyen Van A" name="fullname" required><br>
-                            <label>Email:</label><br>
-                            <input type="email" placeholder="This is optional" name="email"><br>
+                        <form asp-action="LoadByPost" asp-controller="Booking" style="margin-left: 6%; margin-top:30px;" method="post">
+                            <label>Full Name<span style="font-weight: normal;"> (Optional)</span>:</label><br>
+                            <input type="text" placeholder="Example: Nguyen Van A" name="fullname"><br>
+                            <label>Email<span style="font-weight: normal;"> (Optional)</span>:</label><br>
+                            <input type="email" placeholder="Example: abc123@xyz.com" name="email"><br>
                             <label>Phone:</label><br>
-                            <input type="tel" name="phone" placeholder="Example: 0969645417" required><br>
-                            @{
-                                if (Model.Service != null)
-                                {
-                                    <input style="display: none;" type="text" value="@Model.Service.ServiceId" name="serviceID">
-                                }
-                            }
-                            <input type="submit" value="Confirm" style="border-radius: 5px; height: 30px;">
+                            <input type="tel" name="phone" placeholder="Example: 0969645417" required pattern="^(0)[0-9]{9}" title="You must enter a valid phone number!"><br>
+                            <input type="text" name="step" value="1" style="display: none;">
+                            <input type="submit" value="Confirm" style="border-radius: 5px; height: 30px; background-color: #F7F7F7;">
                         </form>
                     </div>
                 </div>
@@ -50,61 +25,62 @@
         }
         else
         {
-            <h1 style="text-align: center; font-weight: bold;">Booking Service</h1>
             <div class="container">
-                <div class="row" style="height: fit-content;">
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        <div style="border-radius: 10px; border: 1px solid black; width: 100%; justify-content: center; padding: 10px;">
-                            <h2 style="text-align: center;">Customer Details</h2>
-                            <table>
-                                <tr>
-                                    <th>Name:</th>
-                                    <td>@Model.Customer.FullName</td>
-                                </tr>
+                <div class="row row-cols-2 justify-content-center">
+                    <div class="col m-0" style="background-color: white; padding: 0 0 10px 0;">
+                        <div style="background-color: #F7FAFC; width: 100%; height: fit-content; padding-top: 12px; padding-bottom: 12px;">
+                            <p style="text-align: center; font-weight: 600; font-size: 22px;">Booking Schedule</p>
+                        </div>
+                        
+                        <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
+                            <p style="font-size: 20px; font-weight: 500;">1. Customer Details</p>
+                            <div style="width: 100%; padding-top: 10px; padding-bottom: 10px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px;">
+                            @{
+                                if(Model.Customer.AccountId == null)
+                                {
+                                        <p style="padding-left: 15px"><i class="fa-solid fa-phone"></i> (+84) <span>@Model.Customer.Phone</span></p>
+                                }
+                                else{
+                                    <p style="padding-left: 15px"><i class="fa-solid fa-envelope"></i> @Model.Customer.Email</p>
+                                }
+                            }
+                            </div>
+                        </div>
+
+                        <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
+                            <p style="font-size: 20px; font-weight: 500;">2. Select Service</p>
+                            <div style="width: 100%; padding-top: 10px; padding-bottom: 10px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px;">
+                                <p style="padding-left: 15px;"><i class="fa-solid fa-spa"></i> Click here to choose your service</p>
+                            </div>
+                            <div style="width: 100%; padding-top: 5px; padding-bottom: 5px;margin-top: 5px;">
                                 @{
-                                    if (Model.Customer.Email == null)
+                                    if(Model.Service == null)
                                     {
-                                        <tr>
-                                            <th>Email:</th>
-                                            <td>N/A</td>
-                                        </tr>
+                                        <p style="color: red; font-size: 16px;">  select a service</p>
                                     }
                                     else
                                     {
-                                        <tr>
-                                            <th>Email:</th>
-                                            <td>@Model.Customer.Email</td>
-                                        </tr>
+                                        <p style="border: 1px solid black; border-radius: 10px; font-size: 16px; text-align: center;">@Model.Service.ServiceName</p>
                                     }
                                 }
-                                <tr>
-                                    <th>Phone:</th>
-                                    <td>@Model.Customer.Phone</td>
-                                </tr>
-                            </table>
+                            </div>
                         </div>
-                        <div style="border-radius: 10px; border: 1px solid black; width: 100%; margin-top: 20px;">
-                            @{
-                                if(Model.Service == null)
-                                {
-                                    <h2>Null service</h2>
-                                }
-                                else
-                                {
-                                    <a href="/CustomerManagement/ServiceList">Choose service</a>
-                                }
-                            }
-                        </div>
-                    </div>
-
-                    <div class="col-md-8 col-lg-8 col-xl-8">
                     </div>
                 </div>
             </div>
         }
     }
 </body>
+
 <style>
+    body {
+        background-color: #eeeeee;
+        padding-top: 0;
+        font-size: 18px;
+    }
+    p{
+        margin-bottom: 0;
+    }
     label{
         font-weight: bold;
     }
@@ -119,9 +95,6 @@
     }
     input:invalid{
             border-bottom: 2px solid red;
-    }
-    .col{
-        padding-top: 20px;
     }
     tbody{
         width: 100%;

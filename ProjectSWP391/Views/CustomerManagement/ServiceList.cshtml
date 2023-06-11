@@ -1,5 +1,7 @@
 ﻿@using ProjectSWP391.Models
-@model List<Service>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model X.PagedList.IPagedList<Service>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +29,7 @@
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-start">
                 @if (Model.Count == 0)
                 {
                     <p class="text-center">No service found!</p>
@@ -36,36 +38,28 @@
                 {
                     foreach (var item in Model)
                     {
-                        <div class="col mb-5" style="z-index: 0;">
+                        <div class="col mb-5">
                             <a href="/ServiceManagement/Details?id=@item.ServiceId" style="text-decoration: none;">
-                                <div class="card h-100" style="flex-direction: unset; align-content: space-between; flex-wrap: wrap; justify-content: center; border: 1px solid #f7f7f7;">
-                                    <!-- Product image-->
-                                    @{
-                                        if(item.Image == null)
-                                        {
-                                            <img class="card-img-top border-bottom" style="height: 300px;" src="/image/brand_logo.png" alt="..." />
-                                        }
-                                        else
-                                        {
-                                            <img class="card-img-top border-bottom" style="height: 300px;" src="@item.Image" alt="@item.ServiceName" />
-                                        }
-                                    }
+                                <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
+                                        background-image: url('@(item.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : item.Image)'); background-size: cover; background-position: center;">
                                     <!-- Product details-->
-                                    <div class="card-body p-4" style="min-height: 100px;">
-                                        <div class="text-center">
-                                            <!-- Product name-->
-                                            <div style="height: 70px; overflow: hidden; text-overflow: ellipsis; white-space: pre-line;">
-                                                <h6 class="fw-bolder text-dark text-start">@item.ServiceName</h6>
-                                            </div>
-                                            <!-- Product price-->
-                                            <div style="min-height: 30px;padding-top: 15px;">
-                                                <span class="text-danger">$@(Math.Round(item.Price, 2))</span>
+                                    <div style="background-color: rgb(0,0,0,0.5); width: 100%; margin-top: 150px; margin-bottom: 30px;">
+                                        <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
+                                            <div class="text-center">
+                                                <!-- Product name-->
+                                                <div style="height: 70px; overflow: hidden; white-space: pre-line;">
+                                                    <h6 class="fw-bolder text-white text-center">@item.ServiceName</h6>
+                                                </div>
+                                                <!-- Product price-->
+                                                <div style="min-height: 30px;padding-top: 15px; opacity: 1;">
+                                                    <span class="text-danger">$@(Math.Round(item.Price, 2))</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Product actions-->
-                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mb-3">
-                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Booking/Load?sID=@item.ServiceId">Book Now</a></div>
+                                        <!-- Card footer -->
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mb-3">
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" style="border: 1px solid white; color: papayawhip;" href="/Booking/Load?sID=@item.ServiceId">Book Now</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -73,6 +67,101 @@
                     }
                 }
             </div>
+            <!-- paging here -->
+            <div class="row mt-4">
+                <div class="pagination">
+                    @if (Model.PageCount > 1)
+                    {
+                        <ul class="pagination-list">
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/ProductList?page=1&&PageSize=@Model.PageSize"><i class="fa-solid fa-angles-left"></i></a></li>
+                            @if (Model.HasPreviousPage)
+                            {
+                                <li class="page-item navigation nav2"><a href="/CustomerManagement/ProductList?page=@(Model.PageNumber-1)&&PageSize=@Model.PageSize"><i class="fa-solid fa-angle-left"></i></a></li>
+                            }
+                            @{
+                                if (Model.PageNumber == 1)
+                                {
+                                    for (int i = 1; i <= 3; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "ServiceList", new { page = i, Model.PageSize })</li>
+                                    }
+                                }
+                                else if (Model.PageNumber == Model.PageCount)
+                                {
+                                    for (int i = Model.PageCount - 2; i <= Model.PageCount; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "ServiceList", new { page = i, Model.PageSize })</li>
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = Model.PageNumber - 1; i <= Model.PageNumber + 1; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "ServiceList", new { page = i, Model.PageSize })</li>
+                                    }
+                                }
+                            }
+
+
+                            @if (Model.HasNextPage)
+                            {
+                                <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageNumber+1)&&PageSize=@Model.PageSize"><i class="fa-solid fa-angle-right"></i></a></li>
+                            }
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageCount)&&PageSize=@Model.PageSize"><i class="fa-solid fa-angles-right"></i></a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .card:hover {
+            box-shadow: 0 0 5px 2px rgb(197,192,192,0.8);
+        }
+
+        .pagination {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .pagination-list {
+            display: inherit;
+            width: fit-content;
+            list-style: none;
+        }
+
+        .page-item {
+            min-width: 30px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border: 1px solid black;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+            .page-item a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .page-item.active {
+                background-color: black;
+            }
+
+                .page-item.active a {
+                    color: white;
+                }
+
+            .page-item.navigation {
+                align-content: center;
+                border: none;
+            }
+
+                .page-item.navigation.nav1 a {
+                    font-weight: bold;
+                }
+    </style>
         </div>
     </section>
 </body>

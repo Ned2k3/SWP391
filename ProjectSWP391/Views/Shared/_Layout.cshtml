@@ -73,18 +73,19 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container-fluid" >
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer" style="text-align: center; background: #242526;">
-        <p style="color: white;">Create By <span style="color: cyan; text-decoration: underline;">SWP391 - Team 5</span></p>
+        <p style="color: white;">© Create By <span style="color: cyan; text-decoration: underline;">SWP391 - Team 5</span></p>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/071e3e204d.js" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
