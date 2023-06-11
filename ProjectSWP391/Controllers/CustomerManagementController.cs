@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace ProjectSWP391.Controllers
 {
@@ -15,34 +19,52 @@ namespace ProjectSWP391.Controllers
 
         public IActionResult LandingPage()
         {
-
-            return View("~/Views/CustomerManagement/LandingPage.cshtml");
-        }
-
-        public IActionResult ProductList()
-        {
-            List<Product> products;
             using(var context = new SWP391Context())
             {
-                products = context.Products.ToList();
-            }
-            return View(products);
-        }
-        public IActionResult ServiceList()
-        {
-            List<Service> services;
-            using (var context = new SWP391Context())
-            {
-                services = context.Services.ToList();
-            }
-            return View(services);
-        }
-        public IActionResult BlogList()
-        {
-            return View();
+                List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
+                List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
+                ViewBag.ServiceList = services;
+                return View(products);
+            }  
         }
 
-        public IActionResult BookingService(int serviceID)
+        public IActionResult ProductList(int? page)
+        {
+            // Nếu page = null thì đặt lại là 1.
+            if (page == null) page = 1;
+
+            using (var context = new SWP391Context())
+            {
+                var products = context.Products.OrderBy(p => p.ProductId);
+
+                // số product hiển thị trên 1 trang
+                int pageSize = 8;
+
+                int pageNumber = (page ?? 1);
+
+                // 5. Trả về các Link được phân trang theo kích thước và số trang.
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+        }
+        public IActionResult ServiceList(int? page)
+        {
+            // Nếu page = null thì đặt lại là 1.
+            if (page == null) page = 1;
+
+            using (var context = new SWP391Context())
+            {
+                var services = context.Services.OrderBy(s => s.ServiceId);
+
+                // số service hiển thị trên 1 trang
+                int pageSize = 8;
+
+                int pageNumber = (page ?? 1);
+
+                // 5. Trả về các Link được phân trang theo kích thước và số trang.
+                return View(services.ToPagedList(pageNumber, pageSize));
+            }
+        }
+        public IActionResult BlogList()
         {
             return View();
         }

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 using System.Configuration;
+using X.PagedList.Mvc.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
-//app.UseSession();
+app.UseSession();
 app.UseStaticFiles();
 
 app.UseRouting();

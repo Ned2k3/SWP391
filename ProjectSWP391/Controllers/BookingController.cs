@@ -1,56 +1,111 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using ProjectSWP391.Models;
 using ProjectSWP391.Models.ServiceModel;
-
+using System.Runtime.Versioning;
 
 namespace ProjectSWP391.Controllers
 {
-    
+
     public class BookingController : Controller
     {
-        [BindProperty(SupportsGet = true)]
-        public int serviceId { get; set; }
-
-        [BindProperty(SupportsGet = true)]
-        public int empID { get; set; }
-
         [BindProperty]
         public Booking? booking { get; set; } = new Booking();
 
-        public Account? customer { get; set; }
-
         public IActionResult Load(int sID)
         {
-            ViewData["Title"] = "Booking service";
+            var session = HttpContext.Session;
             //get current customer
             Account? acc = Global.CurrentUser;
-            //get selected service
-            Service? sv;
-            using (var context = new SWP391Context())
+            if (acc != null)
             {
-                sv = context.Services.Where(i => i.ServiceId == sID).FirstOrDefault();
+                booking.Customer = acc;
             }
-            booking.Customer = acc;
-            booking.Service = sv;
+            if(sID != 0)
+            {
+                using (var context = new SWP391Context())
+                {
+                    Service? sv = context.Services.Where(i => i.ServiceId == sID).FirstOrDefault();
+                    if (sv != null)
+                    {
+                        booking.Service = sv;
+                        session.SetString("serviceID", sID.ToString());
+                    }
+                }
+            }
             return View(booking);
         }
 
-        //when guest provide their details
         [HttpPost]
-        public IActionResult Load()
+        public IActionResult LoadByPost()
         {
-            string fname = Request.Form["fullname"];
-            string email = Request.Form["email"];
-            string phone = Request.Form["phone"];
-            string serviceID = Request.Form["serviceID"];
-            Account acc = new Account()
+            var session = HttpContext.Session;
+            Account? acc = new Account();
+            int step = 0;
+            if(Request.Form["step"].ToString() == null) step = Convert.ToInt32(Request.Form["step"]);
+            //guest enter phone number from landing page
+            if (step == 0)
             {
-                FullName = fname,
-                Email = email,
-                Phone = Convert.ToInt32(phone)
-            };
-            Global.CurrentUser = acc;
-            return Load(serviceId);
+                int phoneNumber = Convert.ToInt32(Request.Form["phone"]);
+                if (session.GetString("phone") != null)
+                {
+                    session.Clear();
+                }
+                using (var context = new SWP391Context())
+                {
+                    var account = context.Accounts.Where(a => a.AccountId == phoneNumber).FirstOrDefault();
+                    session.SetString("phone", phoneNumber.ToString());
+                    if (account != null)
+                    {
+                        booking.Customer = account;
+                    }
+                    else
+                    {
+                        acc.Phone = phoneNumber;
+                        booking.Customer = acc;
+                    }
+                }
+            }
+
+            //guest book from service list and have to fill information
+            else if (step == 1)
+            {
+                int phoneNumber = Convert.ToInt32(Request.Form["phone"]);
+                int sID = Convert.ToInt32(session.GetString("serviceID"));
+                string? name = Request.Form["fname"].ToString().Trim();
+                string? email = Request.Form["email"].ToString().Trim();
+                session.SetString("phone", phoneNumber.ToString());
+                using (var context = new SWP391Context())
+                {
+                    var account = context.Accounts.Where(a => a.Phone == phoneNumber).FirstOrDefault();
+                    Service? sv = context.Services.Where(i => i.ServiceId == sID).FirstOrDefault();
+                    if (account != null)
+                    {
+                        booking.Customer = account;
+                    }
+                    else
+                    {
+                        acc.Phone = phoneNumber;
+                        if (name != null)
+                        {
+                            session.SetString("fname", name);
+                            acc.FullName = name;
+                        }
+                        if (email != null)
+                        {
+                            session.SetString("email", email);
+                            acc.Email = email;
+                        }
+                        booking.Customer = acc;
+                    }
+                    if (sv != null)
+                    {
+                        booking.Service = sv;
+                    }
+                }
+
+            }
+            return View("/Views/Booking/Load.cshtml", booking);
         }
     }
 }

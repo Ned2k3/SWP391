@@ -53,7 +53,7 @@ namespace ProjectSWP391.Controllers
                 }
                 else
                 {
-                    return View("~/Views/CustomerManagement/LandingPage.cshtml");
+                    return RedirectToAction("LandingPage","CustomerManagement");
                 }
                 //return View();
             }
@@ -102,7 +102,7 @@ namespace ProjectSWP391.Controllers
             //quay ve trang list de login lai
             //HttpContext.Session.Get().Clear();
             Global.CurrentUser = null;
-            return View("~/Views/CustomerManagement/LandingPage.cshtml");
+            return RedirectToAction("LandingPage", "CustomerManagement");
         }
 
         #region will delete when merge

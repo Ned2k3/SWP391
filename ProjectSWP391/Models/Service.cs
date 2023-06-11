@@ -13,8 +13,8 @@ namespace ProjectSWP391.Models
 
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
+        public string? Description { get; set; }
+        public string? Image { get; set; }
         public decimal Price { get; set; }
         public bool IsActive { get; set; }
         public int? ScategoryId { get; set; }

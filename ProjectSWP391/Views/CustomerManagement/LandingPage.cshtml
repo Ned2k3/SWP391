@@ -1,54 +1,210 @@
-﻿
+﻿@using ProjectSWP391.Models;
+@model List<Product>
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <Title>SmartBeauty.com</Title>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row" style="height: fit-content; margin-top: 50px">
-                <div class="col-md-6 col-lg-7 col-xl-7 ">
-                    <img class="img-responsive" src="https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?cs=srgb&dl=pexels-delbeautybox-853427.jpg&fm=jpg" alt="smart beauty" width="98%"/>
-                </div>
-
-                <div class="col-md-6 col-lg-5 col-xl-5 pt-0">
-                    <h2 style="font-weight: bold;">Intro</h2>
-                    <p style="text-align: justify; font-size: 20px">As a professional beauty take care system, our duty is to bring the best service and products to everyone. We are  
-                       proudly to give our customers many extensions which help trade informations, booking service or buying our products
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <Title>SmartBeauty.com</Title>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: #F7F5F5; padding: 0;">
+        <div class="row banner">
+            <div class="banner_intro">
+                <h2 style="font-weight: bold;">Smart Beauty</h2>
+                <p style="text-align: justify; font-size: 20px">
+                    As a professional beauty take care system, our duty is to bring the best service and products to everyone. We are
+                    proudly to give our customers many extensions which help trade informations, booking service or buying our products
                     through our website.<span style="color: red;"> Smart Beauty, the key to paradise!</span>
                 </p>
-                </div>
-            </div>
-
-            <hr style="width: 80%; height: 5px; margin-left: 10%; margin-top: 50px; margin-bottom: 50px;"/>
-
-            <div class="row">
-                <div class="col-md-12 col-xl-12 col lg-12" style="text-align: center;">
-                    <h2 style="text-align: center">I Want To Book A New Service</h2>
-
-                    <button id="booking_btn" onclick="window.location.href = '/Booking/Load'">
-                        ➜ 
-                    </button>
-                    
-                    <style>
-                        #booking_btn{
-                            width: 70px;
-                            height: 70px;
-                            background-color: lavender;
-                            border-radius: 10px;
-                            margin-top: 50px;
-                            margin-bottom: 50px;
-                        }
-                        #booking_btn:hover{
-                            background-color: lightgray;
-                        }
-                    </style>
-                </div>
             </div>
         </div>
-    </body>
+
+        <div class="row">
+            <div style="width: 50%; margin-left: 25%; padding: 10px;">
+                <h2 class="text-dark text-center mt-4">Booking easily in 30s</h2>
+                <form class="phone_input" asp-action="LoadByPost" asp-controller="Booking" method="post">
+                    <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="Enter Phone Number" required title="You must enter a valid phone number!" style="border-radius: 5px; min-width: 50%; padding-left: 10px; border: none; border-bottom: 2px solid aquamarine">
+                    <button type="submit" id="booking_btn">BOOK NOW</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product here -->
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row row-col-2 mb-2">
+            <div class="col"><h2 style="font-weight: bold;">Best Seller Products</h2></div>
+            <div class="col" style="display: flex; justify-content: end; align-items: center;">
+                <a style="text-decoration: none; font-size: 20px;" asp-action="ProductList" asp-controller="CustomerManagement">View All➜</a>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-2 row-cols-xl-4 justify-content-center">
+            @if (Model.Count == 0)
+            {
+                <p>There is no product found!</p>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col mb-5 rounded-1">
+                        <a href="/ProductManagement/Details?id=@item.ProductId" style="text-decoration: none;">
+                            <div class="card h-100" style="flex-direction: unset; align-content: space-between; flex-wrap: wrap; justify-content: center; border: 2px solid #f7f7f7;">
+                                <!-- Product image-->
+                                @{
+                                    if (item.Image == null)
+                                    {
+                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="@item.Image" alt="@item.ProductName" />
+                                    }
+                                }
+                                <!-- Product details-->
+                                <div class="card-body p-4" style="min-height: 100px; margin-top: 0px;">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <div style="height: 70px; overflow: hidden; text-overflow: ellipsis; white-space: pre-line">
+                                            <h6 class="fw-bolder text-dark text-start">@item.ProductName</h6>
+                                        </div>
+                                        <!-- Product price-->
+                                        <div style="min-height: 30px;padding-top: 15px;">
+                                            <span class="text-danger">$@(Math.Round(item.Price, 2))</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mb-3">
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Booking/Load?sID=@item.ProductId">Buy</a></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <!-- Service here -->
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row row-col-2 mb-2">
+            <div class="col"><h2 style="font-weight: bold;">Good Price Service</h2></div>
+            <div class="col" style="display: flex; justify-content: end; align-items: center;">
+                <a style="text-decoration: none; font-size: 20px;" asp-action="ServiceList" asp-controller="CustomerManagement">View All➜</a>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-start">
+            @if (Model.Count == 0)
+            {
+                <p class="text-center">No service found!</p>
+            }
+            else
+            {
+                foreach (var item in ViewBag.ServiceList)
+                {
+                    <div class="col mb-5 rounded-1;">
+                        <a href="/ServiceManagement/Details?id=@item.ServiceId" style="text-decoration: none;">
+                            <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
+                                        background-image: url('@(item.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : item.Image)'); background-size: cover; background-position: center;">
+                                <!-- Product details-->
+                                <div style="background-color: rgb(0,0,0,0.5); width: 100%;">
+                                    <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <div style="height: 70px; overflow: hidden; white-space: pre-line;">
+                                                <h6 class="fw-bolder text-white text-center">@item.ServiceName</h6>
+                                            </div>
+                                            <!-- Product price-->
+                                            <div style="min-height: 30px;padding-top: 15px; opacity: 1;">
+                                                <span class="text-danger">$@(Math.Round(item.Price, 2))</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card footer -->
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mb-3">
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" style="border: 1px solid white; color: papayawhip;" href="/Booking/Load?sID=@item.ServiceId">Book Now</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <style>
+        body {
+            background-color: #f7fafc;
+            padding-top: 0px;
+        }
+
+        .banner {
+            background-image: url("https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?cs=srgb&dl=pexels-delbeautybox-853427.jpg&fm=jpg");
+            height: 550px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .banner_intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 30%;
+            margin-left: 35%;
+            background-color: rgb(0,0,0,0.5);
+            color: white;
+        }
+
+            .banner_intro h2 {
+                opacity: 1;
+            }
+
+            .banner_intro p {
+                opacity: 1;
+                text-align: justify;
+            }
+
+        .phone_input {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        #booking_btn {
+            width: fit-content;
+            height: 50px;
+            border-radius: 5px;
+            margin-left: 10px;
+            box-shadow: 0 0 20px #eee;
+            transition: 0.5s;
+            background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%);
+            background-size: 200% auto;
+            display: block;
+            border: none;
+        }
+
+            #booking_btn:hover {
+                background-position: right center;
+                color: #fff;
+                text-decoration: none;
+            }
+
+
+        .card-footer:hover a{
+            color: white;
+        }
+
+    </style>
+</body>
 
 
 </html>
