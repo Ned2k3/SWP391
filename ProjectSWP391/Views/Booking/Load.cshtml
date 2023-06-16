@@ -3,7 +3,8 @@
 
 <body>
     @{
-        if(Model.Customer == null)
+        //prompt user to provice phone if booking as guest
+        if (Model.Customer == null)
         {
             <div class="container">
                 <div class="row row-cols-2 justify-content-center pt-4">
@@ -19,51 +20,217 @@
                             <input type="text" name="step" value="1" style="display: none;">
                             <input type="submit" value="Confirm" style="border-radius: 5px; height: 30px; background-color: #F7F7F7;">
                         </form>
+                        @if (ViewBag.currentBooking != null)
+                        {
+                            <p style="width: 100%; text-align: center; font-size: 15px; color: red;">
+                                This phone number has an upcoming booking on <span style="text-decoration: none;">@(ViewBag.currentBooking.BookingDate.ToString("dd/MM/yyyy")) </span>
+                                <a style="text-decoration: none;" href="#">  Details</a>
+                            </p>
+                        }
                     </div>
                 </div>
             </div>
         }
+        //show the booking screen
         else
         {
             <div class="container">
                 <div class="row row-cols-2 justify-content-center">
                     <div class="col m-0" style="background-color: white; padding: 0 0 10px 0;">
+                        @* title of the screen "Booking schedule"*@
                         <div style="background-color: #F7FAFC; width: 100%; height: fit-content; padding-top: 12px; padding-bottom: 12px;">
                             <p style="text-align: center; font-weight: 600; font-size: 22px;">Booking Schedule</p>
                         </div>
-                        
-                        <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
-                            <p style="font-size: 20px; font-weight: 500;">1. Customer Details</p>
-                            <div style="width: 100%; padding-top: 10px; padding-bottom: 10px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px;">
-                            @{
-                                if(Model.Customer.AccountId == null)
-                                {
-                                        <p style="padding-left: 15px"><i class="fa-solid fa-phone"></i> (+84) <span>@Model.Customer.Phone</span></p>
-                                }
-                                else{
-                                    <p style="padding-left: 15px"><i class="fa-solid fa-envelope"></i> @Model.Customer.Email</p>
-                                }
-                            }
-                            </div>
-                        </div>
 
                         <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
-                            <p style="font-size: 20px; font-weight: 500;">2. Select Service</p>
-                            <div style="width: 100%; padding-top: 10px; padding-bottom: 10px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px;">
-                                <p style="padding-left: 15px;"><i class="fa-solid fa-spa"></i> Click here to choose your service</p>
-                            </div>
-                            <div style="width: 100%; padding-top: 5px; padding-bottom: 5px;margin-top: 5px;">
+                            <p style="font-size: 20px; font-weight: 500;">1. Customer Details</p>
+                            <div style="width: 100%; padding-top: 12px; padding-bottom: 12px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px;">
+                                @* display phone for guest and email for customer*@
                                 @{
-                                    if(Model.Service == null)
+                                    if (Model.Customer.AccountId == null)
                                     {
-                                        <p style="color: red; font-size: 16px;">  select a service</p>
+                                        <p style="padding-left: 15px; line-height: 1;"><i class="fa-solid fa-phone"></i> (+84) <span>@Model.Customer.Phone</span></p>
                                     }
                                     else
                                     {
-                                        <p style="border: 1px solid black; border-radius: 10px; font-size: 16px; text-align: center;">@Model.Service.ServiceName</p>
+                                        <p style="padding-left: 15px; line-height: 1;"><i class="fa-solid fa-envelope"></i> @Model.Customer.Email</p>
                                     }
                                 }
                             </div>
+                        </div>
+
+                        @* display service information *@
+                        <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
+                            <p style="font-size: 20px; font-weight: 500;">2. Select Service</p>
+
+                            <a href="/Booking/LoadServiceSelection?serviceID=@(Model.Service==null?0:Model.Service.ServiceId)" style="text-decoration: none; color: black;">
+                                <div style="width: 100%; padding-top: 12px; padding-bottom: 12px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;" id="service-select-div">
+                                    <p style="padding-left: 15px; line-height: 1;">
+                                        <i class="fa-solid fa-spa"></i>
+                                        Click here to choose your service
+                                    </p>
+                                    <i class="fa-solid fa-caret-right" style="margin-right: 20px;"></i>
+                                </div>
+                            </a>
+
+                            @* if user hasn't selected service, display error message*@
+                            <div style="width: 100%;">
+                                @{
+                                    if (Model.Service == null)
+                                    {
+                                        <p style="color: red; font-size: 16px; padding-left: 5px;">Please select a service</p>
+                                        <script>
+                                            document.getElementById("service-select-div").style.border = "1px solid red";
+                                        </script>
+                                    }
+                                    else
+                                    {
+                                        <p style="border: 1px solid black; border-radius: 10px; font-size: 16px; text-align: center; margin-top: 10px;">@Model.Service.ServiceName - <span class="text-danger">$@(Math.Round(Model.Service.Price, 2))</span></p>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        @* Select date and schedule*@
+                        <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
+                            <p style="font-size: 20px; font-weight: 500;">3. Select Booking Date</p>
+
+                            <div class="drop-down" style="width: 100%; padding-top: 12px; padding-bottom: 12px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px;
+                                                                                              display: inline-block; position: relative; cursor: pointer;">
+                                <p style="padding-left: 16px; font-size: 18px; line-height: 1;">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <span>  @Model.BookingDate.DayOfWeek</span>, @Model.BookingDate.ToString("dd/MM/yyy")
+                                    <i class="fa-solid fa-caret-right" style="margin-right: 20px; float: right;"></i>
+                                </p>
+
+                                <div class="drop-down-content">
+                                    @foreach (var item in ViewBag.schedule)
+                                    {
+                                        @if (item.Date.ToShortDateString() == DateTime.Today.ToShortDateString())
+                                        {
+                                            <a class="dropdown-item" href="/Booking/Load?bookingDate=@(item.ToString())"><span class="text-success fw-bold">Today</span>, @item.ToString("dd/MM/yyyy")</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="/Booking/Load?bookingDate=@(item.ToString())"><span class="text-info">@(item.DayOfWeek)</span>, @item.ToString("dd/MM/yyyy")</a>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            @*Booking shift here*@
+                            <div style="width: 100%; height: fit-content; margin-top: 12px; padding: 10px 15px 10px 15px; display: grid; grid-template-columns: repeat(4,1fr); grid-gap: 10px;">
+                                @for (int i = 8; i <= 19; i++)
+                                {
+                                    @if (i <= (DateTime.Now.Hour + 1) && (Model.BookingDate == DateTime.Today))
+                                    {
+                                        <div style="text-align: center; padding: 10px; border-radius: 10px; background-color: gray; cursor: no-drop; opacity: 0.5;">
+                                            <p style="font-size: 18px; font-weight: bold; color: black;">
+                                                @(i)h00
+                                            </p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @if (Model.Shift == i)
+                                        {
+                                            <a style="text-decoration: none;" href="/Booking/Load?shift=@i">
+                                                <div style="text-align: center; padding: 10px; border-radius: 10px; background-color: #ffcc32; cursor: pointer;">
+                                                    <p style="font-size: 18px; font-weight: bold; color: black;">
+                                                        @(i)h00
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a style="text-decoration: none;" href="/Booking/Load?shift=@i">
+                                                <div style="text-align: center; padding: 10px; border-radius: 10px; background-color: #f7f7f7; cursor: pointer;">
+                                                    <p style="font-size: 18px; font-weight: bold; color: black;">
+                                                        @(i)h00
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        @*Select employee here*@
+                        <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
+                            <p style="font-size: 20px; font-weight: 500;">3. Select Booking Employee </p>
+
+                            <div class="emp-selection" style="width: 100%; height: fit-content; margin-top: 12px; display: flex; flex-direction: row; overflow-x: auto; background-color: #f7f7f7; border-radius: 10px;">
+                                @if (ViewBag.empList == null)
+                                {
+                                    <p style="color: red; padding: 10px;">Please select shfit</p>
+                                }
+                                else
+                                {
+                                    if (ViewBag.empList.Count == 0)
+                                    {
+                                        <p style="color: red; padding: 10px;">Sorry, No employee is available for this shift</p>
+                                    }
+                                    else
+                                    {
+                                        foreach (var item in ViewBag.empList)
+                                        {
+                                            <a style="text-decoration: none;" href="/Booking/Load?empID=@(item.AccountId)">
+                                                <div style="width: fit-content; height: fit-content; padding: 10px 15px 10px 15px;">
+                                                    @if (Model.Employee != null && Model.Employee.AccountId == item.AccountId)
+                                                    {
+                                                        <div style="background-image: url('@(item.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : item.Image)'); background-size: cover; background-position: center; border-radius: 50%; width: 80px; height: 80px; border: 2px solid #ffcc32"></div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div style="background-image: url('@(item.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : item.Image)'); background-size: cover; background-position: center; border-radius: 50%; width: 80px; height: 80px;"></div>
+                                                    }
+                                                    <div style="text-align: center; height: fit-content; font-size: 15px; font-weight: 500; color: black;">@item.FullName</div>
+                                                </div>
+                                            </a>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div style="width: 100%; height: fit-content; padding: 30px 40px 10px 40px;">
+                            <form asp-action="ConfirmBooking" asp-controller="Booking" method="post">
+                                @if (Model.Customer != null && Model.Service != null && Model.Shift >= 8 && Model.Shift <= 19 && Model.Employee != null)
+                                {
+
+                                    <input type="text" value="@Model.Employee.AccountId" asp-for="EmployeeId" style="display: none;">
+                                    <input type="text" value="@(Model.Customer.AccountId == null ? 0 : Model.Customer.AccountId)" asp-for="CustomerId" style="display: none;">
+                                    <input type="text" value="@Model.Service.ServiceId" asp-for="ServiceId" style="display: none;">
+                                    @if (Model.Customer.AccountId == null)
+                                    {
+                                        string fullname = Model.Customer.FullName == null ? "N/A" : Model.Customer.FullName;
+                                        string email = Model.Customer.Email == null ? "N/A" : Model.Customer.Email;
+                                        string content = $"Phone: 0{Model.Customer.Phone} - Email: {email} - FullName: {fullname}";
+                                        <input type="text" value="@content" asp-for="Content" style="display: none;">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" value="" asp-for="Content" style="display: none;">
+                                    }
+                                    <input type="text" value="@Model.BookingDate" asp-for="BookingDate" style="display: none;">
+                                    <input type="text" value="@Model.Shift" asp-for="Shift" style="display: none;">
+                                    <button type="submit" id="confirm_btn" style="height: 50px; width: 100%; margin-top: 10px; background-color: #ffcc32; cursor: pointer; border-radius: 10px; text-align: center;
+                                                                                             color: black; font-weight: bold; font-size: 18px; border: none;">
+                                        Confirm
+                                    </button>
+
+                                }
+                                else
+                                {
+                                    <button type="submit" id="confirm_btn" style="height: 50px; width: 100%; margin-top: 10px; background-color: #e8e8e8; cursor: pointer; border-radius: 10px; text-align: center;
+                                                                                                     color: black; font-weight: bold; font-size: 18px; border: none;" disabled>
+                                        Confirm
+                                    </button>
+                                }
+                            </form>
+                            <p style="width: 100%; line-height: 1; padding: 10px 0 0 20px; text-align: center; font-size: 16px;">Thank you for booking our service</p>
                         </div>
                     </div>
                 </div>
@@ -78,26 +245,72 @@
         padding-top: 0;
         font-size: 18px;
     }
-    p{
+
+    p {
         margin-bottom: 0;
     }
-    label{
+
+    label {
         font-weight: bold;
     }
-    input{
+
+    input {
         margin-bottom: 10px;
         border: none;
         border-bottom: 2px solid green;
         width: 90%;
     }
-    input:valid{
+
+        input:valid {
             border-bottom: 2px solid green;
-    }
-    input:invalid{
+        }
+
+        input:invalid {
             border-bottom: 2px solid red;
-    }
-    tbody{
+        }
+
+    tbody {
         width: 100%;
         text-align: center;
     }
+
+    .drop-down-content {
+        display: none;
+        position: relative;
+        margin-top: 5px;
+        background-color: #f9f9f9;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        margin-top: 0px;
+        z-index: 1;
+    }
+
+        .drop-down-content a {
+            color: #333;
+            padding: 15px 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+        }
+
+    .drop-down:hover .drop-down-content {
+        display: block;
+    }
+
+    .emp-selection::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .emp-selection::-webkit-scrollbar-track {
+        background: black;
+    }
+
+    .emp-selection::-webkit-scrollbar-thumb {
+        background: #B2B0B0;
+        border-radius: 10px;
+    }
+
+        .emp-selection::-webkit-scrollbar-thumb:hover {
+            background-color: lightgray;
+        }
 </style>

@@ -1,0 +1,131 @@
+﻿@using ProjectSWP391.Models;
+@model List<Service>
+
+<body>
+    <div class="container">
+        <div class="row row-cols-2 justify-content-center" style="min-height: 100vh; ">
+            <div class="col m-0" style="background-color: #eeeeee; padding: 0 0 10px 0;">
+                <div class="container" style="padding: 0 0 0 0;">
+                    @* title of the screen "Booking schedule"*@
+                    <div style="background-color: lightgray; width: 100%; height: fit-content; padding-top: 12px; padding-bottom: 12px;">
+                        <p style="text-align: center; font-weight: 600; font-size: 22px; margin-bottom: 0;">Select service</p>
+                    </div>
+
+                    <div style="width: 100%;margin-top: 0px; border-bottom: 1px solid black; overflow-x: scroll; background-color: white;" class="scroll-div">
+                        <ul style="display: flex; flex-direction: row; margin: 0 0 0 0; align-items: center; padding: 0 0 0 0; list-style: none;">
+                            @{
+                                int id = 1;
+                                foreach (var item in ViewBag.serviceCategories)
+                                {
+                                    <li id="category@(id)" class="category_item" style="white-space: nowrap; padding: 10px 20px 10px 20px; cursor: pointer; font-size: 16px;" onclick="scrollToContent(this,'content@(id)')">@item.ScategoryName</li>
+                                    id++;
+                                }
+
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+
+                @{
+                    int i = 1;
+                }
+                @foreach (var item in ViewBag.serviceCategories)
+                {
+                    <div class="container" id="content@(i)" style="margin-top: 10px; background-color: white; padding: 0 10px 0 10px">
+                        <div class="row" style="padding: 8px 0 8px 0;"><h4 style="margin-bottom: 0;">@item.ScategoryName</h4></div>
+                        <div class="row gx-4 gx-lg-5 row-cols-2 justify-content-start mx-0">
+                            @foreach (var service in Model)
+                            {
+                                if (service.ScategoryId == item.ScategoryId)
+                                {
+                                    <div class="col rounded-1;" style="margin-bottom: 10px; padding: 0 5px 0 5px;">
+                                        <a href="/ServiceManagement/Details?id=@(service.ServiceId)" style="text-decoration: none;">
+                                            <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
+                                        background-image: url('@(service.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : service.Image)'); background-size: cover; background-position: center;">
+                                                <!-- Product details-->
+                                                <div style="background-color: rgb(0,0,0,0.5); width: 100%;">
+                                                    <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
+                                                        <div class="text-center">
+                                                            <!-- Product name-->
+                                                            <div style="height: 70px; overflow: hidden; white-space: pre-line;">
+                                                                <h6 class="fw-bolder text-white text-center">@service.ServiceName</h6>
+                                                            </div>
+                                                            <!-- Product price-->
+                                                            <div style="min-height: 30px;padding-top: 15px; opacity: 1;">
+                                                                <span class="text-danger">$@(Math.Round(service.Price, 2))</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Card footer -->
+                                                    <div class="card-footer pt-0 bg-transparent">
+                                                        <a class="btn btn-outline-dark mt-auto" style="border: 1px solid white; color: papayawhip; width: 100%;" href="/Booking/Load?sID=@(service.ServiceId)&step=2" id="@(service.ServiceId)-btn">Select</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    i++;
+                }
+                <script>
+                    var x = document.getElementById('@(ViewBag.selectedServiceID)-btn');
+                    x.style.backgroundColor = "#fed75c";
+                    x.style.color = "black";
+                    x.innerHTML = "Selected";
+                </script>
+                <script>
+                    document.getElementById("category1").style.fontWeight = "bold";
+                    function scrollToContent(category, contentId) {
+                        const content = document.getElementById(contentId);
+                        if (content) {
+                            content.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        const allCategories = document.getElementsByClassName('category_item');
+                        for (let i = 0; i < allCategories.length; i++) {
+                            allCategories[i].style.fontWeight = "normal";
+                        }
+                        category.style.fontWeight = "bold";
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    body {
+        background-color: #eeeeee;
+        padding-top: 0;
+        font-size: 18px;
+    }
+
+    .category_item:hover {
+        font-weight: bold;
+    }
+
+    .selected {
+        font-weight: bold;
+    }
+
+    .scroll-div::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .scroll-div::-webkit-scrollbar-track {
+        background: black;
+    }
+
+    .scroll-div::-webkit-scrollbar-thumb {
+        background: #B2B0B0;
+        border-radius: 10px;
+    }
+
+        .scroll-div::-webkit-scrollbar-thumb:hover {
+            background-color: lightgray;
+        }
+</style>
+

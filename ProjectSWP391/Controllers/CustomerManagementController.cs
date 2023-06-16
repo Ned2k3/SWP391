@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectSWP391.Models;
+using ProjectSWP391.Models.ServiceModel;
 using System.Diagnostics;
 using X.PagedList;
 
@@ -10,22 +12,52 @@ namespace ProjectSWP391.Controllers
 {
     public class CustomerManagementController : Controller
     {
-        private readonly ILogger<CustomerManagementController> _logger;
-
-        public CustomerManagementController(ILogger<CustomerManagementController> logger)
+        public Booking? GetCurrentBooking(int? cusID)
         {
-            _logger = logger;
+            using (var context = new SWP391Context())
+            {
+                if (cusID == 0) return null;
+                Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
+                || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == cusID).FirstOrDefault();
+
+                if (bk != null)
+                {
+                    return bk;
+                }
+                return null;
+            }
         }
 
-        public IActionResult LandingPage()
+        public IActionResult LandingPage(int? booked)
         {
-            using(var context = new SWP391Context())
+            using (var context = new SWP391Context())
             {
                 List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
                 List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
                 ViewBag.ServiceList = services;
+
+                //Check if user has book or not
+                Account? acc = Global.CurrentUser;
+                int? id = acc == null ? 0 : acc.AccountId;
+                Booking? bk = GetCurrentBooking(id);
+                if (bk != null)
+                {
+                    ViewBag.currentBooking = bk;
+                }
+                else
+                {
+                    //if guest enter booked phone number then show message
+                    if (booked != null)
+                    {
+                        Booking? booking = context.Bookings.Where(b => b.BookingId == booked).FirstOrDefault();
+                        if (booking != null)
+                        {
+                            ViewBag.currentBooking = booking;
+                        }
+                    }
+                }
                 return View(products);
-            }  
+            }
         }
 
         public IActionResult ProductList(int? page)

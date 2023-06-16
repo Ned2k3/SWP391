@@ -1,4 +1,5 @@
 ﻿@using ProjectSWP391.Models;
+@using ProjectSWP391.Models.ServiceModel;
 @model List<Product>
 
 <!DOCTYPE html>
@@ -24,10 +25,39 @@
         <div class="row">
             <div style="width: 50%; margin-left: 25%; padding: 10px;">
                 <h2 class="text-dark text-center mt-4">Booking easily in 30s</h2>
-                <form class="phone_input" asp-action="LoadByPost" asp-controller="Booking" method="post">
-                    <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="Enter Phone Number" required title="You must enter a valid phone number!" style="border-radius: 5px; min-width: 50%; padding-left: 10px; border: none; border-bottom: 2px solid aquamarine">
-                    <button type="submit" id="booking_btn">BOOK NOW</button>
-                </form>
+                @{
+                    if (Global.CurrentUser == null)
+                    {
+                        <form class="phone_input" asp-action="LoadByPost" asp-controller="Booking" method="post">
+                            <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="Enter Phone Number" required title="You must enter a valid phone number!" style="border-radius: 5px; min-width: 50%; padding-left: 10px; border: none; border-bottom: 2px solid aquamarine">
+                            <button type="submit" class="booking_btn btn1">BOOK NOW</button>
+                        </form>
+                        if (ViewBag.currentBooking != null)
+                        {
+                            <p style="text-align: center; width: 100%;">
+                                This phone number has an upcoming booking on <span style="text-decoration: none;">@(ViewBag.currentBooking.BookingDate.ToString("dd/MM/yyyy")) </span>
+                                <a style="text-decoration: none;" href="#">  Details</a>
+                            </p>
+                        }
+                    }
+                    else
+                    {
+                        if (ViewBag.currentBooking != null)
+                        {
+                            <p style="text-align: center; width: 100%;">
+                                You have an upcoming booking on <span style="text-decoration: none;">@(ViewBag.currentBooking.BookingDate.ToString("dd/MM/yyyy")) </span>
+                                <a style="text-decoration: none;" href="#">  Details</a>
+                            </p>
+                        }
+                        else
+                        {
+                            <form class="phone_input" asp-action="LoadByPost" asp-controller="Booking" method="post">
+                                <button type="submit" class="booking_btn btn2">BOOK NOW</button>
+                            </form>
+                        }
+                    }
+                }
+
             </div>
         </div>
     </div>
@@ -179,33 +209,40 @@
             margin-bottom: 20px;
         }
 
-        #booking_btn {
-            width: fit-content;
+        .booking_btn {
             height: 50px;
             border-radius: 5px;
             margin-left: 10px;
             box-shadow: 0 0 20px #eee;
             transition: 0.5s;
-            background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%);
             background-size: 200% auto;
             display: block;
             border: none;
         }
 
-            #booking_btn:hover {
+            .booking_btn.btn1 {
+                width: fit-content;
+                color: black;
+                background-image: linear-gradient(to right, #1CD8D2 0%, #93EDC7 51%, #1CD8D2 100%);
+            }
+
+            .booking_btn:hover {
                 background-position: right center;
                 color: #fff;
                 text-decoration: none;
             }
 
+        .booking_btn, btn2 {
+            width: 30%;
+            color: white;
+            background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
+        }
 
-        .card-footer:hover a{
+        .card-footer:hover a {
             color: white;
         }
 
     </style>
 </body>
-
-
 </html>
 
