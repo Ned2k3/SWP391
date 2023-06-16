@@ -11,7 +11,7 @@ namespace ProjectSWP391.Controllers
     {
         [BindProperty]
         public Booking? booking { get; set; } = new Booking();
-
+        
         public IActionResult Load(int sID)
         {
             var session = HttpContext.Session;

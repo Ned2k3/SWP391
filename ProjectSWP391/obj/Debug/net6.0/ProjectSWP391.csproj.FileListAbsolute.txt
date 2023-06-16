@@ -1107,3 +1107,7 @@ C:\Users\ADMIN\Documents\projectswp391\ProjectSWP391\obj\Debug\net6.0\staticweba
 C:\Users\ADMIN\Documents\projectswp391\ProjectSWP391\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\ADMIN\Documents\projectswp391\ProjectSWP391\obj\Debug\net6.0\scopedcss\bundle\ProjectSWP391.styles.css
 C:\Users\ADMIN\Documents\projectswp391\ProjectSWP391\obj\Debug\net6.0\scopedcss\projectbundle\ProjectSWP391.bundle.scp.css
+E:\SWP391_Ver3\ProjectSWP391\bin\Debug\net6.0\JetBrains.Annotations.dll
+E:\SWP391_Ver3\ProjectSWP391\bin\Debug\net6.0\X.PagedList.dll
+E:\SWP391_Ver3\ProjectSWP391\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
+E:\SWP391_Ver3\ProjectSWP391\obj\Debug\net6.0\ProjectSWP391.MvcApplicationPartsAssemblyInfo.cs
