@@ -72,8 +72,9 @@ namespace ProjectSWP391.Controllers
                 ViewBag.ErrorMsg = "Account has existed";
                 return View();
             }
-            else
+            else if(!string.IsNullOrEmpty(email))
             {
+
                 if (ModelState.IsValid)
                 {
                     //encryption
@@ -94,6 +95,10 @@ namespace ProjectSWP391.Controllers
                     ViewBag.ErrorMsg = "User enter wrong email format";
                 }
             }
+            else
+            {
+                ViewBag.ErrorMsg = "User enter wrong email format";
+            }
             return View();
         }
         public IActionResult Logout()
@@ -103,6 +108,12 @@ namespace ProjectSWP391.Controllers
             //HttpContext.Session.Get().Clear();
             Global.CurrentUser = null;
             return RedirectToAction("LandingPage", "CustomerManagement");
+        }
+
+        public IActionResult ForgetPassword()
+        {
+
+            return View();
         }
 
         #region will delete when merge
