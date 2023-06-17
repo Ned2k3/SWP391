@@ -220,12 +220,12 @@ namespace ProjectSWP391.Controllers
         }
 
         //check if user has booked before or not
-        public Booking? GetCurrentBooking(int? cusID, int phone)
+        public Booking? GetCurrentBooking(int accID, int phone)
         {
             using (var context = new SWP391Context())
             {
                 Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
-                || (b.BookingDate.Date > DateTime.Today.Date)) && b.Content.Contains(phone.ToString())).FirstOrDefault();
+                || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == accID && b.Content.Contains(phone.ToString())).FirstOrDefault();
 
                 if (bk != null)
                 {
@@ -371,5 +371,25 @@ namespace ProjectSWP391.Controllers
         }
 
         //View the booking details
+        public IActionResult BookingDetails(int bookingID)
+        {
+            using (var context = new SWP391Context())
+            {
+                Booking? bk = context.Bookings.Where(b => b.BookingId == bookingID).FirstOrDefault();
+                if (bk != null)
+                {
+                    Service? sv = context.Services.Where(s => s.ServiceId == bk.ServiceId).FirstOrDefault();
+                    bk.Service = sv;
+                    Account? emp = context.Accounts.Where(a => a.AccountId == bk.EmployeeId).FirstOrDefault();
+                    bk.Employee = emp;
+                    if (bk.CustomerId != 0)
+                    {
+                        Account? cus = context.Accounts.Where(a => a.AccountId == bk.CustomerId).FirstOrDefault();
+                        bk.Customer = cus;
+                    }
+                }
+                return View(bk);
+            }
+        }
     }
 }

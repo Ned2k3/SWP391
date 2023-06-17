@@ -24,7 +24,7 @@
                         {
                             <p style="width: 100%; text-align: center; font-size: 15px; color: red;">
                                 This phone number has an upcoming booking on <span style="text-decoration: none;">@(ViewBag.currentBooking.BookingDate.ToString("dd/MM/yyyy")) </span>
-                                <a style="text-decoration: none;" href="#">  Details</a>
+                                <a style="text-decoration: none;" href="/Booking/BookingDetails?bookingID=@(ViewBag.currentBooking.BookingId)">  Details</a>
                             </p>
                         }
                     </div>

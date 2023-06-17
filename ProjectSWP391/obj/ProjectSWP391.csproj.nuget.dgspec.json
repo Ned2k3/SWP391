@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Downloads\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj": {}
+    "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Downloads\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj": {
+    "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj",
         "projectName": "ProjectSWP391",
-        "projectPath": "C:\\Users\\ADMIN\\Downloads\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Downloads\\projectswp391\\ProjectSWP391\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
