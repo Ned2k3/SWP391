@@ -264,7 +264,7 @@ namespace ProjectSWP391.Controllers
                     }
                     using (var context = new SWP391Context())
                     {
-                        var account = context.Accounts.Where(a => a.AccountId == phoneNumber).FirstOrDefault();
+                        var account = context.Accounts.Where(a => a.Phone == phoneNumber && a.Role == null).FirstOrDefault();
                         session.SetString("phone", phoneNumber.ToString());
                         if (account != null)
                         {
@@ -294,12 +294,12 @@ namespace ProjectSWP391.Controllers
                 else
                 {
                     int sID = Convert.ToInt32(session.GetString("serviceID"));
-                    string? name = Request.Form["fname"].ToString().Trim();
+                    string? name = Request.Form["fullname"].ToString().Trim();
                     string? email = Request.Form["email"].ToString().Trim();
                     session.SetString("phone", phoneNumber.ToString());
                     using (var context = new SWP391Context())
                     {
-                        var account = context.Accounts.Where(a => a.Phone == phoneNumber).FirstOrDefault();
+                        var account = context.Accounts.Where(a => a.Phone == phoneNumber && a.Role == null).FirstOrDefault();
                         Service? sv = context.Services.Where(i => i.ServiceId == sID).FirstOrDefault();
                         if (account != null)
                         {
