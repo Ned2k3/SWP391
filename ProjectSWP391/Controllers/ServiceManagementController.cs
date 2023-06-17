@@ -20,20 +20,24 @@ namespace ProjectSWP391.Controllers
             {
                 return NotFound();
             }
-            var categories = ServiceDao.GetServiceCategories();
-
-            //Get Category Name:
-            string scategoryName = "";
-            foreach (var ctg in categories)
+            //Get category name
+            using var context = new SWP391Context();
+            ServiceCategory? sg = context.ServiceCategories.Where(s => s.ScategoryId == service.ScategoryId).FirstOrDefault();
+            if(sg != null)
             {
-                if (service.ScategoryId == ctg.ScategoryId)
+                ViewBag.ScategoryName = sg.ScategoryName;
+                //Get Related Service in a category
+                if (context.Services.Count() - 1 <= 4)
                 {
-                    scategoryName = ctg.ScategoryName;
-                    break;
+                    List<Service> services = context.Services.Where(s => s.ServiceId != id && s.ScategoryId == sg.ScategoryId).ToList();
+                    ViewBag.relateService = services;
+                }
+                else
+                {
+                    List<Service> services = context.Services.Where(s => s.ServiceId != id && s.ScategoryId == sg.ScategoryId).Take(4).ToList();
+                    ViewBag.relateService = services;
                 }
             }
-            ViewBag.ScategoryName = scategoryName;
-
             return View(service);
         }
         //Create
