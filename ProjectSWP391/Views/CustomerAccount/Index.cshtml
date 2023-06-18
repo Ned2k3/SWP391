@@ -1,9 +1,8 @@
-﻿@model IEnumerable<ProjectSWP391.Models.Product>
+﻿@model IEnumerable<ProjectSWP391.Models.Account>
 
 @{
     ViewData["Title"] = "Index";
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,47 +35,44 @@
                     <input type="search" class="search-input" placeholder="Search..." />
                 </div>
                 <div>
-                    <a asp-action="Create">Add new product</a>
+                    <a asp-action="Create">Add new Customer</a>
                 </div>
                 <div id="detailContent">
                     <table border="1px black">
                         <thead>
                             <tr>
                                 <th>
-                                    ProductName
+                                    FullName
                                 </th>
                                 <th>
-                                    Description
+                                    Email
                                 </th>
                                 <th>
-                                    Price
+                                    Phone
                                 </th>
                                 <th>
-                                    Quantity
+                                    Image
                                 </th>
                                 <th>
-                                    Category
+                                    Active
                                 </th>
-                                <th>Image</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            @foreach (var product in Model)
+                            @foreach (var account in Model)
                             {
                                 <tr>
-                                    <td> @product.ProductName </td>
-                                    <td> @product.Description </td>
-                                    <td> @product.Price </td>
-                                    <td> @product.Quantity </td>
-                                    <td> @product.Pcategory.PcategoryName</td>
+                                    <td>@account.FullName</td>
+                                    <td>@account.Email</td>
+                                    <td>@account.Phone</td>
                                     <td>
-                                        <img src="@product.Image" style="width:120px; height=120px">
+                                        <img src="@account.Image" style="width:120px; height=120px">
                                     </td>
+                                    <td>@(account.IsActive)</td>
                                     <td>
                                         <a href="#">Edit</a> |
-                                        <a href="Details">Details</a> |
+                                        <a href="#">Details</a> |
                                         <a href="#">Delete</a>
                                     </td>
                                 </tr>
@@ -143,10 +139,10 @@
                 background-color: aqua;
             }
 
+
             #sidebar li:active {
                 background-color: blue;
             }
-
 
         #sidebar a {
             text-decoration: none;
