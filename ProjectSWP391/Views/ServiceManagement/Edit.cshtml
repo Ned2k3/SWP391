@@ -43,6 +43,7 @@
                 <select asp-for="ScategoryId" class="form-control" asp-items="ViewBag.ScategoryId">
                     <option value="">-- Select Category --</option>
                 </select>
+                <span asp-validation-for="ScategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

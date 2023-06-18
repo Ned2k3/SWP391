@@ -4,101 +4,49 @@
 @{
     ViewData["Title"] = "Service Details";
 }
-
-<body>
-    <div class="container p-2">
-        <div class="row">
-            <div class="col-4" style="background-image: url('@(Model.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : Model.Image)');
-                                      background-size: cover; background-position: center; border: 1px solid gray; border-radius: 5px; min-height: 300px;"></div>
-
-            <div class="col-4" style="padding: 15px 10px 30px 20px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div>
-                        <h4>@Model.ServiceName</h4>
-                    </div>
-                    <div>
-                        <p style="font-size: 15px; margin-top: 1rem;"><span class="fw-bold">Service Type: </span>@(ViewBag.ScategoryName ?? "N/A")</p>
-                    </div>
-                    <div>
-                        <p style="font-size: 15px; margin-top: 1rem;"><span class="fw-bold">Duration Time: </span>1 Hour</p>
-                    </div>
-                    <div style="font-size: 30px;">
-                        <span class="fw-bold">Price: </span><span class="text-danger">$@(Math.Round(Model.Price, 2))</span>
-                    </div>
-                </div>
-                <div class="card-footer mt-5 border-top-0 bg-transparent">
-                    @if ((Global.CurrentUser == null) || (Global.CurrentUser != null && Global.CurrentUser.Role != 1))
-                    {
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto width: 8vw;" href="/Booking/Load?sID=@Model.ServiceId">Book Now</a></div>
-                    }
-                    else
-                    {
-                        <div class="text-center d-flex flex-row justify-content-evenly">
-                            <a href="/ServiceManagement/Edit?id=@Model.ServiceId">Edit</a>
-                            <a href="#">Delete</a>
-                        </div>
-                    }
-                </div>
-            </div>
-
-            <div class="col-4" style="padding: 10px; border: none; border-left: 1px solid black;">
-                <h4>Description</h4>
-                <div style="width: 100%; font-size: 15px; text-align: justify;">
-                    @Model.Description
-                </div>
-            </div>
-        </div>
-
-        <!--Comment section here-->
-        <div class="row p-0" style="margin-top: 80px;">
-            <h4>Comments</h4>
-            <div style="text-align: center;">All Comments here</div>
-        </div>
-
-        
-        <!--Admin will not see this section-->
-        @if ( (Global.CurrentUser == null) || (Global.CurrentUser != null && Global.CurrentUser.Role != 1) )
-        {
-            <h4 style="margin-top: 80px; margin-bottom: 20px;">Related Services</h4>
-            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-start">
-                @if (ViewBag.relateService.Count == 0)
-                {
-                    <p style="text-align: center; font-size: 20px;">No item found</p>
-                }
-                else
-                {
-                    <!--Related Service List Here-->
-                    foreach (var item in ViewBag.relateService)
-                    {
-                        <div class="col mb-5 rounded-1;">
-                            <a href="/ServiceManagement/Details?id=@item.ServiceId" style="text-decoration: none;">
-                                <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
-                                        background-image: url('@(item.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : item.Image)'); background-size: cover; background-position: center;">
-                                    <!-- Product details-->
-                                    <div style="background-color: rgb(0,0,0,0.5); width: 100%;">
-                                        <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <div style="height: 70px; overflow: hidden; white-space: pre-line;">
-                                                    <h6 class="fw-bolder text-white text-center">@item.ServiceName</h6>
-                                                </div>
-                                                <!-- Product price-->
-                                                <div style="min-height: 30px;padding-top: 15px; opacity: 1;">
-                                                    <span class="text-danger">$@(Math.Round(item.Price, 2))</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Card footer -->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mb-3">
-                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" style="border: 1px solid white; color: papayawhip;" href="/Booking/Load?sID=@item.ServiceId">Book Now</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    }
-                }
-            </div>
-        }
-    </div>
-</body>
+<div>
+    <h4>Service</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ServiceName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Model.Image" width="120px" height="120px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Scategory)
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.ScategoryName
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ServiceId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
