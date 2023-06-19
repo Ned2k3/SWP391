@@ -96,6 +96,34 @@ namespace ProjectSWP391.Controllers
                 return View(services.ToPagedList(pageNumber, pageSize));
             }
         }
+
+        public IActionResult ServiceDetail(int? sId)
+        {
+            using var context = new SWP391Context();
+            Service? service = context.Services.Where(s => s.ServiceId == sId).FirstOrDefault();
+            if (service == null)
+            {
+                return NotFound();
+            }
+            //Get category name
+            ServiceCategory? sg = context.ServiceCategories.Where(s => s.ScategoryId == service.ScategoryId).FirstOrDefault();
+            if (sg != null)
+            {
+                ViewBag.ScategoryName = sg.ScategoryName;
+                //Get Related Service in a category
+                if (context.Services.Count() - 1 <= 4)
+                {
+                    List<Service> services = context.Services.Where(s => s.ServiceId != sId && s.ScategoryId == sg.ScategoryId).ToList();
+                    ViewBag.relateService = services;
+                }
+                else
+                {
+                    List<Service> services = context.Services.Where(s => s.ServiceId != sId && s.ScategoryId == sg.ScategoryId).Take(4).ToList();
+                    ViewBag.relateService = services;
+                }
+            }
+            return View(service);
+        }
         public IActionResult BlogList()
         {
             return View();

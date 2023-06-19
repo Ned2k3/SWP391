@@ -40,7 +40,7 @@
                                 if (service.ScategoryId == item.ScategoryId)
                                 {
                                     <div class="col rounded-1;" style="margin-bottom: 10px; padding: 0 5px 0 5px;">
-                                        <a href="/ServiceManagement/Details?id=@(service.ServiceId)" style="text-decoration: none;">
+                                        <a href="/CustomerManagement/ServiceDetail?sId=@(service.ServiceId)" style="text-decoration: none;">
                                             <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
                                         background-image: url('@(service.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : service.Image)'); background-size: cover; background-position: center;">
                                                 <!-- Product details-->
