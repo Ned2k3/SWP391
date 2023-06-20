@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Security.Cryptography;
 using ProjectSWP391.Models.Library;
+using System.Text.RegularExpressions;
 
 namespace ProjectSWP391.Controllers
 {
@@ -69,6 +70,9 @@ namespace ProjectSWP391.Controllers
         [HttpPost]
         public IActionResult Register(string email, string password)
         {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            // Create a Regex object with the email pattern
+            Regex regex = new Regex(emailPattern);
 
             if (context.Accounts.Any(x => x.Email == email))
             {
@@ -78,7 +82,7 @@ namespace ProjectSWP391.Controllers
             else if(!string.IsNullOrEmpty(email))
             {
 
-                if (ModelState.IsValid)
+                if (regex.IsMatch(email))
                 {
                     //encryption
                     string encrypted = EncryptionHelper.Encrypt(password);
@@ -149,28 +153,32 @@ namespace ProjectSWP391.Controllers
             //var session = HttpContext.Session;
             //session.SetString("captcha", captcha);
             string fromMail = "smartbeautygroup5@gmail.com";
-            string fromPassword = "123ABCGroup5";
+            //quantrong la buoc mat khau nay
+            string fromPassword = "tunudlgpqbgqwbpz"; //123ABCGroup5
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromMail);
             message.Subject = "Forgetting Password";
             message.To.Add(new MailAddress(email));
-            message.Body = "<html><body>" +
-                           "<h1 style=\"color: Green\">Hi " + email + "</h1>" +
-                           "<h4> You've successfully changed your password</h4>" +
-                           "<h4>This is your captcha for changing password"+ "<strong style=\" font-size: 24px;\" >" + captcha+ "</strong>" + "</h4>"+
-                           "<h4> If this wasn't done by you, please immediately reset the password </h4>" +
-                           "<h4>To reset your password, please follow the link below:</h4>" +
-                           //"<a href=\"\">Click here</a>" +
-                           "<h1>Best regards,</h1>"+ "<h1 style=\"color: #2E83FF>SmartBeauty</h1>"+
-                           "</body></html>";
+            message.Body =  "<html><body style=\"font-family: Arial, sans-serif;\">" +
+                            "<h1 style=\"color: #007BFF; font-size: 28px;\">Hi " + email + "</h1>" +
+                            "<p style=\"font-size: 18px; color: #333333;\">Congratulations! Your email password has been successfully changed.</p>" +
+                            "<p style=\"font-size: 20px; color: #007BFF;\">This is your captcha for the password change:</p>" +
+                            "<strong style=\"font-size: 36px; color: #FF4500;\">" + captcha + "</strong>" +
+                            "<p style=\"font-size: 18px; color: #333333;\">If you did not initiate this password change, please reset your password immediately.</p>" +
+                            "<h2 style=\"font-size: 22px; color: #333333;\">Best regards,</h2>" +
+                            "<h2 style=\"color: #007BFF;\">SmartBeauty</h2>" +
+                            "</body></html>";
             message.IsBodyHtml = true;
             using var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
                 Credentials = new NetworkCredential(fromMail, fromPassword),
                 EnableSsl = true,
-            };
+                UseDefaultCredentials = false,
+               
+
+        };
 
             smtpClient.Send(message);
             ViewBag.SuccessMsg = "Email have sent";

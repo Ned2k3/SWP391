@@ -17,9 +17,12 @@ namespace ProjectSWP391.Models
         }
 
         public int? AccountId { get; set; }
-      
+
+        [StringLength(50)]
+
         public string Email { get; set; }
-      
+        [StringLength(50)]
+
         public string Password { get; set; }
         public int? Phone { get; set; }
         public string? FullName { get; set; }
