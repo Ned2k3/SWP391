@@ -12,6 +12,7 @@ namespace ProjectSWP391.Controllers
 {
     public class CustomerManagementController : Controller
     {
+        private readonly string[] _PriceFilter = { "< 20$", "20$ - 50$", "50$ - 75$", "> 75$" };
         public Booking? GetCurrentBooking(int? cusID)
         {
             using (var context = new SWP391Context())
@@ -85,8 +86,20 @@ namespace ProjectSWP391.Controllers
 
             using (var context = new SWP391Context())
             {
-                var services = context.Services.OrderBy(s => s.ServiceId);
+                string? searchName = Request.Form["searchName"].ToString().Trim() ?? "";
+                string? searchCategory = Request.Form["searchCategory"].ToString().Trim() ?? "";
+                string? searchPrice = Request.Form["searchPrice"].ToString().Trim() ?? "";
+                var services = (from service in context.Services join scategory in context.ServiceCategories
+                                on service.ScategoryId equals scategory.ScategoryId
+                                where service.ServiceName.Contains(searchName) && scategory.ScategoryName.Contains(searchCategory)
+                                select service).OrderBy(s => s.ServiceId);
 
+                //Get all service category
+                var categories = context.ServiceCategories.ToList();
+                ViewBag.categoryFilter = categories;
+                //Get Price filter list
+                ViewBag.priceFilter = _PriceFilter;
+                
                 // số service hiển thị trên 1 trang
                 int pageSize = 8;
 
