@@ -11,6 +11,7 @@
     
     <form action="/Authentication/Login" method="post">
         <div class="container">
+            <label style=" font-size:medium;color:red">@ViewBag.ErrorMsg</label><br />
             <label>Email : </label>
             <input type="text" placeholder="Enter Email" asp-for="Email" >
             <label>Password : </label>
@@ -19,7 +20,7 @@
             <input type="checkbox" checked="checked"> Remember me
             <button type="button" class="cancelbtn"> Cancel</button><br>
             <a href="ForgetPassword">Forget password? </a><br>
-            <label style= " font-size:medium;color:red">@ViewBag.ErrorMsg</label><br />
+            
           @*  <input type="checkbox" style="display: none" asp-for="IsActive" checked="checked" />*@
         </div>
     </form>
