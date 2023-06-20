@@ -15,16 +15,16 @@
 
     <form id="registerForm" action="/Authentication/Register" method="post" onsubmit="return validateForm()">
         <div class="container">
-            <label style=" font-size:medium;color:red">@ViewBag.ErrorMsg</label><br />
-            <label style=" font-size:medium;color:limegreen">@ViewBag.SuccessMsg</label><br />
+            <label style=" font-size:28px;color:red">@ViewBag.ErrorMsg</label><br />
+            <label style=" font-size:28px;color:limegreen">@ViewBag.SuccessMsg</label><br />
             <label>Email : </label>
             <input type="text" placeholder="Email" asp-for="Email">
             <label>Password : </label>
             <input id="password" type="password" placeholder="Enter Password" asp-for="Password" />
             <label>Re-Enter Password : </label>
-            <input id="rePassword" type="password" placeholder="Re-Enter Password" />
+            <input maxlength="50" id="rePassword" type="password" placeholder="Re-Enter Password" />
             <button type="submit">Register</button>
-            <button type="button" class="cancelbtn"> Cancel</button><br>
+            <a href="/Authentication/Login"><button type="button" class="cancelbtn"> Cancel</button></a><br>
             
             @*  <input type="checkbox" style="display: none" asp-for="IsActive" checked="checked" />*@
         </div>
