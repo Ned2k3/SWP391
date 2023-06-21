@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "URERNYVZlm3tNGhtwjb9oUJhT9v7ne1NAl6pusyvVTo=",
+  "Hash": "J/g3WA2TZLt+VSsFG/df2+E9FQ+w2tLIIW05TFWhgSk=",
   "Source": "ProjectSWP391",
   "BasePath": "_content/ProjectSWP391",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProjectSWP391.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Authen.css",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "css/Authen.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Authen.css"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\Documents\\projectswp391\\ProjectSWP391\\wwwroot\\css\\ProductList.css",

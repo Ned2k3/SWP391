@@ -18,14 +18,55 @@
 </head>
 <body>
     <!-- Header-->
-    <header class="bg-dark py-4 mt-2">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Service</h1>
-                <p class="lead fw-normal text-white-50 mb-0">You can book for best quality services here!</p>
+    <header class="bg-dark py-3 mt-0" style="background-image: url('https://wallpaperaccess.com/full/2090289.jpg'); background-size: cover; background-position: top; background-blend-mode: exclusion;">
+        <div class="container my-5">
+            <!--Search and filter-->
+            <div class="row" style="height: fit-content;">
+                <div style="background-color: rgb(0,0,0,0.6); padding: 30px 0 10px 0; width: 90%; margin-left: 5%;">
+                    <div class="text-center" style="color: antiquewhite;">
+                        <h1 class="display-4 fw-bolder">Service</h1>
+                        <p class="lead fw-normal mb-0" style="color: white; font-size: 25px;">You can book for best quality services here!</p>
+                    </div>
+
+                    <form href="/CustomerManagement/FilterService" method="post" style="opacity: 1; width: 100%; display: flex; flex-direction: row; justify-content:center; padding: 30px; margin-top: 20px; ">
+                        <input id="search_textbox" type="search" name="searchName" value="@(ViewBag.searchName == null ? String.Empty : ViewBag.searchName)" placeholder="What are you looking for?" style="height: 60px; border: none; padding-left: 10px; flex-grow: 6; font-size: 15px; border-bottom: 5px solid green;" />
+                        <select style="flex-grow: 2; margin-left: 10px; padding-left: 10px; font-size: 15px; border-bottom: 5px solid green;" name="searchCategory">
+                            <option value="">Category</option>
+                            @if (ViewBag.categoryFilter != null)
+                            {
+                                foreach (var item in ViewBag.categoryFilter)
+                                {
+                                    if (ViewBag.searchCategory.Equals(item.ScategoryName))
+                                    {
+                                        <option selected value="@(item.ScategoryName)">@(item.ScategoryName)</option>
+                                    }
+                                    else{
+                                        <option value="@(item.ScategoryName)">@(item.ScategoryName)</option>
+                                    }
+                                }
+                            }
+                        </select>
+                        <select style="flex-grow: 2; margin-left: 10px; padding-left: 10px; font-size: 15px; border-bottom: 5px solid green;">
+                            <option selected value="">Price</option>
+                            @foreach (var item in ViewBag.priceFilter)
+                            {
+                                if (ViewBag.searchPrice.Equals(item.ToString()))
+                                {
+                                    <option selected value="@item.ToString()">@item.ToString()</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.ToString()">@item.ToString()</option>
+                                }
+                            }
+                        </select>
+                        <button id="search_btn" type="submit" style="background-color: dodgerblue; height: 60px; color: white; border: none; margin-left: 10px; flex-grow: 2;">Search</button>
+                    </form>
+                </div>
             </div>
         </div>
     </header>
+
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -73,10 +114,10 @@
                     @if (Model.PageCount > 1)
                     {
                         <ul class="pagination-list">
-                            <li class="page-item navigation nav2"><a href="/CustomerManagement/ProductList?page=1&&PageSize=@Model.PageSize"><i class="fa-solid fa-angles-left"></i></a></li>
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=1"><i class="fa-solid fa-angles-left"></i></a></li>
                             @if (Model.HasPreviousPage)
                             {
-                                <li class="page-item navigation nav2"><a href="/CustomerManagement/ProductList?page=@(Model.PageNumber-1)&&PageSize=@Model.PageSize"><i class="fa-solid fa-angle-left"></i></a></li>
+                                <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageNumber-1)"><i class="fa-solid fa-angle-left"></i></a></li>
                             }
                             @{
                                 if (Model.PageNumber == 1)
@@ -105,9 +146,9 @@
 
                             @if (Model.HasNextPage)
                             {
-                                <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageNumber+1)&&PageSize=@Model.PageSize"><i class="fa-solid fa-angle-right"></i></a></li>
+                                <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageNumber+1)"><i class="fa-solid fa-angle-right"></i></a></li>
                             }
-                            <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageCount)&&PageSize=@Model.PageSize"><i class="fa-solid fa-angles-right"></i></a></li>
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageCount)"><i class="fa-solid fa-angles-right"></i></a></li>
                         </ul>
                     }
                 </div>
@@ -161,9 +202,15 @@
                 .page-item.navigation.nav1 a {
                     font-weight: bold;
                 }
+
+        form:hover button {
+            background-color: yellow;
+        }
+
+        form:active input {
+            border: none;
+        }
     </style>
-        </div>
-    </section>
 </body>
 </html>
 
