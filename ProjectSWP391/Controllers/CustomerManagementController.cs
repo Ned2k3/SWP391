@@ -15,7 +15,7 @@ namespace ProjectSWP391.Controllers
         private readonly string[] _PriceFilter = { "< 20$", "20$ - 50$", "50$ - 75$", "> 75$" };
         public Booking? GetCurrentBooking(int? cusID)
         {
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
                 if (cusID == 0) return null;
                 Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
@@ -31,7 +31,7 @@ namespace ProjectSWP391.Controllers
 
         public IActionResult LandingPage(int? booked)
         {
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
                 List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
                 List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
@@ -66,7 +66,7 @@ namespace ProjectSWP391.Controllers
             // Nếu page = null thì đặt lại là 1.
             if (page == null) page = 1;
 
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
                 var products = context.Products.OrderBy(p => p.ProductId);
 
@@ -84,7 +84,7 @@ namespace ProjectSWP391.Controllers
             // Nếu page = null thì đặt lại là 1.
             if (page == null) page = 1;
 
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
                 if (searchName == null) searchName = String.Empty;
                 ViewBag.searchName = searchName;
@@ -124,7 +124,7 @@ namespace ProjectSWP391.Controllers
 
         public IActionResult ServiceDetail(int? sId)
         {
-            using var context = new SWP391Context();
+            using var context = new SWP391_V4Context();
             Service? service = context.Services.Where(s => s.ServiceId == sId).FirstOrDefault();
             if (service == null)
             {

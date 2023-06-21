@@ -8,7 +8,7 @@ namespace ProjectSWP391.DAO
     {
         public List<Service> GetServices(string search, bool isSearch, bool isAscendingPrice)
         {
-            var context = new SWP391Context();
+            var context = new SWP391_V4Context();
 
             var services = context.Services.Include(s => s.Scategory).Select(ser => new Service
             {
@@ -58,7 +58,7 @@ namespace ProjectSWP391.DAO
             var list = new List<ServiceCategory>();
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     list = context.ServiceCategories.ToList();
                 }
@@ -75,7 +75,7 @@ namespace ProjectSWP391.DAO
             Service service = new Service();
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     service = context.Services.SingleOrDefault(s => s.ServiceId == id);
                 }
@@ -91,7 +91,7 @@ namespace ProjectSWP391.DAO
         {
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     context.Services.Add(service);
                     context.SaveChanges();
@@ -107,7 +107,7 @@ namespace ProjectSWP391.DAO
         {
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     context.Entry<Service>(service).State = EntityState.Modified;
                     context.SaveChanges();
@@ -123,7 +123,7 @@ namespace ProjectSWP391.DAO
         {
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     context.Services.Remove(service);
                     context.SaveChanges();

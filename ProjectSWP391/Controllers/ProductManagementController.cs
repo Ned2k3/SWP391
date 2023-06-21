@@ -5,7 +5,7 @@ namespace DEMOSWP391.Controllers
 {
     public class ProductManagementController : Controller
     {
-        SWP391Context context = new SWP391Context();
+        SWP391_V4Context context = new SWP391_V4Context();
         public IActionResult Index()
         {
             var lsProduct = context.Products.ToList(); 
