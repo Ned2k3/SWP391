@@ -68,12 +68,17 @@ namespace ProjectSWP391.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Register(string email, string password)
+        public IActionResult Register(string email, string password, string rePassword)
         {
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             // Create a Regex object with the email pattern
             Regex regex = new Regex(emailPattern);
 
+            if (rePassword != password)
+            {
+                ViewBag.ErrorMsg = "Re enter password does not match password. Please enter again ";
+                return View();
+            }
             if (context.Accounts.Any(x => x.Email == email))
             {
                 ViewBag.ErrorMsg = "Account has existed";
@@ -142,7 +147,7 @@ namespace ProjectSWP391.Controllers
             }
             if (a.Role != null)
             {
-                ViewBag.SuccessMsg = "Email forgoting password have sent to the Admin, please contact Admin for more information";
+                ViewBag.SuccessMsg = "Email forgoting password have been sent to the Admin, please contact an Admin for more information";
                 return View();
             }
             
