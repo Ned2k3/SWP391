@@ -41,7 +41,7 @@ namespace ProjectSWP391.Controllers
                 return NotFound();
             }
             //Get category name
-            using var context = new SWP391Context();
+            using var context = new SWP391_V4Context();
             ServiceCategory? sg = context.ServiceCategories.Where(s => s.ScategoryId == service.ScategoryId).FirstOrDefault();
             if (sg != null)
             {

@@ -12,8 +12,8 @@ namespace ProjectSWP391.Controllers
 {
     public class AuthenticationController : Controller
     {
-        private readonly SWP391Context context;
-        public AuthenticationController(SWP391Context _context)
+        private readonly SWP391_V4Context context;
+        public AuthenticationController(SWP391_V4Context _context)
         {
             context = _context;
         }

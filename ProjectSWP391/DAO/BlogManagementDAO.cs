@@ -7,7 +7,7 @@ namespace ProjectSWP391.DAO
     {
         public List<Blog> GetBlogs(string search, bool isSearch, bool isAscending)
         {
-            var context = new SWP391Context();
+            var context = new SWP391_V4Context();
 
             var blogs = context.Blogs.Include(b => b.Account).Select(b => new Blog
             {
@@ -54,7 +54,7 @@ namespace ProjectSWP391.DAO
             var list = new List<Account>();
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     list = context.Accounts.ToList();
                 }
@@ -71,7 +71,7 @@ namespace ProjectSWP391.DAO
             Blog blog = new Blog();
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     blog = context.Blogs.SingleOrDefault(b => b.BlogId == id);
                 }
@@ -87,7 +87,7 @@ namespace ProjectSWP391.DAO
         {
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     context.Blogs.Add(blog);
                     context.SaveChanges();
@@ -103,7 +103,7 @@ namespace ProjectSWP391.DAO
         {
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     context.Entry<Blog>(blog).State = EntityState.Modified;
                     context.SaveChanges();
@@ -119,7 +119,7 @@ namespace ProjectSWP391.DAO
         {
             try
             {
-                using (var context = new SWP391Context())
+                using (var context = new SWP391_V4Context())
                 {
                     context.Blogs.Remove(blog);
                     context.SaveChanges();
