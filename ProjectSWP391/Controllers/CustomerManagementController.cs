@@ -79,16 +79,18 @@ namespace ProjectSWP391.Controllers
                 return View(products.ToPagedList(pageNumber, pageSize));
             }
         }
-        public IActionResult ServiceList(int? page)
+        public IActionResult ServiceList(int? page, string? searchName, string? searchCategory, string? searchPrice)
         {
             // Nếu page = null thì đặt lại là 1.
             if (page == null) page = 1;
 
             using (var context = new SWP391Context())
             {
-                string? searchName = Request.Form["searchName"].ToString().Trim() ?? "";
-                string? searchCategory = Request.Form["searchCategory"].ToString().Trim() ?? "";
-                string? searchPrice = Request.Form["searchPrice"].ToString().Trim() ?? "";
+                if (searchName == null) searchName = String.Empty;
+                ViewBag.searchName = searchName;
+                if (searchCategory == null) searchCategory = String.Empty;
+                if (searchPrice == null) searchPrice = String.Empty;
+
                 var services = (from service in context.Services join scategory in context.ServiceCategories
                                 on service.ScategoryId equals scategory.ScategoryId
                                 where service.ServiceName.Contains(searchName) && scategory.ScategoryName.Contains(searchCategory)
@@ -97,17 +99,27 @@ namespace ProjectSWP391.Controllers
                 //Get all service category
                 var categories = context.ServiceCategories.ToList();
                 ViewBag.categoryFilter = categories;
+                ViewBag.searchCategory = searchCategory;
                 //Get Price filter list
                 ViewBag.priceFilter = _PriceFilter;
-                
+                ViewBag.searchPrice = searchPrice;
                 // số service hiển thị trên 1 trang
-                int pageSize = 8;
+                int pageSize = 6;
 
                 int pageNumber = (page ?? 1);
 
                 // 5. Trả về các Link được phân trang theo kích thước và số trang.
                 return View(services.ToPagedList(pageNumber, pageSize));
             }
+        }
+
+        [HttpPost]
+        public IActionResult FilterService()
+        {
+            string searchName = Request.Form["searchName"].ToString().Trim();
+            string searchCategory = Request.Form["searchCategory"].ToString().Trim();
+            string searchPrice = Request.Form["searchPrice"].ToString().Trim();
+            return ServiceList(1,searchName,searchCategory, searchPrice);
         }
 
         public IActionResult ServiceDetail(int? sId)
