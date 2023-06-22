@@ -40,11 +40,21 @@
                         </tr>
                         <tr>
                             <th>Service Name:</th>
-                            <td>@Model.Service.ServiceName</td>
+                            @foreach (var item in Model.ServiceLists)
+                            {
+                                <td>@item.Service.ServiceName</td>
+                            }
                         </tr>
                         <tr>
                             <th>Price:</th>
-                            <td><span class="text-danger">$@(Math.Round(Model.Service.Price, 2))</span></td>
+                            @{
+                                decimal price = 0;
+                                foreach(var item in Model.ServiceLists)
+                                {
+                                    price += item.Service.Price;
+                                }
+                                <td><span class="text-danger">$@(Math.Round(price, 2))</span></td>
+                            }
                         </tr>
                         <tr>
                             <th>Date:</th>

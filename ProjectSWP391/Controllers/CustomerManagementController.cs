@@ -17,6 +17,7 @@ namespace ProjectSWP391.Controllers
         {
             using (var context = new SWP391_V4Context())
             {
+                //Customer ID can not equal to 0
                 if (cusID == 0) return null;
                 Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
                 || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == cusID).FirstOrDefault();
@@ -99,9 +100,11 @@ namespace ProjectSWP391.Controllers
                 //Get all service category
                 var categories = context.ServiceCategories.ToList();
                 ViewBag.categoryFilter = categories;
+                //Save the previous searchCategory
                 ViewBag.searchCategory = searchCategory;
                 //Get Price filter list
                 ViewBag.priceFilter = _PriceFilter;
+                //Save the previuos searchPrice
                 ViewBag.searchPrice = searchPrice;
                 // số service hiển thị trên 1 trang
                 int pageSize = 6;
