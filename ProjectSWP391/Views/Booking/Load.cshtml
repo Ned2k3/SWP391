@@ -107,7 +107,7 @@
                                         {
                                             <div style="border: 1px solid black; border-radius: 10px; font-size: 16px; padding: 0 15px 0 15px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
                                                 <p>@item.Service.ServiceName - <span class="text-danger">$@(Math.Round(item.Service.Price, 2))</span></p>
-                                                <i class="fa-solid fa-xmark"></i>
+                                                <a href="/Booking/Load?sID=@item.Service.ServiceId&&step=3"><i class="fa-solid fa-xmark"></i></a>
                                             </div>
                                         }
                                     }

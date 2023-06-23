@@ -45,7 +45,6 @@ namespace ProjectSWP391.Controllers
             using (var context = new SWP391_V4Context())
             {
                 var session = HttpContext.Session;
-                
                 if(sID != 0)
                 {
                     //if the adding service is not in the list
@@ -73,7 +72,25 @@ namespace ProjectSWP391.Controllers
         //This function is use to remove selected service in every step when user book service
         public void RemoveSelectedService(int sID)
         {
-            return;
+            using (var context = new SWP391_V4Context())
+            {
+                var session = HttpContext.Session;
+                if (sID != 0)
+                {
+                    //if the adding service is not in the list
+                    List<ServiceList> selectionList = GetSelectedService();
+                    ServiceList? sl = selectionList.Where(s => s.Service.ServiceId == sID).FirstOrDefault();
+                    if(sl != null)
+                    {
+                        selectionList.Remove(sl);
+                        SaveSelectedService(selectionList);
+                    }
+                    else
+                    {
+                        SaveSelectedService(selectionList);
+                    }
+                }
+            }
         }
 
         //This function is use to get the current user booking service
@@ -241,12 +258,21 @@ namespace ProjectSWP391.Controllers
                 if (sID != 0)
                 {
                     //if guest go to another page, they will have to fill information again
-                    if (step != 2)
+                    if (step == 2)
+                    {
+                        AddSelectedService(sID);
+                    }
+                    else if(step == 3)
+                    {
+                        RemoveSelectedService(sID);
+                    }
+                    else
                     {
                         session.Remove("phone");
                         session.Remove("bookingDate");
+                        List<ServiceList>? selectionList = GetSelectedService();
+                        SaveSelectedService(selectionList);
                     }
-                    AddSelectedService(sID);
                 }
                 else
                 {
