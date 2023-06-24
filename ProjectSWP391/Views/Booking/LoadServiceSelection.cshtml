@@ -1,4 +1,4 @@
-﻿@*@using ProjectSWP391.Models;
+﻿@using ProjectSWP391.Models;
 @model List<Service>
 
 <body>
@@ -35,36 +35,46 @@
                     <div class="container" id="content@(i)" style="margin-top: 10px; background-color: white; padding: 0 10px 0 10px">
                         <div class="row" style="padding: 8px 0 8px 0;"><h4 style="margin-bottom: 0;">@item.ScategoryName</h4></div>
                         <div class="row gx-4 gx-lg-5 row-cols-2 justify-content-start mx-0">
+                            @{
+                                List<ServiceList> sl = (List<ServiceList>)ViewBag.selectedServiceID;
+                            }
                             @foreach (var service in Model)
                             {
-                                if (service.ScategoryId == item.ScategoryId)
+
+                                if (!sl.Where(s => s.Service.ServiceId == service.ServiceId).Any())
                                 {
-                                    <div class="col rounded-1;" style="margin-bottom: 10px; padding: 0 5px 0 5px;">
-                                        <a href="/CustomerManagement/ServiceDetail?sId=@(service.ServiceId)" style="text-decoration: none;">
-                                            <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
+                                    if (service.ScategoryId == item.ScategoryId)
+                                    {
+
+                                        <div class="col rounded-1;" style="margin-bottom: 10px; padding: 0 5px 0 5px;">
+                                            <a href="/CustomerManagement/ServiceDetail?sId=@(service.ServiceId)" style="text-decoration: none;">
+                                                <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
                                         background-image: url('@(service.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : service.Image)'); background-size: cover; background-position: center;">
-                                                <!-- Product details-->
-                                                <div style="background-color: rgb(0,0,0,0.5); width: 100%;">
-                                                    <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
-                                                        <div class="text-center">
-                                                            <!-- Product name-->
-                                                            <div style="height: 70px; overflow: hidden; white-space: pre-line;">
-                                                                <h6 class="fw-bolder text-white text-center">@service.ServiceName</h6>
-                                                            </div>
-                                                            <!-- Product price-->
-                                                            <div style="min-height: 30px;padding-top: 15px; opacity: 1;">
-                                                                <span class="text-danger">$@(Math.Round(service.Price, 2))</span>
+                                                    <!-- Product details-->
+                                                    <div style="background-color: rgb(0,0,0,0.5); width: 100%;">
+                                                        <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
+                                                            <div class="text-center">
+                                                                <!-- Product name-->
+                                                                <div style="height: 70px; overflow: hidden; white-space: pre-line;">
+                                                                    <h6 class="fw-bolder text-white text-center">@service.ServiceName</h6>
+                                                                </div>
+                                                                <!-- Product price-->
+                                                                <div style="min-height: 30px;padding-top: 15px; opacity: 1;">
+                                                                    <span class="text-danger">$@(
+                                                        Math.Round(service.Price, 2)
+                                                        )</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- Card footer -->
-                                                    <div class="card-footer pt-0 bg-transparent">
-                                                        <a class="btn btn-outline-dark mt-auto" style="border: 1px solid white; color: papayawhip; width: 100%;" href="/Booking/Load?sID=@(service.ServiceId)&step=2" id="@(service.ServiceId)-btn">Select</a>
+                                                        <!-- Card footer -->
+                                                        <div class="card-footer pt-0 bg-transparent">
+                                                            <a class="btn btn-outline-dark mt-auto" style="border: 1px solid white; color: papayawhip; width: 100%;" href="/Booking/Load?sID=@(service.ServiceId)&step=2" id="@(service.ServiceId)-btn">Select</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                            </a>
+                                        </div>
+                                    }
                                 }
                             }
                         </div>
@@ -129,4 +139,3 @@
         }
 </style>
 
-*@

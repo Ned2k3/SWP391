@@ -67,7 +67,7 @@
                 foreach (var item in ViewBag.relateService)
                 {
                     <div class="col mb-5 rounded-1;">
-                        <a href="/ServiceManagement/Details?id=@item.ServiceId" style="text-decoration: none;">
+                        <a href="/CustomerManagement/ServiceDetails?id=@item.ServiceId" style="text-decoration: none;">
                             <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
                                         background-image: url('@(item.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : item.Image)'); background-size: cover; background-position: center;">
                                 <!-- Product details-->

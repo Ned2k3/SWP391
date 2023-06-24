@@ -18,10 +18,10 @@ namespace ProjectSWP391.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public int? Phone { get; set; }
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
         public int? Role { get; set; }
         public bool IsActive { get; set; }
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public virtual Order Order { get; set; }
         public virtual ICollection<Blog> Blogs { get; set; }

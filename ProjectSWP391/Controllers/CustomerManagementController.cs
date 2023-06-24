@@ -12,11 +12,12 @@ namespace ProjectSWP391.Controllers
 {
     public class CustomerManagementController : Controller
     {
-        private readonly string[] _PriceFilter = { "< 20$", "20$ - 50$", "50$ - 75$", "> 75$" };
+        private readonly string[] _PriceFilter = { "< 20$", "20$ - 50$", "51$ - 75$", "> 75$" };
         public Booking? GetCurrentBooking(int? cusID)
         {
             using (var context = new SWP391_V4Context())
             {
+                //Customer ID can not equal to 0
                 if (cusID == 0) return null;
                 Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
                 || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == cusID).FirstOrDefault();
@@ -61,64 +62,142 @@ namespace ProjectSWP391.Controllers
             }
         }
 
-        public IActionResult ProductList(int? page)
+        public IActionResult ProductList(int? page, string? sn, string? sc, int sp)
         {
             // Nếu page = null thì đặt lại là 1.
             if (page == null) page = 1;
 
             using (var context = new SWP391_V4Context())
             {
-                var products = context.Products.OrderBy(p => p.ProductId);
-
-                // số product hiển thị trên 1 trang
+                if (sn == null) sn = String.Empty;
+                ViewBag.searchName = sn;
+                if (sc == null) sc = String.Empty;
+                //filter by name and category
+                var products = (from product in context.Products
+                                join pcategory in context.ProductCategories
+                                on product.PcategoryId equals pcategory.PcategoryId
+                                where product.ProductName.Contains(sn) && pcategory.PcategoryName.Contains(sc)
+                                select product).OrderBy(s => s.PcategoryId);
+                //Get all service category
+                var categories = context.ProductCategories.ToList();
+                ViewBag.categoryFilter = categories;
+                //Save the previous searchCategory
+                ViewBag.searchCategory = sc;
+                //Get Price filter list
+                ViewBag.priceFilter = _PriceFilter;
+                //Save the previuos searchPrice
+                ViewBag.searchPrice = sp;
+                // số service hiển thị trên 1 trang
                 int pageSize = 8;
 
                 int pageNumber = (page ?? 1);
 
-                // 5. Trả về các Link được phân trang theo kích thước và số trang.
-                return View(products.ToPagedList(pageNumber, pageSize));
+                //filter by price
+                switch (sp)
+                {
+                    case 1:
+                        {
+                            var filterProducts = products.Where(s => s.Price < 20).OrderBy(p => p.Price).ToList();
+                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                        }
+                    case 2:
+                        {
+                            var filterProducts = products.Where(s => s.Price >= 20 && s.Price <= 50).OrderBy(p => p.Price).ToList();
+                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                        }
+                    case 3:
+                        {
+                            var filterProducts = products.Where(s => s.Price > 50 && s.Price <= 75).OrderBy(p => p.Price).ToList();
+                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                        }
+                    case 4:
+                        {
+                            var filterProducts = products.Where(s => s.Price > 75).OrderBy(p => p.Price).ToList();
+                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                        }
+                    default:
+                        {
+                            return View("~/Views/CustomerManagement/ProductList.cshtml", products.ToPagedList(pageNumber, pageSize));
+                        }
+                }
             }
         }
-        public IActionResult ServiceList(int? page, string? searchName, string? searchCategory, string? searchPrice)
+
+        [HttpPost]
+        public IActionResult FilterProduct()
+        {
+            string searchName = Request.Form["searchName"];
+            string searchCategory = Request.Form["searchCategory"];
+            int searchPrice = Convert.ToInt32(Request.Form["searchPrice"]);
+            return ProductList(1, searchName, searchCategory, searchPrice);
+        }
+
+        public IActionResult ServiceList(int? page, string? sn, string? sc, int sp)
         {
             // Nếu page = null thì đặt lại là 1.
             if (page == null) page = 1;
 
             using (var context = new SWP391_V4Context())
             {
-                if (searchName == null) searchName = String.Empty;
-                ViewBag.searchName = searchName;
-                if (searchCategory == null) searchCategory = String.Empty;
-                if (searchPrice == null) searchPrice = String.Empty;
-
+                if (sn == null) sn = String.Empty;
+                ViewBag.searchName = sn;
+                if (sc == null) sc = String.Empty;
+                //filter by name and category
                 var services = (from service in context.Services join scategory in context.ServiceCategories
                                 on service.ScategoryId equals scategory.ScategoryId
-                                where service.ServiceName.Contains(searchName) && scategory.ScategoryName.Contains(searchCategory)
+                                where service.ServiceName.Contains(sn) && scategory.ScategoryName.Contains(sc)
                                 select service).OrderBy(s => s.ServiceId);
-
                 //Get all service category
                 var categories = context.ServiceCategories.ToList();
                 ViewBag.categoryFilter = categories;
-                ViewBag.searchCategory = searchCategory;
+                //Save the previous searchCategory
+                ViewBag.searchCategory = sc;
                 //Get Price filter list
                 ViewBag.priceFilter = _PriceFilter;
-                ViewBag.searchPrice = searchPrice;
+                //Save the previuos searchPrice
+                ViewBag.searchPrice = sp;
                 // số service hiển thị trên 1 trang
                 int pageSize = 6;
 
                 int pageNumber = (page ?? 1);
 
-                // 5. Trả về các Link được phân trang theo kích thước và số trang.
-                return View(services.ToPagedList(pageNumber, pageSize));
+                //filter by price
+                switch (sp)
+                {
+                    case 1:
+                        {
+                            var filterServices = services.Where(s => s.Price < 20).OrderBy(s => s.Price).ToList();
+                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                        }
+                    case 2:
+                        {
+                            var filterServices = services.Where(s => s.Price >= 20 && s.Price <= 50).OrderBy(s => s.Price).ToList();
+                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                        }
+                    case 3:
+                        {
+                            var filterServices = services.Where(s => s.Price > 50 && s.Price <= 75).OrderBy(s => s.Price).ToList();
+                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                        }
+                    case 4:
+                        {
+                            var filterServices = services.Where(s => s.Price > 75).OrderBy(s => s.Price).ToList();
+                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                        }
+                    default:
+                        {
+                            return View("~/Views/CustomerManagement/ServiceList.cshtml", services.ToPagedList(pageNumber, pageSize));
+                        }
+                }
             }
         }
 
         [HttpPost]
         public IActionResult FilterService()
         {
-            string searchName = Request.Form["searchName"].ToString().Trim();
-            string searchCategory = Request.Form["searchCategory"].ToString().Trim();
-            string searchPrice = Request.Form["searchPrice"].ToString().Trim();
+            string searchName = Request.Form["searchName"];
+            string searchCategory = Request.Form["searchCategory"];
+            int searchPrice = Convert.ToInt32(Request.Form["searchPrice"]);
             return ServiceList(1,searchName,searchCategory, searchPrice);
         }
 
