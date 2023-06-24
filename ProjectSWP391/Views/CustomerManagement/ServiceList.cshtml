@@ -118,7 +118,7 @@
                     @if (Model.PageCount > 1)
                     {
                         <ul class="pagination-list">
-                            @if(Model.Count > 3)
+                            @if(Model.PageCount > 3)
                             {
                                 <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=1&&sn=@(ViewBag.searchName)&&sc=@(ViewBag.searchCategory)&&sp=@(ViewBag.searchPrice)"><i class="fa-solid fa-angles-left"></i></a></li>
                             }
@@ -163,7 +163,7 @@
                             {
                                 <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageNumber+1)&&sn=@(ViewBag.searchName)&&sc=@(ViewBag.searchCategory)&&sp=@(ViewBag.searchPrice)"><i class="fa-solid fa-angle-right"></i></a></li>
                             }
-                            @if(Model.Count > 3)
+                            @if(Model.PageCount > 3)
                             {
                                 <li class="page-item navigation nav2"><a href="/CustomerManagement/ServiceList?page=@(Model.PageCount)&&sn=@(ViewBag.searchName)&&sc=@(ViewBag.searchCategory)&&sp=@(ViewBag.searchPrice)"><i class="fa-solid fa-angles-right"></i></a></li>
                             }

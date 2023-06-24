@@ -479,10 +479,14 @@ namespace ProjectSWP391.Controllers
                 if (bk != null)
                 {
                     //Get the servic list of a booking
-                    List<ServiceList> selectionList = context.ServiceLists.Where(s => s.BookingId == bk.BookingId).ToList();
+                    var selectionList = context.ServiceLists.Where(s => s.BookingId == bk.BookingId).Select(s => new
+                    {
+                        ServiceName = s.Service.ServiceName,
+                        Price = s.Service.Price
+                    }).ToList();
                     if(selectionList != null)
                     {
-                        bk.ServiceLists = selectionList;
+                        ViewBag.selectionList = selectionList;
                     }
                     //Get the account infomation of a booking
                     Account? emp = context.Accounts.Where(a => a.AccountId == bk.EmployeeId).FirstOrDefault();

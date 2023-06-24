@@ -107,7 +107,7 @@
                                         {
                                             <div style="border: 1px solid black; border-radius: 10px; font-size: 16px; padding: 0 15px 0 15px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
                                                 <p>@item.Service.ServiceName - <span class="text-danger">$@(Math.Round(item.Service.Price, 2))</span></p>
-                                                <a href="/Booking/Load?sID=@item.Service.ServiceId&&step=3"><i class="fa-solid fa-xmark"></i></a>
+                                                <a href="/Booking/Load?sID=@item.Service.ServiceId&&step=3" style="color: red;"><i class="fa-solid fa-xmark"></i></a>
                                             </div>
                                         }
                                     }
@@ -181,7 +181,7 @@
                             </div>
                         </div>
 
-                      
+                        <!--Employee Selection-->
                         <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
                             <p style="font-size: 20px; font-weight: 500;">3. Select Booking Employee </p>
 

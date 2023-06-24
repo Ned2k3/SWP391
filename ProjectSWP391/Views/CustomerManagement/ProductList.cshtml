@@ -19,19 +19,19 @@
 </head>
 <body>
     <!-- Header-->
-    <header class="bg-dark py-3 mt-0" style="background-image: url('https://wallpaperaccess.com/full/2090289.jpg'); background-size: cover; background-position: top; background-blend-mode: exclusion;">
+    <header class="bg-dark py-3 mt-0" style="background-image: url('https://emc2rrspvpp.exactdn.com/wp-content/uploads/2021/04/HB_ProductPortfolioManagement_BlogFTImg_min.jpeg'); background-size: cover; background-position: top; background-blend-mode: exclusion;">
         <div class="container my-5">
             <!--Search and filter-->
             <div class="row" style="height: fit-content;">
-                <div style="background-color: rgb(0,0,0,0.6); padding: 30px 0 10px 0; width: 90%; margin-left: 5%;">
+                <div style="background-color: rgb(0,0,0,0.5); padding: 30px 0 10px 0; width: 90%; margin-left: 5%;">
                     <div class="text-center" style="color: antiquewhite;">
-                        <h1 class="display-4 fw-bolder">Service</h1>
-                        <p class="lead fw-normal mb-0" style="color: white; font-size: 25px;">You can book for best quality services here!</p>
+                        <h1 class="display-4 fw-bolder">Product</h1>
+                        <p class="lead fw-normal mb-0" style="color: white; font-size: 25px;">You can buy luxury products here!</p>
                     </div>
 
-                    <form action="/CustomerManagement/FilterService" method="post" style="opacity: 1; width: 100%; display: flex; flex-direction: row; justify-content:center; padding: 30px; margin-top: 20px; ">
-                        <input id="search_textbox" type="search" name="searchName" value="@(ViewBag.searchName == null ? String.Empty : ViewBag.searchName)" placeholder="What are you looking for?" style="height: 60px; border: none; padding-left: 10px; flex-grow: 6; font-size: 15px; border-bottom: 5px solid green;" />
-                        <select style="flex-grow: 2; margin-left: 10px; padding-left: 10px; font-size: 15px; border-bottom: 5px solid green;" name="searchCategory">
+                    <form action="/CustomerManagement/FilterProduct" method="post" style="opacity: 1; width: 100%; display: flex; flex-direction: row; justify-content:center; padding: 30px; margin-top: 20px; ">
+                        <input id="search_textbox" type="search" name="searchName" value="@(ViewBag.searchName == null ? String.Empty : ViewBag.searchName)" placeholder="What are you looking for?" style="height: 60px; border: none; padding-left: 10px; flex-grow: 7; font-size: 15px; border-bottom: 5px solid aquamarine;" />
+                        <select style="flex-grow: 3; margin-left: 10px; padding-left: 10px; font-size: 15px; border-bottom: 5px solid aquamarine;" name="searchCategory">
                             <option value="">Category</option>
                             @if (ViewBag.categoryFilter != null)
                             {
@@ -48,7 +48,7 @@
                                 }
                             }
                         </select>
-                        <select style="flex-grow: 2; margin-left: 10px; padding-left: 10px; font-size: 15px; border-bottom: 5px solid green;" name="searchPrice">
+                        <select style="flex-grow: 3; margin-left: 10px; padding-left: 10px; font-size: 15px; border-bottom: 5px solid aquamarine;" name="searchPrice">
                             <option selected value="0">Price</option>
                             @{
                                 string[] list = (string[])ViewBag.priceFilter;
@@ -127,7 +127,7 @@
                     @if (Model.PageCount > 1)
                     {
                         <ul class="pagination-list">
-                            @if (Model.Count > 3)
+                            @if (Model.PageCount > 3)
                             {
                                 <li class="page-item navigation nav2"><a href="/CustomerManagement/ProductList?page=1&&sn=@(ViewBag.searchName)&&sc=@(ViewBag.searchCategory)&&sp=@(ViewBag.searchPrice)"><i class="fa-solid fa-angles-left"></i></a></li>
                             }
@@ -172,7 +172,7 @@
                             {
                                 <li class="page-item navigation nav2"><a href="/CustomerManagement/ProductList?page=@(Model.PageNumber+1)&&sn=@(ViewBag.searchName)&&sc=@(ViewBag.searchCategory)&&sp=@(ViewBag.searchPrice)"><i class="fa-solid fa-angle-right"></i></a></li>
                             }
-                            @if (Model.Count > 3)
+                            @if (Model.PageCount > 3)
                             {
                                 <li class="page-item navigation nav2"><a href="/CustomerManagement/ProductList?page=@(Model.PageCount)&&sn=@(ViewBag.searchName)&&sc=@(ViewBag.searchCategory)&&sp=@(ViewBag.searchPrice)"><i class="fa-solid fa-angles-right"></i></a></li>
                             }
