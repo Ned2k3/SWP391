@@ -11,7 +11,7 @@
         <form action="/Authentication/Register" method="post">
             <label class="error-label">@ViewBag.ErrorMsg</label><br />
             <label class="success-label">@ViewBag.SuccessMsg</label><br />
-            <input type="text" id="email" placeholder="Email" asp-for="Email" required>
+            <input type="text" id="email" placeholder="Account" asp-for="Email" required>
             <input type="password" id="password" placeholder="Password" asp-for="Password" required>
             <input type="password" id="rePassword" placeholder="Re-enter Password" name="rePassword" required>
             <button type="submit">Register</button>
