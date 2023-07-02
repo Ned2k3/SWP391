@@ -228,6 +228,121 @@ namespace ProjectSWP391.Controllers
             }
             return View(service);
         }
+
+        private readonly SWP391_V4Context context = new SWP391_V4Context();
+        public IActionResult ProductDetails(int id, int pageFeedback = 1)
+        {
+            Product product = null;
+            try
+            {
+                product = context.Products.SingleOrDefault(p => p.ProductId == id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+                //Get category name
+                ProductCategory? pg = context.ProductCategories.Where(p => p.PcategoryId == product.PcategoryId).FirstOrDefault();
+                if (pg != null)
+                {
+                    ViewBag.PcategoryName = pg.PcategoryName;
+                    //Get Related Products in a category
+                    if (context.Products.Count() - 1 <= 4)
+                    {
+                        List<Product> products = context.Products.Where(p => p.ProductId != id && p.PcategoryId == pg.PcategoryId).ToList();
+                        ViewBag.relateProduct = products;
+                    }
+                    else
+                    {
+                        List<Product> products = context.Products.Where(p => p.ProductId != id && p.PcategoryId == pg.PcategoryId).Take(4).ToList();
+                        ViewBag.relateProduct = products;
+                    }
+                }
+
+                const int pageFeedbackSize = 6;
+                var feedbacks = context.Feedbacks.Where(f => f.ProductId == id).ToList();
+                if (feedbacks.Count > 0)
+                {
+                    var accounts = context.Accounts.ToList();
+
+                    // paging
+                    int totalItems = feedbacks.Count;
+                    int totalPages = (int)Math.Ceiling(totalItems / (double)pageFeedbackSize);
+                    int skip = (pageFeedback - 1) * pageFeedbackSize;
+                    feedbacks = feedbacks.Skip(skip).Take(pageFeedbackSize).ToList();
+
+                    ViewBag.Accounts = accounts;
+                    ViewBag.Feedbacks = feedbacks;
+                    ViewBag.TotalPages = totalPages;
+                    ViewBag.CurrentPage = pageFeedback;
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult PostFeedback(int accountId, int productId, string content)
+        {
+            try
+            {
+                var feedback = new Feedback
+                {
+                    ProductId = productId,
+                    AccountId = accountId,
+                    ServiceId = 1,
+                    Content = content
+                };
+                context.Feedbacks.Add(feedback);
+                context.SaveChanges();
+
+                return RedirectToAction("ProductDetails", new { id = productId });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost]
+        public IActionResult EditFeedback(int accountId, int productId, int feedbackId, string content)
+        {
+            try
+            {
+                var feedback = new Feedback
+                {
+                    FeedbackId = feedbackId,
+                    ProductId = productId,
+                    AccountId = accountId,
+                    ServiceId = 1,
+                    Content = content
+                };
+                context.Feedbacks.Update(feedback);
+                context.SaveChanges();
+                return RedirectToAction("ProductDetails", new { id = productId });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteFeedback(int feedbackId, int productId)
+        {
+            try
+            {
+                var feedback = context.Feedbacks.SingleOrDefault(f => f.FeedbackId == feedbackId);
+                context.Feedbacks.Remove(feedback);
+                context.SaveChanges();
+                return RedirectToAction("ProductDetails", new { id = productId });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         public IActionResult BlogList()
         {
             return View();

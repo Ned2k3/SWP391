@@ -1,0 +1,303 @@
+﻿﻿@using ProjectSWP391.Models.ServiceModel;
+@model ProjectSWP391.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    var accounts = ViewBag.Accounts as List<Account>;
+    var feedbacks = ViewBag.Feedbacks as List<Feedback>;
+}
+<!--Import JQuery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<body>
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-6" style="border: 1px solid gray; border-radius: 5px; min-height: 400px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
+                <div class="image-container" style="background-image: url('@(Model.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : Model.Image)');"></div>
+            </div>
+
+
+            <div class="col-6" style="padding: 15px 10px 30px 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div>
+                        <h4>@Model.ProductName</h4>
+                    </div>
+                    <div>
+                        <p style="font-size: 15px; margin-top: 1rem;"><span class="fw-bold">Product Type: </span>@(ViewBag.PcategoryName ?? "N/A")</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 15px; margin-top: 1rem;"><span class="fw-bold">Quantity: </span>@(Model.Quantity > 0 ? Model.Quantity : "<span style='color:red'>Out of stock</span>")</p>
+                    </div>
+                    <div style="font-size: 30px;">
+                        <span class="fw-bold">Price: </span><span class="text-danger">$@(Math.Round(Model.Price, 2))</span>
+                    </div>
+                </div>
+                <div class="card-footer mt-5 border-top-0 bg-transparent">
+                    @if ((Global.CurrentUser == null) || (Global.CurrentUser != null && Global.CurrentUser.Role != 1))
+                    {
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto width: 8vw;" href="/Booking/Load?sID=@Model.ProductId">Add to Cart</a></div>
+                    }
+                    else
+                    {
+                        <div class="text-center d-flex flex-row justify-content-evenly">
+                            <a href="/ProductManagement/Edit?id=@Model.ProductId">Edit</a>
+                            <a href="#">Delete</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row p-0" style="padding: 20px;">
+            <h4>Description</h4>
+            <div style="width: 100%; font-size: 15px; text-align: justify;">
+                @Model.Description
+            </div>
+        </div>
+
+        <!--Feedback section here-->
+        <div class="row p-0" style="margin-top: 80px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
+            <form method="post" action="/CustomerManagement/PostFeedback">
+                <h4 style="padding-bottom:50px">Feedback Product</h4>
+                @if ((Global.CurrentUser != null && Global.CurrentUser.Role == 1) || (Global.CurrentUser != null && Global.CurrentUser.Role != 1))
+                {
+                    <div class="feedback-box">
+                        <div class="comment-avatar">
+                            <img src="@(Global.CurrentUser.Image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png")" alt="Avatar" class="avatar-image">
+                            <input type="hidden" name="accountId" value="@Global.CurrentUser.AccountId" />
+                            <input type="hidden" name="productId" value="@Model.ProductId" />
+                        </div>
+                        <div class="feedback-content">
+                            <textarea name="content" placeholder="Enter your feedback"></textarea>
+                        </div>
+                        <div class="comment-button">
+                            <button type="submit">Feedback</button>
+                        </div>
+                    </div>
+                }
+            </form>
+            @if (feedbacks != null && accounts != null)
+            {
+                @foreach (var feedback in feedbacks)
+                {
+                    var account = accounts.FirstOrDefault(a => a.AccountId == feedback.AccountId);
+                    if (account != null)
+                    {
+                        <div class="comment">
+                            <div class="comment-avatar">
+                                <img src="@(account.Image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png")" alt="Avatar" class="avatar-image">
+                            </div>
+                            <div class="comment-content">
+                                <h5>@(account.FullName) <a href="#">(@account.Email)</a></h5>
+                                <p>@feedback.Content</p>
+                            </div>
+                            @if (Global.CurrentUser != null && (Global.CurrentUser.Role == 1 || account.AccountId == Global.CurrentUser.AccountId))
+                            {
+                                <div class="comment-actions">
+                                    <button class="edit-button"><i class="fa fa-edit"></i></button>
+                                    <form class="feedback-form" method="post" action="/CustomerManagement/EditFeedback" style="display:none">
+                                        <input type="hidden" name="accountId" value="@Global.CurrentUser.AccountId" />
+                                        <input type="hidden" name="productId" value="@Model.ProductId" />
+                                        <input type="hidden" name="feedbackId" value="@feedback.FeedbackId" />
+                                        <textarea name="content" placeholder="Enter your feedback" style="display:none"></textarea>
+                                        <button type="submit" class="edt-button-submit">
+                                            Edit
+                                        </button>
+                                        <button type="button" class="cancel-button">Cancel</button>
+                                    </form>
+                                    <form id="delete-feedback-form" method="post" action="/CustomerManagement/DeleteFeedback">
+                                        <input type="hidden" name="feedbackId" value="@feedback.FeedbackId" />
+                                        <input type="hidden" name="productId" value="@Model.ProductId" />
+                                        <button type="submit" class="delete-button">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            }
+                        </div>
+                        <hr class="comment-divider" />
+                    }
+                }
+                <!--Paging-->
+                @if (ViewBag.TotalPages > 1)
+                {
+                    <div class="pagination-container">
+                        <ul class="pagination">
+                            @if (ViewBag.CurrentPage != 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("ProductDetails", new { id = Model.ProductId, pageFeedback = ViewBag.CurrentPage - 1 })">Previous</a>
+                                </li>
+                            }
+                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                            {
+                                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("ProductDetails", new { id = Model.ProductId, pageFeedback = i })">@i</a>
+                                </li>
+                            }
+                            @if (ViewBag.CurrentPage != ViewBag.TotalPages)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("ProductDetails", new { id = Model.ProductId, pageFeedback = ViewBag.CurrentPage + 1 })">Next</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+        </div>
+
+        <!--Related Product List Here-->
+        <h4 style="margin-top: 80px; margin-bottom: 20px;">Related Products</h4>
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-start">
+            @if (ViewBag.relateProduct.Count == 0)
+            {
+                <p style="text-align: center; font-size: 20px;">No item found</p>
+            }
+            else
+            {
+                foreach (var item in ViewBag.relateProduct)
+                {
+                    <div class="col mb-5 rounded-1;">
+                        <a href="/CustomerManagement/ProductDetails?id=@item.ProductId" style="text-decoration: none;">
+                            <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
+                                        background-image: url('@(item.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : item.Image)'); background-size: cover; background-position: center;">
+                                <!-- Product details-->
+                                <div style="background-color: rgb(0,0,0,0.5); width: 100%;">
+                                    <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <div style="height: 70px; overflow: hidden; white-space: pre-line;">
+                                                <h6 class="fw-bolder text-white text-center">@item.ProductName</h6>
+                                            </div>
+                                            <!-- Product price-->
+                                            <div style="min-height: 30px;padding-top: 15px; opacity: 1;">
+                                                <span class="text-danger">$@(Math.Round(item.Price, 2))</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card footer -->
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mb-3">
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" style="border: 1px solid white; color: papayawhip;" href="/CustomerManagement/ProductDetails?id=@item.ProductId">See Details</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</body>
+
+<style>
+    .image-container {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .feedback-box {
+        display: flex;
+        align-items: center;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 10px;
+    }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .avatar-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .feedback-content {
+        flex: 1;
+    }
+
+        .feedback-content textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+    .comment-button {
+        margin-left: 10px;
+    }
+
+        .comment-button button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    .comment {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .comment-avatar {
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+
+    .comment-content {
+        flex-grow: 1;
+    }
+
+    .comment-divider {
+        margin: 10px 0;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $('.edit-button').click(function () {
+            var feedbackActions = $(this).closest('.comment-actions');
+            var feedbackForm = feedbackActions.find('.feedback-form');
+            var textarea = feedbackForm.find('textarea');
+
+            feedbackForm.show();
+
+            feedbackActions.find('.edit-button').hide();
+            feedbackActions.find('.delete-button').hide();
+            textarea.show();
+        });
+
+        $(".delete-button").click(function () {
+            var result = confirm("Are you sure you want to delete this feedback?");
+
+            if (!result) {
+                return false;
+            }
+        });
+    });
+
+
+</script>
+
+
+
