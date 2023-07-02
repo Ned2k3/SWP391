@@ -1,66 +1,62 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 
 namespace ProjectSWP391.DAO
 {
-    public class ServiceManagementDAO
+    public class BlogManagementDAO
     {
-        public List<Service> GetServices(string search, bool isSearch, bool isAscendingPrice)
+        public List<Blog> GetBlogs(string search, bool isSearch, bool isAscending)
         {
             var context = new SWP391_V4Context();
 
-            var services = context.Services.Include(s => s.Scategory).Select(ser => new Service
+            var blogs = context.Blogs.Include(b => b.Account).Select(b => new Blog
             {
-                ServiceId = ser.ServiceId,
-                ServiceName = ser.ServiceName,
-                Description = ser.Description ?? string.Empty,
-                Price = ser.Price,
-                Image = ser.Image ?? string.Empty,
-                IsActive = ser.IsActive,
-                ScategoryId = ser.ScategoryId,
-                Scategory = ser.Scategory
+                BlogId = b.BlogId,
+                Title = b.Title,
+                Content = b.Content,
+                BlogDate = b.BlogDate,
+                AccountId = b.AccountId,
+                Account = b.Account
             }).AsQueryable();
             try
             {
                 if (!string.IsNullOrEmpty(search))
                 {
-                    services = services.Where(s => s.ServiceName.Contains(search) || s.Price.ToString().Contains(search));
+                    blogs = blogs.Where(b => b.Title.Contains(search) || b.Content.Contains(search));
                 }
                 else if (isSearch == true && string.IsNullOrEmpty(search))
                 {
-                    services = services.Where(s => false);
+                    blogs = blogs.Where(b => false);
                 }
                 else
                 {
-                    services = services;
-
+                    blogs = blogs;
                 }
 
-                if (isAscendingPrice)
+                if (isAscending)
                 {
-                    services = services.OrderBy(s => s.Price);
+                    blogs = blogs.OrderBy(b => b.BlogDate);
                 }
                 else
                 {
-                    services = services.OrderByDescending(s => s.Price);
+                    blogs = blogs.OrderByDescending(b => b.BlogDate);
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            return services.ToList();
+            return blogs.ToList();
         }
 
-        public List<ServiceCategory> GetServiceCategories()
+        public List<Account> GetAccounts()
         {
-            var list = new List<ServiceCategory>();
+            var list = new List<Account>();
             try
             {
                 using (var context = new SWP391_V4Context())
                 {
-                    list = context.ServiceCategories.ToList();
+                    list = context.Accounts.ToList();
                 }
             }
             catch (Exception ex)
@@ -70,30 +66,30 @@ namespace ProjectSWP391.DAO
             return list;
         }
 
-        public Service GetServiceById(int id)
+        public Blog GetBlogById(int id)
         {
-            Service service = new Service();
+            Blog blog = new Blog();
             try
             {
                 using (var context = new SWP391_V4Context())
                 {
-                    service = context.Services.SingleOrDefault(s => s.ServiceId == id);
+                    blog = context.Blogs.SingleOrDefault(b => b.BlogId == id);
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            return service;
+            return blog;
         }
 
-        public void AddService(Service service)
+        public void AddBlog(Blog blog)
         {
             try
             {
                 using (var context = new SWP391_V4Context())
                 {
-                    context.Services.Add(service);
+                    context.Blogs.Add(blog);
                     context.SaveChanges();
                 }
             }
@@ -103,13 +99,13 @@ namespace ProjectSWP391.DAO
             }
         }
 
-        public void EditService(Service service)
+        public void EditBlog(Blog blog)
         {
             try
             {
                 using (var context = new SWP391_V4Context())
                 {
-                    context.Entry<Service>(service).State = EntityState.Modified;
+                    context.Entry<Blog>(blog).State = EntityState.Modified;
                     context.SaveChanges();
                 }
             }
@@ -119,13 +115,13 @@ namespace ProjectSWP391.DAO
             }
         }
 
-        public void DeleteService(Service service)
+        public void DeleteBlog(Blog blog)
         {
             try
             {
                 using (var context = new SWP391_V4Context())
                 {
-                    context.Services.Remove(service);
+                    context.Blogs.Remove(blog);
                     context.SaveChanges();
                 }
             }

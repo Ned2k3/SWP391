@@ -7,7 +7,6 @@ namespace ProjectSWP391.Models
     {
         public Product()
         {
-            Feedbacks = new HashSet<Feedback>();
             Orders = new HashSet<Order>();
         }
 
@@ -17,11 +16,11 @@ namespace ProjectSWP391.Models
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public string? Image { get; set; }
-        public int? PcategoryId { get; set; }
+        public int PcategoryId { get; set; }
         public bool IsActive { get; set; }
 
         public virtual ProductCategory Pcategory { get; set; }
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        public virtual Feedback Feedback { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

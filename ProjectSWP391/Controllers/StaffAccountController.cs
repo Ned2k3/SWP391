@@ -43,7 +43,6 @@ namespace ProjectSWP391.Controllers
             return View(account);
         }
 
-
         //xem detail cua nhan vien
         [HttpGet]
         public ActionResult Details(int id)
@@ -51,30 +50,65 @@ namespace ProjectSWP391.Controllers
             var s = context.Accounts.Where(n => n.AccountId == id).FirstOrDefault();
             return View(s);
         }
-        [HttpGet]
-        public ActionResult Update(int id)
+
+        public IActionResult Update(int id)
         {
-            var sID = context.Accounts.Find(id);
-            return View(sID);
+            try
+            {
+                Account account = context.Accounts.SingleOrDefault(a => a.AccountId == id);
+                if (account == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return View(account);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+
         }
-        [HttpGet]
-        public ActionResult Update(Account account)
+        [HttpPost]
+        public IActionResult Update(Account account)
         {
-            context.SaveChanges();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Update", account.AccountId);
+                }
+                context.Accounts.Update(account);
+                context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            var s = context.Accounts.Where(n => n.AccountId == id).FirstOrDefault();
-            return View(s);
-        }
 
-        [HttpGet]
-        public ActionResult Delete(Account account)
+        public IActionResult Delete(int id)
         {
-            context.Accounts.Remove(account);
-            context.SaveChanges();
+            try
+            {
+                Account account = context.Accounts.SingleOrDefault(a => a.AccountId == id);
+                if (account == null)
+                {
+                    return NotFound();
+                }
+                context.Accounts.Remove(account);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             return RedirectToAction("Index");
         }
     }

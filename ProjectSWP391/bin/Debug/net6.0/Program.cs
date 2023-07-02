@@ -8,13 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<SWP391Context>(
+builder.Services.AddDbContext<SWP391_V4Context>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("PRNDB")));
 
 builder.Services.AddSession(cfg =>
 {
     cfg.Cookie.Name = "SWP391";
     cfg.IdleTimeout = new TimeSpan(0, 60, 0);
+
 });
 var app = builder.Build();
 

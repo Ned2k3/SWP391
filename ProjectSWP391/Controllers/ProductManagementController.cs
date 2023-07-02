@@ -5,7 +5,7 @@ namespace DEMOSWP391.Controllers
 {
     public class ProductManagementController : Controller
     {
-        SWP391Context context = new SWP391Context();
+        SWP391_V4Context context = new SWP391_V4Context();
         public IActionResult Index()
         {
             var lsProduct = context.Products.Include(p => p.Pcategory).ToList();
@@ -58,6 +58,33 @@ namespace DEMOSWP391.Controllers
             var categories = GetProductCategories();
             ViewBag.ListPCategory = new SelectList(categories, "PcategoryId", "PcategoryName");
             return View(p);
+        }
+
+        //xem detail cua product
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var s = context.Products.Where(n => n.ProductId == id).FirstOrDefault();
+            return View(s);
+        }
+        [HttpPost]
+        public IActionResult Update(Product product)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Update", product.ProductId);
+                }
+                context.Products.Update(product);
+                context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

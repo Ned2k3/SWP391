@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ProjectSWP391.Models;
 using ProjectSWP391.Models.ServiceModel;
 using System.Runtime.Versioning;
@@ -14,18 +15,80 @@ namespace ProjectSWP391.Controllers
     {
         [BindProperty]
         private Booking booking { get; set; } = new Booking();
-
-        //This function is use to update selected service in every step when user book service
-        public void SaveSelectedService(int sID)
+        
+        //Used to load the list of selected service
+        public List<ServiceList>? GetSelectedService()
         {
-            using (var context = new SWP391Context())
+            var session = HttpContext.Session;
+            //create a new list of service selection
+            List<ServiceList>? selectionList = new List<ServiceList>();
+            string? serializedList = session.GetString("selectionList");
+            if (serializedList != null)
+            {
+                selectionList = JsonConvert.DeserializeObject<List<ServiceList>>(serializedList);
+            }
+            return selectionList;
+        }
+
+        public void SaveSelectedService(List<ServiceList> selectionList)
+        {
+            var session = HttpContext.Session;
+            //set the booking serviceList to selectionList
+            booking.ServiceLists = selectionList;
+            //Save the selection list
+            string serviceList = JsonConvert.SerializeObject(selectionList);
+            session.SetString("selectionList", serviceList);
+        }
+        //This function is use to add selected service in every step when user book service
+        public void AddSelectedService(int sID)
+        {
+            using (var context = new SWP391_V4Context())
             {
                 var session = HttpContext.Session;
-                Service? sv = context.Services.Where(i => i.ServiceId == sID).FirstOrDefault();
-                if (sv != null)
+                if(sID != 0)
                 {
-                    booking.Service = sv;
-                    session.SetString("serviceID", sID.ToString());
+                    //if the adding service is not in the list
+                    List<ServiceList> selectionList = GetSelectedService();
+                    if (!selectionList.Where(s => s.Service.ServiceId == sID).Any())
+                    {
+                        Service? sv = context.Services.Where(i => i.ServiceId == sID).FirstOrDefault();
+                        if (sv != null)
+                        {
+                            //Add the new selected service
+                            ServiceList sl = new ServiceList();
+                            sl.Service = sv;
+                            selectionList.Add(sl);
+                            SaveSelectedService(selectionList);
+                        }
+                    }
+                    else
+                    {
+                        SaveSelectedService(selectionList);
+                    }
+                }
+            }
+        }
+
+        //This function is use to remove selected service in every step when user book service
+        public void RemoveSelectedService(int sID)
+        {
+            using (var context = new SWP391_V4Context())
+            {
+                var session = HttpContext.Session;
+                if (sID != 0)
+                {
+                    //if the adding service is not in the list
+                    List<ServiceList> selectionList = GetSelectedService();
+                    ServiceList? sl = selectionList.Where(s => s.Service.ServiceId == sID).FirstOrDefault();
+                    if(sl != null)
+                    {
+                        selectionList.Remove(sl);
+                        SaveSelectedService(selectionList);
+                    }
+                    else
+                    {
+                        SaveSelectedService(selectionList);
+                    }
                 }
             }
         }
@@ -37,22 +100,31 @@ namespace ProjectSWP391.Controllers
             int phone = session.GetString("phone") == null ? 0 : Convert.ToInt32(session.GetString("phone"));
             if (phone != 0)
             {
-                Account account = new Account()
+                using var context = new SWP391_V4Context();
+                var acc = context.Accounts.Where(a => a.Phone == phone && a.Role == null).FirstOrDefault();
+                if (acc != null)
                 {
-                    Phone = phone
-                };
+                    booking.Customer = acc;
+                }
+                else
+                {
+                    Account account = new Account()
+                    {
+                        Phone = phone
+                    };
 
-                string? fname = session.GetString("fname") == null ? null : session.GetString("fname");
-                if (fname != null)
-                {
-                    account.FullName = fname;
+                    string? fname = session.GetString("fname") == null ? null : session.GetString("fname");
+                    if (fname != null)
+                    {
+                        account.FullName = fname;
+                    }
+                    string? email = session.GetString("email") == null ? null : session.GetString("email");
+                    if (email != null)
+                    {
+                        account.Email = email;
+                    }
+                    booking.Customer = account;
                 }
-                string? email = session.GetString("email") == null ? null : session.GetString("email");
-                if (email != null)
-                {
-                    account.Email = email;
-                }
-                booking.Customer = account;
             }
         }
 
@@ -116,7 +188,7 @@ namespace ProjectSWP391.Controllers
             {
                 return null;
             }
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
                 List<Booking> bookingList = new List<Booking>();
                 var bookings = context.Bookings.ToList();
@@ -144,7 +216,7 @@ namespace ProjectSWP391.Controllers
         //this function is use to save and get the employeeID selected
         public void SaveBookingEmployee(int empID)
         {
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
                 var session = HttpContext.Session;
                 if (empID == 0)
@@ -180,21 +252,33 @@ namespace ProjectSWP391.Controllers
             ViewBag.schedule = dates;
 
             //Handle service selection here
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
+                //if there user click button from a service card
                 if (sID != 0)
                 {
-                    if (step != 2)
+                    //if guest go to another page, they will have to fill information again
+                    if (step == 2)
+                    {
+                        AddSelectedService(sID);
+                    }
+                    else if(step == 3)
+                    {
+                        RemoveSelectedService(sID);
+                    }
+                    else
                     {
                         session.Remove("phone");
                         session.Remove("bookingDate");
+                        List<ServiceList>? selectionList = GetSelectedService();
+                        SaveSelectedService(selectionList);
                     }
-                    SaveSelectedService(sID);
                 }
                 else
                 {
-                    int serviceID = session.GetString("serviceID") == null ? 0 : Convert.ToInt32(session.GetString("serviceID"));
-                    SaveSelectedService(serviceID);
+                    //load the current selected service list
+                    List<ServiceList>? selectionList = GetSelectedService();
+                    SaveSelectedService(selectionList);
                 }
             }
 
@@ -220,13 +304,22 @@ namespace ProjectSWP391.Controllers
         }
 
         //check if user has booked before or not
-        public Booking? GetCurrentBooking(int accID, int phone)
+        public Booking? GetCurrentBooking(int phone)
         {
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
-                Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
-                || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == accID && b.Content.Contains(phone.ToString())).FirstOrDefault();
-
+                var account = context.Accounts.Where(a => a.Phone == phone && a.Role == null).FirstOrDefault();
+                Booking? bk;
+                if(account != null)
+                {
+                    bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
+                         || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == account.AccountId).FirstOrDefault();
+                }
+                else
+                {
+                    bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
+                         || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == 0 && b.Content.Contains(phone.ToString())).FirstOrDefault();
+                }
                 if (bk != null)
                 {
                     return bk;
@@ -256,13 +349,13 @@ namespace ProjectSWP391.Controllers
                 else
                 {
                     int phoneNumber = Convert.ToInt32(Request.Form["phone"]);
-                    Booking? bk = GetCurrentBooking(0, phoneNumber);
+                    Booking? bk = GetCurrentBooking(phoneNumber);
                     if (bk != null) return Redirect($"/CustomerManagement/LandingPage?booked={bk.BookingId}");
                     if (session.GetString("phone") != null)
                     {
                         session.Clear();
                     }
-                    using (var context = new SWP391Context())
+                    using (var context = new SWP391_V4Context())
                     {
                         var account = context.Accounts.Where(a => a.Phone == phoneNumber && a.Role == null).FirstOrDefault();
                         session.SetString("phone", phoneNumber.ToString());
@@ -286,7 +379,7 @@ namespace ProjectSWP391.Controllers
             if (step == 1)
             {
                 int phoneNumber = Convert.ToInt32(Request.Form["phone"]);
-                Booking? bk = GetCurrentBooking(0, phoneNumber);
+                Booking? bk = GetCurrentBooking(phoneNumber);
                 if (bk != null)
                 {
                     ViewBag.currentBooking = bk;
@@ -297,10 +390,9 @@ namespace ProjectSWP391.Controllers
                     string? name = Request.Form["fullname"].ToString().Trim();
                     string? email = Request.Form["email"].ToString().Trim();
                     session.SetString("phone", phoneNumber.ToString());
-                    using (var context = new SWP391Context())
+                    using (var context = new SWP391_V4Context())
                     {
                         var account = context.Accounts.Where(a => a.Phone == phoneNumber && a.Role == null).FirstOrDefault();
-                        Service? sv = context.Services.Where(i => i.ServiceId == sID).FirstOrDefault();
                         if (account != null)
                         {
                             booking.Customer = account;
@@ -323,10 +415,7 @@ namespace ProjectSWP391.Controllers
                             }
                             booking.Customer = acc;
                         }
-                        if (sv != null)
-                        {
-                            booking.Service = sv;
-                        }
+                        AddSelectedService(sID);
                     }
                 }
             }
@@ -336,12 +425,10 @@ namespace ProjectSWP391.Controllers
         //Load the service list to select service from booking main screen
         public IActionResult LoadServiceSelection(int serviceID)
         {
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
-                if (serviceID != 0)
-                {
-                    ViewBag.selectedServiceID = serviceID;
-                }
+                List<ServiceList>? selectionList = GetSelectedService();
+                ViewBag.selectedServiceID = selectionList;
                 List<Service> services = context.Services.OrderBy(s => s.ServiceId).ToList();
                 List<ServiceCategory> categories = context.ServiceCategories.OrderBy(s => s.ScategoryId).ToList();
                 ViewBag.serviceCategories = categories;
@@ -352,19 +439,32 @@ namespace ProjectSWP391.Controllers
         //This function is use to save booking when user confirm
         public IActionResult ConfirmBooking(Booking bk)
         {
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
-                Booking? currentBk = context.Bookings.OrderByDescending(b => b.BookingId).FirstOrDefault();
-                if (currentBk != null)
-                {
-                    int nextID = currentBk.BookingId + 1;
-                    bk.BookingId = nextID;
-                }
-                else
-                {
-                    bk.BookingId = 1;
-                }
+                //Add new record for booking
                 context.Bookings.Add(bk);
+                context.SaveChanges();
+                //Get current booking ID
+                Booking? currentBooking = context.Bookings.OrderByDescending(b => b.BookingId).FirstOrDefault();
+                int id = 1;
+                if (currentBooking != null)
+                {
+                    id = currentBooking.BookingId;
+                }
+                //Add new record for service selection
+                List<ServiceList>? selectionList = GetSelectedService();
+                if(selectionList != null)
+                {
+                    foreach(var item in selectionList)
+                    {
+                        ServiceList sl = new ServiceList()
+                        {
+                            BookingId = id,
+                            ServiceId = item.Service.ServiceId,
+                        };
+                        context.ServiceLists.Add(sl);
+                    }
+                }
                 context.SaveChanges();
                 return RedirectToAction("LandingPage", "CustomerManagement");
             }
@@ -373,13 +473,22 @@ namespace ProjectSWP391.Controllers
         //View the booking details
         public IActionResult BookingDetails(int bookingID)
         {
-            using (var context = new SWP391Context())
+            using (var context = new SWP391_V4Context())
             {
                 Booking? bk = context.Bookings.Where(b => b.BookingId == bookingID).FirstOrDefault();
                 if (bk != null)
                 {
-                    Service? sv = context.Services.Where(s => s.ServiceId == bk.ServiceId).FirstOrDefault();
-                    bk.Service = sv;
+                    //Get the servic list of a booking
+                    var selectionList = context.ServiceLists.Where(s => s.BookingId == bk.BookingId).Select(s => new
+                    {
+                        ServiceName = s.Service.ServiceName,
+                        Price = s.Service.Price
+                    }).ToList();
+                    if(selectionList != null)
+                    {
+                        ViewBag.selectionList = selectionList;
+                    }
+                    //Get the account infomation of a booking
                     Account? emp = context.Accounts.Where(a => a.AccountId == bk.EmployeeId).FirstOrDefault();
                     bk.Employee = emp;
                     if (bk.CustomerId != 0)

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\SWP391\\SWP391_v2\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj": {}
   },
   "projects": {
@@ -12,9 +13,27 @@
         "projectPath": "D:\\SWP391\\SWP391_v2\\projectswp391\\ProjectSWP391\\ProjectSWP391.csproj",
         "packagesPath": "C:\\Users\\Locpx\\.nuget\\packages\\",
         "outputPath": "D:\\SWP391\\SWP391_v2\\projectswp391\\ProjectSWP391\\obj\\",
+=======
+    "E:\\SWP391_Ver3\\ProjectSWP391\\ProjectSWP391.csproj": {}
+  },
+  "projects": {
+    "E:\\SWP391_Ver3\\ProjectSWP391\\ProjectSWP391.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\SWP391_Ver3\\ProjectSWP391\\ProjectSWP391.csproj",
+        "projectName": "ProjectSWP391",
+        "projectPath": "E:\\SWP391_Ver3\\ProjectSWP391\\ProjectSWP391.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\SWP391_Ver3\\ProjectSWP391\\obj\\",
+>>>>>>> 80aea09e66df38501b8820eba812aac92261b663
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\Locpx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 80aea09e66df38501b8820eba812aac92261b663
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,7 +105,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+>>>>>>> 80aea09e66df38501b8820eba812aac92261b663
         }
       }
     }

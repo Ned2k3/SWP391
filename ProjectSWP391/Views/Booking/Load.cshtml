@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="row row-cols-2 justify-content-center">
                     <div class="col m-0" style="background-color: white; padding: 0 0 10px 0;">
-                        @* title of the screen "Booking schedule"*@
+                        <!-- title of the screen "Booking schedule"-->
                         <div style="background-color: #F7FAFC; width: 100%; height: fit-content; padding-top: 12px; padding-bottom: 12px;">
                             <p style="text-align: center; font-weight: 600; font-size: 22px;">Booking Schedule</p>
                         </div>
@@ -45,7 +45,7 @@
                         <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
                             <p style="font-size: 20px; font-weight: 500;">1. Customer Details</p>
                             <div style="width: 100%; padding-top: 12px; padding-bottom: 12px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px;">
-                                @* display phone for guest and email for customer*@
+                                <!-- display phone for guest and email for customer-->
                                 @{
                                     if (Model.Customer.AccountId == null)
                                     {
@@ -53,30 +53,48 @@
                                     }
                                     else
                                     {
-                                        <p style="padding-left: 15px; line-height: 1;"><i class="fa-solid fa-envelope"></i> @Model.Customer.Email</p>
+                                        if(Model.Customer.Phone != null)
+                                        {
+                                            <p style="padding-left: 15px; line-height: 1;"><i class="fa-solid fa-phone"></i> (+84) <span>@Model.Customer.Phone</span></p>
+                                        }
+                                        else{
+                                            <p style="padding-left: 15px; line-height: 1;"><i class="fa-solid fa-envelope"></i> @Model.Customer.Email</p>
+                                        }
                                     }
                                 }
                             </div>
                         </div>
 
-                        @* display service information *@
+                        <!-- display service information -->
                         <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
                             <p style="font-size: 20px; font-weight: 500;">2. Select Service</p>
 
-                            <a href="/Booking/LoadServiceSelection?serviceID=@(Model.Service==null?0:Model.Service.ServiceId)" style="text-decoration: none; color: black;">
-                                <div style="width: 100%; padding-top: 12px; padding-bottom: 12px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;" id="service-select-div">
+                            @if(Model.ServiceLists.Count == 4)
+                            {
+                                <div style="cursor: no-drop; width: 100%; padding-top: 12px; padding-bottom: 12px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;" id="service-select-div">
                                     <p style="padding-left: 15px; line-height: 1;">
                                         <i class="fa-solid fa-spa"></i>
-                                        Click here to choose your service
+                                        You have selected maximum number of service
                                     </p>
-                                    <i class="fa-solid fa-caret-right" style="margin-right: 20px;"></i>
                                 </div>
-                            </a>
-
-                            @* if user hasn't selected service, display error message*@
+                            }
+                            else
+                            {
+                                <a href="/Booking/LoadServiceSelection" style="text-decoration: none; color: black;">
+                                    <div style="width: 100%; padding-top: 12px; padding-bottom: 12px; background-color: #f7f7f7; border-radius: 10px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;" id="service-select-div">
+                                        <p style="padding-left: 15px; line-height: 1;">
+                                            <i class="fa-solid fa-spa"></i>
+                                            Click here to choose your service
+                                        </p>
+                                        <i class="fa-solid fa-caret-right" style="margin-right: 20px;"></i>
+                                    </div>
+                                </a>
+                            }
+                            
+                            <!-- if user hasn't selected service, display error message-->
                             <div style="width: 100%;">
                                 @{
-                                    if (Model.Service == null)
+                                    if (Model.ServiceLists == null || Model.ServiceLists.Count == 0)
                                     {
                                         <p style="color: red; font-size: 16px; padding-left: 5px;">Please select a service</p>
                                         <script>
@@ -85,13 +103,19 @@
                                     }
                                     else
                                     {
-                                        <p style="border: 1px solid black; border-radius: 10px; font-size: 16px; text-align: center; margin-top: 10px;">@Model.Service.ServiceName - <span class="text-danger">$@(Math.Round(Model.Service.Price, 2))</span></p>
+                                        @foreach(var item in Model.ServiceLists)
+                                        {
+                                            <div style="border: 1px solid black; border-radius: 10px; font-size: 16px; padding: 0 15px 0 15px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+                                                <p>@item.Service.ServiceName - <span class="text-danger">$@(Math.Round(item.Service.Price, 2))</span></p>
+                                                <a href="/Booking/Load?sID=@item.Service.ServiceId&&step=3" style="color: red;"><i class="fa-solid fa-xmark"></i></a>
+                                            </div>
+                                        }
                                     }
                                 }
                             </div>
                         </div>
 
-                        @* Select date and schedule*@
+                        <!-- Select date and schedule-->
                         <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
                             <p style="font-size: 20px; font-weight: 500;">3. Select Booking Date</p>
 
@@ -118,7 +142,7 @@
                                 </div>
                             </div>
 
-                            @*Booking shift here*@
+                           <!--BookShift-->
                             <div style="width: 100%; height: fit-content; margin-top: 12px; padding: 10px 15px 10px 15px; display: grid; grid-template-columns: repeat(4,1fr); grid-gap: 10px;">
                                 @for (int i = 8; i <= 19; i++)
                                 {
@@ -157,7 +181,7 @@
                             </div>
                         </div>
 
-                        @*Select employee here*@
+                        <!--Employee Selection-->
                         <div style="width: 100%; height: fit-content; padding: 30px 40px 0px 40px;">
                             <p style="font-size: 20px; font-weight: 500;">3. Select Booking Employee </p>
 
@@ -197,12 +221,11 @@
 
                         <div style="width: 100%; height: fit-content; padding: 30px 40px 10px 40px;">
                             <form asp-action="ConfirmBooking" asp-controller="Booking" method="post">
-                                @if (Model.Customer != null && Model.Service != null && Model.Shift >= 8 && Model.Shift <= 19 && Model.Employee != null)
+                                @if (Model.Customer != null && (Model.ServiceLists != null && Model.ServiceLists.Count != 0) && Model.Shift >= 8 && Model.Shift <= 19 && Model.Employee != null)
                                 {
 
                                     <input type="text" value="@Model.Employee.AccountId" asp-for="EmployeeId" style="display: none;">
                                     <input type="text" value="@(Model.Customer.AccountId == null ? 0 : Model.Customer.AccountId)" asp-for="CustomerId" style="display: none;">
-                                    <input type="text" value="@Model.Service.ServiceId" asp-for="ServiceId" style="display: none;">
                                     @if (Model.Customer.AccountId == null)
                                     {
                                         string fullname = Model.Customer.FullName == null ? "N/A" : Model.Customer.FullName;
@@ -212,15 +235,14 @@
                                     }
                                     else
                                     {
-                                        <input type="text" value="" asp-for="Content" style="display: none;">
+                                        <input type="text" value="N/A" asp-for="Content" style="display: none;">
                                     }
                                     <input type="text" value="@Model.BookingDate" asp-for="BookingDate" style="display: none;">
                                     <input type="text" value="@Model.Shift" asp-for="Shift" style="display: none;">
                                     <button type="submit" id="confirm_btn" style="height: 50px; width: 100%; margin-top: 10px; background-color: #ffcc32; cursor: pointer; border-radius: 10px; text-align: center;
-                                                                                             color: black; font-weight: bold; font-size: 18px; border: none;">
+                                                                                  color: black; font-weight: bold; font-size: 18px; border: none;">
                                         Confirm
                                     </button>
-
                                 }
                                 else
                                 {

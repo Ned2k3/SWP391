@@ -4,84 +4,69 @@
 <body>
     @if (Model != null)
     {
-        <div style="width: 50vw; margin-left: 25vw; margin-top: 20vh; background-color: white; box-shadow: 0 0 5px 2px rgb(0, 0, 0, 0.5); border-radius: 5px;">
-            <div class="row p-2">
-                <div class="col-4">
-                    <a href="/ServiceManagement/Details?id=@Model.Service.ServiceId" style="text-decoration: none;">
-                        <div class="card h-100" style="flex-direction: unset; align-content: center; flex-wrap: wrap; justify-content: center;
-                                        background-image: url('@(Model.Service.Image == null ? "https://dummyimage.com/450x300/dee2e6/6c757d.jpg" : Model.Service.Image)'); background-size: cover; background-position: center;">
-                            <!-- Product details-->
-                            <div style="background-color: rgb(0,0,0,0.4); width: 100%; height: 100%;">
-                                <div class="card-body p-4" style="min-height: 100px; opacity: 1;">
-                                </div>
-                            </div>
+        <div style="height: 80vh; display: flex; justify-content: center; align-items: center;">
+            <div style="width: fit-content; height: fit-content; background-color: white; box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.75); border-radius: 5px; padding: 15px 15px 0 15px;">
+                <div style="display: flex; flex-direction: row;">
+                    <div style="min-width: 200px; height: 200px; padding:10px;background-color: aliceblue; box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.5); border-radius: 20px 20px 5px 5px;">
+                        <div style="height: 20%; border-bottom: 1px solid lightblue; padding: 5px 0 5px 0;">
+                            <p class="text-center" style="line-height: 1; margin-bottom: 0;">Booking Date</p>
                         </div>
-                    </a>
+                        <div style="height: 80%; display: flex; flex-direction: column; justify-content: center;">
+                            <h3 class="text-info fw-bold text-center"><i class="fa-regular fa-clock"></i> @(Model.Shift)H</h3>
+                            <p class="text-center" style="line-height: 1; margin-bottom: 0;">@Model.BookingDate.ToString("dd/MM/yyyy")</p>
+                        </div>
+                    </div>
+
+                    <div style="width: fit-content; height: fit-content; padding: 0 25px 0 25px;">
+                        <div style="border-bottom: 1px solid black;">
+                            <h5 class="text-center fw-bold">Invitation</h5>
+                        </div>
+
+                        <div style="width: 100%; height: fit-content; padding: 15px 15px 0px 15px; display: flex;">
+                            <p style="line-height: 1; margin-bottom: 0;"><i class="fa-solid fa-user-tie"></i> Customer: <span style="color: red;">@(Model.CustomerId == 0 ? "Guest" : Model.Customer.Email)</span></p>
+                            <p style="line-height: 1; margin-bottom: 0; margin-left: 20px;"><i class="fa-solid fa-user"></i> Employee: <span style="color: red;">@Model.Employee.FullName</span></p>
+                        </div>
+
+                        <div style="width: 100%; height: fit-content; padding: 15px 15px 0 15px; display: inline-block;">
+                            <p style="margin-bottom: 0;"><i class="fa-solid fa-spa"></i> Service Registered:</p>
+                            <ul>
+                                @{
+                                    decimal total_price = 0;
+                                    foreach (var item in ViewBag.selectionList)
+                                    {
+                                        total_price += item.Price;
+                                        <li style="margin: 0; padding: 5px; font-size: 15px; line-height: 1">@item.ServiceName - <span class="text-danger">$@(Math.Round(item.Price, 2))</span></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                        <div style="width: 100%; height: fit-content; padding: 15px 15px 0 15px; display: flex; justify-content: space-between;">
+                            <p class="fw-bold;" style="margin-bottom: 0;"><i class="fa-solid fa-money-check-dollar"></i> Total Price: <span style="color: red;">$@(Math.Round(total_price, 2))</span></p>
+                            <a href="#" style="font-size: 15px;">Change Schedule</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-8">
-                    <h4 style="text-align: center; padding: 5px 0 10px 0;">Booking Details</h4>
-                    <table style="width: 100%; min-height: 200px; margin-bottom: 10px; border-radius: 5px;">
-                        <tr>
-                            @if (Model.CustomerId == 0)
-                            {
-                                <th>Customer Name:</th>
-                                <td>Guest</td>
-                            }
-                            else
-                            {
-                                <th>Customer Email:</th>
-                                <td>@Model.Customer.Email</td>
-                            }
-                        </tr>
-                        <tr>
-                            <th>Employee Name:</th>
-                            <td>@Model.Employee.FullName</td>
-                        </tr>
-                        <tr>
-                            <th>Service Name:</th>
-                            <td>@Model.Service.ServiceName</td>
-                        </tr>
-                        <tr>
-                            <th>Price:</th>
-                            <td><span class="text-danger">$@(Math.Round(Model.Service.Price, 2))</span></td>
-                        </tr>
-                        <tr>
-                            <th>Date:</th>
-                            <td>@Model.BookingDate.ToString("dd/MM/yyyy")</td>
-                        </tr>
-                        <tr>
-                            <th>Time:</th>
-                            <td>@(Model.Shift)h - @(Model.Shift + 1)h</td>
-                        </tr>
-                        @if(Model.CustomerId == 0)
-                        {
-                            <tr>
-                                <th>Information:</th>
-                                <td>@Model.Content</td>
-                            </tr>
-                        }
-                    </table>
+                <div class="row" style="padding: 10px; border-top: 0.5px solid black; margin: 0; margin-top: 30px;">
+                    <p class="text-center" style="line-height: 1; margin-bottom: 0; font-size: 15px;">Please come on time. Thank you for booking!</p>
                 </div>
             </div>
         </div>
     }
+    else
+    {
+        <div style="margin-top: 30vh;">
+            <h2 class="text-danger">No Detail For This Booking Found!</h2>
+        </div>
+    }
 </body>
 <style>
-    body{
+    body {
         background-image: url("https://inspirationhut.net/wp-content/uploads/2013/05/201.png");
         background-size: cover;
         background-position: center;
         padding-top: 0;
         font-size: 18px;
-    }
-    td,th,tr{
-        padding: 10px 0 10px 0;
-        text-align: center;
-        font-size: 15px;
-        border: 0.5px solid silver;
-    }
-    th{
-        min-width: 30%;
     }
 </style>

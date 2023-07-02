@@ -7,8 +7,8 @@ namespace ProjectSWP391.Models
     {
         public Service()
         {
-            Bookings = new HashSet<Booking>();
             Feedbacks = new HashSet<Feedback>();
+            ServiceLists = new HashSet<ServiceList>();
         }
 
         public int ServiceId { get; set; }
@@ -20,7 +20,7 @@ namespace ProjectSWP391.Models
         public int? ScategoryId { get; set; }
 
         public virtual ServiceCategory Scategory { get; set; }
-        public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
+        public virtual ICollection<ServiceList> ServiceLists { get; set; }
     }
 }
