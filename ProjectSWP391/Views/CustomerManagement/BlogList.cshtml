@@ -1,121 +1,116 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Bloglist</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
+﻿@using ProjectSWP391.Models;
+@using ProjectSWP391.Models.ServiceModel;
 
-
-
-<body class="sb-nav-fixed">
-
-
-
-
-    <div class="container py-5">
-        <div class="row text-center text-white mb-5">
-            <div class="col-lg-7 mx-auto">
-                <h1 class="display-4">Blog List</h1>
-            </div>
+<body>
+    <div class="row justify-content-between align-items-center">
+        <div style="flex: 1;">
+            <h2 class="text-center">Smart Beauty Blogs</h2>
         </div>
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <!-- List group-->
-                <ul class="list-group shadow">
-                    <!-- list group item-->
-                    <li class="list-group-item">
+        <!--Search and filter area-->
+        <div style="float: right; display: flex; justify-content: end; flex-direction: row; padding: 40px 5vw 40px 0;">
+            <form style="height: 100%;">
+                <div id="search-area" style="width: fit-content; height: 40px; border: none; border-radius: 30px;
+                                  display: flex; padding: 5px 10px 5px 10px; margin-right: 10px; border: 1px solid black;">
+                    <div>
+                        <button type="submit" style="border: none; background: none;"><i class="fa-solid fa-magnifying-glass" style="cursor: pointer;"></i></button>
+                    </div>
+                    <div style="padding: 0 10px 0 10px; font-size: 16px;">
+                        <input class="search-bar" type="search" placeholder="What are you looking for?" />
+                    </div>
+                </div>
+            </form>
 
-
-                        <!-- Custom content-->
-                        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                            <div class="media-body order-2 order-lg-1">
-                                <h5 class="mt-0 font-weight-bold mb-2">Blog Name)</h5>
-                                <p class="font-italic text-muted mb-0 small">Blog detail</p>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-weight-bold my-2">Price</h6>
-
-                                </div>
-                            </div><img src="" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div> <!-- End -->
-                    </li> <!-- End -->
-                    <!-- list group item-->
-
-
-                    <li class="list-group-item">
-                        <!-- Custom content-->
-                        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                            <div class="media-body order-2 order-lg-1">
-                                <h5 class="mt-0 font-weight-bold mb-2">Blog Name</h5>
-                                <p class="font-italic text-muted mb-0 small">Blog Detail</p>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-weight-bold my-2">Price</h6>
-
-                                </div>
-                            </div><img src="" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div> <!-- End -->
-                    </li> <!-- End -->
-                    <!-- list group item -->
-
-
-                    <li class="list-group-item">
-                        <!-- Custom content-->
-                        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                            <div class="media-body order-2 order-lg-1">
-                                <h5 class="mt-0 font-weight-bold mb-2">Blog Name</h5>
-                                <p class="font-italic text-muted mb-0 small">Blog detail</p>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-weight-bold my-2">Price</h6>
-
-                                </div>
-                            </div><img src="" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div> <!-- End -->
-                    </li> <!-- End -->
-                    <!-- list group item -->
-
-
-                    <li class="list-group-item">
-                        <!-- Custom content-->
-                        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                            <div class="media-body order-2 order-lg-1">
-                                <h5 class="mt-0 font-weight-bold mb-2">Blog Name</h5>
-                                <p class="font-italic text-muted mb-0 small">Blog detail</p>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-weight-bold my-2">Price</h6>
-
-                                </div>
-                            </div><img src="" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                        </div> <!-- End -->
-                    </li> <!-- End -->
-                </ul> <!-- End -->
+            <!--Create blog button-->
+            <div class="filter-area" title="Create Blog">
+                <a href="/CustomerManagement/CreateBlog" style="color: black;"><i class="fa-solid fa-pen-to-square fa-lg"></i></i></a>
             </div>
+
+            <div class="filter-area" title="Sort" style="position: relative; display: inline-block;">
+                <i class="fa-solid fa-list fa-lg"></i>
+                <ul class="dropdown-menu">
+                    @if (ViewBag.isMyBlog)
+                    {
+                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1&myBlog=true">Latest Blogs</a></li>
+                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2&myBlog=true">Oldest Blogs</a></li>
+                    }
+                    else
+                    {
+                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1" style="color: black;">Latest Blogs</a></li>
+                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2" style="color: black;">Oldest Blogs</a></li>
+                    }
+                </ul>
+            </div>
+
+            @if (Global.CurrentUser != null && Global.CurrentUser.Role == null)
+            {
+                <div class="filter-area" title="My Blogs">
+                    <a href="/CustomerManagement/BlogList?myBlog=true" style="color: black;"><i class="fa-solid fa-blog fa-lg"></i></a>
+                </div>
+            }
         </div>
+    </div><!--End Filter and search area-->
+
+    <div class="container" style="box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.75); border-radius: 5px; background-color: #F8F6F6">
+        @foreach (var item in ViewBag.blogList)
+        {
+            <div id="content" style="border: 1px solid black;">@Html.Raw(@item.Content)</div>
+        }
+
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+
+
 </body>
-
-
-
 <style>
-    body {
-        background-image: url("https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?cs=srgb&dl=pexels-delbeautybox-853427.jpg&fm=jpg");
-        background-color: #cccccc;
-        background-repeat: no-repeat;
-        background-size: cover;
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .search-bar {
+        width: 20vw;
+        outline: none;
+        padding: 8px;
+        border: none;
+        height: 100%;
+    }
+
+        .search-bar::placeholder {
+            font-size: 16px;
+        }
+
+    .filter-area {
+        height: 40px;
+        padding: 5px 10px 5px 10px;
+        margin-right: 20px;
+    }
+
+        .filter-area:hover {
+            border-bottom: 2px solid dodgerblue;
+            cursor: pointer;
+        }
+
+    .dropdown-menu {
+        width: fit-content;
+        height: fit-content;
+        border: 1px solid black;
+        ;
+        border-radius: 5px;
+        display: none;
+        position: absolute;
+        z-index: 1;
+        padding: 0;
+        margin-top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.75)
+    }
+
+    .filter-area:hover .dropdown-menu {
+        display: block;
+    }
+
+    .drop-down-list:hover {
+        background-color: dodgerblue;
     }
 </style>
-    </style>
-
-</html>
