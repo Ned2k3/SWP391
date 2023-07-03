@@ -1,0 +1,25 @@
+﻿
+.tox .tox-edit-area {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.tox-tinymce {
+    border: 0;
+}
+
+#myTextarea_ifr {
+    background-color: white;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.tox .tox-statusbar {
+    display: none;
+}
+
+.tox .tox-toolbar__primary {
+    padding: 0 25px 0 25px;
+}

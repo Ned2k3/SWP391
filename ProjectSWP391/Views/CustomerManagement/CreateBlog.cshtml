@@ -1,0 +1,163 @@
+﻿@using ProjectSWP391.Models;
+@using ProjectSWP391.Models.ServiceModel;
+@model Blog
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tiny.cloud/1/xv3ddyptnibjrh8do09youtndlg1guo6fldl1x35prt87p6u/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <link href="/css/CreateBlog.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    @if (Global.CurrentUser == null)
+    {
+        <h5 class="text-danger text-center" style="margin: 10vh;">Please login to create a new blog <a href="/Authentication/Login">Login</a></h5>
+    }
+    else
+    {
+        <div style="width: 100%; padding: 20px 0 30px 0; background-color: floralwhite;">
+            <h3 class="text-center fw-bold">Smart Beauty Blogs</h3>
+        </div>
+        <div style="width: 100%; padding: 0; background-color: #eeeeee;">
+            <form id="myForm" asp-action="CreateBlog" asp-controller="CustomerManagement" method="post">
+                <div style="width: 100%; display: flex; padding: 15px 25px 15px 25px; background-color: white;">
+                    <div style="flex-grow: 19; margin-right: 20px;">
+                        <label id="title_lb" style="font-size: 18px; font-weight: bold; transition: font-size 0.5s ease;">Blog Title</label><br />
+                        <input asp-for="Title" id="title_tb" type="text" style="border: none; outline: none; border-bottom: 2px solid red; width: 100%; font-size: 16px;" name="title" title="Blog title contains 20 - 200 characters" required />
+                    </div>
+                    <button id="submit_btn" type="submit" style="border: none; border-radius: 5px; height: 50px; color: white; background-color: lightgray; flex-grow: 1" disabled><i class="fa-solid fa-caret-right fa-lg"></i> Post</button>
+                </div>
+                <textarea asp-for="Content" id="myTextarea" name="content" style="border-radius: 5px; box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.75)" required pattern="^.{100,}$" title="You must write at least 50 characters"></textarea>
+            </form>
+        </div>
+        <script>
+            var content = "";
+            tinymce.init({
+                selector: "textarea",
+                height: 800,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                ],
+                toolbar: 'undo redo | formatselect | ' +
+                    'bold italic backcolor | link image media table mergetags | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' + 'emoticons charmap | ' +
+                    'removeformat | help',
+                menubar: false,
+                content_css: [
+                    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
+                ],
+                setup: function (editor) {
+                    editor.on('input', function () {
+                        content = editor.getContent().replace(/<[^>]+>/g, '');
+                        if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
+                            button.disabled = false;
+                            button.style.backgroundColor = "orange";
+                        }
+                        else {
+                            button.disabled = true;
+                            button.style.backgroundColor = "lightgray";
+                        }
+                    });
+                    editor.on('paste', function () {
+                        content = editor.getContent().replace(/<[^>]+>/g, '');
+                        if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
+                            button.disabled = false;
+                            button.style.backgroundColor = "orange";
+                        }
+                        else {
+                            button.disabled = true;
+                            button.style.backgroundColor = "lightgray";
+                        }
+                    });
+                },
+                images_upload_url: '@Url.Action("UploadImage")',
+                images_upload_handler: function (blobInfo, success, failure) {
+                    // Custom logic to handle image upload
+
+                    // Create a FormData object and append the file
+                    var formData = new FormData();
+                    formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+                    // Make an AJAX request to upload the image
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("UploadImage")',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            success(response.location); // Insert the image into the editor
+                        },
+                        error: function () {
+                            failure('Image upload failed'); // Notify TinyMCE about the failure
+                        }
+                    });
+                }
+            })
+
+            var form = document.getElementById("myForm");
+            var textarea = document.getElementById("myTextarea");
+            var button = document.getElementById("submit_btn");
+            var title_tb = document.getElementById("title_tb");
+
+
+            // Add an event listener to the button click
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                textarea.innerHTML = tinymce.get("myTextarea").getContent();
+
+                form.submit();
+            });
+
+            document.getElementById("title_tb").onfocus = function () {
+                document.getElementById("title_lb").style.fontSize = "15px";
+            }
+            document.getElementById("title_tb").onblur = function () {
+                document.getElementById("title_lb").style.fontSize = "18px";
+            }
+
+            //Validate the content and title
+
+            title_tb.addEventListener("input", function () {
+                if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
+                    button.disabled = false;
+                    button.style.backgroundColor = "orange";
+                }
+                else {
+                    button.disabled = true;
+                    button.style.backgroundColor = "lightgray";
+                }
+            });
+
+        </script>
+    }
+</body>
+</html>
+<style>
+    body {
+        background-color: #eeeeee;
+        padding-top: 0;
+        font-size: 18px;
+    }
+
+    .container-fluid {
+        margin: 0;
+        padding: 0;
+    }
+
+    #title_tb:invalid {
+        border-bottom: 2px solid red;
+    }
+
+    #title_tb:valid {
+        border-bottom: 2px solid green;
+    }
+
+</style>
+
+

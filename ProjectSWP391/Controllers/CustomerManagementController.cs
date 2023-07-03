@@ -13,6 +13,14 @@ namespace ProjectSWP391.Controllers
     public class CustomerManagementController : Controller
     {
         private readonly string[] _PriceFilter = { "< 20$", "20$ - 50$", "51$ - 75$", "> 75$" };
+
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public CustomerManagementController(IWebHostEnvironment webHostEnvironment)
+        {
+            _webHostEnvironment = webHostEnvironment;
+        }
+
         public Booking? GetCurrentBooking(int? cusID)
         {
             using (var context = new SWP391_V4Context())
@@ -343,9 +351,137 @@ namespace ProjectSWP391.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        public IActionResult BlogList()
+        public IActionResult BlogList(bool myBlog, int sort)
+        {
+            using (var context = new SWP391_V4Context())
+            {
+                ViewBag.isMyBlog = myBlog;
+                //if user view blog list with authenticated account then show thier own blogs
+                if (myBlog)
+                {
+                    //if sort by lastest blogs
+                    if (sort == 1)
+                    {
+                        var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).OrderByDescending(b => b.BlogId).Select(b => new
+                        {
+                            Title = b.Title,
+                            Content = b.Content,
+                            Author = b.Account.Email,
+                            Date = b.BlogDate
+                        }).ToList();
+                        ViewBag.blogList = myblogs;
+                    }
+                    //if sort by oldest blogs
+                    else if (sort == 2)
+                    {
+                        var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).OrderBy(b => b.BlogId).Select(b => new
+                        {
+                            Title = b.Title,
+                            Content = b.Content,
+                            Author = b.Account.Email,
+                            Date = b.BlogDate
+                        }).ToList();
+                        ViewBag.blogList = myblogs;
+                    }
+                    else
+                    {
+                        var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).Select(b => new
+                        {
+                            Title = b.Title,
+                            Content = b.Content,
+                            Author = b.Account.Email,
+                            Date = b.BlogDate
+                        }).ToList();
+                        ViewBag.blogList = myblogs;
+                    }
+                }
+                //else show all blogs
+                else
+                {
+                    //if sort by lastest blogs
+                    if (sort == 1)
+                    {
+                        var myblogs = context.Blogs.OrderByDescending(b => b.BlogId).Select(b => new
+                        {
+                            Title = b.Title,
+                            Content = b.Content,
+                            Author = b.Account.Email,
+                            Date = b.BlogDate
+                        }).ToList();
+                        ViewBag.blogList = myblogs;
+                    }
+                    //if sort by oldest blogs
+                    else if (sort == 2)
+                    {
+                        var myblogs = context.Blogs.OrderBy(b => b.BlogId).Select(b => new
+                        {
+                            Title = b.Title,
+                            Content = b.Content,
+                            Author = b.Account.Email,
+                            Date = b.BlogDate
+                        }).ToList();
+                        ViewBag.blogList = myblogs;
+                    }
+                    else
+                    {
+                        var myblogs = context.Blogs.Select(b => new
+                        {
+                            Title = b.Title,
+                            Content = b.Content,
+                            Author = b.Account.Email,
+                            Date = b.BlogDate
+                        }).ToList();
+                        ViewBag.blogList = myblogs;
+                    }
+                }
+                return View();
+            }
+        }
+
+        public IActionResult CreateBlog()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult UploadImage(IFormFile file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                // Generate a unique filename for the image
+                var filename = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+                // Set the physical path to save the image
+                var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
+                var path = Path.Combine(uploadsFolder, filename);
+
+                // Create the "Uploads" directory if it doesn't exist
+                Directory.CreateDirectory(uploadsFolder);
+
+                // Save the file to the server
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                // Return the URL of the saved image to TinyMCE
+                var imageUrl = Url.Content("~/Uploads/" + filename);
+                return Json(new { location = imageUrl });
+            }
+
+            // If the image upload fails, return an error
+            return Json(new { error = "Image upload failed." });
+        }
+
+        [HttpPost]
+        public IActionResult CreateBlog(Blog blog)
+        {
+            blog.BlogDate = DateTime.Now;
+            blog.AccountId = Global.CurrentUser.AccountId;
+            using var context = new SWP391_V4Context();
+            context.Blogs.Add(blog);
+            context.SaveChanges();
+            return RedirectToAction("BlogList");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
