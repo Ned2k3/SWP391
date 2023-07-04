@@ -364,6 +364,7 @@ namespace ProjectSWP391.Controllers
                     {
                         var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).OrderByDescending(b => b.BlogId).Select(b => new
                         {
+                            ID = b.BlogId,
                             Title = b.Title,
                             Content = b.Content,
                             Author = b.Account.Email,
@@ -376,6 +377,7 @@ namespace ProjectSWP391.Controllers
                     {
                         var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).OrderBy(b => b.BlogId).Select(b => new
                         {
+                            ID = b.BlogId,
                             Title = b.Title,
                             Content = b.Content,
                             Author = b.Account.Email,
@@ -387,6 +389,7 @@ namespace ProjectSWP391.Controllers
                     {
                         var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).Select(b => new
                         {
+                            ID = b.BlogId,
                             Title = b.Title,
                             Content = b.Content,
                             Author = b.Account.Email,
@@ -403,6 +406,7 @@ namespace ProjectSWP391.Controllers
                     {
                         var myblogs = context.Blogs.OrderByDescending(b => b.BlogId).Select(b => new
                         {
+                            ID = b.BlogId,
                             Title = b.Title,
                             Content = b.Content,
                             Author = b.Account.Email,
@@ -415,6 +419,7 @@ namespace ProjectSWP391.Controllers
                     {
                         var myblogs = context.Blogs.OrderBy(b => b.BlogId).Select(b => new
                         {
+                            ID = b.BlogId,
                             Title = b.Title,
                             Content = b.Content,
                             Author = b.Account.Email,
@@ -426,6 +431,7 @@ namespace ProjectSWP391.Controllers
                     {
                         var myblogs = context.Blogs.Select(b => new
                         {
+                            ID = b.BlogId,
                             Title = b.Title,
                             Content = b.Content,
                             Author = b.Account.Email,
@@ -481,6 +487,19 @@ namespace ProjectSWP391.Controllers
             using var context = new SWP391_V4Context();
             context.Blogs.Add(blog);
             context.SaveChanges();
+            return RedirectToAction("BlogList");
+        }
+
+        public IActionResult BlogDetail(int id)
+        {
+            using var context = new SWP391_V4Context();
+            Blog blog = context.Blogs.FirstOrDefault(b => b.BlogId == id);
+            if(blog != null)
+            {
+                Account author = context.Accounts.FirstOrDefault(a => a.AccountId == blog.AccountId);
+                blog.Account = author;
+                return View(blog);
+            }
             return RedirectToAction("BlogList");
         }
 
