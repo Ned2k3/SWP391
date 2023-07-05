@@ -15,7 +15,6 @@ builder.Services.AddSession(cfg =>
 {
     cfg.Cookie.Name = "SWP391";
     cfg.IdleTimeout = new TimeSpan(0, 60, 0);
-
 });
 var app = builder.Build();
 
