@@ -135,23 +135,33 @@ namespace ProjectSWP391.Controllers
         [HttpPost]
         public IActionResult ForgetPassword(string email, string checkC)
         {
-          
+            ViewBag.Email = email;
             //check nguoi dung da nhap cai gi
             if (!string.IsNullOrWhiteSpace(checkC))
             {
+                
                 string captchaSession = HttpContext.Session.GetString("captcha").ToString();
+                string emailer = HttpContext.Session.GetString("accountSession").ToString();
                 if (string.IsNullOrWhiteSpace(captchaSession)) 
                 {
                     ViewBag.ErrorMsg = "There is no captcha that have been sent to Email, please re-sent";
-                    return View(); 
-                }
-                else if (captchaSession==checkC)
-                {
-                    ViewBag.SuccessMsg = "Captcha have matched. Reset password successful";
                     return View();
                 }
-                ViewBag.ErrorMsg = "Have captcha";
-                
+                else 
+                { 
+                    if (captchaSession==checkC && email==emailer)
+                    {
+                        ViewBag.SuccessMsg = "Captcha have matched. Reset password successful";
+                        var PasswordChange = context.Accounts.FirstOrDefault(x => x.Email == email);
+                        PasswordChange.Password = EncryptionHelper.Encrypt("1");
+                        context.SaveChanges();
+                        
+                    }
+                    else
+                    {
+                        ViewBag.ErrorMsg = "Captcha and/or Account does not matched";
+                    }
+                }
                 return View();
             }
 
@@ -180,7 +190,7 @@ namespace ProjectSWP391.Controllers
             HttpContext.Session.SetString("captcha", captcha);
             HttpContext.Session.SetString("accountSession", email);
             ViewBag.CheckCaptcha = "true";
-
+            ViewBag.Captcha = captcha;
         //    string fromMail = "smartbeautygroup5@gmail.com";
         //    //quantrong la buoc mat khau nay
         //    string fromPassword = "tunudlgpqbgqwbpz"; //123ABCGroup5
@@ -225,7 +235,32 @@ namespace ProjectSWP391.Controllers
         [HttpPost]
         public IActionResult ResetPassword(string email, string password, string rePassword, string newRePassword)
         {
-          
+          var a = context.Accounts.FirstOrDefault(x => x.Email == email&& x.Password== EncryptionHelper.Encrypt(password));
+            if (a == null)
+            {
+                ViewBag.ErrorMsg = "Account/Password is incorrected, please try again.";
+                return View();
+            }
+            else
+            {
+                if (password == rePassword)
+                {
+                    ViewBag.ErrorMsg = "New password must be different from current password ";
+                    return View();
+                }
+                if(rePassword != newRePassword)
+                {
+                    ViewBag.ErrorMsg = "New Password must matched the Re-input new password";
+                    return View();
+                }
+                else
+                {
+                    a.Password = EncryptionHelper.Encrypt(rePassword);
+                    context.SaveChanges();
+                    ViewBag.SuccessMsg = "Password changed successfully";
+                    return View();
+                }
+            }
            return View();
         }
 
