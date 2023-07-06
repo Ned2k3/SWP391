@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4P/4Xx4nub3x7L1ier2oQ+asAwH4ZSjkYn1gr4bpfaw=",
+  "Hash": "LwmSVT6+MOikUs1hRfSAohC8DwoQV1oFSryTKARGlQQ=",
   "Source": "ProjectSWP391",
   "BasePath": "_content/ProjectSWP391",
   "Mode": "Default",
@@ -1154,6 +1154,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "F:\\Workspace\\SmartBeauty_longpt\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\EditProfile\\css\\styles.css",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Workspace\\SmartBeauty_longpt\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "Profile/EditProfile/css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Profile\\EditProfile\\css\\styles.css"
+    },
+    {
+      "Identity": "F:\\Workspace\\SmartBeauty_longpt\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\ProfileIndex\\css\\style.css",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Workspace\\SmartBeauty_longpt\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "Profile/ProfileIndex/css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Profile\\ProfileIndex\\css\\style.css"
     }
   ]
 }

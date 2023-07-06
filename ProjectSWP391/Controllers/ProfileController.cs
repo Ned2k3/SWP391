@@ -40,5 +40,40 @@ namespace ProjectSWP391.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Route("/[controller]/User-{id}/EditProfile")]
+        public IActionResult EditProfile(int id) {
+
+            try
+            {
+                var account = context.Accounts.Include(a => a.Order).Select(a => new Account
+                {
+                    AccountId = a.AccountId,
+                    Email = a.Email,
+                    Password = a.Password,
+                    FullName = a.FullName,
+                    Phone = a.Phone,
+                    Role = a.Role,
+                    Image = a.Image,
+                }).SingleOrDefault(a => a.AccountId == id);
+                if (account == null)
+                {
+                    return NotFound();
+                }
+                ViewBag.UserInfor = account;
+                return View();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(IFormFile image)
+        {
+
+            return View(image);
+        }
     }
 }

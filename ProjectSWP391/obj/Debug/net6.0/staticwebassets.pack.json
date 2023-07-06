@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\ProjectSWP391.bundle.scp.css"
     },
     {
+      "Id": "F:\\Workspace\\SmartBeauty_longpt\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\EditProfile\\css\\styles.css",
+      "PackagePath": "staticwebassets\\Profile\\EditProfile\\css\\styles.css"
+    },
+    {
+      "Id": "F:\\Workspace\\SmartBeauty_longpt\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\ProfileIndex\\css\\style.css",
+      "PackagePath": "staticwebassets\\Profile\\ProfileIndex\\css\\style.css"
+    },
+    {
       "Id": "F:\\Workspace\\SmartBeauty_longpt\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Authen.css",
       "PackagePath": "staticwebassets\\css\\Authen.css"
     },
