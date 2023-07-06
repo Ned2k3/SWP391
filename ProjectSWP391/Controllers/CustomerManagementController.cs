@@ -276,7 +276,7 @@ namespace ProjectSWP391.Controllers
                     int totalItems = feedbacks.Count;
                     int totalPages = (int)Math.Ceiling(totalItems / (double)pageFeedbackSize);
                     int skip = (pageFeedback - 1) * pageFeedbackSize;
-                    feedbacks = feedbacks.Skip(skip).Take(pageFeedbackSize).ToList();
+                    feedbacks = feedbacks.Skip(skip).OrderByDescending(f => f.Date).Take(pageFeedbackSize).ToList();
 
                     ViewBag.Accounts = accounts;
                     ViewBag.Feedbacks = feedbacks;

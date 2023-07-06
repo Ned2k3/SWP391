@@ -1,0 +1,49 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(./img/nen.gif) no-repeat center center fixed;
+    background-size: cover;
+    font-size: 10px;
+}
+
+h1 {
+    color: #fff;
+}
+
+img {
+    margin-top: 10px;
+    width: 120px;
+    height: 120px;
+    margin-left: 10px;
+}
+
+header {
+    margin-top: 1em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    header > img {
+        width: 9em;
+        height: 9em;
+        border-radius: 100%;
+        border: 2px solid #fff;
+        box-shadow: red 0px 2px 8px 0px;
+    }
+
+    header > h1 {
+        display: inline-block;
+        font-size: 1.2em;
+        font-weight: bold;
+        border-radius: 1em;
+        background-color: #000;
+        color: #fff;
+        padding: 0.3em 0.6em;
+        border: 2px solid #fffa;
+    }

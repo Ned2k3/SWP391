@@ -1,0 +1,22 @@
+﻿@{
+    var user = ViewBag.UserInfor;
+}
+
+<link rel="stylesheet" href="/Profile/ProfileIndex/css/style.css" />
+
+
+
+
+<main>
+    <header>
+        <img src="./img/logo.jpg">
+        <h1>@@ @(user.Email ?? "User")</h1>
+    </header>
+</main>
+
+<a href="/Profile/User-@(user.AccountId)/EditProfile">Edit</a>
+
+
+<script>
+
+</script>

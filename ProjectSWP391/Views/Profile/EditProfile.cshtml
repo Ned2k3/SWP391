@@ -1,0 +1,123 @@
+﻿<link rel="stylesheet" href="/Profile/EditProfile/css/styles.css" />
+
+@{
+    var userInfor = ViewBag.UserInfor;
+}
+
+<main>
+    <div class="container">
+        <form id="personal-info-form" asp-action="EditProfile" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" value="@(userInfor.Email)" required>
+            </div>
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" value="@(userInfor.FullName)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" value="@(userInfor.Password)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" value="@(userInfor.Phone)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="birthdate">Date of Birth:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" required>
+            </div>
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</main>
+
+
+
+<script>
+    document.getElementById("personal-info-form").addEventListener("submit", function (event) {
+        var email = document.getElementById("email").value;
+        var fullname = document.getElementById("fullname").value;
+        var password = document.getElementById("password").value;
+        var phone = document.getElementById("phone").value;
+        var address = document.getElementById("address").value;
+        var birthdate = document.getElementById("birthdate").value;
+        var image = document.getElementById("image").value;
+
+        // Xóa thông báo lỗi cũ (nếu có)
+        clearErrorMessages();
+
+        // Kiểm tra và xác thực từng trường dữ liệu
+        if (email === "") {
+            displayErrorMessage("email-error", "Email is required.");
+            event.preventDefault();
+            return;
+        }
+
+        if (fullname === "") {
+            displayErrorMessage("fullname-error", "Full Name is required.");
+            event.preventDefault();
+            return;
+        }
+
+        if (password === "") {
+            displayErrorMessage("password-error", "Password is required.");
+            event.preventDefault();
+            return;
+        }
+
+        if (phone === "") {
+            displayErrorMessage("phone-error", "Phone is required.");
+            event.preventDefault();
+            return;
+        }
+
+        if (address === "") {
+            displayErrorMessage("address-error", "Address is required.");
+            event.preventDefault();
+            return;
+        }
+
+        if (birthdate === "") {
+            displayErrorMessage("birthdate-error", "Date of Birth is required.");
+            event.preventDefault();
+            return;
+        }
+
+        if (image === "") {
+            displayErrorMessage("image-error", "Image is required.");
+            event.preventDefault();
+            return;
+        }
+    });
+
+    // Hiển thị thông báo lỗi gần trường dữ liệu
+    function displayErrorMessage(id, message) {
+        var errorElement = document.getElementById(id);
+        errorElement.innerText = message;
+        errorElement.style.display = "inline";
+    }
+
+    // Xóa thông báo lỗi
+    function clearErrorMessages() {
+        var errorElements = document.getElementsByClassName("error-message");
+        for (var i = 0; i < errorElements.length; i++) {
+            errorElements[i].style.display = "none";
+        }
+    }
+
+</script>
