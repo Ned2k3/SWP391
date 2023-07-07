@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div style="padding: 0 10px 30px 10px; width: 49.15254%; float: left; margin-right: 1.69492%;">
+    <div class="content-area" style="padding: 0 10px 80px 10px; width: 49.15254%; float: left; margin-right: 1.69492%; overflow-x: hidden;">
         <div style="padding: 0px 0 10px 0">
             <h1>@Model.Title</h1>
         </div>
@@ -31,8 +31,13 @@
 </div>
 
 <style>
-    p , h1, h4{
+    p, h1, h4 {
         margin-bottom: 0;
     }
 
+    .content-area img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
 </style>

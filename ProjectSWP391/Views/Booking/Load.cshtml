@@ -225,8 +225,8 @@
                                 {
 
                                     <input type="text" value="@Model.Employee.AccountId" asp-for="EmployeeId" style="display: none;">
-                                    <input type="text" value="@(Model.Customer.AccountId == null ? 0 : Model.Customer.AccountId)" asp-for="CustomerId" style="display: none;">
-                                    @if (Model.Customer.AccountId == null)
+                                    <input type="text" value="@(Model.Customer.AccountId)" asp-for="CustomerId" style="display: none;">
+                                    @if (Model.Customer.AccountId == 0)
                                     {
                                         string fullname = Model.Customer.FullName == null ? "N/A" : Model.Customer.FullName;
                                         string email = Model.Customer.Email == null ? "N/A" : Model.Customer.Email;

@@ -23,51 +23,45 @@ namespace ProjectSWP391.Controllers
 
         public Booking? GetCurrentBooking(int? cusID)
         {
-            using (var context = new SWP391_V4Context())
-            {
-                //Customer ID can not equal to 0
-                if (cusID == 0) return null;
-                Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
-                || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == cusID).FirstOrDefault();
+            //Customer ID can not equal to 0
+            if (cusID == 0) return null;
+            Booking? bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
+            || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == cusID).FirstOrDefault();
 
-                if (bk != null)
-                {
-                    return bk;
-                }
-                return null;
+            if (bk != null)
+            {
+                return bk;
             }
+            return null;
         }
 
         public IActionResult LandingPage(int? booked)
         {
-            using (var context = new SWP391_V4Context())
-            {
-                List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
-                List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
-                ViewBag.ServiceList = services;
+            List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
+            List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
+            ViewBag.ServiceList = services;
 
-                //Check if user has book or not
-                Account? acc = Global.CurrentUser;
-                int? id = acc == null ? 0 : acc.AccountId;
-                Booking? bk = GetCurrentBooking(id);
-                if (bk != null)
+            //Check if user has book or not
+            Account? acc = Global.CurrentUser;
+            int? id = acc == null ? 0 : acc.AccountId;
+            Booking? bk = GetCurrentBooking(id);
+            if (bk != null)
+            {
+                ViewBag.currentBooking = bk;
+            }
+            else
+            {
+                //if guest enter booked phone number then show message
+                if (booked != null)
                 {
-                    ViewBag.currentBooking = bk;
-                }
-                else
-                {
-                    //if guest enter booked phone number then show message
-                    if (booked != null)
+                    Booking? booking = context.Bookings.Where(b => b.BookingId == booked).FirstOrDefault();
+                    if (booking != null)
                     {
-                        Booking? booking = context.Bookings.Where(b => b.BookingId == booked).FirstOrDefault();
-                        if (booking != null)
-                        {
-                            ViewBag.currentBooking = booking;
-                        }
+                        ViewBag.currentBooking = booking;
                     }
                 }
-                return View(products);
             }
+            return View(products);
         }
 
         public IActionResult ProductList(int? page, string? sn, string? sc, int sp)
@@ -75,59 +69,56 @@ namespace ProjectSWP391.Controllers
             // Nếu page = null thì đặt lại là 1.
             if (page == null) page = 1;
 
-            using (var context = new SWP391_V4Context())
+            if (sn == null) sn = String.Empty;
+            ViewBag.searchName = sn;
+            if (sc == null) sc = String.Empty;
+            //filter by name and category
+            var products = (from product in context.Products
+                            join pcategory in context.ProductCategories
+                            on product.PcategoryId equals pcategory.PcategoryId
+                            where product.ProductName.Contains(sn) && pcategory.PcategoryName.Contains(sc)
+                            select product).OrderBy(s => s.PcategoryId);
+            //Get all service category
+            var categories = context.ProductCategories.ToList();
+            ViewBag.categoryFilter = categories;
+            //Save the previous searchCategory
+            ViewBag.searchCategory = sc;
+            //Get Price filter list
+            ViewBag.priceFilter = _PriceFilter;
+            //Save the previuos searchPrice
+            ViewBag.searchPrice = sp;
+            // số service hiển thị trên 1 trang
+            int pageSize = 8;
+
+            int pageNumber = (page ?? 1);
+
+            //filter by price
+            switch (sp)
             {
-                if (sn == null) sn = String.Empty;
-                ViewBag.searchName = sn;
-                if (sc == null) sc = String.Empty;
-                //filter by name and category
-                var products = (from product in context.Products
-                                join pcategory in context.ProductCategories
-                                on product.PcategoryId equals pcategory.PcategoryId
-                                where product.ProductName.Contains(sn) && pcategory.PcategoryName.Contains(sc)
-                                select product).OrderBy(s => s.PcategoryId);
-                //Get all service category
-                var categories = context.ProductCategories.ToList();
-                ViewBag.categoryFilter = categories;
-                //Save the previous searchCategory
-                ViewBag.searchCategory = sc;
-                //Get Price filter list
-                ViewBag.priceFilter = _PriceFilter;
-                //Save the previuos searchPrice
-                ViewBag.searchPrice = sp;
-                // số service hiển thị trên 1 trang
-                int pageSize = 8;
-
-                int pageNumber = (page ?? 1);
-
-                //filter by price
-                switch (sp)
-                {
-                    case 1:
-                        {
-                            var filterProducts = products.Where(s => s.Price < 20).OrderBy(p => p.Price).ToList();
-                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
-                        }
-                    case 2:
-                        {
-                            var filterProducts = products.Where(s => s.Price >= 20 && s.Price <= 50).OrderBy(p => p.Price).ToList();
-                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
-                        }
-                    case 3:
-                        {
-                            var filterProducts = products.Where(s => s.Price > 50 && s.Price <= 75).OrderBy(p => p.Price).ToList();
-                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
-                        }
-                    case 4:
-                        {
-                            var filterProducts = products.Where(s => s.Price > 75).OrderBy(p => p.Price).ToList();
-                            return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
-                        }
-                    default:
-                        {
-                            return View("~/Views/CustomerManagement/ProductList.cshtml", products.ToPagedList(pageNumber, pageSize));
-                        }
-                }
+                case 1:
+                    {
+                        var filterProducts = products.Where(s => s.Price < 20).OrderBy(p => p.Price).ToList();
+                        return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                    }
+                case 2:
+                    {
+                        var filterProducts = products.Where(s => s.Price >= 20 && s.Price <= 50).OrderBy(p => p.Price).ToList();
+                        return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                    }
+                case 3:
+                    {
+                        var filterProducts = products.Where(s => s.Price > 50 && s.Price <= 75).OrderBy(p => p.Price).ToList();
+                        return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                    }
+                case 4:
+                    {
+                        var filterProducts = products.Where(s => s.Price > 75).OrderBy(p => p.Price).ToList();
+                        return View("~/Views/CustomerManagement/ProductList.cshtml", filterProducts.ToPagedList(pageNumber, pageSize));
+                    }
+                default:
+                    {
+                        return View("~/Views/CustomerManagement/ProductList.cshtml", products.ToPagedList(pageNumber, pageSize));
+                    }
             }
         }
 
@@ -145,58 +136,56 @@ namespace ProjectSWP391.Controllers
             // Nếu page = null thì đặt lại là 1.
             if (page == null) page = 1;
 
-            using (var context = new SWP391_V4Context())
+            if (sn == null) sn = String.Empty;
+            ViewBag.searchName = sn;
+            if (sc == null) sc = String.Empty;
+            //filter by name and category
+            var services = (from service in context.Services
+                            join scategory in context.ServiceCategories
+                            on service.ScategoryId equals scategory.ScategoryId
+                            where service.ServiceName.Contains(sn) && scategory.ScategoryName.Contains(sc)
+                            select service).OrderBy(s => s.ServiceId);
+            //Get all service category
+            var categories = context.ServiceCategories.ToList();
+            ViewBag.categoryFilter = categories;
+            //Save the previous searchCategory
+            ViewBag.searchCategory = sc;
+            //Get Price filter list
+            ViewBag.priceFilter = _PriceFilter;
+            //Save the previuos searchPrice
+            ViewBag.searchPrice = sp;
+            // số service hiển thị trên 1 trang
+            int pageSize = 6;
+
+            int pageNumber = (page ?? 1);
+
+            //filter by price
+            switch (sp)
             {
-                if (sn == null) sn = String.Empty;
-                ViewBag.searchName = sn;
-                if (sc == null) sc = String.Empty;
-                //filter by name and category
-                var services = (from service in context.Services join scategory in context.ServiceCategories
-                                on service.ScategoryId equals scategory.ScategoryId
-                                where service.ServiceName.Contains(sn) && scategory.ScategoryName.Contains(sc)
-                                select service).OrderBy(s => s.ServiceId);
-                //Get all service category
-                var categories = context.ServiceCategories.ToList();
-                ViewBag.categoryFilter = categories;
-                //Save the previous searchCategory
-                ViewBag.searchCategory = sc;
-                //Get Price filter list
-                ViewBag.priceFilter = _PriceFilter;
-                //Save the previuos searchPrice
-                ViewBag.searchPrice = sp;
-                // số service hiển thị trên 1 trang
-                int pageSize = 6;
-
-                int pageNumber = (page ?? 1);
-
-                //filter by price
-                switch (sp)
-                {
-                    case 1:
-                        {
-                            var filterServices = services.Where(s => s.Price < 20).OrderBy(s => s.Price).ToList();
-                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
-                        }
-                    case 2:
-                        {
-                            var filterServices = services.Where(s => s.Price >= 20 && s.Price <= 50).OrderBy(s => s.Price).ToList();
-                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
-                        }
-                    case 3:
-                        {
-                            var filterServices = services.Where(s => s.Price > 50 && s.Price <= 75).OrderBy(s => s.Price).ToList();
-                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
-                        }
-                    case 4:
-                        {
-                            var filterServices = services.Where(s => s.Price > 75).OrderBy(s => s.Price).ToList();
-                            return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
-                        }
-                    default:
-                        {
-                            return View("~/Views/CustomerManagement/ServiceList.cshtml", services.ToPagedList(pageNumber, pageSize));
-                        }
-                }
+                case 1:
+                    {
+                        var filterServices = services.Where(s => s.Price < 20).OrderBy(s => s.Price).ToList();
+                        return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                    }
+                case 2:
+                    {
+                        var filterServices = services.Where(s => s.Price >= 20 && s.Price <= 50).OrderBy(s => s.Price).ToList();
+                        return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                    }
+                case 3:
+                    {
+                        var filterServices = services.Where(s => s.Price > 50 && s.Price <= 75).OrderBy(s => s.Price).ToList();
+                        return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                    }
+                case 4:
+                    {
+                        var filterServices = services.Where(s => s.Price > 75).OrderBy(s => s.Price).ToList();
+                        return View("~/Views/CustomerManagement/ServiceList.cshtml", filterServices.ToPagedList(pageNumber, pageSize));
+                    }
+                default:
+                    {
+                        return View("~/Views/CustomerManagement/ServiceList.cshtml", services.ToPagedList(pageNumber, pageSize));
+                    }
             }
         }
 
@@ -206,12 +195,11 @@ namespace ProjectSWP391.Controllers
             string searchName = Request.Form["searchName"];
             string searchCategory = Request.Form["searchCategory"];
             int searchPrice = Convert.ToInt32(Request.Form["searchPrice"]);
-            return ServiceList(1,searchName,searchCategory, searchPrice);
+            return ServiceList(1, searchName, searchCategory, searchPrice);
         }
 
         public IActionResult ServiceDetail(int? sId)
         {
-            using var context = new SWP391_V4Context();
             Service? service = context.Services.Where(s => s.ServiceId == sId).FirstOrDefault();
             if (service == null)
             {
@@ -276,7 +264,7 @@ namespace ProjectSWP391.Controllers
                     int totalItems = feedbacks.Count;
                     int totalPages = (int)Math.Ceiling(totalItems / (double)pageFeedbackSize);
                     int skip = (pageFeedback - 1) * pageFeedbackSize;
-                    feedbacks = feedbacks.Skip(skip).OrderByDescending(f => f.Date).Take(pageFeedbackSize).ToList();
+                    feedbacks = feedbacks.Skip(skip).Take(pageFeedbackSize).ToList();
 
                     ViewBag.Accounts = accounts;
                     ViewBag.Feedbacks = feedbacks;
@@ -351,102 +339,108 @@ namespace ProjectSWP391.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        public IActionResult BlogList(bool myBlog, int sort)
+        public IActionResult BlogList(int? page, string sName, bool myBlog, int sort)
         {
-            using (var context = new SWP391_V4Context())
+            if (page == null) page = 1;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+            ViewBag.isMyBlog = myBlog;
+            ViewBag.sort = sort;
+            sName = (sName == null ? "" : sName);
+            ViewBag.searchName = sName;
+
+            //if user view blog list with authenticated account then show thier own blogs
+            if (myBlog)
             {
-                ViewBag.isMyBlog = myBlog;
-                //if user view blog list with authenticated account then show thier own blogs
-                if (myBlog)
+                //if sort by lastest blogs
+                if (sort == 1)
                 {
-                    //if sort by lastest blogs
-                    if (sort == 1)
+                    var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId && (b.Title.Contains(sName) || b.Account.Email.Contains(sName))).OrderByDescending(b => b.BlogId).Select(b => new
                     {
-                        var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).OrderByDescending(b => b.BlogId).Select(b => new
-                        {
-                            ID = b.BlogId,
-                            Title = b.Title,
-                            Content = b.Content,
-                            Author = b.Account.Email,
-                            Date = b.BlogDate
-                        }).ToList();
-                        ViewBag.blogList = myblogs;
-                    }
-                    //if sort by oldest blogs
-                    else if (sort == 2)
-                    {
-                        var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).OrderBy(b => b.BlogId).Select(b => new
-                        {
-                            ID = b.BlogId,
-                            Title = b.Title,
-                            Content = b.Content,
-                            Author = b.Account.Email,
-                            Date = b.BlogDate
-                        }).ToList();
-                        ViewBag.blogList = myblogs;
-                    }
-                    else
-                    {
-                        var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId).Select(b => new
-                        {
-                            ID = b.BlogId,
-                            Title = b.Title,
-                            Content = b.Content,
-                            Author = b.Account.Email,
-                            Date = b.BlogDate
-                        }).ToList();
-                        ViewBag.blogList = myblogs;
-                    }
+                        ID = b.BlogId,
+                        Title = b.Title,
+                        Content = b.Content,
+                        Author = b.Account.Email,
+                        Date = b.BlogDate
+                    }).ToList();
+                    return View(myblogs.ToPagedList(pageNumber, pageSize));
                 }
-                //else show all blogs
+                //if sort by oldest blogs
+                else if (sort == 2)
+                {
+                    var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId && (b.Title.Contains(sName) || b.Account.Email.Contains(sName))).OrderBy(b => b.BlogId).Select(b => new
+                    {
+                        ID = b.BlogId,
+                        Title = b.Title,
+                        Content = b.Content,
+                        Author = b.Account.Email,
+                        Date = b.BlogDate
+                    }).ToList();
+                    return View(myblogs.ToPagedList(pageNumber, pageSize));
+                }
                 else
                 {
-                    //if sort by lastest blogs
-                    if (sort == 1)
+                    var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId && (b.Title.Contains(sName) || b.Account.Email.Contains(sName))).Select(b => new
                     {
-                        var myblogs = context.Blogs.OrderByDescending(b => b.BlogId).Select(b => new
-                        {
-                            ID = b.BlogId,
-                            Title = b.Title,
-                            Content = b.Content,
-                            Author = b.Account.Email,
-                            Date = b.BlogDate
-                        }).ToList();
-                        ViewBag.blogList = myblogs;
-                    }
-                    //if sort by oldest blogs
-                    else if (sort == 2)
-                    {
-                        var myblogs = context.Blogs.OrderBy(b => b.BlogId).Select(b => new
-                        {
-                            ID = b.BlogId,
-                            Title = b.Title,
-                            Content = b.Content,
-                            Author = b.Account.Email,
-                            Date = b.BlogDate
-                        }).ToList();
-                        ViewBag.blogList = myblogs;
-                    }
-                    else
-                    {
-                        var myblogs = context.Blogs.Select(b => new
-                        {
-                            ID = b.BlogId,
-                            Title = b.Title,
-                            Content = b.Content,
-                            Author = b.Account.Email,
-                            Date = b.BlogDate
-                        }).ToList();
-                        ViewBag.blogList = myblogs;
-                    }
+                        ID = b.BlogId,
+                        Title = b.Title,
+                        Content = b.Content,
+                        Author = b.Account.Email,
+                        Date = b.BlogDate
+                    }).ToList();
+                    return View(myblogs.ToPagedList(pageNumber, pageSize));
                 }
-                return View();
+            }
+            //else show all blogs
+            else
+            {
+                //if sort by lastest blogs
+                if (sort == 1)
+                {
+                    var myblogs = context.Blogs.Where(b => b.Title.Contains(sName) || b.Account.Email.Contains(sName)).OrderByDescending(b => b.BlogId).Select(b => new
+                    {
+                        ID = b.BlogId,
+                        Title = b.Title,
+                        Content = b.Content,
+                        Author = b.Account.Email,
+                        Date = b.BlogDate
+                    }).ToList();
+                    return View(myblogs.ToPagedList(pageNumber, pageSize));
+                }
+                //if sort by oldest blogs
+                else if (sort == 2)
+                {
+                    var myblogs = context.Blogs.Where(b => b.Title.Contains(sName) || b.Account.Email.Contains(sName)).OrderBy(b => b.BlogId).Select(b => new
+                    {
+                        ID = b.BlogId,
+                        Title = b.Title,
+                        Content = b.Content,
+                        Author = b.Account.Email,
+                        Date = b.BlogDate
+                    }).ToList();
+                    return View(myblogs.ToPagedList(pageNumber, pageSize));
+                }
+                else
+                {
+                    var blogs = context.Blogs.Where(b => b.Title.Contains(sName) || b.Account.Email.Contains(sName)).Select(b => new
+                    {
+                        ID = b.BlogId,
+                        Title = b.Title,
+                        Content = b.Content,
+                        Author = b.Account.Email,
+                        Date = b.BlogDate
+                    });
+                    return View(blogs.ToPagedList(pageNumber, pageSize));
+                }
             }
         }
 
-        public IActionResult CreateBlog()
+        public IActionResult CreateBlog(int blogId)
         {
-            return View();
+            //Find blog to edit
+            Blog? blog = context.Blogs.FirstOrDefault(b => b.BlogId == blogId);
+            return View(blog);
         }
 
         [HttpPost]
@@ -484,23 +478,60 @@ namespace ProjectSWP391.Controllers
         {
             blog.BlogDate = DateTime.Now;
             blog.AccountId = Global.CurrentUser.AccountId;
-            using var context = new SWP391_V4Context();
             context.Blogs.Add(blog);
             context.SaveChanges();
-            return RedirectToAction("BlogList");
+            return RedirectToAction("BlogList", new { sName = String.Empty, myBlog = true, sort = 0 });
         }
 
         public IActionResult BlogDetail(int id)
         {
-            using var context = new SWP391_V4Context();
-            Blog blog = context.Blogs.FirstOrDefault(b => b.BlogId == id);
-            if(blog != null)
+            Blog? blog = context.Blogs.FirstOrDefault(b => b.BlogId == id);
+            if (blog != null)
             {
-                Account author = context.Accounts.FirstOrDefault(a => a.AccountId == blog.AccountId);
+                Account? author = context.Accounts.FirstOrDefault(a => a.AccountId == blog.AccountId);
                 blog.Account = author;
                 return View(blog);
             }
             return RedirectToAction("BlogList");
+        }
+
+        [HttpPost]
+        public IActionResult SearchBlog(string searchName, bool isMyBlog, int sortDate)
+        {
+            return RedirectToAction("BlogList", new { sName = searchName, myBlog = isMyBlog, sort = sortDate });
+        }
+
+        public IActionResult DeleteBlog(int id)
+        {
+            Blog? blog = context.Blogs.FirstOrDefault(b => b.BlogId == id);
+            if (blog != null)
+            {
+                context.Remove(blog);
+                context.SaveChanges();
+            }
+            string searchName = string.Empty;
+            int sortDate = 0;
+            bool isMyBlog = true;
+            return RedirectToAction("BlogList", new { sName = searchName, myBlog = isMyBlog, sort = sortDate });
+        }
+
+        public IActionResult EditBlog(int id)
+        {
+            return RedirectToAction("CreateBlog", new { blogID = id });
+        }
+
+        [HttpPost]
+        public IActionResult EditBlog(Blog blog)
+        {
+            Blog? b = context.Blogs.FirstOrDefault(b => b.BlogId == blog.BlogId);
+            if (b != null)
+            {
+                b.Title = blog.Title;
+                b.Content = blog.Content;
+                b.BlogDate = DateTime.Now;
+                context.SaveChanges();
+            }
+            return RedirectToAction("BlogList", new { sName = String.Empty, myBlog = true, sort = 0 });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
