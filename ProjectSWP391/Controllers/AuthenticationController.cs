@@ -9,6 +9,11 @@ using ProjectSWP391.Models.Library;
 using System.Text.RegularExpressions;
 using System.Security.Policy;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace ProjectSWP391.Controllers
 {
@@ -22,13 +27,13 @@ namespace ProjectSWP391.Controllers
             context = _context;
         }
 
-
+        
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Login(Account a)
+        public async Task<IActionResult> Login(Account a)
         {
             if (string.IsNullOrWhiteSpace(a.Email))
             {
@@ -50,14 +55,17 @@ namespace ProjectSWP391.Controllers
             else
             {
                 Global.CurrentUser = account;
+                var claims = new[] { new Claim(ClaimTypes.Role, account.Role.ToString()) };
+                var principal = new ClaimsPrincipal(new ClaimsIdentity(claims, "CustomApiKeyAuth"));
+                await HttpContext.SignInAsync("Auth", principal, new AuthenticationProperties { AllowRefresh = true, ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30), IsPersistent = true });
                 //message
                 if (account.Role == 1)
                 {
-                    return View("~/Views/AdminManagement/ADashBoard.cshtml");
+                    return RedirectToAction("Admin");
                 }
                 else if (account.Role == 2)
                 {
-                    return View("~/Views/EmployeeManagement/EDashBoard.cshtml");
+                    return RedirectToAction("Employee");
                 }
                 else
                 {
@@ -265,10 +273,12 @@ namespace ProjectSWP391.Controllers
         }
 
         #region will delete when merge
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1,2")]
         public IActionResult Admin()
         {
             return View();
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "2")]
         public IActionResult Employee()
         {
             return View();
