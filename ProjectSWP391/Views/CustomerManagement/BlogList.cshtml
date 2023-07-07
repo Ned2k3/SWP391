@@ -1,5 +1,6 @@
 ﻿@using ProjectSWP391.Models;
 @using ProjectSWP391.Models.ServiceModel;
+@model dynamic
 
 <body>
     <div class="row justify-content-between align-items-center">
@@ -8,14 +9,16 @@
         </div>
         <!--Search and filter area-->
         <div style="float: right; display: flex; justify-content: end; flex-direction: row; padding: 40px 5vw 40px 0;">
-            <form style="height: 100%;">
+            <form style="height: 100%;" action="/CustomerManagement/SearchBlog" method="post">
                 <div id="search-area" style="width: fit-content; height: 40px; border: none; border-radius: 30px;
                                   display: flex; padding: 5px 10px 5px 10px; margin-right: 10px; border: 1px solid black;">
                     <div>
                         <button type="submit" style="border: none; background: none;"><i class="fa-solid fa-magnifying-glass" style="cursor: pointer;"></i></button>
                     </div>
                     <div style="padding: 0 10px 0 10px; font-size: 16px;">
-                        <input class="search-bar" type="search" placeholder="What are you looking for?" />
+                        <input class="search-bar" type="search" placeholder="What are you looking for?" value="@ViewBag.searchName" name="searchName" />
+                        <input style="display: none;" type="text" value="@(ViewBag.isMyBlog.ToString())" name="isMyBlog" />
+                        <input style="display: none;" type="text" value="@ViewBag.sort" name="sortDate" />
                     </div>
                 </div>
             </form>
@@ -30,13 +33,29 @@
                 <ul class="dropdown-menu">
                     @if (ViewBag.isMyBlog)
                     {
-                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1&myBlog=true">Latest Blogs</a></li>
-                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2&myBlog=true">Oldest Blogs</a></li>
+                        if (ViewBag.searchName.Length != 0)
+                        {
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1&myBlog=true&sName=@ViewBag.searchName">Latest Blogs</a></li>
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2&myBlog=true&sName=@ViewBag.searchName">Oldest Blogs</a></li>
+                        }
+                        else
+                        {
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1&myBlog=true">Latest Blogs</a></li>
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2&myBlog=true">Oldest Blogs</a></li>
+                        }
                     }
                     else
                     {
-                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1" style="color: black;">Latest Blogs</a></li>
-                        <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2" style="color: black;">Oldest Blogs</a></li>
+                        if (ViewBag.searchName.Length != 0)
+                        {
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1&sName=@ViewBag.searchName" style="color: black;">Latest Blogs</a></li>
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2&sName=@ViewBag.searchName" style="color: black;">Oldest Blogs</a></li>
+                        }
+                        else
+                        {
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-bottom: 1px solid black; border-radius: 5px 5px 0 0; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=1" style="color: black;">Latest Blogs</a></li>
+                            <li class="drop-down-list" style="padding: 10px; line-height: 1; border-radius: 0 0 5px 5px; font-size: 15px;"><a href="/CustomerManagement/BlogList?sort=2" style="color: black;">Oldest Blogs</a></li>
+                        }
                     }
                 </ul>
             </div>
@@ -51,11 +70,11 @@
     </div><!--End Filter and search area-->
 
     <div class="container">
-        <div class="row row-cols-2" style="padding: 10px 18px 0 0">
-            @foreach (var item in ViewBag.blogList)
+        <div class="row row-cols-1 justify-content-center" style="padding: 10px 0 20px 0">
+            @foreach (var item in Model)
             {
-                <a href="/CustomerManagement/BlogDetail?id=@item.ID" style="color: black;">
-                    <div class="col" style="box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.75); background-color: ghostwhite; border-radius: 5px; display: inline-block; padding: 5px 20px 20px 20px; margin: 0 0 8px 8px; height: 300px; overflow-y: hidden;">
+                <div class="col" style="box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.75); background-color: ghostwhite; border-radius: 5px; display: inline-block; padding: 5px 20px 0 20px; margin: 0 0 10px 0; height: fit-content; ">
+                    <a href="/CustomerManagement/BlogDetail?id=@item.ID" style="color: black;">
                         <div style="display: flex; justify-content: space-between; height: fit-content; padding: 10px 0 5px 0; line-height: 1;">
                             <div class="author" style="display: flex; align-items: center;">
                                 <div style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'); background-size: cover; background-position: center; border: 1px solid black; border-radius: 50%; height: 40px; width: 40px; margin-right: 10px;"></div>
@@ -63,14 +82,86 @@
                             </div>
 
                             <div style="display: flex; align-items: center;">
-                                <p style="font-size: 16px; color: silver">@item.Date.ToString("dd/MM/yyyy")</p>
+                                <p style="font-size: 16px; color: silver">@(item.Date.ToString("dd-MM-yyyy"))</p>
                             </div>
                         </div>
                         <div style="padding: 5px 0 5px 0; text-transform: capitalize;"><h5>@item.Title</h5></div>
-                        <div style="padding: 5px 0 10px 0;">@Html.Raw(item.Content)</div>
-                    </div>
-                </a>
+                        <div style="padding: 5px 0 5px 0; max-height: 300px; overflow: hidden;">@Html.Raw(item.Content)</div>
+                    </a>
+                    @if (ViewBag.isMyBlog)
+                    {
+                        <div style="padding: 20px 0 20px 0">
+                            <a href="/CustomerManagement/DeleteBlog?id=@item.ID" style="color: red">Delete</a>
+                            <a class="edit-btn" href="/CustomerManagement/EditBlog?id=@item.ID">Edit</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="padding: 10px 0 0 0; min-height: 30px">
+                        </div>
+                    }
+                </div>
             }
+        </div>
+
+        <!--Paging here-->
+        <div class="row mt-4">
+            <div class="pagination">
+                @if (Model.PageCount > 1)
+                {
+                    <ul class="pagination-list">
+                        @if (Model.PageCount > 3)
+                        {
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/BlogList?page=1&sName=@(ViewBag.searchName)&myBlog=@(ViewBag.isMyBlog)&sort=@(ViewBag.sort)"><i class="fa-solid fa-angles-left"></i></a></li>
+                        }
+                        @if (Model.HasPreviousPage)
+                        {
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/BlogList?page=@(Model.PageNumber-1))&sName=@(ViewBag.searchName)&myBlog=@(ViewBag.isMyBlog)&sort=@(ViewBag.sort)"><i class="fa-solid fa-angle-left"></i></a></li>
+                        }
+                        @{
+                            if (Model.PageCount == 2)
+                            {
+                                for (int i = 1; i <= 2; i++)
+                                {
+                                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "BlogList", new { page = i, Model.PageSize, sName = ViewBag.searchName, myBlog = ViewBag.isMyBlog, sort = ViewBag.sort })</li>
+                                }
+                            }
+                            else
+                            {
+                                if (Model.PageNumber == 1)
+                                {
+                                    for (int i = 1; i <= 3; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "BlogList", new { page = i, Model.PageSize, sName = ViewBag.searchName, myBlog = ViewBag.isMyBlog, sort = ViewBag.sort })</li>
+                                    }
+                                }
+                                else if (Model.PageNumber == Model.PageCount)
+                                {
+                                    for (int i = Model.PageCount - 2; i <= Model.PageCount; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "BlogList", new { page = i, Model.PageSize, sName = ViewBag.searchName, myBlog = ViewBag.isMyBlog, sort = ViewBag.sort })</li>
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = Model.PageNumber - 1; i <= Model.PageNumber + 1; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">@Html.ActionLink(i.ToString(), "BlogList", new { page = i, Model.PageSize, sName = ViewBag.searchName, myBlog = ViewBag.isMyBlog, sort = ViewBag.sort })</li>
+                                    }
+                                }
+                            }
+                        }
+                        @if (Model.HasNextPage)
+                        {
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/BlogList?page=@(Model.PageNumber+1)&sName=@(ViewBag.searchName)&myBlog=@(ViewBag.isMyBlog)&sort=@(ViewBag.sort)"><i class="fa-solid fa-angle-right"></i></a></li>
+                        }
+                        @if (Model.PageCount > 3)
+                        {
+                            <li class="page-item navigation nav2"><a href="/CustomerManagement/BlogList?page=@(Model.PageCount)&sName=@(ViewBag.searchName)&myBlog=@(ViewBag.isMyBlog)&sort=@(ViewBag.sort)"><i class="fa-solid fa-angles-right"></i></a></li>
+                        }
+                    </ul>
+                }
+            </div>
         </div>
     </div>
 
@@ -82,7 +173,7 @@
         text-decoration: none;
     }
 
-    p{
+    p {
         margin-bottom: 0;
     }
 
@@ -133,4 +224,59 @@
     .drop-down-list:hover {
         background-color: dodgerblue;
     }
+
+    .edit-btn {
+        border: 0.5px solid black;
+        border-radius: 4px;
+        padding: 2px 8px 2px 8px;
+        margin-left: 10px;
+    }
+
+        .edit-btn:hover {
+            background-color: black;
+            color: white;
+        }
+
+    .pagination {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .pagination-list {
+        display: inherit;
+        width: fit-content;
+        list-style: none;
+    }
+
+    .page-item {
+        min-width: 30px;
+        margin-left: 5px;
+        margin-right: 5px;
+        border: 1px solid black;
+        border-radius: 50%;
+        text-align: center;
+    }
+
+        .page-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .page-item.active {
+            background-color: black;
+        }
+
+            .page-item.active a {
+                color: white;
+            }
+
+        .page-item.navigation {
+            align-content: center;
+            border: none;
+        }
+
+            .page-item.navigation.nav1 a {
+                font-weight: bold;
+            }
 </style>

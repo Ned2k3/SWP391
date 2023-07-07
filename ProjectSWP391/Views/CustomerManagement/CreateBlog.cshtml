@@ -13,7 +13,7 @@
 <body>
     @if (Global.CurrentUser == null)
     {
-        <h5 class="text-danger text-center" style="margin: 10vh;">Please login to create a new blog <a href="/Authentication/Login">Login</a></h5>
+        <h5 class="text-danger text-center" style="margin-top: 40vh;">Please login to create a new blog <a href="/Authentication/Login">Login</a></h5>
     }
     else
     {
@@ -21,19 +21,39 @@
             <h3 class="text-center fw-bold">Smart Beauty Blogs</h3>
         </div>
         <div style="width: 100%; padding: 0; background-color: #eeeeee;">
-            <form id="myForm" asp-action="CreateBlog" asp-controller="CustomerManagement" method="post">
+            <form id="myForm" asp-action="@(Model != null?"EditBlog":"CreateBlog")" asp-controller="CustomerManagement" method="post">
                 <div style="width: 100%; display: flex; padding: 15px 25px 15px 25px; background-color: white;">
                     <div style="flex-grow: 19; margin-right: 20px;">
                         <label id="title_lb" style="font-size: 18px; font-weight: bold; transition: font-size 0.5s ease;">Blog Title</label><br />
-                        <input asp-for="Title" id="title_tb" type="text" style="border: none; outline: none; border-bottom: 2px solid red; width: 100%; font-size: 16px;" name="title" title="Blog title contains 20 - 200 characters" required />
+                        @if (Model != null)
+                        {
+                            <input asp-for="Title" id="title_tb" type="text" value="@Model.Title" style="border: none; outline: none; border-bottom: 2px solid red; width: 100%; font-size: 16px;" name="title" title="Blog title contains 20 - 200 characters" required />
+                            <input type="text" value="@Model.BlogId" asp-for="BlogId" style="display: none" />
+                        }
+                        else
+                        {
+                            <input asp-for="Title" id="title_tb" type="text" style="border: none; outline: none; border-bottom: 2px solid red; width: 100%; font-size: 16px;" name="title" title="Blog title contains 20 - 200 characters" required />
+                        }
                     </div>
-                    <button id="submit_btn" type="submit" style="border: none; border-radius: 5px; height: 50px; color: white; background-color: lightgray; flex-grow: 1" disabled><i class="fa-solid fa-caret-right fa-lg"></i> Post</button>
+                    @if (Model != null)
+                    {
+                        <button id="submit_btn" type="submit" style="border: none; border-radius: 5px; height: 50px; color: white; background-color: lightgray; flex-grow: 1" disabled><i class="fa-solid fa-caret-right fa-lg"></i> Update</button>
+                    }
+                    else
+                    {
+                        <button id="submit_btn" type="submit" style="border: none; border-radius: 5px; height: 50px; color: white; background-color: lightgray; flex-grow: 1" disabled><i class="fa-solid fa-caret-right fa-lg"></i> Post</button>
+                    }
                 </div>
                 <textarea asp-for="Content" id="myTextarea" name="content" style="border-radius: 5px; box-shadow: 0px 16px 46px -22px rgba(0,0,0,0.75)" required pattern="^.{100,}$" title="You must write at least 50 characters"></textarea>
             </form>
         </div>
         <script>
             var content = "";
+            var form = document.getElementById("myForm");
+            var text_area = document.getElementById("myTextarea");
+            var button = document.getElementById("submit_btn");
+            var title_tb = document.getElementById("title_tb");
+
             tinymce.init({
                 selector: "textarea",
                 height: 800,
@@ -50,6 +70,11 @@
                 content_css: [
                     '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
                 ],
+                init_instance_callback: function (editor) {
+                    var content = editor.getContent();
+                    var modifiedContent = modifyImgElements(content);
+                    editor.setContent(modifiedContent);
+                },
                 setup: function (editor) {
                     editor.on('input', function () {
                         content = editor.getContent().replace(/<[^>]+>/g, '');
@@ -62,8 +87,9 @@
                             button.style.backgroundColor = "lightgray";
                         }
                     });
-                    editor.on('paste', function () {
-                        content = editor.getContent().replace(/<[^>]+>/g, '');
+                    editor.on('paste', function (e) {
+                        var clipboardData = e.clipboardData || window.clipboardData;
+                        content = clipboardData.getData('text/plain');
                         if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
                             button.disabled = false;
                             button.style.backgroundColor = "orange";
@@ -72,6 +98,9 @@
                             button.disabled = true;
                             button.style.backgroundColor = "lightgray";
                         }
+                    });
+                    editor.on('init', function () {
+                        content = editor.getContent();
                     });
                 },
                 images_upload_url: '@Url.Action("UploadImage")',
@@ -97,19 +126,13 @@
                         }
                     });
                 }
-            })
-
-            var form = document.getElementById("myForm");
-            var textarea = document.getElementById("myTextarea");
-            var button = document.getElementById("submit_btn");
-            var title_tb = document.getElementById("title_tb");
-
+            });
 
             // Add an event listener to the button click
             button.addEventListener("click", function (event) {
                 event.preventDefault();
 
-                textarea.innerHTML = tinymce.get("myTextarea").getContent();
+                text_area.innerHTML = tinymce.get("myTextarea").getContent();
 
                 form.submit();
             });
@@ -123,7 +146,7 @@
 
             //Validate the content and title
 
-            title_tb.addEventListener("input", function () {
+            document.getElementById("title_tb").oninput = function () {
                 if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
                     button.disabled = false;
                     button.style.backgroundColor = "orange";
@@ -132,8 +155,21 @@
                     button.disabled = true;
                     button.style.backgroundColor = "lightgray";
                 }
-            });
+            };
 
+            function modifyImgElements(content) {
+                var tempElement = document.createElement('div');
+                tempElement.innerHTML = content;
+
+                var imgElements = tempElement.getElementsByTagName('img');
+                for (var i = 0; i < imgElements.length; i++) {
+                    var imgElement = imgElements[i];
+                    imgElement.style.width = "100%";
+                    imgElement.style.height = "auto";
+                }
+
+                return tempElement.innerHTML;
+            }
         </script>
     }
 </body>
@@ -158,6 +194,11 @@
         border-bottom: 2px solid green;
     }
 
+    textarea img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
 </style>
 
 
