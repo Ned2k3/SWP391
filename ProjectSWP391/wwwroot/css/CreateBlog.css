@@ -6,6 +6,12 @@
     margin-top: 20px;
 }
 
+    .tox .tox-edit-area img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
 .tox-tinymce {
     border: 0;
 }

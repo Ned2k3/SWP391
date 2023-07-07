@@ -15,7 +15,7 @@ namespace ProjectSWP391.Controllers
     {
         [BindProperty]
         private Booking booking { get; set; } = new Booking();
-        
+
         //Used to load the list of selected service
         public List<ServiceList>? GetSelectedService()
         {
@@ -45,7 +45,7 @@ namespace ProjectSWP391.Controllers
             using (var context = new SWP391_V4Context())
             {
                 var session = HttpContext.Session;
-                if(sID != 0)
+                if (sID != 0)
                 {
                     //if the adding service is not in the list
                     List<ServiceList> selectionList = GetSelectedService();
@@ -80,7 +80,7 @@ namespace ProjectSWP391.Controllers
                     //if the adding service is not in the list
                     List<ServiceList> selectionList = GetSelectedService();
                     ServiceList? sl = selectionList.Where(s => s.Service.ServiceId == sID).FirstOrDefault();
-                    if(sl != null)
+                    if (sl != null)
                     {
                         selectionList.Remove(sl);
                         SaveSelectedService(selectionList);
@@ -262,7 +262,7 @@ namespace ProjectSWP391.Controllers
                     {
                         AddSelectedService(sID);
                     }
-                    else if(step == 3)
+                    else if (step == 3)
                     {
                         RemoveSelectedService(sID);
                     }
@@ -271,7 +271,9 @@ namespace ProjectSWP391.Controllers
                         session.Remove("phone");
                         session.Remove("bookingDate");
                         List<ServiceList>? selectionList = GetSelectedService();
+                        selectionList.Clear();
                         SaveSelectedService(selectionList);
+                        AddSelectedService(sID);
                     }
                 }
                 else
@@ -310,7 +312,7 @@ namespace ProjectSWP391.Controllers
             {
                 var account = context.Accounts.Where(a => a.Phone == phone && a.Role == null).FirstOrDefault();
                 Booking? bk;
-                if(account != null)
+                if (account != null)
                 {
                     bk = context.Bookings.Where(b => ((b.BookingDate.Date == DateTime.Today.Date && b.Shift > DateTime.Now.Hour)
                          || (b.BookingDate.Date > DateTime.Today.Date)) && b.CustomerId == account.AccountId).FirstOrDefault();
@@ -386,7 +388,10 @@ namespace ProjectSWP391.Controllers
                 }
                 else
                 {
-                    int sID = Convert.ToInt32(session.GetString("serviceID"));
+                    if (session.GetString("phone") != null)
+                    {
+                        session.Clear();
+                    }
                     string? name = Request.Form["fullname"].ToString().Trim();
                     string? email = Request.Form["email"].ToString().Trim();
                     session.SetString("phone", phoneNumber.ToString());
@@ -415,7 +420,8 @@ namespace ProjectSWP391.Controllers
                             }
                             booking.Customer = acc;
                         }
-                        AddSelectedService(sID);
+                        List<ServiceList> sl = GetSelectedService();
+                        SaveSelectedService(sl);
                     }
                 }
             }
@@ -453,9 +459,9 @@ namespace ProjectSWP391.Controllers
                 }
                 //Add new record for service selection
                 List<ServiceList>? selectionList = GetSelectedService();
-                if(selectionList != null)
+                if (selectionList != null)
                 {
-                    foreach(var item in selectionList)
+                    foreach (var item in selectionList)
                     {
                         ServiceList sl = new ServiceList()
                         {
@@ -484,7 +490,7 @@ namespace ProjectSWP391.Controllers
                         ServiceName = s.Service.ServiceName,
                         Price = s.Service.Price
                     }).ToList();
-                    if(selectionList != null)
+                    if (selectionList != null)
                     {
                         ViewBag.selectionList = selectionList;
                     }
