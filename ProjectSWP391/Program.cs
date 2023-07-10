@@ -14,6 +14,7 @@ builder.Services.AddCors();
 builder.Services.AddDbContext<SWP391_V4Context>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("PRNDB")));
 
+
 builder.Services.AddSession(cfg =>
 {
     cfg.Cookie.Name = "SWP391";

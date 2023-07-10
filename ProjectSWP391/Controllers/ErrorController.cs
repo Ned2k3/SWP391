@@ -12,5 +12,13 @@ namespace ProjectSWP391.Controllers
         {
             return View();
         }
+        public IActionResult CommonError()
+        {
+            return View();
+        }
+        public IActionResult TimeCounter()
+        {
+            return View();
+        }
     }
 }

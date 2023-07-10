@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Counter Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var remainingTime = 20 // Remaining time in seconds
+
+            // Update the timer display
+            function updateTimer() {
+                var minutes = Math.floor(remainingTime / 60);
+                var seconds = remainingTime % 60;
+
+                // Display the remaining time
+                $('#timer').text(minutes + " minutes " + seconds + " seconds");
+
+                // Decrement the remaining time
+                remainingTime--;
+
+                // Check if the remaining time has reached zero
+                if (remainingTime < 0) {
+                    clearInterval(timerInterval);
+                    $('#timer').text("Expired");
+                }
+            }
+
+            // Update the timer every second
+            var timerInterval = setInterval(updateTimer, 1000);
+        });
+    </script>
+</head>
+<body>
+    <h3>Remaining Time: <span id="timer"></span></h3>
+</body>
+</html>

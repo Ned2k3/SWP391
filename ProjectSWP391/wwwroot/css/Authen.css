@@ -5,9 +5,9 @@
 }
 
 .login-container {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 50px;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -77,4 +77,9 @@ button[type="submit"] {
     font-size: 18px;
     color: lawngreen;
     margin-bottom: 10px;
+}
+#timer {
+    font-size: 16px;
+    color: #ff9800;
+    font-weight: bold;
 }
