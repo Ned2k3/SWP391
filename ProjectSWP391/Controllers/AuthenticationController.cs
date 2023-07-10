@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace ProjectSWP391.Controllers
 {
@@ -57,7 +58,8 @@ namespace ProjectSWP391.Controllers
                 Global.CurrentUser = account;
                 var claims = new[] { new Claim(ClaimTypes.Role, account.Role.ToString()) };
                 var principal = new ClaimsPrincipal(new ClaimsIdentity(claims, "CustomApiKeyAuth"));
-                await HttpContext.SignInAsync("Auth", principal, new AuthenticationProperties { AllowRefresh = true, ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30), IsPersistent = true });
+                DateTimeOffset timerStop = DateTimeOffset.UtcNow.AddMinutes(30);
+                await HttpContext.SignInAsync("Auth", principal, new AuthenticationProperties { AllowRefresh = true, ExpiresUtc = timerStop, IsPersistent = true });
                 //message
                 if (account.Role == 1)
                 {
@@ -106,7 +108,7 @@ namespace ProjectSWP391.Controllers
                     Account c = new Account();
                     c.Password = encrypted;
                     c.Email = email;
-                    c.IsActive = true;
+                    c.IsActive = 1;
 
                     context.Add(c);
                     context.SaveChanges();
@@ -150,6 +152,8 @@ namespace ProjectSWP391.Controllers
                 
                 string captchaSession = HttpContext.Session.GetString("captcha").ToString();
                 string emailer = HttpContext.Session.GetString("accountSession").ToString();
+                string captchaExpiration = HttpContext.Session.GetString("captchaExpiration");
+
                 if (string.IsNullOrWhiteSpace(captchaSession)) 
                 {
                     ViewBag.ErrorMsg = "There is no captcha that have been sent to Email, please re-sent";
@@ -159,18 +163,30 @@ namespace ProjectSWP391.Controllers
                 { 
                     if (captchaSession==checkC && email==emailer)
                     {
-                        ViewBag.SuccessMsg = "Captcha have matched. Reset password successful";
-                        var PasswordChange = context.Accounts.FirstOrDefault(x => x.Email == email);
-                        PasswordChange.Password = EncryptionHelper.Encrypt("1");
-                        context.SaveChanges();
-                        
+                        if (captchaExpiration == null || DateTime.UtcNow > DateTime.Parse(captchaExpiration))
+                        {
+                            ViewBag.ErrorMsg = "Captcha expired, please try send email again";
+                            ViewBag.CheckCaptcha = "false";
+                            HttpContext.Session.Remove("captcha");
+                            HttpContext.Session.Remove("accountSession");
+                            return View();
+                        }
+                        else
+                        {
+                            ViewBag.SuccessMsg = "Captcha have matched. Reset password successful";
+                            var PasswordChange = context.Accounts.FirstOrDefault(x => x.Email == email);
+                            PasswordChange.Password = EncryptionHelper.Encrypt("1");
+                            context.SaveChanges();
+                            return View();
+                        }
                     }
                     else
                     {
                         ViewBag.ErrorMsg = "Captcha and/or Account does not matched";
+                        return View();
                     }
                 }
-                return View();
+                
             }
 
             if (string.IsNullOrWhiteSpace(email))
@@ -188,15 +204,17 @@ namespace ProjectSWP391.Controllers
             if (a.Role != null)
             {
                 ViewBag.SuccessMsg = "Email forgoting password have been sent to the Admin, please contact an Admin for more information";
+                a.IsActive = 2;
+                context.SaveChanges();
                 return View();
             }
-            
-
 
             //code nay tao captcha va gan no vao session
+            //session nay duoc gan x minute
             string captcha = CaptchaGeneration.GenerateCaptcha();
             HttpContext.Session.SetString("captcha", captcha);
             HttpContext.Session.SetString("accountSession", email);
+            HttpContext.Session.SetString("captchaExpiration", DateTime.UtcNow.AddMinutes(0.2).ToString());
             ViewBag.CheckCaptcha = "true";
             ViewBag.Captcha = captcha;
         //    string fromMail = "smartbeautygroup5@gmail.com";
@@ -282,6 +300,23 @@ namespace ProjectSWP391.Controllers
         public IActionResult Employee()
         {
             return View();
+        }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
+        public IActionResult AdminPassword()
+        {
+            var a = context.Accounts.Where(acc => acc.IsActive == 2).ToList();
+         
+            return View(a);
+        }
+
+        public IActionResult ApprovePassword(string email)
+        {
+            var a = context.Accounts.Where(e => e.Email == email).SingleOrDefault();
+            a.Password = EncryptionHelper.Encrypt("123");
+            a.IsActive = 1;
+            ViewBag.SuccessMsg = "Pass word change successfully for" + email;
+            context.SaveChanges();
+            return View("Authentication/AdminPassword");
         }
         #endregion
 
