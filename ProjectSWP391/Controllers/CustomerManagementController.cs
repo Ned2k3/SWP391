@@ -39,6 +39,15 @@ namespace ProjectSWP391.Controllers
         {
             List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
             List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
+            var blogs = context.Blogs.OrderByDescending(b => b.BlogDate).Take(4).Select(b => new
+            {
+                ID = b.BlogId,
+                Title = b.Title,
+                Content = b.Content,
+                Date = b.BlogDate,
+                Author = b.Account.FullName
+            }).ToList();
+            ViewBag.BlogList = blogs;
             ViewBag.ServiceList = services;
 
             //Check if user has book or not
@@ -361,7 +370,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.Email,
+                        Author = b.Account.FullName,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -374,19 +383,19 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.Email,
+                        Author = b.Account.FullName,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
                 }
                 else
                 {
-                    var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId && (b.Title.Contains(sName) || b.Account.Email.Contains(sName))).Select(b => new
+                    var myblogs = context.Blogs.Where(b => b.AccountId == Global.CurrentUser.AccountId && (b.Title.Contains(sName) || b.Account.Email.Contains(sName))).OrderBy(b => b.Title).Select(b => new
                     {
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.Email,
+                        Author = b.Account.FullName,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -403,7 +412,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.Email,
+                        Author = b.Account.FullName,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -416,19 +425,19 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.Email,
+                        Author = b.Account.FullName,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
                 }
                 else
                 {
-                    var blogs = context.Blogs.Where(b => b.Title.Contains(sName) || b.Account.Email.Contains(sName)).Select(b => new
+                    var blogs = context.Blogs.Where(b => b.Title.Contains(sName) || b.Account.Email.Contains(sName)).OrderBy(b => b.Title).Select(b => new
                     {
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.Email,
+                        Author = b.Account.FullName,
                         Date = b.BlogDate
                     });
                     return View(blogs.ToPagedList(pageNumber, pageSize));

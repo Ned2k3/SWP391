@@ -75,5 +75,11 @@ namespace ProjectSWP391.Controllers
 
             return View(image);
         }
+
+        public IActionResult CompleteCustomerProfile(int id)
+        {
+            Account acc = context.Accounts.FirstOrDefault(a => a.AccountId == id);
+            return View(acc);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Text.RegularExpressions;
 
 namespace ProjectSWP391.Models.ServiceModel
 {
@@ -17,6 +18,22 @@ namespace ProjectSWP391.Models.ServiceModel
                 nextFiveDays.Add(nextDay);
             }
             return nextFiveDays;
+        }
+
+        public static string ExtractFirstImage(string content)
+        {
+            // Find the first occurrence of an image tag using regex
+            string pattern = @"<img\s.*?src\s*=\s*['""](.*?)['""].*?>";
+            Match match = Regex.Match(content, pattern, RegexOptions.IgnoreCase);
+
+            if (match.Success)
+            {
+                // Extract the image URL from the matched tag
+                string imageUrl = match.Groups[1].Value;
+                return imageUrl;
+            }
+
+            return String.Empty;
         }
     }
 }
