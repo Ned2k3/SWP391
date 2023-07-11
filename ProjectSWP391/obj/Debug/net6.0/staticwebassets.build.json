@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qmT8VUn7C1NB+37mO5Qw6Cvsn19G3VSkfLCw3qEbEBQ=",
+  "Hash": "53FiGZOkf0wC96Nuu/+h1R+aN4QU5aj2ayRqdgRBP4M=",
   "Source": "ProjectSWP391",
   "BasePath": "_content/ProjectSWP391",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Table.css",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "css/Table.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Table.css"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\favicon.ico",
@@ -1188,6 +1205,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Profile\\ProfileIndex\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "Uploads/bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg"
     }
   ]
 }
