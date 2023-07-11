@@ -8,10 +8,9 @@
     <div class="container">
         <form id="personal-info-form" asp-action="EditProfile" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" value="@(userInfor.Email)" required>
-            </div>
-            <div class="form-group">
+                <input type="hidden" name="AccountId" value="@(userInfor.AccountId)" required>
+                <input type="hidden" name="Email" value="@(userInfor.Email)" required>
+
                 <label for="fullname">Full Name:</label>
                 <input type="text" id="fullname" name="fullname" value="@(userInfor.FullName)" required>
             </div>
@@ -19,6 +18,11 @@
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" value="@(userInfor.Password)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
             </div>
 
             <div class="form-group">
@@ -43,6 +47,7 @@
 
             <button type="submit">Save</button>
         </form>
+            <a asp-controller="Profile" asp-action="ProfileIndex" asp-route-id="@userInfor.AccountId"></a>
     </div>
 </main>
 

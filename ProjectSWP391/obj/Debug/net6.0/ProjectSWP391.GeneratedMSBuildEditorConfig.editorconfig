@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Workspace/SmartBeauty_longpt/projectswp391/ProjectSWP391/Views/Authentication/AdminPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQWRtaW5QYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Workspace/SmartBeauty_longpt/projectswp391/ProjectSWP391/Views/Authentication/Employee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRW1wbG95ZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -112,12 +116,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVNYW5hZ2VtZW50XEVEYXNoQm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Workspace/SmartBeauty_longpt/projectswp391/ProjectSWP391/Views/Error/CommonError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcQ29tbW9uRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Workspace/SmartBeauty_longpt/projectswp391/ProjectSWP391/Views/Error/Http401.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSHR0cDQwMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Workspace/SmartBeauty_longpt/projectswp391/ProjectSWP391/Views/Error/Http403.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSHR0cDQwMy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Workspace/SmartBeauty_longpt/projectswp391/ProjectSWP391/Views/Error/TimeCounter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcVGltZUNvdW50ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Workspace/SmartBeauty_longpt/projectswp391/ProjectSWP391/Views/ProductManagement/CreateProduct.cshtml]

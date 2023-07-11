@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 
@@ -7,10 +8,11 @@ namespace ProjectSWP391.Controllers
     public class ProfileController : Controller
     {
         private readonly SWP391_V4Context context;
-
-        public ProfileController(SWP391_V4Context context)
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public ProfileController(SWP391_V4Context context, IWebHostEnvironment webHostEnvironment)
         {
             this.context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         [Route("/[controller]/User-{id}")]
@@ -70,10 +72,41 @@ namespace ProjectSWP391.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditProfile(IFormFile image)
+        public IActionResult EditProfile(IFormFile image, Account account)
         {
+            try
+            {
+                if (image != null)
+                {
+                    string imagePath = SaveImage(image);
+                    account.Image = imagePath;
+                }
 
-            return View(image);
+                context.Accounts.Update(account);
+                context.SaveChanges();
+
+                return RedirectToAction("ProfileIndex", new { id = account.AccountId });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+
+        private string SaveImage(IFormFile image)
+        {
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                image.CopyTo(new FileStream(filePath, FileMode.Create));
+            }
+
+            return uniqueFileName;
+        }
+
     }
 }

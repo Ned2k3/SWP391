@@ -1,5 +1,88 @@
 ﻿﻿@using ProjectSWP391.Models.ServiceModel;
 @model ProjectSWP391.Models.Product
+<style>
+    .image-container {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .feedback-box {
+        display: flex;
+        align-items: center;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 10px;
+    }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .avatar-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .feedback-content {
+        flex: 1;
+    }
+
+        .feedback-content textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+    .comment-button {
+        margin-left: 10px;
+    }
+
+        .comment-button button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    .comment {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .comment-avatar {
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+
+    .comment-content {
+        flex-grow: 1;
+    }
+
+    .comment-divider {
+        margin: 10px 0;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+</style>
 
 @{
     ViewData["Title"] = "Details";
@@ -189,89 +272,6 @@
     </div>
 </body>
 
-<style>
-    .image-container {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    .feedback-box {
-        display: flex;
-        align-items: center;
-        border: 1px solid gray;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-    .avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-right: 10px;
-    }
-
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-    .avatar-image {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-    }
-
-    .feedback-content {
-        flex: 1;
-    }
-
-        .feedback-content textarea {
-            width: 100%;
-            height: 100px;
-            border: 1px solid gray;
-            border-radius: 5px;
-            padding: 5px;
-        }
-
-    .comment-button {
-        margin-left: 10px;
-    }
-
-        .comment-button button {
-            padding: 5px 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-    .comment {
-        display: flex;
-        margin-bottom: 20px;
-    }
-
-    .comment-avatar {
-        flex-shrink: 0;
-        margin-right: 10px;
-    }
-
-    .comment-content {
-        flex-grow: 1;
-    }
-
-    .comment-divider {
-        margin: 10px 0;
-        border: none;
-        border-top: 1px solid #ccc;
-    }
-</style>
 
 <script>
     $(document).ready(function () {
@@ -287,6 +287,18 @@
             textarea.show();
         });
 
+        $('.cancel-button').click(function () {
+            var feedbackForm = $(this).closest('.feedback-form');
+            var feedbackActions = feedbackForm.closest('.comment-actions');
+            var textarea = feedbackForm.find('textarea');
+
+            feedbackForm.hide();
+
+            feedbackActions.find('.edit-button').show();
+            feedbackActions.find('.delete-button').show();
+            textarea.hide();
+        });
+
         $(".delete-button").click(function () {
             var result = confirm("Are you sure you want to delete this feedback?");
 
@@ -295,8 +307,6 @@
             }
         });
     });
-
-
 </script>
 
 

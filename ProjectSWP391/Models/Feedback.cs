@@ -6,7 +6,7 @@ namespace ProjectSWP391.Models
     public partial class Feedback
     {
         public int FeedbackId { get; set; }
-        public string Content { get; set; }
+        public string? Content { get; set; }
         public int? AccountId { get; set; }
         public int? ServiceId { get; set; }
         public int? ProductId { get; set; }
