@@ -73,7 +73,7 @@ namespace ProjectSWP391.Controllers
                 {
                     if(account.FullName == null)
                     {
-                        return RedirectToAction("CompleteCustomerProfile", "Profile", account.AccountId);
+                        return RedirectToAction("CompleteCustomerProfile", "Profile", new {id=account.AccountId});
                     }
                     return RedirectToAction("LandingPage","CustomerManagement");
                 }

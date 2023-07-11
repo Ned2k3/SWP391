@@ -370,7 +370,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.FullName,
+                        Author = b.Account,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -383,7 +383,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.FullName,
+                        Author = b.Account,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -395,7 +395,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.FullName,
+                        Author = b.Account,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -412,7 +412,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.FullName,
+                        Author = b.Account,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -425,7 +425,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.FullName,
+                        Author = b.Account,
                         Date = b.BlogDate
                     }).ToList();
                     return View(myblogs.ToPagedList(pageNumber, pageSize));
@@ -437,7 +437,7 @@ namespace ProjectSWP391.Controllers
                         ID = b.BlogId,
                         Title = b.Title,
                         Content = b.Content,
-                        Author = b.Account.FullName,
+                        Author = b.Account,
                         Date = b.BlogDate
                     });
                     return View(blogs.ToPagedList(pageNumber, pageSize));

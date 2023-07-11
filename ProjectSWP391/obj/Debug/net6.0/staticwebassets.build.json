@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ioTWfHUVk/recHEoZyuVw+DePbHBRgT5EICyH0N7j5U=",
+  "Hash": "53FiGZOkf0wC96Nuu/+h1R+aN4QU5aj2ayRqdgRBP4M=",
   "Source": "ProjectSWP391",
   "BasePath": "_content/ProjectSWP391",
   "Mode": "Default",
@@ -1205,6 +1205,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Profile\\ProfileIndex\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "Uploads/bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg"
     }
   ]
 }
