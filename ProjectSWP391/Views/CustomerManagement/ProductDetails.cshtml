@@ -50,6 +50,18 @@
             padding: 5px;
         }
 
+
+    .feedback-form,
+    #delete-feedback-form {
+        display: inline-block;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        display: none;
+    }
+
     .comment-button {
         margin-left: 10px;
     }
@@ -89,8 +101,7 @@
     var accounts = ViewBag.Accounts as List<Account>;
     var feedbacks = ViewBag.Feedbacks as List<Feedback>;
 }
-<!--Import JQuery-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <body>
     <div class="container p-2">
@@ -123,20 +134,20 @@
                     else
                     {
                         <div class="text-center d-flex flex-row justify-content-evenly">
-                            <a href="/ProductManagement/Edit?id=@Model.ProductId">Edit</a>
-                            <a href="#">Delete</a>
+                            <a class="btn btn-outline-dark mt-auto" href="/ProductManagement/Edit?id=@Model.ProductId">Edit</a>
+                            <a class="btn btn-outline-dark mt-auto" href="#">Delete</a>
                         </div>
                     }
                 </div>
             </div>
         </div>
+
         <div class="row p-0" style="padding: 20px;">
             <h4>Description</h4>
             <div style="width: 100%; font-size: 15px; text-align: justify;">
                 @Model.Description
             </div>
         </div>
-
         <!--Feedback section here-->
         <div class="row p-0" style="margin-top: 80px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
             <form method="post" action="/CustomerManagement/PostFeedback">
@@ -150,14 +161,17 @@
                             <input type="hidden" name="productId" value="@Model.ProductId" />
                         </div>
                         <div class="feedback-content">
-                            <textarea name="content" placeholder="Enter your feedback"></textarea>
+                            <textarea class="form-control validate-feedback" name="content" placeholder="Enter your feedback"></textarea>
+                            <span class="error-message error-feedback"></span>
                         </div>
+                        <input type="hidden" name="dateTimeNow" value="@(DateTime.Now)">
                         <div class="comment-button">
                             <button type="submit">Feedback</button>
                         </div>
                     </div>
                 }
             </form>
+
             @if (feedbacks != null && accounts != null)
             {
                 @foreach (var feedback in feedbacks)
@@ -170,32 +184,38 @@
                                 <img src="@(account.Image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png")" alt="Avatar" class="avatar-image">
                             </div>
                             <div class="comment-content">
-                                <h5>@(account.FullName) <a href="#">(@account.Email)</a></h5>
+                                <h5>@(account.FullName) <a href="/Profile/User-@(feedback.AccountId)">(@account.Email)</a></h5>
                                 <p>@feedback.Content</p>
+                                <span style="display:block; float:right; font-size:14px"><i>Published in <b>@(feedback.Date != null ? feedback.Date.Value.ToString("MM/dd/yyyy, HH:mm tt") : "")</b></i></span>
                             </div>
-                            @if (Global.CurrentUser != null && (Global.CurrentUser.Role == 1 || account.AccountId == Global.CurrentUser.AccountId))
-                            {
-                                <div class="comment-actions">
-                                    <button class="edit-button"><i class="fa fa-edit"></i></button>
+                            <div class="comment-actions">
+                                @if (Global.CurrentUser != null && Global.CurrentUser.AccountId == feedback.AccountId)
+                                {
+                                    <button class="btn btn-blue edt-button-submit edit-button"><i class="fa fa-edit"></i></button>
                                     <form class="feedback-form" method="post" action="/CustomerManagement/EditFeedback" style="display:none">
                                         <input type="hidden" name="accountId" value="@Global.CurrentUser.AccountId" />
                                         <input type="hidden" name="productId" value="@Model.ProductId" />
                                         <input type="hidden" name="feedbackId" value="@feedback.FeedbackId" />
-                                        <textarea name="content" placeholder="Enter your feedback" style="display:none"></textarea>
-                                        <button type="submit" class="edt-button-submit">
+                                        <input type="hidden" name="dateTimeNow" value="@(DateTime.Now)">
+                                        <textarea name="content" placeholder="Enter your feedback" style="display:none; width:500px" class="form-control validate-feedback"></textarea>
+                                        <span class="error-message error-feedback"></span>
+                                        <button type="submit" class="btn btn-dark edt-button-submit">
                                             Edit
                                         </button>
-                                        <button type="button" class="cancel-button">Cancel</button>
+                                        <button type="button" class="btn btn-light cancel-button">Cancel</button>
                                     </form>
+                                }
+                                @if (Global.CurrentUser != null && (Global.CurrentUser.Role == 1 || feedback.AccountId == Global.CurrentUser.AccountId))
+                                {
                                     <form id="delete-feedback-form" method="post" action="/CustomerManagement/DeleteFeedback">
                                         <input type="hidden" name="feedbackId" value="@feedback.FeedbackId" />
                                         <input type="hidden" name="productId" value="@Model.ProductId" />
-                                        <button type="submit" class="delete-button">
+                                        <button type="submit" class="btn btn-blue edt-button-submit" id="delete-button">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
                         <hr class="comment-divider" />
                     }
@@ -272,7 +292,8 @@
     </div>
 </body>
 
-
+<!--Import JQuery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.edit-button').click(function () {
@@ -299,15 +320,94 @@
             textarea.hide();
         });
 
-        $(".delete-button").click(function () {
+        $("#delete-button").click(function () {
             var result = confirm("Are you sure you want to delete this feedback?");
 
             if (!result) {
                 return false;
             }
         });
+        /*Validate
+        $('.feedback-form').submit(function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var textarea = form.find('.validate-feedback');
+            var errorSpan = form.find('.error-feedback');
+
+            // Kiểm tra nội dung của textarea
+            var content = textarea.val().trim();
+            if (content === '') {
+                errorSpan.text('Please enter your feedback.');
+                errorSpan.show();
+                return;
+            }
+
+            // Thực hiện các hành động khác nếu dữ liệu hợp lệ
+            // ...
+
+            // Reset thông báo lỗi nếu dữ liệu hợp lệ
+            errorSpan.text('');
+            errorSpan.hide();
+
+            // Gửi yêu cầu POST nếu dữ liệu hợp lệ
+            form.unbind('submit').submit();
+        });
+        */
+
+        //
+        $('.edit-button').click(function () {
+            var feedbackActions = $(this).closest('.comment-actions');
+            var feedbackForm = feedbackActions.find('.feedback-form');
+            var textarea = feedbackForm.find('textarea');
+
+            feedbackForm.show();
+            feedbackActions.find('.edit-button').hide();
+            feedbackActions.find('.delete-button').hide();
+            textarea.show();
+        });
+
+        $(document).on('submit', '.feedback-form', function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var accountId = form.find('input[name="accountId"]').val();
+            var productId = form.find('input[name="productId"]').val();
+            var feedbackId = form.find('input[name="feedbackId"]').val();
+            var dateTimeNow = form.find('input[name="dateTimeNow"]').val();
+            var content = form.find('textarea[name="content"]').val();
+
+            $.ajax({
+                url: form.attr('action'),
+                method: 'POST',
+                data: {
+                    accountId: accountId,
+                    productId: productId,
+                    feedbackId: feedbackId,
+                    content: content,
+                    dateTimeNow: dateTimeNow
+                },
+                success: function (data) {
+                    // Update UI
+                    var feedbackContent = form.closest('.comment').find('.comment-content p');
+                    feedbackContent.text(content);
+
+                    var feedbackDate = form.closest('.comment').find('.comment-content span');
+                    var formattedDateTimeNow = new Date(dateTimeNow).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', day: '2-digit', month: '2-digit', year: 'numeric' });
+                    feedbackDate.html(`<span style="display: block; float: right; font-size: 14px"><i>Published in <b>${formattedDateTimeNow}</b></i></span>`);
+
+                    form.hide();
+                    form.closest('.comment-actions').find('.edit-button').show();
+                    form.closest('.comment-actions').find('.delete-button').show();
+                },
+                error: function (error) {
+
+                }
+            });
+        });
     });
 </script>
 
 
 
+<!--main-->

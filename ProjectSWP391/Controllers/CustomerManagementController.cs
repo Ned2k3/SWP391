@@ -255,7 +255,7 @@ namespace ProjectSWP391.Controllers
                 }
 
                 const int pageFeedbackSize = 6;
-                var feedbacks = context.Feedbacks.Where(f => f.ProductId == id).ToList();
+                var feedbacks = context.Feedbacks.Where(f => f.ProductId == id).OrderByDescending(f => f.Date).ToList();
                 if (feedbacks.Count > 0)
                 {
                     var accounts = context.Accounts.ToList();
@@ -280,7 +280,7 @@ namespace ProjectSWP391.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostFeedback(int accountId, int productId, string content)
+        public IActionResult PostFeedback(int accountId, int productId, string content, DateTime dateTimeNow)
         {
             try
             {
@@ -289,7 +289,8 @@ namespace ProjectSWP391.Controllers
                     ProductId = productId,
                     AccountId = accountId,
                     ServiceId = 1,
-                    Content = content
+                    Content = content,
+                    Date = dateTimeNow
                 };
                 context.Feedbacks.Add(feedback);
                 context.SaveChanges();
@@ -298,11 +299,13 @@ namespace ProjectSWP391.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return BadRequest(errorMessage);
             }
         }
+
         [HttpPost]
-        public IActionResult EditFeedback(int accountId, int productId, int feedbackId, string content)
+        public IActionResult EditFeedback(int accountId, int productId, int feedbackId, string content, DateTime dateTimeNow)
         {
             try
             {
@@ -312,7 +315,8 @@ namespace ProjectSWP391.Controllers
                     ProductId = productId,
                     AccountId = accountId,
                     ServiceId = 1,
-                    Content = content
+                    Content = content,
+                    Date = dateTimeNow
                 };
                 context.Feedbacks.Update(feedback);
                 context.SaveChanges();
@@ -320,7 +324,8 @@ namespace ProjectSWP391.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return BadRequest(errorMessage);
             }
         }
 
@@ -336,7 +341,8 @@ namespace ProjectSWP391.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return BadRequest(errorMessage);
             }
         }
         public IActionResult BlogList(int? page, string sName, bool myBlog, int sort)
