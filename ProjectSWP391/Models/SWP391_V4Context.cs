@@ -147,15 +147,13 @@ namespace ProjectSWP391.Models
             {
                 entity.ToTable("Order");
 
-                entity.Property(e => e.OrderId).ValueGeneratedOnAdd();
-
                 entity.Property(e => e.OrderDate).HasColumnType("date");
 
-                entity.HasOne(d => d.OrderNavigation)
-                    .WithOne(p => p.Order)
-                    .HasForeignKey<Order>(d => d.OrderId)
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.AccountId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Account");
+                    .HasConstraintName("FK_Order_Account1");
             });
 
             modelBuilder.Entity<OrderDetail>(entity =>

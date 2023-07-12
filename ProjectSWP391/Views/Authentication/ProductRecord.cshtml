@@ -1,10 +1,12 @@
 ﻿@{
     Layout = null;
 }
-@model List<Order>
+@model List<dynamic>
 
 
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <title> Product Chart </title>
     <link rel="stylesheet" type="text/css" href="~/css/Chart.css">
 </head>
@@ -41,7 +43,7 @@
               @*@foreach(var b in Model)
               {
                     <tr>
-                        <td>@b.OrderNavigation.Email</td>
+                        <td>@b.Email</td>
                         <td>@b.OrderNavigation.FullName</td>
                         <td>@b.Product.ProductName</td>
                         <td>@b.OrderDate</td>
@@ -56,13 +58,40 @@
     </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <script>
     const ctx = document.getElementById('revenueChart');
+    const topLabels = {
+        id: 'topLabels',
+        afterDatasetsDraw(chart, args, pluginOption) {
+            const { ctx, scales: { x, y } } = chart;
 
+            chart.data.datasets[0].data.forEach((dataoint, index)=>{
+                const datasetArray = [];
+
+                chart.data.datasets.forEach((dataset)=>{
+                    datasetArray.push(dataset.data[index])
+                })
+                console.log(datasetArray)
+                function totalSum(total,values){
+                    return total + values;
+                };
+                let sum = datasetArray.reduce(totalSum,0);
+
+                ctx.font = 'Bold 15px sans-serif';
+                ctx.fillStyle = 'black';
+                ctx.textAlign = 'center';
+                ctx.fillText(sum, x.getPixelForValue(index), chart.getDatasetMeta(1).data[index].y - 10)
+            })
+
+            
+          
+        }
+    }
     new Chart(ctx, 
     {
+        plugins: [ topLabels],
         type: 'bar',
         data: 
         {
@@ -76,7 +105,7 @@
             },
             {
                 label: 'Service',
-                data: [1, 2, 5, 6, 10, 3, 12, 2, 4, 7, 8, 1],
+                data: [3, 2, 5, 6, 10, 3, 12, 2, 4, 7, 8, 1],
                 backgroundColor: ['rgba(8, 217, 214,1)'],
                 borderColor: ['rgba(8, 217, 214,1)'],
                 borderWidth: 1,
@@ -94,14 +123,17 @@
                     stacked : true,
                     beginAtZero: true
                 }
-            }
-        }
+            },
+                 
+        },
+       
     });
-
+   
     const ctx2 = document.getElementById('productChart');
 
     new Chart(ctx2,
         {
+            plugins: [ChartDataLabels],
             type: 'bar',
             data:
             {
@@ -123,6 +155,23 @@
                     y: {
 
                         beginAtZero: true
+                    }
+                }, 
+                plugins: {
+                    datalabels: {
+
+                        labels: {
+                            value: {
+                                anchor: 'center',
+                                align: 'center',
+                                color: 'black',
+                                font: {
+                                    weight: 'Light',
+                                    size: 10
+                                },
+                            }
+                        }
+
                     }
                 }
             }
