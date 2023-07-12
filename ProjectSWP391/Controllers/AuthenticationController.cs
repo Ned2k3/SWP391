@@ -293,18 +293,20 @@ namespace ProjectSWP391.Controllers
             }
            return View();
         }
-
+      
         #region will delete when merge
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1,2")]
         public IActionResult Admin()
         {
             return View();
         }
+
         [Authorize(AuthenticationSchemes = "Auth", Roles = "2")]
         public IActionResult Employee()
         {
             return View();
         }
+
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult AdminPassword()
         {
@@ -318,9 +320,15 @@ namespace ProjectSWP391.Controllers
             var a = context.Accounts.Where(e => e.Email == email).SingleOrDefault();
             a.Password = EncryptionHelper.Encrypt("123");
             a.IsActive = 1;
-            ViewBag.SuccessMsg = "Pass word change successfully for" + email;
+            ViewBag.SuccessMsg = "Password change successfully for" + email;
             context.SaveChanges();
-            return View("Authentication/AdminPassword");
+            return RedirectToAction("AdminPassword");
+        }
+
+        public IActionResult ProductRecord()
+        {
+            var a = context.Orders.ToList();
+            return View(a);
         }
         #endregion
 

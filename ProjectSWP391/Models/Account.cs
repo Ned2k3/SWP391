@@ -14,7 +14,7 @@ namespace ProjectSWP391.Models
             IsWorkings = new HashSet<IsWorking>();
         }
 
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public int? Phone { get; set; }
@@ -23,11 +23,11 @@ namespace ProjectSWP391.Models
         public int IsActive { get; set; }
         public string? Image { get; set; }
 
-        public virtual Order Order { get; set; }
-        public virtual ICollection<Blog> Blogs { get; set; }
-        public virtual ICollection<Booking> BookingCustomers { get; set; }
-        public virtual ICollection<Booking> BookingEmployees { get; set; }
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-        public virtual ICollection<IsWorking> IsWorkings { get; set; }
+        public virtual Order? Order { get; set; }
+        public virtual ICollection<Blog>? Blogs { get; set; }
+        public virtual ICollection<Booking>? BookingCustomers { get; set; }
+        public virtual ICollection<Booking>? BookingEmployees { get; set; }
+        public virtual ICollection<Feedback>? Feedbacks { get; set; }
+        public virtual ICollection<IsWorking>? IsWorkings { get; set; }
     }
 }

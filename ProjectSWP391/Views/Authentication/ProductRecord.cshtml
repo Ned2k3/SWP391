@@ -1,0 +1,130 @@
+﻿@{
+    Layout = null;
+}
+@model List<Order>
+
+
+<head>
+    <title> Product Chart </title>
+    <link rel="stylesheet" type="text/css" href="~/css/Chart.css">
+</head>
+<body>
+<div class="chart-container">
+    <div class="chart-column">
+        <canvas id="revenueChart"></canvas>
+            <h2 style="text-align:center;">Total Revenue</h2>
+    </div>
+    <div class="chart-column">
+        <canvas id="productChart"></canvas>
+            <h2 style="text-align:center;">Product Revenue</h2>
+    </div>
+</div>
+
+    <div class="table-container">
+        <h1>Buyer Data</h1>
+        <h3>@ViewBag.SuccessMsg</h3>
+        <table>
+            <thead>
+                <tr>
+                    @*se co duong link dan toi email tai day*@
+                    <th>Buyer Email</th>
+                    <th>Full Name</th>
+                    <th>Product Name</th>
+                    <th>Order Date</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically generated from the database -->
+              @*@foreach(var b in Model)
+              {
+                    <tr>
+                        <td>@b.OrderNavigation.Email</td>
+                        <td>@b.OrderNavigation.FullName</td>
+                        <td>@b.Product.ProductName</td>
+                        <td>@b.OrderDate</td>
+                        <td>@b.Amount</td>
+                        <td>@(b.Product.Price*b.Amount)</td>
+                        <td><a href="#" class="approve-link"> Detail </a></td>
+                    </tr>
+              }*@
+                
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('revenueChart');
+
+    new Chart(ctx, 
+    {
+        type: 'bar',
+        data: 
+        {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                label: 'Product',
+                data: [12, 19, 3, 5, 2, 3, 10, 2, 12, 14, 1,5],
+                backgroundColor: ['rgba(255, 46, 99,1)'],
+                borderColor: ['rgba(255, 46, 99,1)'],
+                borderWidth: 1,
+            },
+            {
+                label: 'Service',
+                data: [1, 2, 5, 6, 10, 3, 12, 2, 4, 7, 8, 1],
+                backgroundColor: ['rgba(8, 217, 214,1)'],
+                borderColor: ['rgba(8, 217, 214,1)'],
+                borderWidth: 1,
+            }]
+           
+
+        },
+        
+        options: {
+            scales: {
+                x:{
+                    stacked:true,
+                },
+                y: {
+                    stacked : true,
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctx2 = document.getElementById('productChart');
+
+    new Chart(ctx2,
+        {
+            type: 'bar',
+            data:
+            {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'Product',
+                    data: [12, 19, 3, 5, 2, 3, 10, 2, 12, 14, 1, 5],
+                    backgroundColor: ['rgba(255, 46, 99,1)'],
+                    borderColor: ['rgba(255, 46, 99,1)'],
+                    borderWidth: 1,
+                }]
+
+
+            },
+
+            options: {
+                scales: {
+                  
+                    y: {
+
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+</script>
