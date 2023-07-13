@@ -22,7 +22,7 @@ namespace ProjectSWP391.Controllers
         {
             try
             {
-                var account = context.Accounts.Include(a => a.Order).Select(a => new Account
+                var account = context.Accounts.Include(a => a.Orders).Select(a => new Account
                 {
                     AccountId = a.AccountId,
                     Email = a.Email,
@@ -50,7 +50,7 @@ namespace ProjectSWP391.Controllers
 
             try
             {
-                var account = context.Accounts.Include(a => a.Order).Select(a => new Account
+                var account = context.Accounts.Include(a => a.Orders).Select(a => new Account
                 {
                     AccountId = a.AccountId,
                     Email = a.Email,

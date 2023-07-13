@@ -12,6 +12,7 @@ namespace ProjectSWP391.Models
             BookingEmployees = new HashSet<Booking>();
             Feedbacks = new HashSet<Feedback>();
             IsWorkings = new HashSet<IsWorking>();
+            Orders = new HashSet<Order>();
         }
 
         public int AccountId { get; set; }
@@ -23,11 +24,11 @@ namespace ProjectSWP391.Models
         public int IsActive { get; set; }
         public string? Image { get; set; }
 
-        public virtual Order Order { get; set; }
         public virtual ICollection<Blog> Blogs { get; set; }
         public virtual ICollection<Booking> BookingCustomers { get; set; }
         public virtual ICollection<Booking> BookingEmployees { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<IsWorking> IsWorkings { get; set; }
+        public virtual ICollection<Order>? Orders { get; set; }
     }
 }

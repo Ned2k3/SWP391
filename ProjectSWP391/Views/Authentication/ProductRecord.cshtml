@@ -1,0 +1,183 @@
+﻿@{
+    Layout = null;
+}
+@model ProjectSWP391.Models.ExtendedModels.MyViewModel
+
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <title> Product Chart </title>
+    <link rel="stylesheet" type="text/css" href="~/css/Chart.css">
+</head>
+<body>
+<div class="chart-container">
+    <div class="chart-column">
+        <canvas id="revenueChart"></canvas>
+            <h2 style="text-align:center;">Total Revenue</h2>
+    </div>
+    <div class="chart-column">
+        <canvas id="productChart"></canvas>
+            <h2 style="text-align:center;">Product Revenue</h2>
+    </div>
+</div>
+
+    <div class="table-container">
+        <h1>Buyer Data</h1>
+        <h3>@ViewBag.SuccessMsg</h3>
+        <table>
+            <thead>
+                <tr>
+                   
+                    <th>Buyer Email</th>
+                    <th>Product Name</th>
+                    <th>Order Id</th>
+                    <th>Order Date</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically generated from the database -->
+              @foreach(var b in Model.ProductUserDatas)
+              {
+                    <tr>
+                        <!--Chen link dan den account vao day-->
+                        <td><a href="#">@b.BuyerEmail</a></td>
+                        <td>@b.ProductName</td>
+                        <td>@b.OrderId</td>
+                        <td>@b.OrderDate</td>
+                        <td>@b.Amount</td>
+                        <td>@b.Total</td>
+                        <td><a href="/Authentication/DetailShopList?order=@b.OrderId" class="approve-link"> Detail </a></td>
+                    </tr>
+              }
+                
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+
+<script>
+    const ctx = document.getElementById('revenueChart');
+    var productData = @Html.Raw(Json.Serialize(Model.ProductRevenueByMonth.Select(r => r.Revenue)));
+    var serviceData = @Html.Raw(Json.Serialize(Model.ServiceRevenueByMonth.Select(r => r.Revenue)));
+    const topLabels = {
+        id: 'topLabels',
+        afterDatasetsDraw(chart, args, pluginOption) {
+            const { ctx, scales: { x, y } } = chart;
+
+            chart.data.datasets[0].data.forEach((dataoint, index)=>{
+                const datasetArray = [];
+
+                chart.data.datasets.forEach((dataset)=>{
+                    datasetArray.push(dataset.data[index])
+                })
+                console.log(datasetArray)
+                function totalSum(total,values){
+                    return total + values;
+                };
+                let sum = datasetArray.reduce(totalSum,0);
+                console.log(sum);
+                ctx.font = 'Bold 15px sans-serif';
+                ctx.fillStyle = 'black';
+                ctx.textAlign = 'center';
+                ctx.fillText(sum, x.getPixelForValue(index), chart.getDatasetMeta(1).data[index].y - 10)
+            })
+
+            
+          
+        }
+    }
+    new Chart(ctx, 
+    {
+        plugins: [ topLabels],
+        type: 'bar',
+        data: 
+        {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                label: 'Product',
+                data: productData,
+                backgroundColor: ['rgba(255, 46, 99,1)'],
+                borderColor: ['rgba(255, 46, 99,1)'],
+                borderWidth: 1,
+            },
+            {
+                label: 'Service',
+                data: serviceData,
+                backgroundColor: ['rgba(8, 217, 214,1)'],
+                borderColor: ['rgba(8, 217, 214,1)'],
+                borderWidth: 1,
+            }]
+           
+
+        },
+        
+        options: {
+            scales: {
+                x:{
+                    stacked:true,
+                },
+                y: {
+                    stacked : true,
+                    beginAtZero: true
+                }
+            },
+                 
+        },
+       
+    });
+   
+    const ctx2 = document.getElementById('productChart');
+
+    new Chart(ctx2,
+        {
+            plugins: [ChartDataLabels],
+            type: 'bar',
+            data:
+            {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'Product',
+                    data: [12, 19, 3, 5, 2, 3, 10, 2, 12, 14, 1, 5],
+                    backgroundColor: ['rgba(255, 46, 99,1)'],
+                    borderColor: ['rgba(255, 46, 99,1)'],
+                    borderWidth: 1,
+                }]
+
+
+            },
+
+            options: {
+                scales: {
+                  
+                    y: {
+
+                        beginAtZero: true
+                    }
+                }, 
+                plugins: {
+                    datalabels: {
+
+                        labels: {
+                            value: {
+                                anchor: 'end', // Position the labels at the end of the bar
+                                align: 'end', // Align the labels to the end of the bar
+                                offset: 1, // Adjust the offset of the labels from the top of the bar
+                                color: 'black', // Label text color
+                                font: {
+                                    size: 15,
+                                    weight: 'bold' // Label font weight
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        });
+</script>
