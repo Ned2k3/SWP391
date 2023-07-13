@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+@model List<ProjectSWP391.Models.OrderDetail>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Details</h1>
+
+        <p><strong>Email:</strong> @ViewBag.Email</p>
+        <p><strong>Username:</strong> @ViewBag.Username</p>
+
+        <h2>Product Details</h2>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Price</th>
+            </tr>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@a.Product.ProductName</td>
+                    <td>@a.Amount</td>
+                    <td>@a.Product.Price</td>
+                </tr>
+            }
+        </table>
+
+        <p><strong>Order Date:</strong> @Model.FirstOrDefault()?.Order.OrderDate.ToString()</p>
+        <p><strong>Total:</strong> @Model.Sum(o => o.Product.Price * o.Amount)</p>
+
+        <a href="/Authentication/ProductRecord">Back</a>
+    </div>
+</body>
+</html>
