@@ -19,16 +19,16 @@ namespace ProjectSWP391.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public int? Phone { get; set; }
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
         public int? Role { get; set; }
         public int IsActive { get; set; }
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public virtual ICollection<Blog> Blogs { get; set; }
         public virtual ICollection<Booking> BookingCustomers { get; set; }
         public virtual ICollection<Booking> BookingEmployees { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<IsWorking> IsWorkings { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order>? Orders { get; set; }
     }
 }

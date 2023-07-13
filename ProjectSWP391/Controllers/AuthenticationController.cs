@@ -17,6 +17,7 @@ using System.Security.Claims;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ProjectSWP391.Models.ExtendedModels;
 
 namespace ProjectSWP391.Controllers
 {
@@ -347,24 +348,67 @@ namespace ProjectSWP391.Controllers
         {
 
 
-
-           
+            var a = GetProductRevenueByMonth();
+            var b = GetServiceRevenueByMonth();
+            var productData = FillRevenueDataForAllMonths(a);
+            var serviceData = FillRevenueDataForAllMonths(b);
+            var userPurchases = context.Accounts
+                     // Replace with the user email you want to retrieve purchases for
+                    .Join(context.Orders, account => account.AccountId, order => order.AccountId, (account, order) => new { account, order })
+                    .Join(context.OrderDetails, combined => combined.order.OrderId, orderDetail => orderDetail.OrderId, (combined, orderDetail) => new { combined.account, combined.order, orderDetail })
+                    .Join(context.Products, combined => combined.orderDetail.ProductId, product => product.ProductId, (combined, product) => new { combined.account, combined.order, combined.orderDetail, product })
+                    .OrderByDescending(combined => combined.order.OrderDate)
+                    .Select(result => new
+                    {
+                        BuyerEmail = result.account.Email,
+                        OrderId =result.order.OrderId,
+                        ProductName = result.product.ProductName,
+                        OrderDate = result.order.OrderDate,
+                        Amount = result.orderDetail.Amount,
+                        Total = result.orderDetail.Amount * result.product.Price
+                    })
+                    .ToList();
+            List<ProductUserData> listUser = new List<ProductUserData>();
+            foreach(var newUser in userPurchases)
+            {
+                listUser.Add(new ProductUserData(newUser.BuyerEmail, newUser.ProductName,newUser.OrderId, newUser.OrderDate.Value, newUser.Amount, newUser.Total));
+            }
 
             var viewModel = new MyViewModel
             {
-                ProductRevenueByMonth = GetProductRevenueByMonth(),
-                ServiceRevenueByMonth = GetServiceRevenueByMonth()
+                ProductRevenueByMonth = productData,
+                ServiceRevenueByMonth = serviceData,
+                ProductUserDatas =listUser
             };
 
-            return View();
+            return View(viewModel);
 
         }
 
         public IActionResult ServiceRecord()
         {
-            var a = context.Orders.ToList();
-            return View(a);
+           
+            return View();
         }
+
+        public   IActionResult DetailShopList(int order)
+
+        {
+            var getOrder =  context.Orders.SingleOrDefault(or => or.OrderId == order);
+            Account getAccount = context.Accounts.Where(ac => ac.AccountId == getOrder.AccountId).SingleOrDefault();
+            //var a = getOrder;
+
+            ViewBag.Email = "" + getAccount.Email;
+            ViewBag.Username = "" + getAccount.FullName;
+            var orderDetails = context.OrderDetails
+                    .Include(od => od.Order)
+                    .Include(od => od.Product)
+                    .Where(od => od.OrderId == order)
+                    .ToList();
+            
+            return View(orderDetails);
+        }
+
         #endregion
 
 
@@ -376,7 +420,7 @@ namespace ProjectSWP391.Controllers
                    .Join(context.OrderDetails, combined => combined.order.OrderId, orderDetail => orderDetail.OrderId, (combined, orderDetail) => new { combined.account, combined.order, orderDetail })
                    .Join(context.Products, combined => combined.orderDetail.ProductId, product => product.ProductId, (combined, product) => new { combined.account, combined.order, combined.orderDetail, product })
                    .Where(combined => combined.order.OrderDate.Value.Year == 2023) // Filter by desired year
-                   .GroupBy(combined => combined.order.OrderDate.Value.Month) // Group by month
+                   .GroupBy(combined => combined.order.OrderDate.Value.Month)
                    .Select(group => new
                    {
                        Month = group.Key,
@@ -402,7 +446,7 @@ namespace ProjectSWP391.Controllers
                 .Where(combined => combined.booking.BookingDate.Year == 2023) // Filter by desired year
                 .GroupBy(combined => combined.booking.BookingDate.Month) // Group by month
                 .Select(group => new
-                {
+                {   
                     Month = group.Key,
                     Revenue = group.Sum(combined => combined.service.Price)
                 })
@@ -414,6 +458,26 @@ namespace ProjectSWP391.Controllers
                 revenueDataList.Add(a);
             }
             return revenueDataList;
+        }
+        private List<RevenueData> FillRevenueDataForAllMonths(List<RevenueData> revenueData)
+        {
+            var filledData = new List<RevenueData>();
+
+            for (int month = 1; month <= 12; month++)
+            {
+                var matchingData = revenueData.FirstOrDefault(d => d.Month == month);
+
+                if (matchingData != null)
+                {
+                    filledData.Add(matchingData);
+                }
+                else
+                {
+                    filledData.Add(new RevenueData (month,0 ));
+                }
+            }
+
+            return filledData;
         }
     }
 }

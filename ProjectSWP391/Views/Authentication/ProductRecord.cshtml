@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model List<dynamic>
+@model ProjectSWP391.Models.ExtendedModels.MyViewModel
 
 
 <head>
@@ -28,10 +28,10 @@
         <table>
             <thead>
                 <tr>
-                    @*se co duong link dan toi email tai day*@
+                   
                     <th>Buyer Email</th>
-                    <th>Full Name</th>
                     <th>Product Name</th>
+                    <th>Order Id</th>
                     <th>Order Date</th>
                     <th>Amount</th>
                     <th>Total</th>
@@ -40,18 +40,19 @@
             </thead>
             <tbody>
                 <!-- Table rows will be dynamically generated from the database -->
-              @*@foreach(var b in Model)
+              @foreach(var b in Model.ProductUserDatas)
               {
                     <tr>
-                        <td>@b.Email</td>
-                        <td>@b.OrderNavigation.FullName</td>
-                        <td>@b.Product.ProductName</td>
+                        <!--Chen link dan den account vao day-->
+                        <td><a href="#">@b.BuyerEmail</a></td>
+                        <td>@b.ProductName</td>
+                        <td>@b.OrderId</td>
                         <td>@b.OrderDate</td>
                         <td>@b.Amount</td>
-                        <td>@(b.Product.Price*b.Amount)</td>
-                        <td><a href="#" class="approve-link"> Detail </a></td>
+                        <td>@b.Total</td>
+                        <td><a href="/Authentication/DetailShopList?order=@b.OrderId" class="approve-link"> Detail </a></td>
                     </tr>
-              }*@
+              }
                 
             </tbody>
         </table>
@@ -62,6 +63,8 @@
 
 <script>
     const ctx = document.getElementById('revenueChart');
+    var productData = @Html.Raw(Json.Serialize(Model.ProductRevenueByMonth.Select(r => r.Revenue)));
+    var serviceData = @Html.Raw(Json.Serialize(Model.ServiceRevenueByMonth.Select(r => r.Revenue)));
     const topLabels = {
         id: 'topLabels',
         afterDatasetsDraw(chart, args, pluginOption) {
@@ -78,7 +81,7 @@
                     return total + values;
                 };
                 let sum = datasetArray.reduce(totalSum,0);
-
+                console.log(sum);
                 ctx.font = 'Bold 15px sans-serif';
                 ctx.fillStyle = 'black';
                 ctx.textAlign = 'center';
@@ -98,14 +101,14 @@
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             datasets: [{
                 label: 'Product',
-                data: [12, 19, 3, 5, 2, 3, 10, 2, 12, 14, 1,5],
+                data: productData,
                 backgroundColor: ['rgba(255, 46, 99,1)'],
                 borderColor: ['rgba(255, 46, 99,1)'],
                 borderWidth: 1,
             },
             {
                 label: 'Service',
-                data: [3, 2, 5, 6, 10, 3, 12, 2, 4, 7, 8, 1],
+                data: serviceData,
                 backgroundColor: ['rgba(8, 217, 214,1)'],
                 borderColor: ['rgba(8, 217, 214,1)'],
                 borderWidth: 1,
@@ -162,13 +165,14 @@
 
                         labels: {
                             value: {
-                                anchor: 'center',
-                                align: 'center',
-                                color: 'black',
+                                anchor: 'end', // Position the labels at the end of the bar
+                                align: 'end', // Align the labels to the end of the bar
+                                offset: 1, // Adjust the offset of the labels from the top of the bar
+                                color: 'black', // Label text color
                                 font: {
-                                    weight: 'Light',
-                                    size: 10
-                                },
+                                    size: 15,
+                                    weight: 'bold' // Label font weight
+                                }
                             }
                         }
 
