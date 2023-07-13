@@ -35,5 +35,27 @@ namespace ProjectSWP391.Models.ServiceModel
 
             return String.Empty;
         }
+
+        public static string Capitalize(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            string[] words = input.Trim().ToLower().Split(' ');
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(words[i]))
+                {
+                    char[] letters = words[i].ToCharArray();
+                    letters[0] = char.ToUpper(letters[0]);
+                    words[i] = new string(letters);
+                }
+            }
+
+            return string.Join(" ", words);
+        }
     }
 }

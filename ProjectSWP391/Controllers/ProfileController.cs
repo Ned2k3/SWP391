@@ -95,7 +95,7 @@ namespace ProjectSWP391.Controllers
             var file = Request.Form.Files.FirstOrDefault();
             string? imageUrl = CreateImagePath(file);
 
-            acc.FullName = fname;
+            acc.FullName = Global.Capitalize(fname);
             acc.Phone = account.Phone;
             acc.Image = imageUrl;
             context.SaveChanges();

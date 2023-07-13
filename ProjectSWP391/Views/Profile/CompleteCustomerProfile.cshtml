@@ -44,7 +44,7 @@
                 var phone = $('#phone');
                 var btn = $('#confirmButton');
                 fname.on('input', function(){
-                    if (/^[a-zA-Z ]{2,}$/.test(fname.val()) && /^(0)[0-9]{9}/.test(phone.val())) {
+                    if (/^[a-zA-Z ]{2,}$/.test(fname.val().trim()) && /^(0)[0-9]{9}$/.test(phone.val().trim())) {
                         btn.prop('disabled', false);
                     }
                     else{
@@ -52,7 +52,7 @@
                     }
                 });
                 phone.on('input', function () {
-                    if (/^[a-zA-Z ]{2,}$/.test(fname.val()) && /^(0)[0-9]{9}/.test(phone.val())) {
+                    if (/^[a-zA-Z ]{2,}$/.test(fname.val().trim()) && /^(0)[0-9]{9}$/.test(phone.val().trim())) {
                         btn.prop('disabled', false);
                         console.log("haha");
                     }

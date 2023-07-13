@@ -78,7 +78,7 @@
                 setup: function (editor) {
                     editor.on('input', function () {
                         content = editor.getContent().replace(/<[^>]+>/g, '');
-                        if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
+                        if ((title_tb.value.trim().length >= 20 && title_tb.trim().value.length <= 200) && content.trim().length >= 100) {
                             button.disabled = false;
                             button.style.backgroundColor = "orange";
                         }
@@ -90,7 +90,7 @@
                     editor.on('paste', function (e) {
                         var clipboardData = e.clipboardData || window.clipboardData;
                         content = clipboardData.getData('text/plain');
-                        if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
+                        if ((title_tb.value.trim().length >= 20 && title_tb.trim().value.length <= 200) && content.trim().length >= 100) {
                             button.disabled = false;
                             button.style.backgroundColor = "orange";
                         }
@@ -147,7 +147,7 @@
             //Validate the content and title
 
             document.getElementById("title_tb").oninput = function () {
-                if ((title_tb.value.length >= 20 && title_tb.value.length <= 200) && content.length >= 100) {
+                if ((title_tb.value.trim().length >= 20 && title_tb.value.trim().length <= 200) && content.trim().length >= 100) {
                     button.disabled = false;
                     button.style.backgroundColor = "orange";
                 }

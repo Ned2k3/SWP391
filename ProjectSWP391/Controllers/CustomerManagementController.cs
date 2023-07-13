@@ -35,8 +35,12 @@ namespace ProjectSWP391.Controllers
             return null;
         }
 
-        public IActionResult LandingPage(int? booked)
+        public IActionResult LandingPage(int? booked, string? message)
         {
+            if(message != null)
+            {
+                ViewBag.message = message;
+            }
             List<Product> products = context.Products.OrderByDescending(p => p.Quantity).Take(8).ToList();
             List<Service> services = context.Services.OrderBy(s => s.Price).Take(6).ToList();
             var blogs = context.Blogs.OrderByDescending(b => b.BlogDate).Take(4).Select(b => new
