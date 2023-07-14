@@ -100,7 +100,8 @@ namespace ProjectSWP391.Controllers
             acc.Image = imageUrl;
             context.SaveChanges();
             Global.CurrentUser = acc;
-            return RedirectToAction("LandingPage","CustomerManagement");
+            string[] msg = {"Congratulations", $"Your profile has been completed"};
+            return RedirectToAction("LandingPage","CustomerManagement", new { message = msg });
         }
 
         public string? CreateImagePath(IFormFile? file)

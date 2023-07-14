@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectSWP391.Models;
 using ProjectSWP391.Models.ServiceModel;
 using System.Diagnostics;
+using System.Reflection;
 using X.PagedList;
 
 namespace ProjectSWP391.Controllers
@@ -35,7 +36,7 @@ namespace ProjectSWP391.Controllers
             return null;
         }
 
-        public IActionResult LandingPage(int? booked, string? message)
+        public IActionResult LandingPage(int? booked, string[]? message)
         {
             if(message != null)
             {

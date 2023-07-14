@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\Uploads\\665d7613-eead-4aa7-bf1e-d1cf3a34d48a.jpg"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\7705f3d4-1622-4563-9c9c-61e196bbd1d1.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\7705f3d4-1622-4563-9c9c-61e196bbd1d1.jpg"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\9e250636-2961-4381-88ad-a5ce2fc764e6.jpg",
       "PackagePath": "staticwebassets\\Uploads\\9e250636-2961-4381-88ad-a5ce2fc764e6.jpg"
     },
@@ -33,12 +37,24 @@
       "PackagePath": "staticwebassets\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\cc635a29-df71-4b9e-96ff-74105153301a.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\cc635a29-df71-4b9e-96ff-74105153301a.jpg"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Authen.css",
       "PackagePath": "staticwebassets\\css\\Authen.css"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Chart.css",
+      "PackagePath": "staticwebassets\\css\\Chart.css"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\CreateBlog.css",
       "PackagePath": "staticwebassets\\css\\CreateBlog.css"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\LandingPage.css",
+      "PackagePath": "staticwebassets\\css\\LandingPage.css"
     },
     {
       "Id": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\ProductList.css",

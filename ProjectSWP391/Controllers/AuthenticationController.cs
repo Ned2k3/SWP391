@@ -80,7 +80,8 @@ namespace ProjectSWP391.Controllers
                         {
                             return RedirectToAction("CompleteCustomerProfile", "Profile", new { id = account.AccountId });
                         }
-                        return RedirectToAction("LandingPage", "CustomerManagement");
+                        string[] msg = { "Welcome Back", $"{Global.CurrentUser.FullName }" };
+                        return RedirectToAction("LandingPage", "CustomerManagement", new { message =  msg });
                     }
                     //return View();
                 }
