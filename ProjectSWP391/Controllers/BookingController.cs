@@ -411,7 +411,7 @@ namespace ProjectSWP391.Controllers
                             if (name != null)
                             {
                                 session.SetString("fname", name);
-                                acc.FullName = name;
+                                acc.FullName = Global.Capitalize(name);
                             }
                             if (email != null)
                             {

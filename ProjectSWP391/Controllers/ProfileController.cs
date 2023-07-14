@@ -95,12 +95,13 @@ namespace ProjectSWP391.Controllers
             var file = Request.Form.Files.FirstOrDefault();
             string? imageUrl = CreateImagePath(file);
 
-            acc.FullName = fname;
+            acc.FullName = Global.Capitalize(fname);
             acc.Phone = account.Phone;
             acc.Image = imageUrl;
             context.SaveChanges();
             Global.CurrentUser = acc;
-            return RedirectToAction("LandingPage","CustomerManagement");
+            string[] msg = {"Congratulations", $"Your profile has been completed"};
+            return RedirectToAction("LandingPage","CustomerManagement", new { message = msg });
         }
 
         public string? CreateImagePath(IFormFile? file)
