@@ -19,6 +19,6 @@ namespace ProjectSWP391.Models
 
         public virtual Account Customer { get; set; }
         public virtual Account Employee { get; set; }
-        public virtual ICollection<ServiceList> ServiceLists { get; set; }
+        public virtual ICollection<ServiceList>? ServiceLists { get; set; }
     }
 }

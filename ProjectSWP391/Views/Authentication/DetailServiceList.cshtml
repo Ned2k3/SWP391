@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model List<ProjectSWP391.Models.OrderDetail>
+@model List<ProjectSWP391.Models.ServiceList>
 
 <!DOCTYPE html>
 <html>
@@ -64,28 +64,28 @@
     <div class="container">
         <h1>Order Details</h1>
 
-        <p><strong>Customer Email:</strong> @ViewBag.Email</p>
-        <p><strong>Customer Name:</strong> @ViewBag.Username</p>
-
+        <p><strong>Employee Email:</strong> @ViewBag.EmployeeEmail</p>
+        <p><strong>Employee Name:</strong> @ViewBag.Employee</p>
+        <p></p>
+         <p><strong>Customer Email:</strong> @ViewBag.CustomerEmail</p>
+        <p><strong>Customer Name:</strong> @ViewBag.Customer</p>
         <h2>Product Details</h2>
         <table>
             <tr>
-                <th>Product</th>
-                <th>Amount</th>
+                <th>Service</th>
                 <th>Price</th>
             </tr>
             @foreach (var a in Model)
             {
                 <tr>
-                    <td>@a.Product.ProductName</td>
-                    <td>@a.Amount</td>
-                    <td>@a.Product.Price</td>
+                    <td>@a.Service.ServiceName</td>
+                    <td>@a.Service.Price</td>
                 </tr>
             }
         </table>
-
-        <p><strong>Order Date:</strong> @Model.FirstOrDefault()?.Order.OrderDate.ToString()</p>
-        <p><strong>Total:</strong> @Model.Sum(o => o.Product.Price * o.Amount)</p>
+        <p><strong>Booking Date:</strong> @Model.FirstOrDefault()?.Booking.Shift.ToString()</p>
+        <p><strong>Booking Date:</strong> @Model.FirstOrDefault()?.Booking.BookingDate.ToString()</p>
+        <p><strong>Comment:</strong> @Model.FirstOrDefault()?.Booking.Content</p>
 
         <a href="/Authentication/ProductRecord">Back</a>
     </div>
