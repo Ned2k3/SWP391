@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/Chart.css">
 </head>
 <body>
+    
     <div class="chart-container">
         <div class="chart-column">
             <canvas id="revenueChart"></canvas>
@@ -26,9 +27,9 @@
             <h2 style="text-align:center;">Service Revenue Year @ViewBag.Year</h2>
         </div>
     </div>
-
+    <a href="/Authentication/Admin" class="back-button">Back to Admin</a>
     <div class="table-container">
-        <h1>Buyer Data</h1>
+        <h1>Service Report Data</h1>
         <h3>@ViewBag.SuccessMsg</h3>
         <table>
             <thead>
@@ -51,8 +52,8 @@
                 {
                     <tr>
                         <!--Chen link dan den account vao day-->
-                        <td><a href="#">@b.EmployeeEmail</a></td>
-                        <td><a href="#">@b.CustomerEmail</a></td>
+                        <td><a href="/AccountManagement/Detail?email=@b.EmployeeEmail">@b.EmployeeEmail</a></td>
+                        <td><a href="/AccountManagement/Detail?email=@b.CustomerEmail">@b.CustomerEmail</a></td>
                         <td>@b.BookingId</td>
                         <td>@b.BookingDate</td>
                         <td>@b.Shift</td>

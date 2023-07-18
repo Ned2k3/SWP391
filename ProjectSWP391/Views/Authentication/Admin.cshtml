@@ -1,7 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = null;
 }
-<h1>Admin's Dashbroad'</h1>
-<a href="/Authentication/AdminPassword">Admin password approve</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Layout</title>
+    <link rel="stylesheet" href="/css/AdminStyle.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Admin Dashboard</div>
+            <ul class="nav-links">
+                <li><a href="/Authentication/Logout">Log out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside class="sidebar">
+        <ul class="side-menu">
+            <li><a href="/AccountManagement/AccountList">Account</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="/Authentication/ProductRecord">Report Product</a></li>
+            <li><a href="/Authentication/ServiceRecord">Report Service</a></li>
+            <li><a href="/Authentication/AdminPassword">Admin Password Approve</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <!-- Your main content goes here -->
+    </main>
+
+    <script src="script.js"></script>
+</body>

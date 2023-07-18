@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+@model Account
+
+<!-- Display the account details -->
+<h2>Account Details</h2>
+<a href="/AccountManagement/AccountList">Back to List </a>
+<br />
+<a href="/Authentication/Admin"> Back to Admin</a>
+<table>
+    <tr>
+        <td>Account Id:</td>
+        <td>@Model.AccountId</td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <td>Password:</td>
+        <td>Model.Password</td>
+    </tr>
+    <tr>
+        <td>Phone:</td>
+        <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <td>Full Name:</td>
+        <td>@Model.FullName</td>
+    </tr>
+    <tr>
+        <td>Role:</td>
+        <td>@Model.Role</td>
+    </tr>
+    <tr>
+        <td>Active:</td>
+        <td>@(Model.IsActive == 1 ? "Yes" : "No")</td>
+    </tr>
+    <tr>
+        <td>Image:</td>
+        <td><img src="@Model.Image" alt="Account Image" /></td>
+    </tr>
+</table>
