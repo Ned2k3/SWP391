@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+@model List<Account>
+
+<style>
+    table {
+        width: 80%%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    img {
+        max-width: 50px;
+        max-height: 50px;
+    }
+
+    .search-container {
+        margin-bottom: 20px;
+    }
+
+    .search-container input[type="text"] {
+        width: 300px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .search-container button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+</style>
+<a href="/AccountManagement/Create" >Create new Account </a><br />
+<a href="/Authentication/Admin">Back</a>
+
+ <div class="search-container">
+    <input type="text" id="search" name="search" placeholder="Search Username...">
+    <button type="submit">Search</button>
+</div>
+
+<table>
+    <h3>@ViewBag.ErrorMsg</h3>
+    <h3>@ViewBag.SuccessMsg</h3>
+
+   
+    <thead>
+        <tr>
+            <th>Account Id</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Full Name</th>
+            <th>Role</th>
+            <th>Active</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.AccountId</td>
+                <td><a href="/AccountManagement/Detail?id=@account.Email">@account.Email</a></td>
+                <td>@account.Phone</td>
+                <td>@account.FullName</td>
+                @if(account.Role==1){
+                    <td>Admin</td>
+                }else if(account.Role==2){
+                    <td>Employee</td>
+                }else{
+                    <td>Customer</td>
+                }
+                <td>@(account.IsActive == 1 ? "Yes" : "No")</td>
+                <td><img src="@account.Image" alt="Account Image" /></td>
+                <td><a href="/AccountManagement/Update?id=@account.AccountId">Update</a>|<a href="/AccountManagement/Delete?id=@account.AccountId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

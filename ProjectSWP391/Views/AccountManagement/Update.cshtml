@@ -1,0 +1,98 @@
+﻿@{
+    Layout = null;
+}
+@model Account
+
+<style>
+    /* Table styling code */
+
+    form {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+<a href="/AccountManagement/AccountList">Back to List </a>
+<br />
+<a href="/Authentication/Admin"> Back to Admin</a>
+<form method="post" action="/AccountManagement/Update">
+    <input type="hidden" name="AccountId" value="@Model.AccountId">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="Email" value="@Model.Email" required>
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="Password" value="@(EncryptionHelper.Decrypt(Model.Password))" required>
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="Phone" value="@Model.Phone">
+
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="FullName" value="@Model.FullName">
+
+    <label for="role">Role:</label>
+
+    <select id="role" name="Role">
+        @if(Model.Role==1)
+        {
+            <option value="1" selected)>Admin</option>
+            <option value="2")>Employee</option>
+            <option value="3" )>Customer</option>
+            
+        }else if (Model.Role == 2)
+        {
+            <option value="1" )>Admin</option>
+            <option value="2" selected)>Employee</option>
+            <option value="3" )>Customer</option>
+
+        }else{
+            <option value="1" )>Admin</option>
+            <option value="2" )>Employee</option>
+            <option value="3" selected )>Customer</option>
+
+        }
+        
+    </select>
+
+    <label for="isActive">Active:</label>
+    @if (Model.IsActive == 1 ){
+        <input type="checkbox" id="isActive" name="IsActive" checked value="true">
+
+    }else{
+        <input type="checkbox" id="isActive" name="IsActive"  value="true">
+    }
+    
+    <label for="image">Image:</label>
+    <input type="text" id="image" name="Image" value="@Model.Image">
+
+    <input type="submit" value="Update Account">
+</form>

@@ -307,7 +307,7 @@ namespace ProjectSWP391.Controllers
         }
 
         #region will delete when merge
-        [Authorize(AuthenticationSchemes = "Auth", Roles = "1,2")]
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Admin()
         {
             return View();
@@ -327,6 +327,7 @@ namespace ProjectSWP391.Controllers
             return View(a);
         }
 
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult ApprovePassword(string email)
         {
             var a = context.Accounts.Where(e => e.Email == email).SingleOrDefault();
@@ -336,6 +337,7 @@ namespace ProjectSWP391.Controllers
             context.SaveChanges();
             return RedirectToAction("AdminPassword");
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult DeclinePassword(string email)
         {
             var a = context.Accounts.Where(e => e.Email == email).SingleOrDefault();
@@ -345,14 +347,29 @@ namespace ProjectSWP391.Controllers
             return RedirectToAction("AdminPassword");
         }
 
-        public IActionResult ProductRecord()
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
+        public IActionResult ProductRecord(int? year)
         {
-
-
-            var a = GetProductRevenueByMonth();
-            var b = GetServiceRevenueByMonth();
-            var productData = FillRevenueDataForAllMonths(a);
-            var serviceData = FillRevenueDataForAllMonths(b);
+            List<RevenueData> productData = new List<RevenueData>();
+            List<RevenueData> serviceData = new List<RevenueData>();
+           
+            if (year != null)
+            {
+                ViewBag.Year = year;
+                var a = GetProductRevenueByMonth(year);
+                var b = GetServiceRevenueByMonth(year);
+                productData = FillRevenueDataForAllMonths(a);
+                serviceData = FillRevenueDataForAllMonths(b);
+            }
+            else
+            {
+                ViewBag.Year = Convert.ToInt32(DateTime.Now.Year);
+                var a = GetProductRevenueByMonth(null);
+                var b = GetServiceRevenueByMonth(null);
+                productData = FillRevenueDataForAllMonths(a);
+                serviceData = FillRevenueDataForAllMonths(b);
+            }
+             
             var userPurchases = context.Accounts
                      // Replace with the user email you want to retrieve purchases for
                     .Join(context.Orders, account => account.AccountId, order => order.AccountId, (account, order) => new { account, order })
@@ -361,6 +378,7 @@ namespace ProjectSWP391.Controllers
                     .OrderByDescending(combined => combined.order.OrderDate)
                     .Select(result => new
                     {
+
                         BuyerEmail = result.account.Email,
                         OrderId =result.order.OrderId,
                         ProductName = result.product.ProductName,
@@ -382,16 +400,55 @@ namespace ProjectSWP391.Controllers
                 ProductUserDatas =listUser
             };
 
+            
             return View(viewModel);
 
         }
-
-        public IActionResult ServiceRecord()
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
+        public IActionResult ServiceRecord(int? year)
         {
-           
-            return View();
-        }
+            List<RevenueData> productData = new List<RevenueData>();
+            List<RevenueData> serviceData = new List<RevenueData>();
 
+            if (year != null)
+            {
+                ViewBag.Year = year;
+                var a = GetProductRevenueByMonth(year);
+                var b = GetServiceRevenueByMonth(year);
+                productData = FillRevenueDataForAllMonths(a);
+                serviceData = FillRevenueDataForAllMonths(b);
+            }
+            else
+            {
+                ViewBag.Year = Convert.ToInt32(DateTime.Now.Year);
+                var a = GetProductRevenueByMonth(null);
+                var b = GetServiceRevenueByMonth(null);
+                productData = FillRevenueDataForAllMonths(a);
+                serviceData = FillRevenueDataForAllMonths(b);
+            }
+
+            var serviceList = context.ServiceLists.Include(c=>c.Booking).OrderBy(c=>c.Booking.BookingDate).Include(c=>c.Service).ToList();
+
+
+            var service = context.Services.ToList();
+            List<ServiceUserData> listUser = new List<ServiceUserData>();
+            foreach (var newUser in serviceList)
+            {
+                listUser.Add(new ServiceUserData(getEmailUser(newUser.Booking.CustomerId), getEmailUser(newUser.Booking.EmployeeId),
+                    newUser.BookingId, newUser.Booking.BookingDate, newUser.Booking.Shift,
+                    newUser.Service.ServiceName, newUser.Service.Price, newUser.Booking.Content));
+            }
+
+            var viewModel = new MyViewModel
+            {
+                ProductRevenueByMonth = productData,
+                ServiceRevenueByMonth = serviceData,
+                ServiceUserDatas = listUser
+            };
+
+            return View(viewModel);
+        }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public   IActionResult DetailShopList(int order)
 
         {
@@ -409,56 +466,135 @@ namespace ProjectSWP391.Controllers
             
             return View(orderDetails);
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
+        public IActionResult DetailServiceList(int booking)
+        {
+            var serviceList = context.ServiceLists.Include(c => c.Booking).OrderBy(c => c.Booking.BookingDate)
+                .Include(c => c.Service)
+                .Where(c=>c.BookingId==booking)
+                .ToList();
+            var a = serviceList.First();
+            Account customer = getUser(a.Booking.CustomerId);
+            Account employee = getUser(a.Booking.EmployeeId);
+
+            ViewBag.Customer = customer.FullName;
+            ViewBag.CustomerEmail = customer.Email;
+            ViewBag.Employee = employee.FullName;
+            ViewBag.EmployeeEmail = employee.FullName;
+            return View(serviceList);
+        }
 
         #endregion
 
-
-        public List<RevenueData> GetProductRevenueByMonth()
+        #region Some method to call
+        public string getEmailUser(int id)
         {
-            List<RevenueData> revenueDataList = new List<RevenueData>();
-            var revenueProductByMonth = context.Accounts
-                   .Join(context.Orders, account => account.AccountId, order => order.AccountId, (account, order) => new { account, order })
-                   .Join(context.OrderDetails, combined => combined.order.OrderId, orderDetail => orderDetail.OrderId, (combined, orderDetail) => new { combined.account, combined.order, orderDetail })
-                   .Join(context.Products, combined => combined.orderDetail.ProductId, product => product.ProductId, (combined, product) => new { combined.account, combined.order, combined.orderDetail, product })
-                   .Where(combined => combined.order.OrderDate.Value.Year == 2023) // Filter by desired year
-                   .GroupBy(combined => combined.order.OrderDate.Value.Month)
-                   .Select(group => new
-                   {
-                       Month = group.Key,
-                       Revenue = group.Sum(combined => combined.orderDetail.Amount * combined.product.Price)
-                   })
-                   .OrderBy(group => group.Month)
-                   .ToList();
-            foreach (var revenue in revenueProductByMonth)
+            Account a = context.Accounts.Where(a => a.AccountId == id).SingleOrDefault();
+            return a.Email;
+        }
+        public Account getUser(int id)
+        {
+            return context.Accounts.Where(a => a.AccountId == id).SingleOrDefault();
+        }
+        public List<RevenueData> GetProductRevenueByMonth(int? year)
+        {
+            if (year != null)
             {
-                var a = new RevenueData(revenue.Month, revenue.Revenue);
-                revenueDataList.Add(a);
+                List<RevenueData> revenueDataList = new List<RevenueData>();
+                var revenueProductByMonth = context.Accounts
+                       .Join(context.Orders, account => account.AccountId, order => order.AccountId, (account, order) => new { account, order })
+                       .Join(context.OrderDetails, combined => combined.order.OrderId, orderDetail => orderDetail.OrderId, (combined, orderDetail) => new { combined.account, combined.order, orderDetail })
+                       .Join(context.Products, combined => combined.orderDetail.ProductId, product => product.ProductId, (combined, product) => new { combined.account, combined.order, combined.orderDetail, product })
+                       .Where(combined => combined.order.OrderDate.Value.Year == year) // Filter by desired year
+                       .GroupBy(combined => combined.order.OrderDate.Value.Month)
+                       .Select(group => new
+                       {
+                           Month = group.Key,
+                           Revenue = group.Sum(combined => combined.orderDetail.Amount * combined.product.Price)
+                       })
+                       .OrderBy(group => group.Month)
+                       .ToList();
+                foreach (var revenue in revenueProductByMonth)
+                {
+                    var a = new RevenueData(revenue.Month, revenue.Revenue);
+                    revenueDataList.Add(a);
+                }
+                return revenueDataList;
             }
-            return revenueDataList;
+            else
+            {
+                List<RevenueData> revenueDataList = new List<RevenueData>();
+                var revenueProductByMonth = context.Accounts
+                       .Join(context.Orders, account => account.AccountId, order => order.AccountId, (account, order) => new { account, order })
+                       .Join(context.OrderDetails, combined => combined.order.OrderId, orderDetail => orderDetail.OrderId, (combined, orderDetail) => new { combined.account, combined.order, orderDetail })
+                       .Join(context.Products, combined => combined.orderDetail.ProductId, product => product.ProductId, (combined, product) => new { combined.account, combined.order, combined.orderDetail, product })
+                       .Where(combined => combined.order.OrderDate.Value.Year == DateTime.Now.Year) //can changed based on year
+                       .GroupBy(combined => combined.order.OrderDate.Value.Month)
+                       .Select(group => new
+                       {
+                           Month = group.Key,
+                           Revenue = group.Sum(combined => combined.orderDetail.Amount * combined.product.Price)
+                       })
+                       .OrderBy(group => group.Month)
+                       .ToList();
+                foreach (var revenue in revenueProductByMonth)
+                {
+                    var a = new RevenueData(revenue.Month, revenue.Revenue);
+                    revenueDataList.Add(a);
+                }
+                return revenueDataList;
+            }
         }
 
-        public List<RevenueData> GetServiceRevenueByMonth()
+        public List<RevenueData> GetServiceRevenueByMonth(int? year)
         {
-            List<RevenueData> revenueDataList = new List<RevenueData>();
-            var revenueServiceByMonth = context.Accounts
-                .Join(context.Bookings, account => account.AccountId, booking => booking.EmployeeId, (account, booking) => new { account, booking })
-                .Join(context.ServiceLists, combined => combined.booking.BookingId, serviceList => serviceList.BookingId, (combined, serviceList) => new { combined.account, combined.booking, serviceList })
-                .Join(context.Services, combined => combined.serviceList.ServiceId, service => service.ServiceId, (combined, service) => new { combined.account, combined.booking, combined.serviceList, service })
-                .Where(combined => combined.booking.BookingDate.Year == 2023) // Filter by desired year
-                .GroupBy(combined => combined.booking.BookingDate.Month) // Group by month
-                .Select(group => new
-                {   
-                    Month = group.Key,
-                    Revenue = group.Sum(combined => combined.service.Price)
-                })
-                .OrderBy(group => group.Month)
-                .ToList();
-            foreach (var revenue in revenueServiceByMonth)
+            if (year == null)
             {
-                var a = new RevenueData(revenue.Month, revenue.Revenue);
-                revenueDataList.Add(a);
+                List<RevenueData> revenueDataList = new List<RevenueData>();
+                var revenueServiceByMonth = context.Accounts
+                    .Join(context.Bookings, account => account.AccountId, booking => booking.EmployeeId, (account, booking) => new { account, booking })
+                    .Join(context.ServiceLists, combined => combined.booking.BookingId, serviceList => serviceList.BookingId, (combined, serviceList) => new { combined.account, combined.booking, serviceList })
+                    .Join(context.Services, combined => combined.serviceList.ServiceId, service => service.ServiceId, (combined, service) => new { combined.account, combined.booking, combined.serviceList, service })
+                    .Where(combined => combined.booking.BookingDate.Year == DateTime.Now.Year) //change this if needed?
+                    .GroupBy(combined => combined.booking.BookingDate.Month)
+                    .Select(group => new
+                    {
+                        Month = group.Key,
+                        Revenue = group.Sum(combined => combined.service.Price)
+                    })
+                    .OrderBy(group => group.Month)
+                    .ToList();
+                foreach (var revenue in revenueServiceByMonth)
+                {
+                    var a = new RevenueData(revenue.Month, revenue.Revenue);
+                    revenueDataList.Add(a);
+                }
+                return revenueDataList;
             }
-            return revenueDataList;
+            else
+            {
+
+                List<RevenueData> revenueDataList = new List<RevenueData>();
+                var revenueServiceByMonth = context.Accounts
+                    .Join(context.Bookings, account => account.AccountId, booking => booking.EmployeeId, (account, booking) => new { account, booking })
+                    .Join(context.ServiceLists, combined => combined.booking.BookingId, serviceList => serviceList.BookingId, (combined, serviceList) => new { combined.account, combined.booking, serviceList })
+                    .Join(context.Services, combined => combined.serviceList.ServiceId, service => service.ServiceId, (combined, service) => new { combined.account, combined.booking, combined.serviceList, service })
+                    .Where(combined => combined.booking.BookingDate.Year == year) // Filter by desired year
+                    .GroupBy(combined => combined.booking.BookingDate.Month) // Group by month
+                    .Select(group => new
+                    {
+                        Month = group.Key,
+                        Revenue = group.Sum(combined => combined.service.Price)
+                    })
+                    .OrderBy(group => group.Month)
+                    .ToList();
+                foreach (var revenue in revenueServiceByMonth)
+                {
+                    var a = new RevenueData(revenue.Month, revenue.Revenue);
+                    revenueDataList.Add(a);
+                }
+                return revenueDataList;
+            }
         }
         private List<RevenueData> FillRevenueDataForAllMonths(List<RevenueData> revenueData)
         {
@@ -480,5 +616,6 @@ namespace ProjectSWP391.Controllers
 
             return filledData;
         }
+        #endregion
     }
 }
