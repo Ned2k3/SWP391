@@ -1,0 +1,14 @@
+﻿@{
+    string qrImagePath = ViewBag.qrImagePath;
+}
+
+<h1>QR Payment</h1>
+
+@if (!string.IsNullOrEmpty(qrImagePath))
+{
+            <img src="@qrImagePath" alt="QR Code">
+}
+else
+{
+            <p>QR Code not available.</p>
+}

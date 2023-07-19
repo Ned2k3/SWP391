@@ -1,0 +1,47 @@
+﻿@model ProjectSWP391.DTOs.ShoppingCartViewModel
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/cart/css/styles.css" rel="stylesheet">
+
+@if (Model.CartItems.Count > 0)
+{
+    <form method="post" action="/ShoppingCart/UpdateCart">
+        <div class="wrapper">
+            <h1>Shopping Cart</h1>
+            <div class="project">
+                <div class="shop">
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <div class="box">
+                            <img href="@item.Image">
+                            <div class="content">
+                                <h5>@item.ProductName</h5>
+                                <span>Price: <b>@item.Price</b></span>
+                                <p class="unit">Quantity: <input name="quantities[@item.ProductId]" value="@item.Quantity"></p>
+                                <p class="btn-area"><i aria-hidden="true" class="fa fa-trash" onclick="removeItem('@item.ProductId')"></i></p>
+                            </div>
+                            <p><span>Subtotal</span> <b>@(item.Price * item.Quantity)</b></p>
+                        </div>
+                    }
+                </div>
+                <div class="right-bar">
+                    <p><span>Total</span> <b>$@Model.TotalPrice</b></p>
+                    <a href="/ShoppingCart/Checkout"><i class="fa fa-shopping-cart"></i>Checkout</a>
+                </div>
+
+            </div>
+        </div>
+        <button type="submit">Edit Cart</button>
+    </form>
+}
+else
+{
+    <p>Your cart is empty.</p>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function removeItem(productId) {
+        window.location.href = "/ShoppingCart/RemoveFromCart?productId=" + productId;
+    }
+</script>
