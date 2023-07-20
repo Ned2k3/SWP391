@@ -11,7 +11,7 @@ namespace ProjectSWP391.Models
         }
 
         public int PcategoryId { get; set; }
-        public string PcategoryName { get; set; }
+        public string PcategoryName { get; set; } = null!;
 
         public virtual ICollection<Product> Products { get; set; }
     }

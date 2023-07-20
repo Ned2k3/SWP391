@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "_AdminLayout";
 }
 @model Account
 
@@ -7,13 +7,15 @@
    
 
     form {
-        width: 600px;
-        margin: 0 auto;
+        width: 90%;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
     }
 
     label {
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-weight: bold;
     }
 
@@ -24,44 +26,91 @@
         width: 100%;
         padding: 6px;
         margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        border: none;
+        border-bottom: 2px solid green;
+    }
+
+    select{
+        width: fit-content;
+        margin-right: 30px;
     }
 
     input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
+        margin-top: 15px;
+        color: black;
         padding: 10px 16px;
         border: none;
+        border-bottom: 2px solid lightgreen;
+        outline: none;
         border-radius: 4px;
         cursor: pointer;
     }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            border: none;
+            background-color: lightgreen;
+            color: white;
+        }
+
+    .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #e0e0e0;
+        color: #333;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: absolute;
+        left: 4%;
+    }
+
+        .back-button:hover {
+            background-color: #ccc;
         }
 </style>
-<a href="/AccountManagement/AccountList">Back to List </a>
-<br />
-<a href="/Authentication/Admin"> Back to Admin</a>
+
+<div style="width: 100%; display: flex; padding: 30px 0 50px 0; justify-content: center; position: relative;">
+    <a href="/AccountManagement/AccountList" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
+    <h2>Create New Account</h2>
+</div>
+
 <form method="post" action="/AccountManagement/Create">
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="Email" required>
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="Password" required>
-    <label for="phone">Phone:</label>
-    <input type="tel" id="phone" name="Phone">
-    <label for="fullName">Full Name:</label>
-    <input type="text" id="fullName" name="FullName">
-    <label for="role">Role:</label>
-    <select id="role" name="Role">
-        <option value="1">Admin</option>
-        <option value="2">Employee</option>
-        <option value="3">Customer</option>
-    </select>
-    <label for="isActive">Active:</label>
-    <input type="checkbox" id="isActive" name="IsActive" value="true">
-    <label for="image">Image:</label>
-    <input type="text" id="image" name="Image">
-    <input type="submit" value="Create Account">
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="Email" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="Password" required>
+    </div>
+    <div>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="Phone">
+    </div>
+    <div>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="FullName">
+    </div>
+    <div style="display: flex; padding: 10px 0 10px 0">
+        <div style="display: flex;">
+            <label for="role" style="margin-right: 10px;">Role:</label>
+            <select id="role" name="Role">
+                <option value="1">Admin</option>
+                <option value="2">Employee</option>
+                <option value="3">Customer</option>
+            </select>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <label for="isActive" style="margin-right: 10px;">Active:</label>
+            <input type="checkbox" id="isActive" name="IsActive" value="true" style="border: 1px solid black;">
+        </div>
+    </div>
+    <div>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="Image">
+    </div>
+    <input type="submit" value="Confirm">
 </form>

@@ -11,7 +11,7 @@ namespace ProjectSWP391.Models
         }
 
         public int ScategoryId { get; set; }
-        public string ScategoryName { get; set; }
+        public string ScategoryName { get; set; } = null!;
 
         public virtual ICollection<Service> Services { get; set; }
     }

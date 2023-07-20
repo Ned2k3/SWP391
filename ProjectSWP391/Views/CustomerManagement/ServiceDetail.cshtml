@@ -3,6 +3,10 @@
 
 @{
     ViewData["Title"] = "Service Details";
+    if(Global.CurrentUser != null && (Global.CurrentUser.Role == 1 && Global.CurrentUser.Role == 2))
+    {
+        Layout = "_AdminLayout";
+    }
 }
 
 <body>

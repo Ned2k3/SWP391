@@ -9,7 +9,7 @@ namespace ProjectSWP391.Models
         public int BookingId { get; set; }
         public int ServiceId { get; set; }
 
-        public virtual Booking? Booking { get; set; }
-        public virtual Service? Service { get; set; }
+        public virtual Booking Booking { get; set; } = null!;
+        public virtual Service Service { get; set; } = null!;
     }
 }

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/AdminStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" asp-controller="AdminManagement" asp-action="DashBoard">
+                    SmartBeauty
+                </a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <ul class="nav navbar-pills justify-content-end" style="margin-right: 50px;">
+                        <li><i class="fa-solid fa-earth-americas fa-sm" style="color: #656567; font-size: 13px; margin-right: 15px"></i></li>
+                        <li>
+                            <div><p style="margin-bottom: 0; line-height: 1.5rem; font-size: 18px;">@(Global.CurrentUser.Email). (<a href="/Authentication/Logout" style="color: red;">Sign Out</a>)</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar">
+                <div class="side-bar-content text-white flex-column p-3">
+                    <div class="side-bar-content-item">
+                        <i class="fa-solid fa-house" style="margin-right: 10px; color: mediumspringgreen"></i>
+                        <a href="/AdminManagement/DashBoard" class="menu-item">DashBoard</a>
+                    </div>
+
+                    <div class="side-bar-content-item">
+                        <i class="fa-solid fa-user" style="margin-right: 10px; color: silver"></i>
+                        <a href="/AccountManagement/AccountList" class="menu-item">Account</a>
+                    </div>
+
+                    <div class="side-bar-content-item">
+                        <i class="fa-solid fa-wand-magic-sparkles" style="margin-right: 10px; color: aqua;"></i>
+                        <p class="menu-item">Product</p>
+                    </div>
+
+                    <div class="side-bar-content-item">
+                        <i class="fa-solid fa-spa" style="margin-right: 10px; color: cornsilk"></i>
+                        <p class="menu-item">Service</p>
+                    </div>
+
+                    <div class="side-bar-content-item">
+                        <i class="fa-sharp fa-solid fa-chart-simple" style="margin-right: 10px; color: darkgoldenrod"></i>
+                        <a href="/Authentication/ProductRecord" class="menu-item">Product Report</a>
+                    </div>
+
+                    <div class="side-bar-content-item">
+                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: lightblue"></i>
+                        <a href="/Authentication/ServiceRecord" class="menu-item">Service Report</a>
+                    </div>
+
+                    <div class="side-bar-content-item">
+                        <i class="fa-solid fa-code-pull-request" style="margin-right: 10px; color: red"></i>
+                        <a href="/Authentication/AdminPassword" class="menu-item">Password Approve</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 20px 60px 20px;">
+                    @RenderBody()
+                </div>
+                <footer class="footers">
+                    <p style="color: white; margin-bottom: 0;">© Create By <span style="color: cyan; text-decoration: underline;">SWP391 - Team 5</span></p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+        const footer = document.querySelector('.footers');
+
+        document.querySelector('.navbar-toggler').addEventListener('click', function () {
+            sidebar.classList.toggle('sidebar-collapse')
+            content.classList.toggle('show-sidebar');
+            footer.classList.toggle('footer-collapse');
+        });
+
+        document.getElementById("drop-down-btn").addEventListener('click', function () {
+            var dropdown = this.parentNode;
+            dropdown.classList.toggle('show');
+        });
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/071e3e204d.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

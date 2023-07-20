@@ -10,6 +10,6 @@ namespace ProjectSWP391.Models
         public int Status { get; set; }
         public DateTime? WorkingDay { get; set; }
 
-        public virtual Account Account { get; set; }
+        public virtual Account Account { get; set; } = null!;
     }
 }

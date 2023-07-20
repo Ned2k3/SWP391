@@ -310,7 +310,7 @@ namespace ProjectSWP391.Controllers
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Admin()
         {
-            return View();
+            return RedirectToAction("DashBoard","AdminManagement");
         }
 
         [Authorize(AuthenticationSchemes = "Auth", Roles = "2")]

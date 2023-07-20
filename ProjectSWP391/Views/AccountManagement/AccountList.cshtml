@@ -1,25 +1,27 @@
 ﻿@{
-    Layout = null;
+    Layout = "_AdminLayout";
 }
 @model List<Account>
 
 <style>
     table {
-        width: 80%%;
+        width: 100%;
         border-collapse: collapse;
         font-family: Arial, sans-serif;
-        color: #333;
     }
 
     th, td {
         padding: 5px;
         text-align: center;
-        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
     }
 
     th {
-        background-color: #f2f2f2;
+        background-color: #3d89f8;
         font-weight: bold;
+        padding: 15px 0 15px 0;
+        border-top: none;
+        color: white;
     }
 
     tr:hover {
@@ -31,8 +33,8 @@
         max-height: 50px;
     }
 
-    .search-container {
-        margin-bottom: 20px;
+    .search-container{
+        margin-left: 20px;
     }
 
     .search-container input[type="text"] {
@@ -49,25 +51,46 @@
         background-color: #4CAF50;
         color: white;
         cursor: pointer;
+        
     }
 
-</style>
-<a href="/AccountManagement/Create" >Create new Account </a><br />
-<a href="/Authentication/Admin">Back</a>
+    .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #e0e0e0;
+        color: #333;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
- <div class="search-container">
-    <input type="text" id="search" name="search" placeholder="Search Username...">
-    <button type="submit">Search</button>
+        .back-button:hover {
+            background-color: #ccc;
+        }
+</style>
+
+<div style="display: flex; width: 100%; justify-content: space-between; margin: 30px 0 30px 0">
+    <a href="/Authentication/Admin" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
+    <div style="display: flex;">
+        <a href="/AccountManagement/Create" class="back-button" style="display: flex; align-items: center; justify-content: center; color: black;"><i class="fa-solid fa-user-plus fa-xl"></i></a><br />
+        <div class="search-container">
+            <input type="text" id="search" name="search" placeholder="Search Username...">
+            <button type="submit">Search</button>
+        </div>
+    </div>
 </div>
 
 <table>
     <h3>@ViewBag.ErrorMsg</h3>
     <h3>@ViewBag.SuccessMsg</h3>
 
-   
+
     <thead>
         <tr>
-            <th>Account Id</th>
+            <th>No.</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Full Name</th>
@@ -78,24 +101,33 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            int i = 1;
+        }
         @foreach (var account in Model)
         {
             <tr>
-                <td>@account.AccountId</td>
-                <td><a href="/AccountManagement/Detail?id=@account.Email">@account.Email</a></td>
+                <td>@i</td>
+                <td><a href="/AccountManagement/Detail?email=@account.Email">@account.Email</a></td>
                 <td>@account.Phone</td>
                 <td>@account.FullName</td>
-                @if(account.Role==1){
+                @if (account.Role == 1)
+                {
                     <td>Admin</td>
-                }else if(account.Role==2){
+                }
+                else if (account.Role == 2)
+                {
                     <td>Employee</td>
-                }else{
+                }
+                else
+                {
                     <td>Customer</td>
                 }
                 <td>@(account.IsActive == 1 ? "Yes" : "No")</td>
-                <td><img src="@account.Image" alt="Account Image" /></td>
-                <td><a href="/AccountManagement/Update?id=@account.AccountId">Update</a>|<a href="/AccountManagement/Delete?id=@account.AccountId">Delete</a></td>
+                <td><img src="@(account.Image==null?"https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png":account.Image)" alt="Account Image" /></td>
+                <td><a href="/AccountManagement/Update?id=@account.AccountId" class="back-button">Update</a>   <a href="/AccountManagement/Delete?id=@account.AccountId" class="back-button">Delete</a></td>
             </tr>
+            i++;
         }
     </tbody>
 </table>

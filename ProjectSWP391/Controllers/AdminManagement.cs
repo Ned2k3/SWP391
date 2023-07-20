@@ -2,9 +2,9 @@
 
 namespace ProjectSWP391.Controllers
 {
-    public class AdminController : Controller
+    public class AdminManagement : Controller
     {
-        public IActionResult Index()
+        public IActionResult DashBoard()
         {
             return View();
         }

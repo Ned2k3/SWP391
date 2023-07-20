@@ -9,6 +9,7 @@ namespace ProjectSWP391.Models
         {
             Feedbacks = new HashSet<Feedback>();
             ServiceLists = new HashSet<ServiceList>();
+            ServiceMaterials = new HashSet<ServiceMaterial>();
         }
 
         public int ServiceId { get; set; }
@@ -16,11 +17,12 @@ namespace ProjectSWP391.Models
         public string? Description { get; set; }
         public string? Image { get; set; }
         public decimal Price { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         public int? ScategoryId { get; set; }
 
-        public virtual ServiceCategory Scategory { get; set; }
+        public virtual ServiceCategory? Scategory { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
-        public virtual ICollection<ServiceList>? ServiceLists { get; set; }
+        public virtual ICollection<ServiceList> ServiceLists { get; set; }
+        public virtual ICollection<ServiceMaterial> ServiceMaterials { get; set; }
     }
 }

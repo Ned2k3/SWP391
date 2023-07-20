@@ -16,18 +16,19 @@ namespace ProjectSWP391.Models
         {
         }
 
-        public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Blog> Blogs { get; set; }
-        public virtual DbSet<Booking> Bookings { get; set; }
-        public virtual DbSet<Feedback> Feedbacks { get; set; }
-        public virtual DbSet<IsWorking> IsWorkings { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-        public virtual DbSet<Service> Services { get; set; }
-        public virtual DbSet<ServiceCategory> ServiceCategories { get; set; }
-        public virtual DbSet<ServiceList> ServiceLists { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; } = null!;
+        public virtual DbSet<Blog> Blogs { get; set; } = null!;
+        public virtual DbSet<Booking> Bookings { get; set; } = null!;
+        public virtual DbSet<Feedback> Feedbacks { get; set; } = null!;
+        public virtual DbSet<IsWorking> IsWorkings { get; set; } = null!;
+        public virtual DbSet<Order> Orders { get; set; } = null!;
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
+        public virtual DbSet<Product> Products { get; set; } = null!;
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; } = null!;
+        public virtual DbSet<Service> Services { get; set; } = null!;
+        public virtual DbSet<ServiceCategory> ServiceCategories { get; set; } = null!;
+        public virtual DbSet<ServiceList> ServiceLists { get; set; } = null!;
+        public virtual DbSet<ServiceMaterial> ServiceMaterials { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,7 +36,7 @@ namespace ProjectSWP391.Models
                               .SetBasePath(Directory.GetCurrentDirectory())
                               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             IConfigurationRoot configuration = builder.Build();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PRNDB"));
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("MyCnn"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -44,17 +45,13 @@ namespace ProjectSWP391.Models
             {
                 entity.ToTable("Account");
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Email).HasMaxLength(50);
 
                 entity.Property(e => e.FullName).HasMaxLength(50);
 
                 entity.Property(e => e.Image).HasMaxLength(500);
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Password).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Blog>(entity =>
@@ -65,9 +62,7 @@ namespace ProjectSWP391.Models
 
                 entity.Property(e => e.Content).HasColumnType("text");
 
-                entity.Property(e => e.Title)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.Title).HasMaxLength(100);
 
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Blogs)
@@ -82,9 +77,7 @@ namespace ProjectSWP391.Models
 
                 entity.Property(e => e.BookingDate).HasColumnType("date");
 
-                entity.Property(e => e.Content)
-                    .IsRequired()
-                    .HasMaxLength(300);
+                entity.Property(e => e.Content).HasMaxLength(300);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.BookingCustomers)
@@ -164,13 +157,13 @@ namespace ProjectSWP391.Models
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Order__412EB0B6");
+                    .HasConstraintName("FK__OrderDeta__Order__5629CD9C");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderDeta__Produ__4222D4EF");
+                    .HasConstraintName("FK__OrderDeta__Produ__571DF1D5");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -185,9 +178,7 @@ namespace ProjectSWP391.Models
 
                 entity.Property(e => e.Price).HasColumnType("money");
 
-                entity.Property(e => e.ProductName)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.ProductName).HasMaxLength(100);
 
                 entity.HasOne(d => d.Pcategory)
                     .WithMany(p => p.Products)
@@ -205,7 +196,6 @@ namespace ProjectSWP391.Models
                 entity.Property(e => e.PcategoryId).HasColumnName("PCategoryId");
 
                 entity.Property(e => e.PcategoryName)
-                    .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("PCategoryName");
             });
@@ -239,7 +229,6 @@ namespace ProjectSWP391.Models
                 entity.Property(e => e.ScategoryId).HasColumnName("SCategoryId");
 
                 entity.Property(e => e.ScategoryName)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("SCategoryName");
             });
@@ -259,6 +248,42 @@ namespace ProjectSWP391.Models
                     .HasForeignKey(d => d.ServiceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ServiceList_Service");
+            });
+
+            modelBuilder.Entity<ServiceMaterial>(entity =>
+            {
+                entity.HasKey(e => e.MaterialId);
+
+                entity.ToTable("Service_Material");
+
+                entity.Property(e => e.MaterialId).HasColumnName("Material_Id");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ExpiryDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Image).HasMaxLength(250);
+
+                entity.Property(e => e.MaterialName)
+                    .HasMaxLength(50)
+                    .HasColumnName("Material_Name");
+
+                entity.Property(e => e.MaterialType)
+                    .HasMaxLength(50)
+                    .HasColumnName("Material_Type");
+
+                entity.Property(e => e.Price).HasColumnType("money");
+
+                entity.Property(e => e.Suppiler).HasMaxLength(50);
+
+                entity.Property(e => e.Unit).HasMaxLength(50);
+
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Service)
+                    .WithMany(p => p.ServiceMaterials)
+                    .HasForeignKey(d => d.ServiceId)
+                    .HasConstraintName("FK_Service_Material_Service");
             });
 
             OnModelCreatingPartial(modelBuilder);

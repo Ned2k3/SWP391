@@ -16,8 +16,8 @@ namespace ProjectSWP391.Models
         }
 
         public int AccountId { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
         public int? Phone { get; set; }
         public string? FullName { get; set; }
         public int? Role { get; set; }
@@ -29,6 +29,6 @@ namespace ProjectSWP391.Models
         public virtual ICollection<Booking> BookingEmployees { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<IsWorking> IsWorkings { get; set; }
-        public virtual ICollection<Order>? Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

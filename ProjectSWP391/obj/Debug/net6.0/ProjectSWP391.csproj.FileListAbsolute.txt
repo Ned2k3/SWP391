@@ -2765,3 +2765,7 @@ F:\Workspace\SB\projectswp391\ProjectSWP391\bin\Debug\net6.0\RestSharp.dll
 F:\Workspace\SB\projectswp391\ProjectSWP391\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 F:\Workspace\SB\projectswp391\ProjectSWP391\bin\Debug\net6.0\System.Text.Json.dll
 F:\Workspace\SB\projectswp391\ProjectSWP391\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ADMIN\OneDrive\Tài liệu\projectswp391\ProjectSWP391\bin\Debug\net6.0\RestSharp.dll
+C:\Users\ADMIN\OneDrive\Tài liệu\projectswp391\ProjectSWP391\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ADMIN\OneDrive\Tài liệu\projectswp391\ProjectSWP391\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\ADMIN\OneDrive\Tài liệu\projectswp391\ProjectSWP391\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

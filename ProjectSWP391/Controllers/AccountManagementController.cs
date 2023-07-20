@@ -17,7 +17,7 @@ namespace ProjectSWP391.Controllers
 
         public IActionResult AccountList()
         {
-            List<Account> accounts = context.Accounts.ToList();
+            List<Account> accounts = context.Accounts.Where(a => a.AccountId != 0 && a.Role != 1).ToList();
             return View(accounts);
             
         }
