@@ -18,11 +18,11 @@ namespace ProjectSWP391.Models
         public string? Image { get; set; }
         public decimal Price { get; set; }
         public bool IsActive { get; set; }
-        public int? ScategoryId { get; set; }
+        public int ScategoryId { get; set; }
 
         public virtual ServiceCategory? Scategory { get; set; }
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-        public virtual ICollection<ServiceList> ServiceLists { get; set; }
+        public virtual ICollection<Feedback>? Feedbacks { get; set; }
+        public virtual ICollection<ServiceList>? ServiceLists { get; set; }
         public virtual ICollection<ServiceMaterial> ServiceMaterials { get; set; }
     }
 }

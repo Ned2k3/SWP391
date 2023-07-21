@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace ProjectSWP391.Models
+namespace ServiceMaterialController.Models.ServiceMaterialDTO
 {
-    public partial class ServiceMaterial
+    public class ServiceMaterialDTO
     {
         public int MaterialId { get; set; }
         public string MaterialName { get; set; } = null!;
@@ -14,10 +13,22 @@ namespace ProjectSWP391.Models
         public string Unit { get; set; } = null!;
         public decimal Price { get; set; }
         public DateTime? ExpiryDate { get; set; }
+        public bool ExpiringSoon { get; set; }
+        public bool IsExpired
+        {
+            get
+            {
+                return ExpiryDate.HasValue && ExpiryDate.Value < DateTime.Today;
+            }
+        }
+        [BindNever]
         public DateTime? CreatedDate { get; set; }
+
+        [BindNever]
         public DateTime? UpdatedDate { get; set; }
+
         public int ServiceId { get; set; }
 
-        public virtual Service? Service { get; set; }
+        public ProjectSWP391.Models.Service? Service { get; set; }
     }
 }

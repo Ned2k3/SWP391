@@ -3,8 +3,11 @@ using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using ProjectSWP391.Models;
 using ProjectSWP391.Models.Purchase;
+using ProjectSWP391.Models.ServiceModel;
 using RestSharp;
+using System.Diagnostics.Metrics;
 using System.Net;
+using System.Security.Principal;
 using System.Text;
 
 namespace ProjectSWP391.Controllers
@@ -35,7 +38,7 @@ namespace ProjectSWP391.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(decimal amount, string addInfo)
+        public async Task<IActionResult> Index(decimal amount, int productId, string addInfo)
         {
             /*
                 {
@@ -48,7 +51,34 @@ namespace ProjectSWP391.Controllers
                   "template": "compact"
                 }
              */
-/*            Console.WriteLine(amount);*/
+            /*            Console.WriteLine(amount);*/
+
+            int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : 0;
+            var account = context.Accounts.FirstOrDefault(a => a.AccountId == accountId);
+            var order = new Order
+            {
+                AccountId = accountId,
+                OrderDate = DateTime.Now,
+                Account = account
+            };
+
+            context.Orders.Add(order);
+            context.SaveChanges();
+
+            var orderDetail = new OrderDetail
+            {
+                ProductId = productId,
+                OrderId = order.OrderId,
+                Amount = 1
+            };
+            var product = context.Products.FirstOrDefault(p => p.ProductId == productId);
+
+            // Update the stock in the database
+            product.Quantity -= 1;
+
+            context.OrderDetails.Add(orderDetail);
+            context.SaveChanges();
+
             var apiRequest = new APIRequest()
             {
                 acqId = 970422,
@@ -100,6 +130,5 @@ namespace ProjectSWP391.Controllers
                 return RedirectToAction("Error");
             }
         }
-
     }
 }

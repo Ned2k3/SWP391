@@ -17,11 +17,15 @@
                             <div class="content">
                                 <h5>@item.ProductName</h5>
                                 <span>Price: <b>@item.Price</b></span>
-                                <p class="unit">Quantity: <input name="quantities[@item.ProductId]" value="@item.Quantity"></p>
+                                <p class="unit">Quantity: <input type="number" name="quantities[@item.ProductId]" min="1" max="999" value="@item.Quantity"></p>
                                 <p class="btn-area"><i aria-hidden="true" class="fa fa-trash" onclick="removeItem('@item.ProductId')"></i></p>
                             </div>
                             <p><span>Subtotal</span> <b>@(item.Price * item.Quantity)</b></p>
                         </div>
+                    }
+                    @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+                    {
+                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
                     }
                 </div>
                 <div class="right-bar">
@@ -31,7 +35,7 @@
 
             </div>
         </div>
-        <button type="submit">Edit Cart</button>
+        <button type="submit" class="btn btn-dark edt-button-submit" >Edit Cart</button>
     </form>
 }
 else

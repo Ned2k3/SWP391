@@ -4,6 +4,7 @@ using ProjectSWP391.DAO;
 using ProjectSWP391.Models;
 using System.Globalization;
 using System.Reflection.Metadata;
+using System.Text.RegularExpressions;
 
 namespace ProjectSWP391.Controllers
 {
@@ -12,6 +13,12 @@ namespace ProjectSWP391.Controllers
         private readonly BlogManagementDAO dao = new BlogManagementDAO();
         public IActionResult Index(string? search, bool isSearch, bool isAscending = false, int page = 1)
         {
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                var regex = new Regex("\\s{2,}");
+                search = regex.Replace(search.Trim(), " ");
+            }
             var blogs = dao.GetBlogs(search, isSearch, isAscending);
 
             //Paging:
@@ -75,8 +82,24 @@ namespace ProjectSWP391.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Blog blog)
         {
+            blog.Title = blog.Title?.Trim();
+            blog.Content = blog.Content?.Trim();
 
-            Blog b = dao.GetBlogs("", false, false).FirstOrDefault(b => b.Title == blog.Title);
+            if (string.IsNullOrWhiteSpace(blog.Title) || blog.Title.Length < 5)
+            {
+                ModelState.AddModelError("Title", "Title must have at least 5 characters.");
+            }
+            if (string.IsNullOrWhiteSpace(blog.Content) || blog.Title.Length < 10)
+            {
+                ModelState.AddModelError("Title", "Title must have at least 5 characters.");
+            }
+            if (!ModelState.IsValid)
+            {
+                var accounts = dao.GetAccounts();
+                ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
+                return View("Create");
+            }
+            Blog b = dao.GetBlogs("", false, false).FirstOrDefault(b => b.Title.Trim().Equals(blog.Title));
 
             if (b != null)
             {
@@ -101,13 +124,7 @@ namespace ProjectSWP391.Controllers
                             ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
                             return View("Create");
                         }*/
-
-            if (!ModelState.IsValid)
-            {
-                var accounts = dao.GetAccounts();
-                ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
-                return View("Create");
-            }
+            blog.BlogDate = DateTime.Now;
             dao.AddBlog(blog);
             return RedirectToAction(nameof(Index));
         }
@@ -128,24 +145,36 @@ namespace ProjectSWP391.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Blog blog)
         {
-            var oldBlog = dao.GetBlogById(blog.BlogId);
-            if (oldBlog == null)
+            blog.Title = blog.Title?.Trim();
+            blog.Content = blog.Content?.Trim();
+
+            if (string.IsNullOrWhiteSpace(blog.Title) || blog.Title.Length < 5)
             {
-                return NotFound();
+                ModelState.AddModelError("Title", "Title must have at least 5 characters.");
+            }
+            if (string.IsNullOrWhiteSpace(blog.Content) || blog.Title.Length < 10)
+            {
+                ModelState.AddModelError("Title", "Title must have at least 5 characters.");
             }
 
-            if (blog.Title != oldBlog.Title)
+            if (!ModelState.IsValid)
             {
-                // Nếu người dùng thay đổi ServiceName, kiểm tra xem ServiceName mới có trùng với ServiceName của các ID khác không
-                var b = dao.GetBlogs("", false, false).FirstOrDefault(b => b.Title == blog.Title && b.BlogId != blog.BlogId);
-                if (b != null)
-                {
-                    ModelState.AddModelError("Title", "Title is already exists!!");
-                    var accounts = dao.GetAccounts();
-                    ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
-                    return View(blog);
-                }
+                var accounts = dao.GetAccounts();
+                ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
+                return View("Edit");
             }
+
+
+            var b = dao.GetBlogs("", false, false).FirstOrDefault(b => b.Title.Trim().Equals(blog.Title));
+            if (b != null)
+            {
+                ModelState.AddModelError("Title", "Title is already exists!!");
+                var accounts = dao.GetAccounts();
+                ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
+                return View(blog);
+            }
+
+
 
             /*            DateTime tempDate;
                         if (!DateTime.TryParseExact(blog.BlogDate?.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tempDate))
@@ -162,13 +191,7 @@ namespace ProjectSWP391.Controllers
                             ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
                             return View("Edit");
                         }*/
-
-            if (!ModelState.IsValid)
-            {
-                var accounts = dao.GetAccounts();
-                ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
-                return View("Edit");
-            }
+            blog.BlogDate = DateTime.Now;
             dao.EditBlog(blog);
             return RedirectToAction(nameof(Index));
         }

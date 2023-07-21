@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjectSWP391.DAO;
 using ProjectSWP391.Models;
+using System.Text.RegularExpressions;
 using X.PagedList;
 
 namespace ProjectSWP391.Controllers
@@ -14,6 +15,11 @@ namespace ProjectSWP391.Controllers
             const int pageSize = 10;
             page = page < 1 ? 1 : page;
 
+            if (!string.IsNullOrEmpty(search))
+            {
+                var regex = new Regex("\\s{2,}");
+                search = regex.Replace(search.Trim(), " ");
+            }
             var services = ServiceDao.GetServices(search, isSearch, isAscendingPrice);
             var totalItems = services.Count();
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
@@ -71,8 +77,33 @@ namespace ProjectSWP391.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Service service)
         {
+            service.ServiceName = service.ServiceName?.Trim();
+            service.Description = service.Description?.Trim();
+            service.Image = service.Image?.Trim();
 
-            Service s = ServiceDao.GetServices("", false, false).FirstOrDefault(s => s.ServiceName == service.ServiceName);
+            if (string.IsNullOrWhiteSpace(service.ServiceName) || service.ServiceName.Length < 5)
+            {
+                ModelState.AddModelError("ServiceName", "ServiceName must have at least 5 characters.");
+            }
+
+            if (service.Price <= 0)
+            {
+                ModelState.AddModelError("Price", "Price must be greater than 0.");
+            }
+
+            if (service.ScategoryId == null)
+            {
+                ModelState.AddModelError("ScategoryId", "Category must be choose");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var categories = ServiceDao.GetServiceCategories();
+                ViewBag.ScategoryId = new SelectList(categories, "ScategoryId", "ScategoryName");
+                return View("Create");
+            }
+
+            Service s = ServiceDao.GetServices("", false, false).FirstOrDefault(s => s.ServiceName.Trim().Equals(service.ServiceName));
 
             if (s != null)
             {
@@ -82,18 +113,13 @@ namespace ProjectSWP391.Controllers
                 return View("Create");
             }
 
-            if (!ModelState.IsValid)
-            {
-                var categories = ServiceDao.GetServiceCategories();
-                ViewBag.ScategoryId = new SelectList(categories, "ScategoryId", "ScategoryName");
-                return View("Create");
-            }
             ServiceDao.AddService(service);
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit(int id)
         {
+
             var service = ServiceDao.GetServiceById(id);
             if (service == null)
             {
@@ -107,29 +133,40 @@ namespace ProjectSWP391.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Service service)
         {
-            var oldService = ServiceDao.GetServiceById(service.ServiceId);
-            if (oldService == null)
+            service.ServiceName = service.ServiceName?.Trim();
+            service.Description = service.Description?.Trim();
+            service.Image = service.Image?.Trim();
+
+            if (string.IsNullOrWhiteSpace(service.ServiceName) || service.ServiceName.Length < 5)
             {
-                return NotFound();
+                ModelState.AddModelError("ServiceName", "ServiceName must have at least 5 characters.");
             }
 
-            if (service.ServiceName != oldService.ServiceName)
+            if (service.Price <= 0)
             {
-                var s = ServiceDao.GetServices("", false, false).FirstOrDefault(s => s.ServiceName == service.ServiceName && s.ServiceId != service.ServiceId);
-                if (s != null)
-                {
-                    ModelState.AddModelError("ServiceName", "ServiceName is already exists!!");
-                    var categories = ServiceDao.GetServiceCategories();
-                    ViewBag.ScategoryId = new SelectList(categories, "ScategoryId", "ScategoryName");
-                    return View(service);
-                }
+                ModelState.AddModelError("Price", "Price must be greater than 0.");
             }
+
+            if (service.ScategoryId == null)
+            {
+                ModelState.AddModelError("ScategoryId", "Category must be choose");
+            }
+
             if (!ModelState.IsValid)
+            {
+                var categories = ServiceDao.GetServiceCategories();
+                ViewBag.ScategoryId = new SelectList(categories, "ScategoryId", "ScategoryName");
+                return View("Create");
+            }
+
+            Service s = ServiceDao.GetServices("", false, false).FirstOrDefault(s => s.ServiceName.Trim().Equals(service.ServiceName));
+
+            if (s != null)
             {
                 ModelState.AddModelError("ServiceName", "ServiceName is already exists!!");
                 var categories = ServiceDao.GetServiceCategories();
                 ViewBag.ScategoryId = new SelectList(categories, "ScategoryId", "ScategoryName");
-                return View(service);
+                return View("Edit");
             }
             ServiceDao.EditService(service);
             return RedirectToAction(nameof(Index));
