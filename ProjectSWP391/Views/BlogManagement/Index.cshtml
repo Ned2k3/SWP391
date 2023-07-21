@@ -1,6 +1,7 @@
 ﻿@model List<ProjectSWP391.Models.Blog>
 @{
-    ViewData["Title"] = "Blog Management";
+    ViewData["Title"] = "DashBoard";
+    Layout = "_AdminLayout";
 }
 <!DOCTYPE html>
 <html>
@@ -101,16 +102,16 @@
 <body>
     <h2 style="text-align:center">Blog Management</h2>
     <p>
-        <a asp-action="Create">Create</a>
+        <a asp-action="Create" class="btn btn-outline-dark mt-auto width: 8vw;">Create</a>
     </p>
     <form asp-action="Index" method="get">
         <input type="hidden" name="isSearch" value="false" />
-        <button type="submit">Load</button>
+        <button type="submit" class="btn btn-dark edt-button-submit">Load</button>
     </form>
 
     <div class="search-bar">
         <form method="get" asp-action="Index" id="search-form">
-            <input value="@ViewData["key"]" type="text" placeholder="Search...." name="search" id="search-input">
+            <input value="@ViewData["key"]" type="text" placeholder="Search by Service Name, Price" name="search" id="search-input" maxlength="20">
             <input type="hidden" name="isSearch" value="true" />
         </form>
     </div>

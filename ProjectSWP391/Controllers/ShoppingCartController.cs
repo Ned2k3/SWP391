@@ -170,6 +170,24 @@ public class ShoppingCartController : Controller
             return RedirectToAction("Registration");
         }
 
+        // Check quantity before creating order and order details
+        foreach (var item in cartItems)
+        {
+            var product = context.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+
+            if (product == null)
+            {
+                TempData["ErrorMessage"] = $"Product with ID '{item.ProductId}' not found.";
+                return RedirectToAction("Index");
+            }
+
+            if (item.Quantity > product.Quantity)
+            {
+                TempData["ErrorMessage"] = $"Invalid quantity for '{item.ProductName}'. Quantity exceeds available stock.";
+                return RedirectToAction("Index");
+            }
+        }
+
         var order = new Order
         {
             AccountId = accountId,
@@ -182,12 +200,26 @@ public class ShoppingCartController : Controller
 
         foreach (var item in cartItems)
         {
+            var product = context.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+
+            if (product == null)
+            {
+
+                TempData["ErrorMessage"] = $"Product with ID '{item.ProductId}' not found.";
+                return RedirectToAction("Index");
+            }
+
             var orderDetail = new OrderDetail
             {
                 ProductId = item.ProductId,
                 Amount = item.Quantity,
                 OrderId = order.OrderId
             };
+
+            context.OrderDetails.Add(orderDetail);
+
+            // Update the stock in the database
+            product.Quantity -= item.Quantity;
 
             context.OrderDetails.Add(orderDetail);
         }

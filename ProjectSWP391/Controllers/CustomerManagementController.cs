@@ -298,6 +298,14 @@ namespace ProjectSWP391.Controllers
         {
             try
             {
+                bool hasFeedback = context.Feedbacks.Any(f => f.AccountId == accountId && f.ProductId == productId);
+
+                if (hasFeedback)
+                {
+                    ModelState.AddModelError("FeedbackError", "You have already given feedback for this product.");
+                    return RedirectToAction("ProductDetails", new { id = productId });
+                }
+
                 var feedback = new Feedback
                 {
                     ProductId = productId,

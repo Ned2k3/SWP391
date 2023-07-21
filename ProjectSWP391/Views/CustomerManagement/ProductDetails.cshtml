@@ -131,16 +131,16 @@
                     </div>
                 </div>
                 <div class="card-footer mt-5 border-top-0 bg-transparent">
-                    @if ((Global.CurrentUser == null))
+                    @if ((Global.CurrentUser == null) && @Model.Quantity > 0)
                     {
                         <a class="btn btn-outline-dark mt-auto width: 8vw;" href="/Purchase/Index?productId=@Model.ProductId">Buy Now</a>
                     }
-                    else if ((Global.CurrentUser != null && Global.CurrentUser.Role == null))
+                    else if ((Global.CurrentUser != null && Global.CurrentUser.Role == null) && @Model.Quantity > 0)
                     {
                         <a class="btn btn-outline-dark mt-auto width: 8vw;" href="/Purchase/Index?productId=@Model.ProductId">Buy Now</a>
                         <a class="btn btn-outline-dark mt-auto width: 8vw;" href="/ShoppingCart/AddToCart?productId=@(Model.ProductId)">Add to CART</a>
                     }
-                    else
+                    else if ((Global.CurrentUser != null && Global.CurrentUser.AccountId == 1))
                     {
                         <div class="text-center d-flex flex-row justify-content-evenly">
                             <a class="btn btn-outline-dark mt-auto" href="/ProductManagement/Edit?id=@Model.ProductId">Edit</a>
@@ -159,7 +159,7 @@
         </div>
         <!--Feedback section here-->
         <div class="row p-0" style="margin-top: 80px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
-            <form method="post" action="/CustomerManagement/PostFeedback">
+            <form method="post" action="/CustomerManagement/PostFeedback" id="postFeedbackForm">
                 <h4 style="padding-bottom:50px">Feedback Product</h4>
                 @if ((Global.CurrentUser != null && Global.CurrentUser.Role == 1) || (Global.CurrentUser != null && Global.CurrentUser.Role != 1))
                 {
@@ -170,8 +170,14 @@
                             <input type="hidden" name="productId" value="@Model.ProductId" />
                         </div>
                         <div class="feedback-content">
-                            <textarea class="form-control validate-feedback" name="content" placeholder="Enter your feedback"></textarea>
+                            <textarea class="form-control validate-feedback" id="postFeedbackContent" name="content" placeholder="Enter your feedback"></textarea>
                             <span class="error-message error-feedback"></span>
+                            @if (ViewData.ModelState["FeedbackError"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @Html.ValidationMessage("FeedbackError")
+                                </div>
+                            }
                         </div>
                         <input type="hidden" name="dateTimeNow" value="@(DateTime.Now)">
                         <div class="comment-button">
@@ -201,12 +207,12 @@
                                 @if (Global.CurrentUser != null && Global.CurrentUser.AccountId == feedback.AccountId)
                                 {
                                     <button class="btn btn-blue edt-button-submit edit-button"><i class="fa fa-edit"></i></button>
-                                    <form class="feedback-form" method="post" action="/CustomerManagement/EditFeedback" style="display:none">
+                                    <form class="feedback-form" id="editFeedbackForm" method="post" action="/CustomerManagement/EditFeedback" style="display:none">
                                         <input type="hidden" name="accountId" value="@Global.CurrentUser.AccountId" />
                                         <input type="hidden" name="productId" value="@Model.ProductId" />
                                         <input type="hidden" name="feedbackId" value="@feedback.FeedbackId" />
                                         <input type="hidden" name="dateTimeNow" value="@(DateTime.Now)">
-                                        <textarea name="content" placeholder="Enter your feedback" style="display:none; width:500px" class="form-control validate-feedback"></textarea>
+                                        <textarea name="content" id="editFeedbackContent" placeholder="Enter your feedback" style="display:none; width:500px" class="form-control validate-feedback"></textarea>
                                         <span class="error-message error-feedback"></span>
                                         <button type="submit" class="btn btn-dark edt-button-submit">
                                             Edit
@@ -413,6 +419,57 @@
 
                 }
             });
+        });
+
+        $('#postFeedbackForm').submit(function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var contentTextarea = form.find('#postFeedbackContent');
+            var content = contentTextarea.val().trim();
+
+            content = content.replace(/^\s+|\s+$/g, '');
+
+            if (content.length < 5) {
+                var errorSpan = form.find('.error-feedback');
+                errorSpan.text('Feedback must be at least 5 characters long (excluding leading and trailing spaces).');
+                errorSpan.show();
+                return;
+            }
+
+            var errorSpan = form.find('.error-feedback');
+            errorSpan.text('');
+            errorSpan.hide();
+
+            // Gửi yêu cầu POST nếu dữ liệu hợp lệ
+            form.unbind('submit').submit();
+        });
+
+        $(document).on('submit', '.feedback-form', function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var accountId = form.find('input[name="accountId"]').val();
+            var productId = form.find('input[name="productId"]').val();
+            var feedbackId = form.find('input[name="feedbackId"]').val();
+            var dateTimeNow = form.find('input[name="dateTimeNow"]').val();
+            var contentTextarea = form.find('textarea[name="content"]');
+            var content = contentTextarea.val().trim();
+
+            content = content.replace(/^\s+|\s+$/g, '');
+
+            if (content.length < 5) {
+                var errorSpan = form.find('.error-feedback');
+                errorSpan.text('Feedback must be at least 5 characters long (excluding leading and trailing spaces).');
+                errorSpan.show();
+                return;
+            }
+
+            var errorSpan = form.find('.error-feedback');
+            errorSpan.text('');
+            errorSpan.hide();
+
+            form.unbind('submit').submit();
         });
     });
 </script>

@@ -2,7 +2,8 @@
 
 <h2>Complete your Purchase</h2>
 <form action="Index" method="post" id="orderForm">
-    <input type="hidden" name="amount" value="@Model.Price" class="input txt" />
+    <input type="hidden" name="amount" value="@Model.Price" />
+    <input type="hidden" name="productId" value="@Model.ProductId" />
     <section class="content">
 
         <div class="container">
@@ -46,17 +47,11 @@
                     Payment Method
                 </div>
                 <div class="payment__types">
-                    <div class="payment__type payment__type--cc active">
+                    <div class="payment__type payment__type--cc active" name="actionQRcode">
                         <i class="icon icon-credit-card"></i>QR Code
                     </div>
-                    <div class="payment__type payment__type--paypal">
-                        <i class="icon icon-paypal"></i>Credit Card
-                    </div>
-                    <div class="payment__type payment__type--paypal">
-                        <i class="icon icon-wallet"></i>Paypal
-                    </div>
-                    <div class="payment__type payment__type--paypal">
-                        <i class="icon icon-note"></i>Invoice
+                    <div class="payment__type payment__type--paypal" name="actionPayAfterReceive">
+                        <i class="icon icon-paypal"></i>Pay after Recieve
                     </div>
                 </div>
 
@@ -72,14 +67,16 @@
                                         <div class="title">
                                             Name
                                         </div>
-                                        <input type="text" name="Name" class="input txt text-validated" />
+                                        <input type="text" name="Name" class="input txt text-validated" required />
+                                        <span class="error-message" id="name-error"></span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="field small">
                                         <div class="title">
                                             Address
-                                            <input type="text" class="input txt" />
+                                            <input type="text" name="Address" class="input txt" required />
+                                            <span class="error-message" id="address-error"></span>
                                         </div>
                                     </div>
                                     <div class="field small">
@@ -87,7 +84,8 @@
                                             Phone
                                             <span class="numberCircle"></span>
                                         </div>
-                                        <input type="text" class="input txt" />
+                                        <input type="text" name="Phone" class="input txt" required />
+                                        <span class="error-message" id="phone-error"></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -95,28 +93,13 @@
                                         <div class="title">
                                             Description
                                         </div>
-                                        <input type="text" name="addInfo" class="input txt" />
+                                        <input type="text" name="addInfo" class="input txt" required />
+                                        <span class="error-message" id="description-error"></span>
                                     </div>
                                 </div>
 
                             </div>
                         </form>
-                    </div>
-                    <div class="payment__shipping">
-                        <div class="payment__title">
-                            <i class="icon icon-plane"></i> Shiping Information
-                        </div>
-                        <div class="details__user">
-                            <div class="user__name">
-                                John Doe
-                                <br> 13/03/1980
-                            </div>
-                            <div class="user__address">
-                                Shipping Address: 22 Street, Address
-                                <br>Country
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -125,7 +108,7 @@
             <div class="actions">
 
                 <a href="#" class="btn action__submit">
-                                Place your Order
+                    Place your Order
                     <i class="icon icon-arrow-right-circle"></i>
                 </a>
                 <a href="#" class="backBtn">Go Back to Shop</a>
@@ -135,18 +118,6 @@
     </section>
 </form>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var submitButton = document.querySelector('.btn.action__submit');
-        var orderForm = document.querySelector('#orderForm');
-
-        submitButton.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            orderForm.submit();
-        });
-    });
-</script>
 
 <style>
     *,
@@ -167,6 +138,10 @@
 
     a {
         color: #000;
+    }
+
+    .error-message {
+        color: red;
     }
 
     .content {
@@ -544,3 +519,87 @@
         }
 
 </style>
+
+<script>
+    function validateFormAndSubmit() {
+        const nameInput = document.getElementsByName('Name')[0];
+        const addressInput = document.getElementsByName('Address')[0];
+        const phoneInput = document.getElementsByName('Phone')[0];
+        const descriptionInput = document.getElementsByName('addInfo')[0];
+
+        // Reset previous error messages
+        document.getElementById('name-error').textContent = '';
+        document.getElementById('address-error').textContent = '';
+        document.getElementById('phone-error').textContent = '';
+        document.getElementById('description-error').textContent = '';
+
+        let hasErrors = false;
+
+        // Check for empty fields and display error messages
+        if (nameInput.value.trim() === '') {
+            document.getElementById('name-error').textContent = 'Name is required';
+            hasErrors = true;
+        } else {
+            const name = nameInput.value.trim();
+            // Check name length, special characters, and numbers
+            if (name.length < 5 || name.length > 20 || /\d/.test(name) || /[^a-zA-Z0-9 ]/.test(name)) {
+                document.getElementById('name-error').textContent = 'Name must be 5 to 20 characters, letters only, no special characters or numbers';
+                hasErrors = true;
+            }
+        }
+
+        if (addressInput.value.trim() === '') {
+            document.getElementById('address-error').textContent = 'Address is required';
+            hasErrors = true;
+        } else {
+            const address = addressInput.value.trim();
+            // Check address length and special characters
+            if (address.length < 5 || address.length > 20 || /[^a-zA-Z0-9 ]/.test(address)) {
+                document.getElementById('address-error').textContent = 'Address must be 5 to 20 characters, letters and numbers only, no special characters';
+                hasErrors = true;
+            }
+        }
+
+        if (phoneInput.value.trim() === '') {
+            document.getElementById('phone-error').textContent = 'Phone is required';
+            hasErrors = true;
+        } else {
+            const phone = phoneInput.value.trim();
+            // Check phone format (10 digits, starting with 09, 08, 05, or 02)
+            if (!/^(09|08|05|02)\d{8}$/.test(phone)) {
+                document.getElementById('phone-error').textContent = 'Invalid phone number. Please enter a 10-digit number starting with 09, 08, 05, or 02';
+                hasErrors = true;
+            }
+        }
+
+        if (descriptionInput.value.trim() === '') {
+            document.getElementById('description-error').textContent = 'Description is required';
+            hasErrors = true;
+        } else {
+            const description = descriptionInput.value.trim();
+            // Check description length
+            if (description.length < 5) {
+                document.getElementById('description-error').textContent = 'Description must be at least 5 characters';
+                hasErrors = true;
+            }
+        }
+
+        if (!hasErrors) {
+            document.getElementById('orderForm').submit(); // Submit the form if there are no errors
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const submitButton = document.querySelector('.btn.action__submit');
+
+        submitButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            validateFormAndSubmit(); 
+        });
+    });
+
+</script>
+
+
+
+
