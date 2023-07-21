@@ -1,9 +1,11 @@
 ﻿@model ProjectSWP391.DTOs.ShoppingCartViewModel
 
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="/cart/css/styles.css" rel="stylesheet">
 
-@if (Model.CartItems.Count > 0)
+@*@if (Model.CartItems.Count > 0)
 {
     <form method="post" action="/ShoppingCart/UpdateCart">
         <div class="wrapper">
@@ -35,14 +37,100 @@
 
             </div>
         </div>
-        <button type="submit" class="btn btn-dark edt-button-submit" >Edit Cart</button>
+        <button type="submit" class="btn btn-dark edt-button-submit">Edit Cart</button>
     </form>
 }
 else
 {
     <p>Your cart is empty.</p>
+}*@
+
+
+@if (Model.CartItems.Count > 0)
+{
+    <section class="ftco-section">
+        <div class="container-shoppingCart">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-4">
+                    <h2 class="heading-section">Table #06</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="h5 mb-4 text-center">Table Accordion</h3>
+                    <form method="post" action="/ShoppingCart/UpdateCart">
+                        <div class="table-wrap">
+                            <p><span>Total</span> <b>$@Model.TotalPrice</b></p>
+                            <a href="/ShoppingCart/Checkout"><i class="fa fa-shopping-cart"></i>Checkout</a>
+                            <table class="table">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Subtotal</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.CartItems)
+                                    {
+                                        <tr class="alert" role="alert">
+                                            <td>
+                                                <label class="checkbox-wrap checkbox-primary">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <img class="img" src="@item.Image" />
+                                            </td>
+                                            <td>
+                                                <div class="email">
+                                                    <span>@item.ProductName </span>
+                                                    <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
+                                                </div>
+                                            </td>
+                                            <td>$@(item.Price)</td>
+                                            <td class="quantity">
+                                                <div class="input-group">
+                                                    <input type="number" name="quantities[@item.ProductId]" class="quantity form-control input-number" min="1" max="999" value="@item.Quantity">
+                                                </div>
+                                            </td>
+                                            <td>$@(item.Price * item.Quantity)</td>
+                                            <td>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="fa fa-close" onclick="removeItem('@item.ProductId')"></i></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                    @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+                                    {
+                                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                                    }
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn btn-dark edt-button-submit">Edit Cart</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 }
+else
+{
+    <p>Your cart is empty.</p>
+}
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 <script>
     function removeItem(productId) {
