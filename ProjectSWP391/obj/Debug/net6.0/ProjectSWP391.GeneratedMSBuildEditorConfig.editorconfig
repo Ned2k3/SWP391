@@ -9,245 +9,245 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProjectSWP391
 build_property.RootNamespace = ProjectSWP391
-build_property.ProjectDir = C:\Users\ADMIN\OneDrive\Tài liệu\projectswp391\ProjectSWP391\
+build_property.ProjectDir = F:\Product\projectswp391\ProjectSWP391\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\ADMIN\OneDrive\Tài liệu\projectswp391\ProjectSWP391
+build_property.MSBuildProjectDirectory = F:\Product\projectswp391\ProjectSWP391
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/.sonarlint/test/CSharp/SonarLint.xml]
+[F:/Product/projectswp391/.sonarlint/test/CSharp/SonarLint.xml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/AccountManagement/AccountList.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/AccountManagement/AccountList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudE1hbmFnZW1lbnRcQWNjb3VudExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/AccountManagement/Create.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/AccountManagement/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudE1hbmFnZW1lbnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/AccountManagement/Detail.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/AccountManagement/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudE1hbmFnZW1lbnRcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/AccountManagement/Update.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/AccountManagement/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudE1hbmFnZW1lbnRcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/AdminManagement/DashBoard.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/AdminManagement/DashBoard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VtZW50XERhc2hCb2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/AdminPassword.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/AdminPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQWRtaW5QYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/DetailServiceList.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/DetailServiceList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRGV0YWlsU2VydmljZUxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/DetailShoplist.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/DetailShoplist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRGV0YWlsU2hvcGxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/ForgetPassword.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/ForgetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRm9yZ2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/Login.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/ProductRecord.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/ProductRecord.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUHJvZHVjdFJlY29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/Register.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/ResetPassword.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVzZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Authentication/ServiceRecord.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Authentication/ServiceRecord.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cU2VydmljZVJlY29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/BlogManagement/Create.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/BlogManagement/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ01hbmFnZW1lbnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/BlogManagement/Detail.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/BlogManagement/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ01hbmFnZW1lbnRcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/BlogManagement/Edit.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/BlogManagement/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ01hbmFnZW1lbnRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/BlogManagement/Index.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/BlogManagement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ01hbmFnZW1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Booking/BookingDetails.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Booking/BookingDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCb29raW5nRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Booking/Load.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Booking/Load.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xMb2FkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Booking/LoadServiceSelection.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Booking/LoadServiceSelection.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xMb2FkU2VydmljZVNlbGVjdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/BlogDetail.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/BlogDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XEJsb2dEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/BlogList.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/BlogList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XEJsb2dMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/CreateBlog.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/CreateBlog.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XENyZWF0ZUJsb2cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/LandingPage.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/LandingPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XExhbmRpbmdQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/ProductDetails.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/ProductDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XFByb2R1Y3REZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/ProductList.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/ProductList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XFByb2R1Y3RMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/ServiceDetail.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/ServiceDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XFNlcnZpY2VEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/CustomerManagement/ServiceList.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/CustomerManagement/ServiceList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJNYW5hZ2VtZW50XFNlcnZpY2VMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/EmployeeManagement/EDashBoard.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/EmployeeManagement/EDashBoard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVNYW5hZ2VtZW50XEVEYXNoQm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Error/CommonError.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Error/CommonError.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcQ29tbW9uRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Error/Http401.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Error/Http401.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSHR0cDQwMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Error/Http403.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Error/Http403.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSHR0cDQwMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Error/TimeCounter.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Error/TimeCounter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcVGltZUNvdW50ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ProductManagement/CreateProduct.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ProductManagement/CreateProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE1hbmFnZW1lbnRcQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ProductManagement/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE1hbmFnZW1lbnRcRGV0YWlscy5jc2h0bWw=
+[F:/Product/projectswp391/ProjectSWP391/Views/ProductManagement/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE1hbmFnZW1lbnRcRWRpdFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ProductManagement/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE1hbmFnZW1lbnRcSW5kZXguY3NodG1s
+[F:/Product/projectswp391/ProjectSWP391/Views/ProductManagement/ProductList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdE1hbmFnZW1lbnRcUHJvZHVjdExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Profile/CompleteCustomerProfile.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Profile/CompleteCustomerProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDb21wbGV0ZUN1c3RvbWVyUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Profile/EditProfile.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Profile/EditProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Profile/ProfileIndex.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Profile/ProfileIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Purchase/Index.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Purchase/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Purchase/QRPayment.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Purchase/QRPayment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VcUVJQYXltZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ServiceManagement/Create.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ServiceManagement/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1hbmFnZW1lbnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ServiceManagement/Details.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ServiceManagement/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1hbmFnZW1lbnRcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ServiceManagement/Edit.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ServiceManagement/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1hbmFnZW1lbnRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ServiceManagement/Index.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ServiceManagement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1hbmFnZW1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ServiceMaterialManagement/Create.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ServiceMaterialManagement/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1hdGVyaWFsTWFuYWdlbWVudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ServiceMaterialManagement/Edit.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ServiceMaterialManagement/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1hdGVyaWFsTWFuYWdlbWVudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ServiceMaterialManagement/Index.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ServiceMaterialManagement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU1hdGVyaWFsTWFuYWdlbWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Shared/Error.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Shared/_AdminLayout.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ShoppingCart/Checkout.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ShoppingCart/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XENoZWNrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/ShoppingCart/Index.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/ShoppingCart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/StaffAccountManagement/Index.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/StaffAccountManagement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZBY2NvdW50TWFuYWdlbWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/_ViewImports.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/_ViewStart.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Tài liệu/projectswp391/ProjectSWP391/Views/Shared/_Layout.cshtml]
+[F:/Product/projectswp391/ProjectSWP391/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-hiy6xzmc0y
