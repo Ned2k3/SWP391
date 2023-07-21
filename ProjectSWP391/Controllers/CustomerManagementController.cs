@@ -504,6 +504,7 @@ namespace ProjectSWP391.Controllers
         [HttpPost]
         public IActionResult CreateBlog(Blog blog)
         {
+            blog.Title.Trim();
             blog.BlogDate = DateTime.Now;
             blog.AccountId = Global.CurrentUser.AccountId;
             context.Blogs.Add(blog);
@@ -554,7 +555,7 @@ namespace ProjectSWP391.Controllers
             Blog? b = context.Blogs.FirstOrDefault(b => b.BlogId == blog.BlogId);
             if (b != null)
             {
-                b.Title = blog.Title;
+                b.Title = blog.Title.Trim();
                 b.Content = blog.Content;
                 b.BlogDate = DateTime.Now;
                 context.SaveChanges();

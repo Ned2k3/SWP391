@@ -246,36 +246,36 @@ namespace ProjectSWP391.Controllers
             HttpContext.Session.SetString("captchaExpiration", DateTime.UtcNow.AddMinutes(2).ToString());
             ViewBag.CheckCaptcha = "true";
             ViewBag.Captcha = captcha;
-            string fromMail = "smartbeautygroup5@gmail.com";
+            //string fromMail = "smartbeautygroup5@gmail.com";
             //quantrong la buoc mat khau nay
-            string fromPassword = "tunudlgpqbgqwbpz"; //123ABCGroup5
+            //string fromPassword = "tunudlgpqbgqwbpz"; //123ABCGroup5
 
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress(fromMail);
-            message.Subject = "Forgetting Password";
-            message.To.Add(new MailAddress(email));
-            message.Body = "<html><body style=\"font-family: Arial, sans-serif;\">" +
-                            "<h1 style=\"color: #007BFF; font-size: 28px;\">Hi " + email + "</h1>" +
-                            "<p style=\"font-size: 18px; color: #333333;\">Congratulations! Your email password has been successfully changed.</p>" +
-                            "<p style=\"font-size: 20px; color: #007BFF;\">This is your captcha for the password change:</p>" +
-                            "<strong style=\"font-size: 36px; color: #FF4500;\">" + captcha + "</strong>" +
-                            "<p style=\"font-size: 18px; color: #333333;\">If you did not initiate this password change, please reset your password immediately.</p>" +
-                            "<h2 style=\"font-size: 22px; color: #333333;\">Best regards,</h2>" +
-                            "<h2 style=\"color: #007BFF;\">SmartBeauty</h2>" +
-                            "</body></html>";
-            message.IsBodyHtml = true;
-            using var smtpClient = new SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new NetworkCredential(fromMail, fromPassword),
-                EnableSsl = true,
-                UseDefaultCredentials = false,
+            //MailMessage message = new MailMessage();
+            //message.From = new MailAddress(fromMail);
+            //message.Subject = "Forgetting Password";
+            //message.To.Add(new MailAddress(email));
+            //message.Body = "<html><body style=\"font-family: Arial, sans-serif;\">" +
+            //                "<h1 style=\"color: #007BFF; font-size: 28px;\">Hi " + email + "</h1>" +
+            //                "<p style=\"font-size: 18px; color: #333333;\">Congratulations! Your email password has been successfully changed.</p>" +
+            //                "<p style=\"font-size: 20px; color: #007BFF;\">This is your captcha for the password change:</p>" +
+            //                "<strong style=\"font-size: 36px; color: #FF4500;\">" + captcha + "</strong>" +
+            //                "<p style=\"font-size: 18px; color: #333333;\">If you did not initiate this password change, please reset your password immediately.</p>" +
+            //                "<h2 style=\"font-size: 22px; color: #333333;\">Best regards,</h2>" +
+            //                "<h2 style=\"color: #007BFF;\">SmartBeauty</h2>" +
+            //                "</body></html>";
+            //message.IsBodyHtml = true;
+            //using var smtpClient = new SmtpClient("smtp.gmail.com")
+            //{
+            //    Port = 587,
+            //    Credentials = new NetworkCredential(fromMail, fromPassword),
+            //    EnableSsl = true,
+            //    UseDefaultCredentials = false,
 
 
-            };
+            //};
 
-            smtpClient.Send(message);
-            ViewBag.SuccessMsg = "Email have sent";
+            //smtpClient.Send(message);
+            //ViewBag.SuccessMsg = "Email have sent";
 
             return View();
 

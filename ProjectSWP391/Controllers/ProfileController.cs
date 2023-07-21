@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 using ProjectSWP391.Models.ServiceModel;
@@ -17,8 +18,7 @@ namespace ProjectSWP391.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        [Route("/[controller]/User-{id}")]
-        public IActionResult ProfileIndex(int id)
+        public IActionResult ProfileIndex(int id, bool edit)
         {
             try
             {
@@ -36,8 +36,8 @@ namespace ProjectSWP391.Controllers
                 {
                     return NotFound();
                 }
-                ViewBag.UserInfor = account;
-                return View();
+                if(edit == true) ViewBag.isEditing = true;
+                return View(account);
             }
             catch (Exception ex)
             {
@@ -131,6 +131,21 @@ namespace ProjectSWP391.Controllers
 
             // If the image upload fails, return null
             return null;
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCustomerProfile(int id,string fname, int phone)
+        {
+            Account acc = context.Accounts.FirstOrDefault(a => a.AccountId == id);
+            acc.FullName = fname;
+            acc.Phone = phone;
+            var file = Request.Form.Files.FirstOrDefault();
+            string? imageUrl = CreateImagePath(file);
+            acc.Image = imageUrl;
+            context.SaveChanges();
+            string[] msg = { "Profile Updated", "View profile to see update" };
+            return RedirectToAction("LandingPage", "CustomerManagement", new { message = msg });
+
         }
     }
 }

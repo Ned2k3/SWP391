@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Completion;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using ProjectSWP391.Models;
@@ -472,7 +473,8 @@ namespace ProjectSWP391.Controllers
                     }
                 }
                 context.SaveChanges();
-                return RedirectToAction("LandingPage", "CustomerManagement");
+                string[] msg = { "Booking Complete", "Enter phone number again to view details" };
+                return RedirectToAction("LandingPage", "CustomerManagement", new {message = msg});
             }
         }
 
