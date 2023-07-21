@@ -48,9 +48,11 @@ namespace ProjectSWP391.Controllers
                     return View();
                 }
                 //Decryption here
+                a.Email = a.Email.Trim();
                 string endcrypt = EncryptionHelper.Encrypt(a.Password);
 
                 var account = context.Accounts.Where(b => b.Email == a.Email && b.Password == endcrypt).SingleOrDefault();
+                
                 //var account = context.Accounts.ToList();
                 if (account == null)
                 {
@@ -60,6 +62,12 @@ namespace ProjectSWP391.Controllers
                 }
                 else
                 {
+                    if (account.IsActive == 0)
+                    {
+                        ViewBag.ErrorMsg = "Your account has been deacctive, please contact admin for more detail";
+                        return View();
+                    }
+
                     Global.CurrentUser = account;
                     var claims = new[] { new Claim(ClaimTypes.Role, account.Role.ToString()) };
                     var principal = new ClaimsPrincipal(new ClaimsIdentity(claims, "CustomApiKeyAuth"));
@@ -102,7 +110,7 @@ namespace ProjectSWP391.Controllers
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             // Create a Regex object with the email pattern
             Regex regex = new Regex(emailPattern);
-
+           email = email.Trim();
             if (rePassword != password)
             {
                 ViewBag.ErrorMsg = "Re enter password does not match password. Please enter again ";
@@ -161,6 +169,7 @@ namespace ProjectSWP391.Controllers
         public IActionResult ForgetPassword(string email, string checkC)
         {
             ViewBag.Email = email;
+            email = email.Trim();
             //check nguoi dung da nhap cai gi
             if (!string.IsNullOrWhiteSpace(checkC))
             {
@@ -216,6 +225,11 @@ namespace ProjectSWP391.Controllers
                 ViewBag.ErrorMsg = "Email does not exist, please enter another email or create a new Email";
                 return View();
             }
+            if (a.IsActive == 0)
+            {
+                ViewBag.ErrorMsg = "Inactive User cannot reset password. Please contact admin for more detail";
+                return View();
+            }
             if (a.Role != null)
             {
                 ViewBag.SuccessMsg = "Email forgoting password have been sent to the Admin, please contact an Admin for more information";
@@ -232,35 +246,35 @@ namespace ProjectSWP391.Controllers
             HttpContext.Session.SetString("captchaExpiration", DateTime.UtcNow.AddMinutes(2).ToString());
             ViewBag.CheckCaptcha = "true";
             ViewBag.Captcha = captcha;
-            //string fromMail = "smartbeautygroup5@gmail.com";
-            ////quantrong la buoc mat khau nay
-            //string fromPassword = "tunudlgpqbgqwbpz"; //123ABCGroup5
+            string fromMail = "smartbeautygroup5@gmail.com";
+            //quantrong la buoc mat khau nay
+            string fromPassword = "tunudlgpqbgqwbpz"; //123ABCGroup5
 
-            //MailMessage message = new MailMessage();
-            //message.From = new MailAddress(fromMail);
-            //message.Subject = "Forgetting Password";
-            //message.To.Add(new MailAddress(email));
-            //message.Body = "<html><body style=\"font-family: Arial, sans-serif;\">" +
-            //                "<h1 style=\"color: #007BFF; font-size: 28px;\">Hi " + email + "</h1>" +
-            //                "<p style=\"font-size: 18px; color: #333333;\">Congratulations! Your email password has been successfully changed.</p>" +
-            //                "<p style=\"font-size: 20px; color: #007BFF;\">This is your captcha for the password change:</p>" +
-            //                "<strong style=\"font-size: 36px; color: #FF4500;\">" + captcha + "</strong>" +
-            //                "<p style=\"font-size: 18px; color: #333333;\">If you did not initiate this password change, please reset your password immediately.</p>" +
-            //                "<h2 style=\"font-size: 22px; color: #333333;\">Best regards,</h2>" +
-            //                "<h2 style=\"color: #007BFF;\">SmartBeauty</h2>" +
-            //                "</body></html>";
-            //message.IsBodyHtml = true;
-            //using var smtpClient = new SmtpClient("smtp.gmail.com")
-            //{
-            //    Port = 587,
-            //    Credentials = new NetworkCredential(fromMail, fromPassword),
-            //    EnableSsl = true,
-            //    UseDefaultCredentials = false,
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromMail);
+            message.Subject = "Forgetting Password";
+            message.To.Add(new MailAddress(email));
+            message.Body = "<html><body style=\"font-family: Arial, sans-serif;\">" +
+                            "<h1 style=\"color: #007BFF; font-size: 28px;\">Hi " + email + "</h1>" +
+                            "<p style=\"font-size: 18px; color: #333333;\">Congratulations! Your email password has been successfully changed.</p>" +
+                            "<p style=\"font-size: 20px; color: #007BFF;\">This is your captcha for the password change:</p>" +
+                            "<strong style=\"font-size: 36px; color: #FF4500;\">" + captcha + "</strong>" +
+                            "<p style=\"font-size: 18px; color: #333333;\">If you did not initiate this password change, please reset your password immediately.</p>" +
+                            "<h2 style=\"font-size: 22px; color: #333333;\">Best regards,</h2>" +
+                            "<h2 style=\"color: #007BFF;\">SmartBeauty</h2>" +
+                            "</body></html>";
+            message.IsBodyHtml = true;
+            using var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential(fromMail, fromPassword),
+                EnableSsl = true,
+                UseDefaultCredentials = false,
 
 
-            //};
+            };
 
-            //smtpClient.Send(message);
+            smtpClient.Send(message);
             ViewBag.SuccessMsg = "Email have sent";
 
             return View();

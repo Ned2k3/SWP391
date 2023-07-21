@@ -1,5 +1,7 @@
 ﻿using ProjectSWP391.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace DEMOSWP391.Controllers
 {
@@ -11,13 +13,13 @@ namespace DEMOSWP391.Controllers
             var lsProduct = context.Products.ToList(); 
             return View(lsProduct);
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public ActionResult Details(int id)
         {
             var p = context.Products.Where(n => n.ProductId == id).FirstOrDefault();    
             return View(p);
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpGet]
         public ActionResult CreateProduct(Product product)
         {

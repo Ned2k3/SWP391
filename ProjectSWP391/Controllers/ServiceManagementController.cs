@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjectSWP391.DAO;
 using ProjectSWP391.Models;
+using System.Data;
 using System.Text.RegularExpressions;
 using X.PagedList;
 
@@ -10,6 +12,7 @@ namespace ProjectSWP391.Controllers
     public class ServiceManagementController : Controller
     {
         private readonly ServiceManagementDAO ServiceDao = new ServiceManagementDAO();
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Index(string? search, bool isSearch, bool isAscendingPrice = false, int page = 1)
         {
             const int pageSize = 10;
@@ -38,7 +41,7 @@ namespace ProjectSWP391.Controllers
             ViewBag.IsAscendingPrice = isAscendingPrice; // OrderBy Price for ServiceView
             return View(currentPageItems);
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Details(int id)
         {
             Service service = ServiceDao.GetServiceById(id);
@@ -66,13 +69,14 @@ namespace ProjectSWP391.Controllers
             }
             return View(service);
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Create()
         {
             var categories = ServiceDao.GetServiceCategories();
             ViewBag.ScategoryId = new SelectList(categories, "ScategoryId", "ScategoryName");
             return View();
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Service service)
@@ -116,7 +120,7 @@ namespace ProjectSWP391.Controllers
             ServiceDao.AddService(service);
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Edit(int id)
         {
 
@@ -131,6 +135,7 @@ namespace ProjectSWP391.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Edit(Service service)
         {
             service.ServiceName = service.ServiceName?.Trim();
@@ -171,6 +176,7 @@ namespace ProjectSWP391.Controllers
             ServiceDao.EditService(service);
             return RedirectToAction(nameof(Index));
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Delete(int id)
         {
             Console.WriteLine(id);

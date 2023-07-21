@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using ProjectSWP391.Models;
+using System.Data;
 using System.Security.Principal;
 
 namespace ProjectSWP391.Controllers
@@ -14,13 +16,14 @@ namespace ProjectSWP391.Controllers
         {
             context = _context;
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult AccountList()
         {
             List<Account> accounts = context.Accounts.Where(a => a.AccountId != 0 && a.Role != 1).ToList();
             return View(accounts);
             
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Delete(int id)
         {
             if (id == 0)
@@ -29,10 +32,13 @@ namespace ProjectSWP391.Controllers
                 return View();
             }
             var a = context.Accounts.Where(ac => ac.AccountId == id).SingleOrDefault();
-            context.Remove(a);
+            a.IsActive = 0;
+            //context.Remove(a);
+            context.Add(a);
             context.SaveChanges();
             return RedirectToAction("AccountList");
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -45,7 +51,7 @@ namespace ProjectSWP391.Controllers
             var a = context.Accounts.SingleOrDefault(v => v.AccountId == id);
             return View(a);
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpPost]
         public IActionResult Update(Account account)
         {
@@ -66,18 +72,20 @@ namespace ProjectSWP391.Controllers
             return View(account);
 
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Detail(string email)
         {
             var a = context.Accounts.SingleOrDefault(i => i.Email == email);
             return View(a);
         }
 
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpPost]
         public IActionResult Create(Account account)
         {
@@ -94,7 +102,10 @@ namespace ProjectSWP391.Controllers
                 {
                     account.Password = EncryptionHelper.Encrypt(account.Password);
                     //let choose role
-                    if(account.Role == 3) { account.Role=null; }
+                    if(account.Role == 3) 
+                    { 
+                        account.Role=null; 
+                    }
                     
                     context.Add(account);
                     context.SaveChanges();

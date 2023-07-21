@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjectSWP391.DAO;
 using ProjectSWP391.Models;
+using System.Data;
 using System.Globalization;
 using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
@@ -11,6 +13,7 @@ namespace ProjectSWP391.Controllers
     public class BlogManagementController : Controller
     {
         private readonly BlogManagementDAO dao = new BlogManagementDAO();
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Index(string? search, bool isSearch, bool isAscending = false, int page = 1)
         {
 
@@ -42,7 +45,7 @@ namespace ProjectSWP391.Controllers
             ViewBag.IsAscending = isAscending; // OrderBy Date for BlogView
             return View(currentPageItems);
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Detail(int id)
         {
             var blog = dao.GetBlogById(id);
@@ -70,14 +73,14 @@ namespace ProjectSWP391.Controllers
             ViewBag.Role = role;
             return View(blog);
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Create()
         {
             var accounts = dao.GetAccounts();
             ViewBag.AccountId = new SelectList(accounts, "AccountId", "FullName");
             return View();
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Blog blog)
@@ -128,7 +131,7 @@ namespace ProjectSWP391.Controllers
             dao.AddBlog(blog);
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Edit(int id)
         {
             var blog = dao.GetBlogById(id);
@@ -143,6 +146,7 @@ namespace ProjectSWP391.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Edit(Blog blog)
         {
             blog.Title = blog.Title?.Trim();
@@ -195,6 +199,7 @@ namespace ProjectSWP391.Controllers
             dao.EditBlog(blog);
             return RedirectToAction(nameof(Index));
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Delete(int id)
         {
             Console.WriteLine(id);

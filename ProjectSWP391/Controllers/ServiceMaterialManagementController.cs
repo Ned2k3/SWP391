@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.Models;
 using ServiceMaterialController.Models;
 using ServiceMaterialController.Models.ServiceMaterialDTO;
+using System.Data;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -17,6 +19,7 @@ namespace ServiceMaterialController.Controllers
         {
             context = _context;
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Index(string? search, bool isSearch, bool isAscendingPrice = false, int page = 1)
         {
             const int pageSize = 10;
@@ -79,14 +82,14 @@ namespace ServiceMaterialController.Controllers
             ViewBag.IsAscendingPrice = isAscendingPrice; // OrderBy Price for ServiceView
             return View(currentPageItems);
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Create()
         {
             var services = context.Services.ToList();
             ViewBag.ServiceId = new SelectList(services, "ServiceId", "ServiceName");
             return View();
         }
-
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(ServiceMaterialDTO serviceMaterial)
@@ -160,6 +163,7 @@ namespace ServiceMaterialController.Controllers
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Edit(int id)
         {
             var serviceMaterial = context.ServiceMaterials.FirstOrDefault(sm => sm.MaterialId == id);
@@ -191,6 +195,7 @@ namespace ServiceMaterialController.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Edit(ServiceMaterialDTO serviceMaterial)
         {
             serviceMaterial.MaterialName = serviceMaterial.MaterialName?.Trim();
@@ -252,6 +257,7 @@ namespace ServiceMaterialController.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Delete(int id)
         {
             var sm = context.ServiceMaterials.FirstOrDefault(context => context.MaterialId == id);
