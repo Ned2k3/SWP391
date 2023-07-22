@@ -330,7 +330,7 @@ namespace ProjectSWP391.Controllers
         [Authorize(AuthenticationSchemes = "Auth", Roles = "2")]
         public IActionResult Employee()
         {
-            return View();
+            return RedirectToAction("DashBoard", "EmployeeManagement");
         }
 
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]

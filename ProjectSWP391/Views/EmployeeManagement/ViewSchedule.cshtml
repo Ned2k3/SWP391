@@ -1,0 +1,134 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "MyShift";
+    Layout = "_AdminLayout";
+}
+
+<body>
+    <div style="display: flex; justify-content: start; margin-top: 30px; width: 100%; padding: 0 5%;">
+        <a href="/EmployeeManagement/DashBoard" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
+        <div class="drop-down" style="width: fit-content; background-color: #f7f7f7; padding: 12px 10px; border: 1px solid black; margin-left: 15px;
+                                                                                              display: inline-block; position: relative; cursor: pointer;">
+            <div style="padding-left: 16px; font-size: 18px; line-height: 1; display: flex; justify-content: space-between">
+                <div>
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>@ViewBag.selectDate.Date.DayOfWeek</span>, @ViewBag.selectDate.Date.ToString("dd/MM/yyy")
+                </div>
+            </div>
+
+            <div class="drop-down-content">
+                @foreach (var item in ViewBag.schedule)
+                {
+                    @if (item.Date.ToShortDateString() == DateTime.Today.ToShortDateString())
+                    {
+                        <a class="dropdown-item" href="/EmployeeManagement/ViewSchedule?date=@(item.ToString())"><span class="text-success fw-bold">Today</span>, @item.ToString("dd/MM/yyyy")</a>
+                    }
+                    else
+                    {
+                        <a class="dropdown-item" href="/EmployeeManagement/ViewSchedule?date=@(item.ToString())"><span class="text-info">@(item.DayOfWeek)</span>, @item.ToString("dd/MM/yyyy")</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; padding: 50px 5% 0 5%;">
+        @if(ViewBag.count == 0)
+        {
+            <h2 style="text-align: center;">You have no schedule on @ViewBag.selectDate.Date.ToString("dd/MM/yyyy")</h2>
+        }
+        else
+        {
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Customer Name</th>
+                    <th>Customer Phone</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Shift</th>
+                    <th>Content</th>
+                </tr>
+                @{
+                    int i = 1;
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td style="font-weight: bold;">@(item.Customer.Role == 0 ? "Guest" : item.Customer.FullName)</td>
+                        <td>@(item.Customer.Role == 0 ? "N/A" : $"0{item.Customer.Phone}")</td>
+                        <td style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            @foreach (var service in item.Selection)
+                            {
+                                <dtv style="width: 10vw; overflow-x: hidden; margin-bottom: 10px; padding: 0; display: inline-block; list-style: circle;">
+                                    @service.ServiceName
+                                </dtv>
+                            }
+                        </td>
+                        <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@(item.Shift)H</td>
+                        <td>@item.Content</td>
+                    </tr>
+                    i++;
+                }
+            </table>
+        }
+    </div>
+</body>
+
+<style>
+    .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #e0e0e0;
+        color: #333;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .back-button:hover {
+            background-color: #ccc;
+        }
+
+
+    .drop-down-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        width: 100%;
+        border: 1px solid black;
+    }
+
+        .drop-down-content a {
+            color: #333;
+            padding: 15px 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+        }
+
+    .drop-down:hover .drop-down-content {
+        display: block;
+    }
+    table{
+        width: 100%;
+    }
+    th{
+        background-color: dodgerblue;
+        padding: 10px 20px;
+        color: white;
+        text-align: center;
+        width: fit-content;
+    }
+    td{
+        padding: 10px 20px;
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.2);
+    }
+</style>

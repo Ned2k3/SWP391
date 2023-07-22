@@ -210,9 +210,17 @@ namespace DEMOSWP391.Controllers
             return RedirectToAction(nameof(ProductList));
         }
 
-        public IActionResult DeleteProduct(int productId)
+        public IActionResult DeactiveProduct(int id)
         {
-            return View();
+            Product p = context.Products.FirstOrDefault(p => p.ProductId == id);
+            if(p == null)
+            {
+                return RedirectToAction("ProductList");
+            }
+            if(p.IsActive == true) p.IsActive = false;
+            else p.IsActive = true;
+            context.SaveChanges();
+            return RedirectToAction("ProductList");
         }
     }
 }
