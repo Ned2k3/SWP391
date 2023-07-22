@@ -3,9 +3,6 @@ body {
   background-color: #3c373e;
   font-weight: 300; }
 
-p {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 300; }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -18,10 +15,8 @@ a {
   a, a:hover {
     text-decoration: none !important; }
 
-.content {
+.sub-content {
   padding: 3rem 0; 
-  margin-left:183px;
-
 }
 
 h2 {
@@ -37,6 +32,7 @@ h2 {
     color: #fff;
     font-size: 11px;
     text-transform: uppercase;
+    width: fit-content;
     letter-spacing: .2rem; }
   .custom-table tbody th, .custom-table tbody td {
     color: #777;

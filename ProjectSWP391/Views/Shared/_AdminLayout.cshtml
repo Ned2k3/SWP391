@@ -33,50 +33,80 @@
         <div class="row">
             <div class="sidebar">
                 <div class="side-bar-content text-white flex-column p-3">
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-house" style="margin-right: 10px; color: mediumspringgreen"></i>
-                        <a href="/AdminManagement/DashBoard" class="menu-item">DashBoard</a>
-                    </div>
+                    @if(Global.CurrentUser.Role == 1)
+                    {
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-house" style="padding-right: 10px; color: mediumspringgreen"></i>
+                            <a href="/AdminManagement/DashBoard" class="menu-item">DashBoard</a>
+                        </div>
 
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-user" style="margin-right: 10px; color: silver"></i>
-                        <a href="/AccountManagement/AccountList" class="menu-item">Account</a>
-                    </div>
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-user" style="padding-right: 10px; color: silver"></i>
+                            <a href="/AccountManagement/AccountList" class="menu-item">Account</a>
+                        </div>
 
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-wand-magic-sparkles" style="margin-right: 10px; color: aqua;"></i>
-                        <a href="/ProductManagement/ProductList" class="menu-item">Product</a>
-                    </div>
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-wand-magic-sparkles" style="padding-right: 10px; color: aqua;"></i>
+                            <a href="/ProductManagement/ProductList" class="menu-item">Product</a>
+                        </div>
 
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-spa" style="margin-right: 10px; color: cornsilk"></i>
-                        <a href="/ServiceManagement/Index" class="menu-item">Service</a>
-                    </div>
-                    
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-spa" style="margin-right: 10px; color: cornsilk"></i>
-                        <a href="/ServiceMaterialManagement/Index" class="menu-item">Service Material</a>
-                    </div>
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-spa" style="padding-right: 10px; color: cornsilk"></i>
+                            <a href="/ServiceManagement/Index" class="menu-item">Service</a>
+                        </div>
 
-                    <div class="side-bar-content-item">
-                        <i class="fa-sharp fa-solid fa-chart-simple" style="margin-right: 10px; color: darkgoldenrod"></i>
-                        <a href="/Authentication/ProductRecord" class="menu-item">Product Report</a>
-                    </div>
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-spa" style="padding-right: 10px; color: wheat"></i>
+                            <a href="/ServiceMaterialManagement/Index" class="menu-item">Service Material</a>
+                        </div>
 
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-chart-pie" style="margin-right: 10px; color: lightblue"></i>
-                        <a href="/Authentication/ServiceRecord" class="menu-item">Service Report</a>
-                    </div>
+                        <div class="side-bar-content-item">
+                            <i class="fa-sharp fa-solid fa-chart-simple" style="padding-right: 10px; color: darkgoldenrod"></i>
+                            <a href="/Authentication/ProductRecord" class="menu-item">Product Report</a>
+                        </div>
 
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-spa" style="margin-right: 10px; color: cornsilk"></i>
-                        <a href="/BlogManagement/Index" class="menu-item">Blog</a>
-                    </div>
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-chart-pie" style="padding-right: 10px; color: lightblue"></i>
+                            <a href="/Authentication/ServiceRecord" class="menu-item">Service Report</a>
+                        </div>
 
-                    <div class="side-bar-content-item">
-                        <i class="fa-solid fa-code-pull-request" style="margin-right: 10px; color: red"></i>
-                        <a href="/Authentication/AdminPassword" class="menu-item">Password Approve</a>
-                    </div>
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-blog fa-lg" style="padding-right: 10px; color: pink"></i>
+                            <a href="/BlogManagement/Index" class="menu-item">Blog</a>
+                        </div>
+
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-code-pull-request" style="padding-right: 10px; color: red"></i>
+                            <a href="/Authentication/AdminPassword" class="menu-item">Password Approve</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-house" style="padding-right: 10px; color: mediumspringgreen"></i>
+                            <a href="/Authentication/AdminPassword" class="menu-item">DashBoard</a>
+                        </div>
+
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-calendar-days" style="padding-right: 15px; color: silver"></i>
+                            <a href="/EmployeeManagement/ViewSchedule" class="menu-item">My Schedule</a>
+                        </div>
+
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-code-pull-request" style="padding-right: 10px; color: red"></i>
+                            <a href="/Authentication/AdminPassword" class="menu-item">Request Absense</a>
+                        </div>
+
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-wand-magic-sparkles" style="padding-right: 10px; color: aqua;"></i>
+                            <a href="/ProductManagement/ProductList" class="menu-item">Product</a>
+                        </div>
+
+                        <div class="side-bar-content-item">
+                            <i class="fa-solid fa-spa" style="padding-right: 10px; color: cornsilk"></i>
+                            <a href="/ServiceManagement/Index" class="menu-item">Service</a>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="content">

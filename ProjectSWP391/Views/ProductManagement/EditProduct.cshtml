@@ -7,8 +7,7 @@
 <h1>EditProduct</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div style="width: 100%;">
         <form asp-action="EditProduct" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProductId" />
@@ -47,12 +46,38 @@
                 <select asp-for="PcategoryId" class="form-control" asp-items="ViewBag.PcategoryId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-primary" />
+                <input type="submit" value="Edit" class="btn btn-primary" style="margin-top: 10px;"/>
             </div>
         </form>
-    </div>
 </div>
 
 <div>
-    <a asp-action="ProductList">Back to List</a>
+    <a asp-action="ProductList" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
 </div>
+<style>
+    form{
+        width: 80%;
+        margin-left: 10%;
+    }
+    input{
+        width: fit-content;
+        padding: 10px;
+    }
+
+    .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #e0e0e0;
+        color: #333;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .back-button:hover {
+            background-color: #ccc;
+        }
+</style>

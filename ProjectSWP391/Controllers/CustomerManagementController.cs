@@ -90,8 +90,8 @@ namespace ProjectSWP391.Controllers
             var products = (from product in context.Products
                             join pcategory in context.ProductCategories
                             on product.PcategoryId equals pcategory.PcategoryId
-                            where product.ProductName.Contains(sn) && pcategory.PcategoryName.Contains(sc)
-                            select product).OrderBy(s => s.PcategoryId);
+                            where product.ProductName.Contains(sn) && pcategory.PcategoryName.Contains(sc) && product.IsActive == true
+                            select product).OrderBy(p => p.ProductId);
             //Get all service category
             var categories = context.ProductCategories.ToList();
             ViewBag.categoryFilter = categories;
@@ -157,7 +157,7 @@ namespace ProjectSWP391.Controllers
             var services = (from service in context.Services
                             join scategory in context.ServiceCategories
                             on service.ScategoryId equals scategory.ScategoryId
-                            where service.ServiceName.Contains(sn) && scategory.ScategoryName.Contains(sc)
+                            where service.ServiceName.Contains(sn) && scategory.ScategoryName.Contains(sc) && service.IsActive == true
                             select service).OrderBy(s => s.ServiceId);
             //Get all service category
             var categories = context.ServiceCategories.ToList();
