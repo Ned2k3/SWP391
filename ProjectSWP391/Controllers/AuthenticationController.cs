@@ -243,7 +243,7 @@ namespace ProjectSWP391.Controllers
             string captcha = CaptchaGeneration.GenerateCaptcha();
             HttpContext.Session.SetString("captcha", captcha);
             HttpContext.Session.SetString("accountSession", email);
-            HttpContext.Session.SetString("captchaExpiration", DateTime.UtcNow.AddMinutes(2).ToString());
+            HttpContext.Session.SetString("captchaExpiration", DateTime.UtcNow.AddMinutes(5).ToString());
             ViewBag.CheckCaptcha = "true";
             ViewBag.Captcha = captcha;
             string fromMail = "smartbeautygroup5@gmail.com";

@@ -105,7 +105,7 @@
 <div class="search-container">
     
     <form method="get" asp-action="ProductList" id="search-form">
-        <a href="/ProductManagement/Create" class="back-button"><i class="fa-solid fa-user-plus fa-xl"></i></a>
+        <a href="/ProductManagement/CreateProduct" class="back-button"><i class="fa-solid fa-user-plus fa-xl"></i></a>
         <input value="@ViewData["key"]" type="text" placeholder="Search by Product Name, Price" name="search" id="search-input" maxlength="20">
         <input type="hidden" name="isSearch" value="true" />
         <button type="submit">Search</button>
