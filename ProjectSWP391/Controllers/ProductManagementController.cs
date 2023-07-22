@@ -46,7 +46,7 @@ namespace DEMOSWP391.Controllers
                 }
                 else if (isSearch == true && string.IsNullOrEmpty(search))
                 {
-                    products = products.Where(s => false);
+                    products = products;
                 }
                 else
                 {

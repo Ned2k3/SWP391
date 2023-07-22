@@ -21,7 +21,7 @@ namespace ProjectSWP391.Controllers
         {
             List<Account> accounts = context.Accounts.Where(a => a.AccountId != 0 && a.Role != 1).ToList();
             return View(accounts);
-            
+
         }
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Delete(int id)
@@ -42,7 +42,7 @@ namespace ProjectSWP391.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            
+
             if (id == 0)
             {
                 ViewBag.ErrorMsg = "You cant change this user";
@@ -57,15 +57,15 @@ namespace ProjectSWP391.Controllers
         {
             if (ModelState.IsValid)
             {
-               
-                
+
+
                 if (account.Role == 3)
                 {
                     account.Role = null;
                 }
                 account.Email = account.Email.Trim();
                 account.FullName = account.FullName.Trim();
-                
+
                 account.Password = EncryptionHelper.Encrypt(account.Password);
                 context.Update(account);
                 context.SaveChanges();
@@ -92,7 +92,7 @@ namespace ProjectSWP391.Controllers
         [HttpPost]
         public IActionResult Create(Account account)
         {
-            if(account == null)
+            if (account == null)
             {
                 ViewBag.ErrorMsg = "Account input field";
                 return View();
@@ -100,22 +100,25 @@ namespace ProjectSWP391.Controllers
             else
             {
                 var a = context.Accounts.Where(c => c.Email == account.Email).SingleOrDefault();
-                
+
                 if (a == null)
+
+                    account.Email = account.Email.Trim();
+                    account.FullName = account.FullName.Trim();
                 {
                     account.Password = EncryptionHelper.Encrypt(account.Password);
                     //let choose role
-                    if(account.Role == 3) 
-                    { 
-                        account.Role=null; 
+                    if (account.Role == 3)
+                    {
+                        account.Role = null;
                     }
-                    
+
                     context.Add(account);
                     context.SaveChanges();
                 }
                 return RedirectToAction("AccountList");
             }
         }
-        
+
     }
 }

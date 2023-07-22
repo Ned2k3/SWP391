@@ -50,7 +50,7 @@
 
     img {
         max-width: 100px;
-        max-height: 100px;
+        max-height: 80px;
     }
 
    
@@ -68,6 +68,26 @@
         transition: background-color 0.3s ease;
     }
 
+    .search-container {
+        margin-left: 20px;
+    }
+
+        .search-container input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-container button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
         .back-button:hover {
             background-color: #ccc;
         }
@@ -76,18 +96,19 @@
 </style>
 
 <h2 style="text-align:center; margin-top: 30px;">Product Management</h2>
-<p style="color: rgba(255,255,255,0.5); font-weight: 300;">
-    <a asp-action="CreateProduct" class="btn btn-dark edt-button-submit">Create New</a>
-</p>
-<form asp-action="ProductList" method="get">
-    <input type="hidden" name="isSearch" value="false" />
-    <button type="submit" class="btn btn-dark edt-button-submit" style="margin-bottom: 20px;">Load</button>
-</form>
+@*<p style="color: rgba(255,255,255,0.5); font-weight: 300;">
 
-<div class="search-bar">
+    <a asp-action="CreateProduct" class="btn btn-dark edt-button-submit">Create New</a>
+</p>*@
+
+
+<div class="search-container">
+    
     <form method="get" asp-action="ProductList" id="search-form">
+        <a href="/ProductManagement/Create" class="back-button"><i class="fa-solid fa-user-plus fa-xl"></i></a>
         <input value="@ViewData["key"]" type="text" placeholder="Search by Product Name, Price" name="search" id="search-input" maxlength="20">
         <input type="hidden" name="isSearch" value="true" />
+        <button type="submit">Search</button>
     </form>
 </div>
 
