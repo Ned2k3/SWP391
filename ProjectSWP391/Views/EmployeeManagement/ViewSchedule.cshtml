@@ -56,7 +56,7 @@
                     <tr>
                         <td>@i</td>
                         <td style="font-weight: bold;">@(item.Customer.Role == 0 ? "Guest" : item.Customer.FullName)</td>
-                        <td>@(item.Customer.Role == 0 ? "" : "0" + item.Customer.Phone)</td>
+                        <td>@(item.Customer.Role == 0 ? "N/A" : $"0{item.Customer.Phone}")</td>
                         <td style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             @foreach (var service in item.Selection)
                             {

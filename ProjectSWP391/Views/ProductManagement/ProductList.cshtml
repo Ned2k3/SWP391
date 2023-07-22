@@ -98,7 +98,7 @@
 <p style="color: rgba(255,255,255,0.5); font-weight: 300;">
     <a asp-action="CreateProduct" class="btn btn-dark edt-button-submit">Create New</a>
 </p>
-<form asp-action="Index" method="get">
+<form asp-action="ProductList" method="get">
     <input type="hidden" name="isSearch" value="false" />
     <button type="submit" class="btn btn-dark edt-button-submit" style="margin-bottom: 20px;">Load</button>
 </form>
@@ -112,8 +112,7 @@
 
 
 <div class="sub-content">
-    <div class="container">
-
+    <div>
         <div class="table-responsive">
 
             <table class="table table-striped custom-table">
@@ -143,7 +142,7 @@
                                 <img src="@item.Image" alt="Not Found" />
                             </td>
                             <td>
-                                @item.ProductName
+                                <a href="/CustomerManagement/ProductDetails?id=@item.ProductId">@item.ProductName</a>
                             </td>
                             <td>
                                 @item.Description
@@ -171,14 +170,14 @@
                                 }
                             </td>
                             <td>
-                                <a asp-action="EditProduct" asp-route-id="@item.ProductId" class="more"><i class="fas fa-edit" style="font-size: 20px;"></i></a>
+                                <a asp-action="EditProduct" asp-route-id="@item.ProductId"><i class="fas fa-edit" style="font-size: 20px; color: black;"></i></a>
                                 @if(item.IsActive == true)
                                 {
-                                    <a href="#" type="button" onclick="ConfirmDeactive(@item.ProductId)"><i class="fa-solid fa-toggle-on" style="font-size: 20px;"></i></a>
+                                    <a href="#" type="button" onclick="ConfirmDeactive(@item.ProductId)"><i class="fa-solid fa-toggle-on" style="font-size: 20px; color: black;"></i></a>
                                 }
                                 else
                                 {
-                                    <a href="#" type="button" onclick="ConfirmActive(@item.ProductId)"><i class="fa-solid fa-toggle-on" style="font-size: 20px;"></i></a>
+                                    <a href="#" type="button" onclick="ConfirmActive(@item.ProductId)"><i class="fa-solid fa-toggle-off" style="font-size: 20px; color: black;"></i></a>
                                 }
                             </td>
                         </tr>
@@ -195,7 +194,7 @@
 
 <!-- Paging -->
 <div class="pagination-container">
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" style="box-shadow: none;">
         <ul class="pagination">
             @if (ViewBag.CurrentPage > 1)
             {

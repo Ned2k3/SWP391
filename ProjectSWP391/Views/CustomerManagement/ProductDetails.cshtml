@@ -97,13 +97,15 @@
 </style>
 
 @{
-    ViewData["Title"] = "Details";
-    var accounts = ViewBag.Accounts as List<Account>;
-    var feedbacks = ViewBag.Feedbacks as List<Feedback>;
-    if (Global.CurrentUser != null && (Global.CurrentUser.Role == 1 && Global.CurrentUser.Role == 2))
+    if (Global.CurrentUser != null && (Global.CurrentUser.Role == 1 || Global.CurrentUser.Role == 2))
     {
         Layout = "_AdminLayout";
     }
+}
+@{
+    ViewData["Title"] = "Details";
+    var accounts = ViewBag.Accounts as List<Account>;
+    var feedbacks = ViewBag.Feedbacks as List<Feedback>;
 }
 
 

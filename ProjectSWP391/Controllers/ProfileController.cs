@@ -91,7 +91,7 @@ namespace ProjectSWP391.Controllers
         {
             Account acc = context.Accounts.FirstOrDefault(a => a.AccountId == account.AccountId);
 
-            string fname = Request.Form["FullName"];
+            string fname = Request.Form["FullName"].ToString().Trim();
             var file = Request.Form.Files.FirstOrDefault();
             string? imageUrl = CreateImagePath(file);
 
@@ -137,7 +137,7 @@ namespace ProjectSWP391.Controllers
         public IActionResult UpdateCustomerProfile(int id,string fname, int phone)
         {
             Account acc = context.Accounts.FirstOrDefault(a => a.AccountId == id);
-            acc.FullName = fname;
+            acc.FullName = fname.Trim();
             acc.Phone = phone;
             var file = Request.Form.Files.FirstOrDefault();
             string? imageUrl = CreateImagePath(file);

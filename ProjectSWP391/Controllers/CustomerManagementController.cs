@@ -504,7 +504,8 @@ namespace ProjectSWP391.Controllers
         [HttpPost]
         public IActionResult CreateBlog(Blog blog)
         {
-            blog.Title.Trim();
+            string title = blog.Title.Trim();
+            blog.Title = title;
             blog.BlogDate = DateTime.Now;
             blog.AccountId = Global.CurrentUser.AccountId;
             context.Blogs.Add(blog);
