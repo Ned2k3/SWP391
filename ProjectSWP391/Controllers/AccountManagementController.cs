@@ -63,6 +63,9 @@ namespace ProjectSWP391.Controllers
                 {
                     account.Role = null;
                 }
+                account.Email = account.Email.Trim();
+                account.FullName = account.FullName.Trim();
+                
                 account.Password = EncryptionHelper.Encrypt(account.Password);
                 context.Update(account);
                 context.SaveChanges();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectSWP391.Models
 {
@@ -16,9 +17,17 @@ namespace ProjectSWP391.Models
         }
 
         public int AccountId { get; set; }
+       
+        [StringLength(50)]
         public string Email { get; set; } = null!;
+        
+        [StringLength(20)]
         public string Password { get; set; } = null!;
+        
+        [StringLength(10)]
         public int? Phone { get; set; }
+       
+        [StringLength(50)]
         public string? FullName { get; set; }
         public int? Role { get; set; }
         public int IsActive { get; set; }

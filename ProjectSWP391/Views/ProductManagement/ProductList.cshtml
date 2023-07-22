@@ -15,83 +15,64 @@
 <link rel="stylesheet" href="/Product/css/style.css">
 
 <style>
-    .search-bar {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-        .search-bar input[type="text"] {
-            padding: 10px;
-            width: 300px;
-            border-radius: 20px;
-            border: none;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-
-            .search-bar input[type="text"]:focus {
-                border: 1px solid #000;
-            }
-
-    .table {
+    table {
         width: 100%;
-        margin: 0 auto;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
     }
 
     th, td {
-        text-align: left;
-        padding: 8px;
-        color: white;
+        padding: 5px;
+        text-align: center;
+        border-top: 1px solid #ddd;
+
     }
 
     th {
-        background-color: #f2f2f2;
-        width: fit-content;
+        background-color: #3d89f8;
+        font-weight: bold;
+        padding: 15px 0 15px 0;
+        border-top: none;
+        color: white;
+  
     }
 
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .description {
+        max-width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
     }
 
     img {
-        max-width: 120px;
-        max-height: 120px;
+        max-width: 100px;
+        max-height: 100px;
     }
 
-    .pagination-container {
-        margin-top: 20px;
-        text-align: center;
-    }
+   
 
-    .pagination {
+    .back-button {
         display: inline-block;
-        padding-left: 0;
-        margin: 0;
-        border-radius: 0.25rem;
+        padding: 10px 20px;
+        background-color: #e0e0e0;
+        color: #333;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
     }
 
-    .page-item {
-        display: inline;
+        .back-button:hover {
+            background-color: #ccc;
+        }
+
     }
-
-        .page-item a {
-            position: relative;
-            float: left;
-            padding: 0.5rem 0.75rem;
-            margin-left: -1px;
-            line-height: 1.25;
-            color: #007bff;
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-        }
-
-        .page-item.active a {
-            z-index: 2;
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-        }
 </style>
 
 <h2 style="text-align:center; margin-top: 30px;">Product Management</h2>
@@ -111,85 +92,78 @@
 </div>
 
 
-<div class="sub-content">
-    <div>
-        <div class="table-responsive">
 
-            <table class="table table-striped custom-table">
-                <thead>
-                    <tr>
 
-                        <th scope="col">Id</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Category Id</th>
-                        <th scope="col">Category Name</th>
-                        <th scope="col">Active</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
+
+<table>
+    <thead>
+        <tr>
+
+            <th scope="col">Id</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Category Id</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Active</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ProductId
+                </td>
+                <td>
+                    <img src="@item.Image" alt="Not Found" />
+                </td>
+                <td>
+                    <a href="/CustomerManagement/ProductDetails?id=@item.ProductId">@item.ProductName</a>
+                </td>
+                <td class="description">
+                    @item.Description
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.PcategoryId
+                </td>
+                <td>
+                    @item.Pcategory.PcategoryName
+                </td>
+                <td>
+                    @if (item.IsActive == true)
                     {
-                        <tr scope="row" style="cursor: pointer">
-                            <td>
-                                @item.ProductId
-                            </td>
-                            <td>
-                                <img src="@item.Image" alt="Not Found" />
-                            </td>
-                            <td>
-                                <a href="/CustomerManagement/ProductDetails?id=@item.ProductId">@item.ProductName</a>
-                            </td>
-                            <td>
-                                @item.Description
-                            </td>
-                            <td>
-                                @item.Price
-                            </td>
-                            <td>
-                                @item.Quantity
-                            </td>
-                            <td>
-                                @item.PcategoryId
-                            </td>
-                            <td>
-                                @item.Pcategory.PcategoryName
-                            </td>
-                            <td>
-                                @if (item.IsActive == true)
-                                {
-                                    <i class="fa-solid fa-circle" style="color: #5df20d;"></i>
-                                }
-                                else
-                                {
-                                    <i class="fa-solid fa-circle" style="color: #d63a05;"></i>
-                                }
-                            </td>
-                            <td>
-                                <a asp-action="EditProduct" asp-route-id="@item.ProductId"><i class="fas fa-edit" style="font-size: 20px; color: black;"></i></a>
-                                @if(item.IsActive == true)
-                                {
-                                    <a href="#" type="button" onclick="ConfirmDeactive(@item.ProductId)"><i class="fa-solid fa-toggle-on" style="font-size: 20px; color: black;"></i></a>
-                                }
-                                else
-                                {
-                                    <a href="#" type="button" onclick="ConfirmActive(@item.ProductId)"><i class="fa-solid fa-toggle-off" style="font-size: 20px; color: black;"></i></a>
-                                }
-                            </td>
-                        </tr>
+                        <i class="fa-solid fa-circle" style="color: #5df20d;"></i>
                     }
-                </tbody>
-            </table>
-        </div>
-
-
-    </div>
-
-</div>
+                    else
+                    {
+                        <i class="fa-solid fa-circle" style="color: #d63a05;"></i>
+                    }
+                </td>
+                <td>
+                    <a asp-action="EditProduct" asp-route-id="@item.ProductId"><i class="fas fa-edit" style="font-size: 20px; color: black;"></i></a>
+                    @if (item.IsActive == true)
+                    {
+                        <a href="#" type="button" onclick="ConfirmDeactive(@item.ProductId)"><i class="fa-solid fa-toggle-on" style="font-size: 20px; color: black;"></i></a>
+                    }
+                    else
+                    {
+                        <a href="#" type="button" onclick="ConfirmActive(@item.ProductId)"><i class="fa-solid fa-toggle-off" style="font-size: 20px; color: black;"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 
 <!-- Paging -->
@@ -246,7 +220,7 @@
         }
     }
 
-    function ConfirmActive(id){
+    function ConfirmActive(id) {
         var res = confirm("Are you sure you want to active this Product?");
         if (res == true) {
             window.location.assign("/ProductManagement/DeactiveProduct?id=" + id);
