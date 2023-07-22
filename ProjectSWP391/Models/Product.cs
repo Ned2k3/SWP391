@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectSWP391.Models
 {
@@ -11,7 +12,10 @@ namespace ProjectSWP391.Models
         }
 
         public int ProductId { get; set; }
+       
+        [StringLength(100)]
         public string ProductName { get; set; } = null!;
+      
         public string? Description { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
