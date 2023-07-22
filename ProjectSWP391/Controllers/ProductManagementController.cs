@@ -6,16 +6,19 @@ using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using ProjectSWP391.DTOs;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DEMOSWP391.Controllers
 {
     public class ProductManagementController : Controller
     {
         private readonly SWP391_V4Context context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductManagementController(SWP391_V4Context _context)
+        public ProductManagementController(SWP391_V4Context _context, IWebHostEnvironment webHostEnvironment)
         {
             context = _context;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult ProductList(string? search, bool isSearch, bool isAscendingPrice = false, int page = 1)
         {
@@ -118,19 +121,51 @@ namespace DEMOSWP391.Controllers
                 return View("CreateProduct");
             }
 
+            var file = Request.Form.Files.FirstOrDefault();
+            string? imageUrl = CreateImagePath(file);
+
             product = new Product()
             {
                 ProductName = productDTO.ProductName,
                 Quantity = productDTO.Quantity,
                 Price = productDTO.Price,
                 Description = productDTO.Description,
-                Image = productDTO.Image,
+                Image = imageUrl,
                 IsActive = true,
                 PcategoryId = productDTO.PcategoryId
             };
             context.Products.Add(product);
             context.SaveChanges();
             return RedirectToAction(nameof(ProductList));
+        }
+
+        public string? CreateImagePath(IFormFile? file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                // Generate a unique filename for the image
+                var filename = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+                // Set the physical path to save the image
+                var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
+                var path = Path.Combine(uploadsFolder, filename);
+
+                // Create the "Uploads" directory if it doesn't exist
+                Directory.CreateDirectory(uploadsFolder);
+
+                // Save the file to the server
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                // Return the URL of the saved image 
+                var imageUrl = Url.Content("~/Uploads/" + filename);
+                return imageUrl;
+            }
+
+            // If the image upload fails, return null
+            return null;
         }
 
         public IActionResult EditProduct(int id)

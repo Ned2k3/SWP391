@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dw8rN2HhBBDIrKkAh6mTpjJR1z/Z7MKwZdfZvt3HQmM=",
+  "Hash": "vp6otlYJ378SUWvcJhw/8i6hxLLlwy0LWHAUt+xgisA=",
   "Source": "ProjectSWP391",
   "BasePath": "_content/ProjectSWP391",
   "Mode": "Default",
@@ -3211,6 +3211,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\357ca7c8-6ff5-4873-8785-3498a6eae47c.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\42ae605a-8f91-42fd-b50f-9539ffc79436.jpg",
+      "SourceId": "ProjectSWP391",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "BasePath": "_content/ProjectSWP391",
+      "RelativePath": "Uploads/42ae605a-8f91-42fd-b50f-9539ffc79436.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\42ae605a-8f91-42fd-b50f-9539ffc79436.jpg"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\4f3e8265-2eae-43ef-bf73-16d3e6c38eb7.jpg",
