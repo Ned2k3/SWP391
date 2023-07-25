@@ -17,6 +17,10 @@
     }
     else
     {
+        if(Global.CurrentUser.Role == 2 || Global.CurrentUser.Role == 1)
+        {
+            Layout = "_AdminLayout";
+        }
         <div style="width: 100%; padding: 20px 0 30px 0; background-color: floralwhite;">
             <h3 class="text-center fw-bold">Smart Beauty Blogs</h3>
         </div>
@@ -198,6 +202,10 @@
         width: 100%;
         height: auto;
         object-fit: contain;
+    }
+    #content-container{
+        padding-left: 0;
+        padding-right: 0;
     }
 </style>
 

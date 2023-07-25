@@ -10,11 +10,12 @@ namespace ProjectSWP391.Controllers
     public class AccountManagementController : Controller
     {
         private readonly SWP391_V4Context context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-
-        public AccountManagementController(SWP391_V4Context _context)
+        public AccountManagementController(SWP391_V4Context _context, IWebHostEnvironment webHostEnvironment)
         {
             context = _context;
+            _webHostEnvironment = webHostEnvironment;
         }
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult AccountList()
@@ -38,6 +39,36 @@ namespace ProjectSWP391.Controllers
             context.SaveChanges();
             return RedirectToAction("AccountList");
         }
+
+        public string? CreateImagePath(IFormFile? file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                // Generate a unique filename for the image
+                var filename = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+                // Set the physical path to save the image
+                var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads");
+                var path = Path.Combine(uploadsFolder, filename);
+
+                // Create the "Uploads" directory if it doesn't exist
+                Directory.CreateDirectory(uploadsFolder);
+
+                // Save the file to the server
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                // Return the URL of the saved image 
+                var imageUrl = Url.Content("~/Uploads/" + filename);
+                return imageUrl;
+            }
+
+            // If the image upload fails, return null
+            return null;
+        }
+
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         [HttpGet]
         public IActionResult Update(int id)
@@ -51,29 +82,23 @@ namespace ProjectSWP391.Controllers
             var a = context.Accounts.SingleOrDefault(v => v.AccountId == id);
             return View(a);
         }
-        [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
+
+        
         [HttpPost]
         public IActionResult Update(Account account)
         {
-            if (ModelState.IsValid)
-            {
-
-
-                if (account.Role == 3)
-                {
-                    account.Role = null;
-                }
-                account.Email = account.Email.Trim();
-                account.FullName = account.FullName.Trim();
-
-                account.Password = EncryptionHelper.Encrypt(account.Password);
-                context.Update(account);
-                context.SaveChanges();
-                ViewBag.SuccessMsg = "SaveChange Successed";
-
-            }
-            return View(account);
-
+            account.Email = account.Email.Trim();
+            account.FullName = account.FullName.Trim();
+            account.Password = EncryptionHelper.Encrypt(account.Password);
+            account.Role = 2;
+            account.IsActive = 1;
+            var file = Request.Form.Files.FirstOrDefault();
+            string? imageUrl = CreateImagePath(file);
+            account.Image = imageUrl;
+            context.Update(account);
+            context.SaveChanges();
+            ViewBag.SuccessMsg = "SaveChange Successed";
+            return RedirectToAction("AccountList");
         }
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Detail(string email)
@@ -104,7 +129,7 @@ namespace ProjectSWP391.Controllers
                 if (a == null)
 
                     account.Email = account.Email.Trim();
-                    account.FullName = account.FullName.Trim();
+                account.FullName = account.FullName.Trim();
                 {
                     account.Password = EncryptionHelper.Encrypt(account.Password);
                     //let choose role
