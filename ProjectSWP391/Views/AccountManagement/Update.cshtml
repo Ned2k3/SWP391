@@ -111,7 +111,7 @@
             <label for="image">Image:</label>
             <div style="width: 100%; height: 100%; display: flex; align-items: center">
                 <img id="avatarContainer" style="width: 80px; height: 80px; border-radius: 50%; border: 1px solid black; margin-right: 10px;" src="@Model.Image" />
-                <input type="file" accept="image/*" id="imageInput" />
+                <input name="Image" type="file" accept="image/*" id="imageInput" asp-for="Image"/>
             </div>
         </div>
 

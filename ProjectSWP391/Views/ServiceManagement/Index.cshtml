@@ -161,7 +161,7 @@
                         @Html.DisplayFor(modelItem => item.ServiceId)
                     </td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@item.ServiceId">@item.ServiceName</a>
+                        <a href="/CustomerManagement/ServiceDetail?sId=@item.ServiceId">@item.ServiceName</a>
                     </td>
                     <td style="max-width: 450px;">
                         @if (item.Description.Length >= 150)

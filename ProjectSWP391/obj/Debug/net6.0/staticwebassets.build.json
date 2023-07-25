@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0sfBK4+9TKkd0s7jJwhCw6M/O6wjx4Bk4/hrTc+gfEM=",
+  "Hash": "vp6otlYJ378SUWvcJhw/8i6hxLLlwy0LWHAUt+xgisA=",
   "Source": "ProjectSWP391",
   "BasePath": "_content/ProjectSWP391",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "ProjectSWP391\\wwwroot",
       "Source": "ProjectSWP391",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\bundle\\ProjectSWP391.styles.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\bundle\\ProjectSWP391.styles.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Computed",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "ProjectSWP391.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\bundle\\ProjectSWP391.styles.css"
+      "OriginalItemSpec": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\bundle\\ProjectSWP391.styles.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProjectSWP391.bundle.scp.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProjectSWP391.bundle.scp.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Computed",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "ProjectSWP391.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProjectSWP391.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProjectSWP391.bundle.scp.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Cart\\css\\styles.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Cart\\css\\styles.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Cart/css/styles.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\Cart\\css\\styles.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\AdminStyle.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\AdminStyle.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/AdminStyle.css",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\AdminStyle.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Authen.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Authen.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/Authen.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Authen.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Chart.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Chart.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/Chart.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Chart.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\CreateBlog.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\CreateBlog.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/CreateBlog.css",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\CreateBlog.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\LandingPage.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\LandingPage.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/LandingPage.css",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\LandingPage.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\ProductList.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\ProductList.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/ProductList.css",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\ProductList.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\site.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\style.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\style.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Table.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\css\\Table.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "css/Table.css",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Table.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\favicon.ico",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\image\\brand_logo.png",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\image\\brand_logo.png",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "image/brand_logo.png",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\image\\brand_logo.png"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\js\\site.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\.DS_Store",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\.DS_Store",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/css/.DS_Store",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\css\\.DS_Store"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\bootstrap.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\bootstrap.min.css.map",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\owl.carousel.min.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\owl.carousel.min.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/css/owl.carousel.min.css",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\css\\owl.carousel.min.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\style.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\css\\style.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/css/style.css",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\css\\style.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\.DS_Store",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\.DS_Store",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/.DS_Store",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\.DS_Store"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\demo.html",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\demo.html",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/demo.html",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\demo.html"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\demo-files\\demo.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\demo-files\\demo.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/demo-files/demo.css",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\demo-files\\demo.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\demo-files\\demo.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\demo-files\\demo.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/demo-files/demo.js",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\demo-files\\demo.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.eot",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.eot",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/fonts/icomoon.eot",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.eot"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.svg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.svg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/fonts/icomoon.svg",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.svg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.ttf",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.ttf",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/fonts/icomoon.ttf",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.ttf"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.woff",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.woff",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/fonts/icomoon.woff",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\fonts\\icomoon.woff"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\Read Me.txt",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\Read Me.txt",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/Read Me.txt",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\Read Me.txt"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\selection.json",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\selection.json",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/selection.json",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\selection.json"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\style.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\fonts\\icomoon\\style.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/fonts/icomoon/style.css",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\fonts\\icomoon\\style.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\bootstrap.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\jquery-3.3.1.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\jquery-3.3.1.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/js/jquery-3.3.1.min.js",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\js\\jquery-3.3.1.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\main.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\main.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/js/main.js",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\js\\main.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\owl.carousel.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\owl.carousel.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/js/owl.carousel.min.js",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\js\\owl.carousel.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\popper.min.js",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\js\\popper.min.js",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/js/popper.min.js",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\js\\popper.min.js"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\.DS_Store",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\.DS_Store",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/.DS_Store",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\.DS_Store"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_alert.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_alert.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_alert.scss",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_alert.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_badge.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_badge.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_badge.scss",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_badge.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_breadcrumb.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_breadcrumb.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_breadcrumb.scss",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_breadcrumb.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_button-group.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_button-group.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_button-group.scss",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_button-group.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_buttons.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_buttons.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_buttons.scss",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_buttons.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_card.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_card.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_card.scss",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_card.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_carousel.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_carousel.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_carousel.scss",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_carousel.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_close.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_close.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_close.scss",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_close.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_code.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_code.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_code.scss",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_code.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_custom-forms.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_custom-forms.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_custom-forms.scss",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_custom-forms.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_dropdown.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_dropdown.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_dropdown.scss",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_dropdown.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_forms.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_forms.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_forms.scss",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_forms.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_functions.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_functions.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_functions.scss",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_functions.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_grid.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_grid.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_grid.scss",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_grid.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_images.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_images.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_images.scss",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_images.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_input-group.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_input-group.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_input-group.scss",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_input-group.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_jumbotron.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_jumbotron.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_jumbotron.scss",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_jumbotron.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_list-group.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_list-group.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_list-group.scss",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_list-group.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_media.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_media.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_media.scss",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_media.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_mixins.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_mixins.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_mixins.scss",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_mixins.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_modal.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_modal.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_modal.scss",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_modal.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_nav.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_nav.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_nav.scss",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_nav.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_navbar.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_navbar.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_navbar.scss",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_navbar.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_pagination.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_pagination.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_pagination.scss",
       "AssetKind": "All",
@@ -2023,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_pagination.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_popover.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_popover.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_popover.scss",
       "AssetKind": "All",
@@ -2040,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_popover.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_print.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_print.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_print.scss",
       "AssetKind": "All",
@@ -2057,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_print.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_progress.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_progress.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_progress.scss",
       "AssetKind": "All",
@@ -2074,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_progress.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_reboot.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_reboot.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_reboot.scss",
       "AssetKind": "All",
@@ -2091,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_reboot.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_root.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_root.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_root.scss",
       "AssetKind": "All",
@@ -2108,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_root.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_spinners.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_spinners.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_spinners.scss",
       "AssetKind": "All",
@@ -2125,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_spinners.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_tables.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_tables.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_tables.scss",
       "AssetKind": "All",
@@ -2142,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_tables.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_toasts.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_toasts.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_toasts.scss",
       "AssetKind": "All",
@@ -2159,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_toasts.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_tooltip.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_tooltip.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_tooltip.scss",
       "AssetKind": "All",
@@ -2176,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_tooltip.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_transitions.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_transitions.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_transitions.scss",
       "AssetKind": "All",
@@ -2193,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_transitions.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_type.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_type.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_type.scss",
       "AssetKind": "All",
@@ -2210,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_type.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_utilities.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_utilities.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_utilities.scss",
       "AssetKind": "All",
@@ -2227,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_utilities.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_variables.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\_variables.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/_variables.scss",
       "AssetKind": "All",
@@ -2244,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\_variables.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\bootstrap.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\bootstrap.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/bootstrap.scss",
       "AssetKind": "All",
@@ -2261,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\bootstrap.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\bootstrap-grid.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\bootstrap-grid.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/bootstrap-grid.scss",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\bootstrap-grid.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\bootstrap-reboot.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\bootstrap-reboot.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/bootstrap-reboot.scss",
       "AssetKind": "All",
@@ -2295,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\bootstrap-reboot.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_alert.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_alert.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_alert.scss",
       "AssetKind": "All",
@@ -2312,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_alert.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_background-variant.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_background-variant.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_background-variant.scss",
       "AssetKind": "All",
@@ -2329,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_background-variant.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_badge.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_badge.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_badge.scss",
       "AssetKind": "All",
@@ -2346,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_badge.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_border-radius.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_border-radius.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_border-radius.scss",
       "AssetKind": "All",
@@ -2363,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_border-radius.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_box-shadow.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_box-shadow.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_box-shadow.scss",
       "AssetKind": "All",
@@ -2380,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_box-shadow.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_breakpoints.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_breakpoints.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_breakpoints.scss",
       "AssetKind": "All",
@@ -2397,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_breakpoints.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_buttons.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_buttons.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_buttons.scss",
       "AssetKind": "All",
@@ -2414,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_buttons.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_caret.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_caret.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_caret.scss",
       "AssetKind": "All",
@@ -2431,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_caret.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_clearfix.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_clearfix.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_clearfix.scss",
       "AssetKind": "All",
@@ -2448,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_clearfix.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_deprecate.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_deprecate.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_deprecate.scss",
       "AssetKind": "All",
@@ -2465,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_deprecate.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_float.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_float.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_float.scss",
       "AssetKind": "All",
@@ -2482,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_float.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_forms.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_forms.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_forms.scss",
       "AssetKind": "All",
@@ -2499,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_forms.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_gradients.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_gradients.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_gradients.scss",
       "AssetKind": "All",
@@ -2516,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_gradients.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_grid.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_grid.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_grid.scss",
       "AssetKind": "All",
@@ -2533,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_grid.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_grid-framework.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_grid-framework.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_grid-framework.scss",
       "AssetKind": "All",
@@ -2550,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_grid-framework.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_hover.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_hover.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_hover.scss",
       "AssetKind": "All",
@@ -2567,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_hover.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_image.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_image.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_image.scss",
       "AssetKind": "All",
@@ -2584,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_image.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_list-group.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_list-group.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_list-group.scss",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_list-group.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_lists.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_lists.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_lists.scss",
       "AssetKind": "All",
@@ -2618,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_lists.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_nav-divider.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_nav-divider.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_nav-divider.scss",
       "AssetKind": "All",
@@ -2635,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_nav-divider.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_pagination.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_pagination.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_pagination.scss",
       "AssetKind": "All",
@@ -2652,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_pagination.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_reset-text.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_reset-text.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_reset-text.scss",
       "AssetKind": "All",
@@ -2669,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_reset-text.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_resize.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_resize.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_resize.scss",
       "AssetKind": "All",
@@ -2686,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_resize.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_screen-reader.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_screen-reader.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_screen-reader.scss",
       "AssetKind": "All",
@@ -2703,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_screen-reader.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_size.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_size.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_size.scss",
       "AssetKind": "All",
@@ -2720,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_size.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_table-row.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_table-row.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_table-row.scss",
       "AssetKind": "All",
@@ -2737,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_table-row.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-emphasis.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-emphasis.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_text-emphasis.scss",
       "AssetKind": "All",
@@ -2754,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-emphasis.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-hide.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-hide.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_text-hide.scss",
       "AssetKind": "All",
@@ -2771,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-hide.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-truncate.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-truncate.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_text-truncate.scss",
       "AssetKind": "All",
@@ -2788,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_text-truncate.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_transition.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_transition.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_transition.scss",
       "AssetKind": "All",
@@ -2805,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_transition.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_visibility.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\mixins\\_visibility.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/mixins/_visibility.scss",
       "AssetKind": "All",
@@ -2822,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\mixins\\_visibility.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_align.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_align.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_align.scss",
       "AssetKind": "All",
@@ -2839,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_align.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_background.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_background.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_background.scss",
       "AssetKind": "All",
@@ -2856,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_background.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_borders.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_borders.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_borders.scss",
       "AssetKind": "All",
@@ -2873,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_borders.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_clearfix.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_clearfix.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_clearfix.scss",
       "AssetKind": "All",
@@ -2890,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_clearfix.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_display.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_display.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_display.scss",
       "AssetKind": "All",
@@ -2907,10 +2907,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_display.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_embed.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_embed.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_embed.scss",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_embed.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_flex.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_flex.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_flex.scss",
       "AssetKind": "All",
@@ -2941,10 +2941,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_flex.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_float.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_float.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_float.scss",
       "AssetKind": "All",
@@ -2958,10 +2958,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_float.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_overflow.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_overflow.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_overflow.scss",
       "AssetKind": "All",
@@ -2975,10 +2975,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_overflow.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_position.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_position.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_position.scss",
       "AssetKind": "All",
@@ -2992,10 +2992,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_position.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_screenreaders.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_screenreaders.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_screenreaders.scss",
       "AssetKind": "All",
@@ -3009,10 +3009,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_screenreaders.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_shadows.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_shadows.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_shadows.scss",
       "AssetKind": "All",
@@ -3026,10 +3026,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_shadows.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_sizing.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_sizing.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_sizing.scss",
       "AssetKind": "All",
@@ -3043,10 +3043,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_sizing.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_spacing.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_spacing.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_spacing.scss",
       "AssetKind": "All",
@@ -3060,10 +3060,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_spacing.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_stretched-link.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_stretched-link.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_stretched-link.scss",
       "AssetKind": "All",
@@ -3077,10 +3077,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_stretched-link.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_text.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_text.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_text.scss",
       "AssetKind": "All",
@@ -3094,10 +3094,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_text.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_visibility.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\utilities\\_visibility.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/utilities/_visibility.scss",
       "AssetKind": "All",
@@ -3111,10 +3111,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\utilities\\_visibility.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\vendor\\_rfs.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\bootstrap\\vendor\\_rfs.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/bootstrap/vendor/_rfs.scss",
       "AssetKind": "All",
@@ -3128,10 +3128,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\bootstrap\\vendor\\_rfs.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\style.scss",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Product\\scss\\style.scss",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Product/scss/style.scss",
       "AssetKind": "All",
@@ -3145,10 +3145,10 @@
       "OriginalItemSpec": "wwwroot\\Product\\scss\\style.scss"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\EditProfile\\css\\styles.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\EditProfile\\css\\styles.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Profile/EditProfile/css/styles.css",
       "AssetKind": "All",
@@ -3162,10 +3162,10 @@
       "OriginalItemSpec": "wwwroot\\Profile\\EditProfile\\css\\styles.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\ProfileIndex\\css\\style.css",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Profile\\ProfileIndex\\css\\style.css",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Profile/ProfileIndex/css/style.css",
       "AssetKind": "All",
@@ -3179,10 +3179,10 @@
       "OriginalItemSpec": "wwwroot\\Profile\\ProfileIndex\\css\\style.css"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\271a9047-23bd-4cfa-87f7-07f153a5bfd7.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\271a9047-23bd-4cfa-87f7-07f153a5bfd7.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/271a9047-23bd-4cfa-87f7-07f153a5bfd7.jpg",
       "AssetKind": "All",
@@ -3196,10 +3196,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\271a9047-23bd-4cfa-87f7-07f153a5bfd7.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\357ca7c8-6ff5-4873-8785-3498a6eae47c.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\357ca7c8-6ff5-4873-8785-3498a6eae47c.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/357ca7c8-6ff5-4873-8785-3498a6eae47c.jpg",
       "AssetKind": "All",
@@ -3213,10 +3213,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\357ca7c8-6ff5-4873-8785-3498a6eae47c.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\42ae605a-8f91-42fd-b50f-9539ffc79436.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\42ae605a-8f91-42fd-b50f-9539ffc79436.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/42ae605a-8f91-42fd-b50f-9539ffc79436.jpg",
       "AssetKind": "All",
@@ -3230,10 +3230,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\42ae605a-8f91-42fd-b50f-9539ffc79436.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\4f3e8265-2eae-43ef-bf73-16d3e6c38eb7.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\4f3e8265-2eae-43ef-bf73-16d3e6c38eb7.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/4f3e8265-2eae-43ef-bf73-16d3e6c38eb7.jpg",
       "AssetKind": "All",
@@ -3247,10 +3247,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\4f3e8265-2eae-43ef-bf73-16d3e6c38eb7.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\5628943f-edce-485e-8412-8448aca58757.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\5628943f-edce-485e-8412-8448aca58757.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/5628943f-edce-485e-8412-8448aca58757.jpg",
       "AssetKind": "All",
@@ -3264,10 +3264,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\5628943f-edce-485e-8412-8448aca58757.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\625a5843-6fb9-42ce-ae04-658b48c7fbe5.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\625a5843-6fb9-42ce-ae04-658b48c7fbe5.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/625a5843-6fb9-42ce-ae04-658b48c7fbe5.jpg",
       "AssetKind": "All",
@@ -3281,10 +3281,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\625a5843-6fb9-42ce-ae04-658b48c7fbe5.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\65e49e58-e54a-4922-a742-1f882110149e.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\65e49e58-e54a-4922-a742-1f882110149e.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/65e49e58-e54a-4922-a742-1f882110149e.jpg",
       "AssetKind": "All",
@@ -3298,10 +3298,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\65e49e58-e54a-4922-a742-1f882110149e.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\665d7613-eead-4aa7-bf1e-d1cf3a34d48a.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\665d7613-eead-4aa7-bf1e-d1cf3a34d48a.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/665d7613-eead-4aa7-bf1e-d1cf3a34d48a.jpg",
       "AssetKind": "All",
@@ -3315,10 +3315,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\665d7613-eead-4aa7-bf1e-d1cf3a34d48a.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\6703e999-6659-4340-bae6-b900439bbda3.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\6703e999-6659-4340-bae6-b900439bbda3.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/6703e999-6659-4340-bae6-b900439bbda3.jpg",
       "AssetKind": "All",
@@ -3332,10 +3332,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\6703e999-6659-4340-bae6-b900439bbda3.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\6e47bb63-85fa-4362-8631-ea2c24bd52fb.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\6e47bb63-85fa-4362-8631-ea2c24bd52fb.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/6e47bb63-85fa-4362-8631-ea2c24bd52fb.jpg",
       "AssetKind": "All",
@@ -3349,10 +3349,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\6e47bb63-85fa-4362-8631-ea2c24bd52fb.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\7705f3d4-1622-4563-9c9c-61e196bbd1d1.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\7705f3d4-1622-4563-9c9c-61e196bbd1d1.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/7705f3d4-1622-4563-9c9c-61e196bbd1d1.jpg",
       "AssetKind": "All",
@@ -3366,10 +3366,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\7705f3d4-1622-4563-9c9c-61e196bbd1d1.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\79e65754-4d1a-45a0-b9d5-277bedc3f24f.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\79e65754-4d1a-45a0-b9d5-277bedc3f24f.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/79e65754-4d1a-45a0-b9d5-277bedc3f24f.jpg",
       "AssetKind": "All",
@@ -3383,10 +3383,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\79e65754-4d1a-45a0-b9d5-277bedc3f24f.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\8b0a26c0-c2a4-4108-99a0-28dddbee0019.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\8b0a26c0-c2a4-4108-99a0-28dddbee0019.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/8b0a26c0-c2a4-4108-99a0-28dddbee0019.jpg",
       "AssetKind": "All",
@@ -3400,10 +3400,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\8b0a26c0-c2a4-4108-99a0-28dddbee0019.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\9e250636-2961-4381-88ad-a5ce2fc764e6.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\9e250636-2961-4381-88ad-a5ce2fc764e6.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/9e250636-2961-4381-88ad-a5ce2fc764e6.jpg",
       "AssetKind": "All",
@@ -3417,10 +3417,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\9e250636-2961-4381-88ad-a5ce2fc764e6.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\a8692905-8ddd-42cb-91aa-3dc6e8159437.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\a8692905-8ddd-42cb-91aa-3dc6e8159437.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/a8692905-8ddd-42cb-91aa-3dc6e8159437.jpg",
       "AssetKind": "All",
@@ -3434,10 +3434,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\a8692905-8ddd-42cb-91aa-3dc6e8159437.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg",
       "AssetKind": "All",
@@ -3451,10 +3451,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\bcaa18ce-fb6e-4716-9621-5da4c98dded0.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\cc635a29-df71-4b9e-96ff-74105153301a.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\cc635a29-df71-4b9e-96ff-74105153301a.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/cc635a29-df71-4b9e-96ff-74105153301a.jpg",
       "AssetKind": "All",
@@ -3468,10 +3468,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\cc635a29-df71-4b9e-96ff-74105153301a.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\d87562e9-987f-4817-a4df-b082d4ee2f86.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\d87562e9-987f-4817-a4df-b082d4ee2f86.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/d87562e9-987f-4817-a4df-b082d4ee2f86.jpg",
       "AssetKind": "All",
@@ -3485,10 +3485,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\d87562e9-987f-4817-a4df-b082d4ee2f86.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\e0a33cd8-dd3a-424a-9f0a-86a276a7358e.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\e0a33cd8-dd3a-424a-9f0a-86a276a7358e.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/e0a33cd8-dd3a-424a-9f0a-86a276a7358e.jpg",
       "AssetKind": "All",
@@ -3502,10 +3502,10 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\e0a33cd8-dd3a-424a-9f0a-86a276a7358e.jpg"
     },
     {
-      "Identity": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\f471adc4-0f4c-4346-8cdd-4b17e6725098.jpg",
+      "Identity": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\Uploads\\f471adc4-0f4c-4346-8cdd-4b17e6725098.jpg",
       "SourceId": "ProjectSWP391",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Workspace\\SB_2\\projectswp391\\ProjectSWP391\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\projectswp391\\ProjectSWP391\\wwwroot\\",
       "BasePath": "_content/ProjectSWP391",
       "RelativePath": "Uploads/f471adc4-0f4c-4346-8cdd-4b17e6725098.jpg",
       "AssetKind": "All",
