@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <form method="get" action="/ShoppingCart/Checkout">
-                        <button type="button" class="btn btn-danger" onclick="removeSelectedItems()">Remove</button>
+                        <button type="button" class="btn btn-danger" onclick="removeSelectedItems()">Remove Selected</button>
                         <button type="button" class="btn btn-danger" onclick="removeAllItems()">Remove All</button>
                         <div class="table-wrap">
                             <table class="table">
@@ -49,7 +49,7 @@
                                             <td>
                                                 <div class="email">
                                                     <span>@item.ProductName </span>
-                                                    <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
+                                                    <span>@item.Description.Substring(0,20)</span>
                                                 </div>
                                             </td>
                                             <td class="price">$@(item.Price.ToString("F2"))</td>
@@ -121,7 +121,7 @@ else
             });
         }
     }
-    
+
     function removeAllItems() {
         if (confirm('Are you sure you want to remove all items from your cart?')) {
             var url = '/ShoppingCart/RemoveAllItems';
@@ -159,6 +159,13 @@ else
             total += parseFloat($(this).text().replace('$', ''));
         });
         $('p.total b').text('$' + total.toFixed(2));
+
+        // Send AJAX request to update the cart item quantity on the server
+        var url = '/ShoppingCart/UpdateCartItemQuantity';
+        var data = { productId: productId, quantity: quantity };
+        $.post(url, data, function (response) {
+            // Handle the response if needed
+        });
     }
 
 

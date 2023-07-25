@@ -212,7 +212,8 @@ namespace ProjectSWP391.Controllers
             return ServiceList(1, searchName, searchCategory, searchPrice);
         }
 
-        public IActionResult ServiceDetail(int? sId)
+        private readonly SWP391_V4Context context = new SWP391_V4Context();
+        public IActionResult ServiceDetail(int? sId, int pageFeedback = 1)
         {
             Service? service = context.Services.Where(s => s.ServiceId == sId).FirstOrDefault();
             if (service == null)
@@ -236,10 +237,102 @@ namespace ProjectSWP391.Controllers
                     ViewBag.relateService = services;
                 }
             }
+
+            const int pageFeedbackSize = 6;
+            var feedbacks = context.Feedbacks.Where(f => f.ServiceId == sId).OrderByDescending(f => f.Date).ToList();
+            if (feedbacks.Count > 0)
+            {
+                var accounts = context.Accounts.ToList();
+
+                // paging
+                int totalItems = feedbacks.Count;
+                int totalPages = (int)Math.Ceiling(totalItems / (double)pageFeedbackSize);
+                int skip = (pageFeedback - 1) * pageFeedbackSize;
+                feedbacks = feedbacks.Skip(skip).Take(pageFeedbackSize).ToList();
+
+                ViewBag.Accounts = accounts;
+                ViewBag.Feedbacks = feedbacks;
+                ViewBag.TotalPages = totalPages;
+                ViewBag.CurrentPage = pageFeedback;
+            }
             return View(service);
         }
 
-        private readonly SWP391_V4Context context = new SWP391_V4Context();
+        [HttpPost]
+        public IActionResult PostServiceFeedback(int accountId, int serviceId, string content, DateTime dateTimeNow)
+        {
+            try
+            {
+                bool hasFeedback = context.Feedbacks.Any(f => f.AccountId == accountId && f.ServiceId == serviceId);
+
+                if (hasFeedback)
+                {
+                    ModelState.AddModelError("FeedbackError", "You have already given feedback for this product.");
+                    return RedirectToAction("ServiceDetail", new { sId = serviceId });
+                }
+
+                var feedback = new Feedback
+                {
+                    ProductId = null,
+                    AccountId = accountId,
+                    ServiceId = serviceId,
+                    Content = content,
+                    Date = dateTimeNow
+                };
+                context.Feedbacks.Add(feedback);
+                context.SaveChanges();
+
+                return RedirectToAction("ServiceDetail", new { sId = serviceId });
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return BadRequest(errorMessage);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult EditServiceFeedback(int accountId, int serviceId, int feedbackId, string content, DateTime dateTimeNow)
+        {
+            try
+            {
+                var feedback = new Feedback
+                {
+                    FeedbackId = feedbackId,
+                    ProductId = null,
+                    AccountId = accountId,
+                    ServiceId = serviceId,
+                    Content = content,
+                    Date = dateTimeNow
+                };
+                context.Feedbacks.Update(feedback);
+                context.SaveChanges();
+                return RedirectToAction("ServiceDetail", new { sId = serviceId });
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return BadRequest(errorMessage);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteServiceFeedback(int feedbackId, int serviceId)
+        {
+            try
+            {
+                var feedback = context.Feedbacks.SingleOrDefault(f => f.FeedbackId == feedbackId);
+                context.Feedbacks.Remove(feedback);
+                context.SaveChanges();
+                return RedirectToAction("ServiceDetail", new { sId = serviceId });
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                return BadRequest(errorMessage);
+            }
+        }
+
         public IActionResult ProductDetails(int id, int pageFeedback = 1)
         {
             Product product = null;

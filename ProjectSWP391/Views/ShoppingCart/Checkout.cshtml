@@ -2,38 +2,249 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Validate information before Checkout</title>
+    <style>
+        .error-message {
+            color: red;
+        }
+
+        .row {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE10 */
+            flex-wrap: wrap;
+            margin: 0 -16px;
+        }
+
+        .col-25 {
+            -ms-flex: 25%; /* IE10 */
+            flex: 25%;
+        }
+
+        .col-50 {
+            -ms-flex: 50%; /* IE10 */
+            flex: 50%;
+        }
+
+        .col-75 {
+            -ms-flex: 75%; /* IE10 */
+            flex: 75%;
+        }
+
+        .col-25,
+        .col-50,
+        .col-75 {
+            padding: 0 16px;
+        }
+
+        .container {
+            background-color: #f2f2f2;
+            padding: 5px 20px 15px 20px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .icon-container {
+            margin-bottom: 20px;
+            padding: 7px 0;
+            font-size: 24px;
+        }
+
+        .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+
+        a {
+            color: #2196F3;
+        }
+
+        hr {
+            border: 1px solid lightgrey;
+        }
+
+        span.price {
+            float: right;
+            color: grey;
+        }
+    </style>
 </head>
 <body>
+    <form action="Checkout" method="post" id="orderForm">
+        <div class="row">
+            <div class="col-75">
+                <div class="container">
+                    <form action="/action_page.php">
 
-    <h2>Validate information before Checkout</h2>
-    <form action="Checkout" method="post">
-        <div>
-            <label>Email:</label>
-            <input type="text" name="email" value="@Model.Email" />
-            @Html.ValidationMessageFor(m => m.Email)
-        </div>
-        <div>
-            <label>Phone:</label>
-            <input type="text" name="phone" value="@Model.Phone" />
-            @Html.ValidationMessageFor(m => m.Phone)
-        </div>
-        <div>
-            <label>FullName:</label>
-            <input type="text" name="fullName" value="@Model.FullName" />
-            @Html.ValidationMessageFor(m => m.FullName)
-        </div>
-        <div>
-            <label>Address:</label>
-            <input type="text" name="address" />
-            @if (!string.IsNullOrEmpty(TempData["AddressErrorMessage"] as string))
-            {
-                <div class="alert alert-danger">@TempData["AddressErrorMessage"]</div>
-            }
-        </div>
+                        <div class="row">
+                            <div class="col-100">
+                                <h3>Billing Address</h3>
+                                <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                                <input type="text" name="fullName" value="@Model.FullName" required />
+                                <span class="error-message" id="name-error"></span>
 
-        <button type="submit">Checkout</button>
+                                <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                <input type="text" name="email" value="@Model.Email" placeholder="Email" required />
+                                <span class="error-message" id="email-error"></span>
+
+                                <label for="phone"><i class="fa fa-envelope"></i> Phone</label>
+                                <input type="text" name="phone" value="@Model.Phone" required />
+                                <span class="error-message" id="phone-error"></span>
+
+                                <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                                <input type="text" name="address" required />
+                                <span class="error-message" value="" id="address-error"></span>
+
+                                <label>Description:</label>
+                                <input type="text" name="addInfo" required />
+                                <span class="error-message" id="description-error"></span>
+                            </div>
+
+                        </div>
+                        <input type="submit" value="Continue to checkout" class="btn">
+                    </form>
+                </div>
+            </div>
+            <div class="col-25">
+                <div class="container">
+                    <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>@ViewBag.CartItems.Count</b></span></h4>
+                    @foreach (var item in ViewBag.CartItems)
+                    {
+                        decimal subtotal = item.Price * item.Quantity;
+                        <p>
+                            <a href="#">@item.ProductName</a>
+                            <span class="price">$@(item.Price.ToString("F2")) x @item.Quantity = $@(subtotal.ToString("F2"))</span>
+                        </p>
+                    }
+                    <hr>
+                    <p>Total <span class="price" style="color:black"><b>$ @ViewBag.Total</b></span></p>
+                </div>
+            </div>
+        </div>
     </form>
-
 </body>
 </html>
+<script>
+    function validateFormAndSubmit() {
+        const emailInput = document.getElementsByName('email')[0];
+        const nameInput = document.getElementsByName('fullName')[0];
+        const addressInput = document.getElementsByName('address')[0];
+        const phoneInput = document.getElementsByName('phone')[0];
+        const descriptionInput = document.getElementsByName('addInfo')[0];
+
+        // Remove extra whitespace in the middle of the input fields
+        emailInput.value = emailInput.value.replace(/\s+/g, ' ');
+        nameInput.value = nameInput.value.replace(/\s+/g, ' ');
+        addressInput.value = addressInput.value.replace(/\s+/g, ' ');
+        phoneInput.value = phoneInput.value.replace(/\s+/g, ' ');
+        descriptionInput.value = descriptionInput.value.replace(/\s+/g, ' ');
+
+
+        // Reset previous error messages
+        document.getElementById('email-error').textContent = '';
+        document.getElementById('name-error').textContent = '';
+        document.getElementById('address-error').textContent = '';
+        document.getElementById('phone-error').textContent = '';
+        document.getElementById('description-error').textContent = '';
+
+        let hasErrors = false;
+
+        // Check for empty fields and display error messages
+        if (emailInput.value.trim() === '') {
+            document.getElementById('email-error').textContent = 'Email is required';
+            hasErrors = true;
+        } else {
+            const email = emailInput.value.trim();
+            if (!(/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput.value))) {
+                document.getElementById('email-error').textContent = 'Invalid email format';
+                hasErrors = true;
+            }
+        }
+
+        if (nameInput.value.trim() === '') {
+            document.getElementById('name-error').textContent = 'Name is required';
+            hasErrors = true;
+        } else {
+            const name = nameInput.value.trim();
+            // Check name length, special characters, and numbers
+            if (name.length < 5 || name.length > 20 || /\d/.test(name) || /[^a-zA-Z0-9 ]/.test(name)) {
+                document.getElementById('name-error').textContent = 'Name must be 5 to 20 characters, letters only, no special characters or numbers';
+                hasErrors = true;
+            }
+        }
+
+        if (addressInput.value.trim() === '') {
+            document.getElementById('address-error').textContent = 'Address is required';
+            hasErrors = true;
+        } else {
+            const address = addressInput.value.trim();
+            // Check address length and special characters
+            if (address.length < 5 || address.length > 20 || /[^a-zA-Z0-9 ]/.test(address)) {
+                document.getElementById('address-error').textContent = 'Address must be 5 to 20 characters, letters and numbers only, no special characters';
+                hasErrors = true;
+            }
+        }
+
+        if (phoneInput.value.trim() === '') {
+            document.getElementById('phone-error').textContent = 'Phone is required';
+            hasErrors = true;
+        } else {
+            const phone = phoneInput.value.trim();
+            // Check phone format (10 digits, starting with 09, 08, 05, or 02)
+            if (!/^(09|08|05|02)\d{8}$/.test(phone)) {
+                document.getElementById('phone-error').textContent = 'Invalid phone number. Please enter a 10-digit number starting with 09, 08, 05, or 02';
+                hasErrors = true;
+            }
+        }
+
+        if (descriptionInput.value.trim() === '') {
+            document.getElementById('description-error').textContent = 'Description is required';
+            hasErrors = true;
+        } else {
+            const description = descriptionInput.value.trim();
+            // Check description length
+            if (description.length < 5) {
+                document.getElementById('description-error').textContent = 'Description must be at least 5 characters';
+                hasErrors = true;
+            }
+        }
+        if (!hasErrors) {
+            document.getElementById('orderForm').submit(); // Submit the form if there are no errors
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+
+        document.getElementById('orderForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            validateFormAndSubmit();
+        });
+
+    });
+</script>
