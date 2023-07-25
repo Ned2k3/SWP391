@@ -126,7 +126,7 @@
                         <p style="font-size: 15px; margin-top: 1rem;"><span class="fw-bold">Product Type: </span>@(ViewBag.PcategoryName ?? "N/A")</p>
                     </div>
                     <div>
-                        <p style="font-size: 15px; margin-top: 1rem;"><span class="fw-bold">Quantity: </span>@(Model.Quantity > 0 ? Model.Quantity : "<span style='color:red'>Out of stock</span>")</p>
+                        <p style="font-size: 15px; margin-top: 1rem;"><span class="fw-bold">Quantity: </span>@(Model.Quantity > 0 ? Model.Quantity : @Html.Raw("<b style='color:red; font-size:19px;text-decoration-line: line-through; '>Out of stock</b>"))</p>
                     </div>
                     <div style="font-size: 30px;">
                         <span class="fw-bold">Price: </span><span class="text-danger">$@(Math.Round(Model.Price, 2))</span>
@@ -140,7 +140,9 @@
                     else if ((Global.CurrentUser != null && Global.CurrentUser.Role == null) && @Model.Quantity > 0)
                     {
                         <a class="btn btn-outline-dark mt-auto width: 8vw;" href="/Purchase/Index?productId=@Model.ProductId">Buy Now</a>
-                        <a class="btn btn-outline-dark mt-auto width: 8vw;" href="/ShoppingCart/AddToCart?productId=@(Model.ProductId)">Add to CART</a>
+                        <button class="btn btn-outline-dark mt-auto width: 8vw;" onclick="addToCart(@Model.ProductId)">Add to CART</button>
+                        <div id="notification" style="display: none;"></div>
+
                     }
                     else if ((Global.CurrentUser != null && Global.CurrentUser.AccountId == 1))
                     {
@@ -312,6 +314,20 @@
 <!--Import JQuery-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    function addToCart(productId) {
+        $.post("/ShoppingCart/AddToCart", { productId: productId }, function (response) {
+            var notification = $("#notification");
+
+            notification.removeClass("alert-danger").addClass("alert-success");
+            notification.text("Product added to cart successfully!");
+            notification.show();
+
+            //set hide noti
+            setTimeout(function () {
+                notification.hide();
+            }, 3000);
+        });
+    }
     $(document).ready(function () {
         $('.edit-button').click(function () {
             var feedbackActions = $(this).closest('.comment-actions');
@@ -344,6 +360,7 @@
                 return false;
             }
         });
+
         /*Validate
         $('.feedback-form').submit(function (event) {
             event.preventDefault();

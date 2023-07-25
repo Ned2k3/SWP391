@@ -1,15 +1,39 @@
-﻿<!DOCTYPE html>
+﻿@model ProjectSWP391.Models.Account
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Checkout Success</title>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/cart/css/styles.css" rel="stylesheet">
+    <title>Validate information before Checkout</title>
 </head>
 <body>
-    <div class="wrapper">
-        <h1>Checkout Successful</h1>
-        <p>Your order has been successfully placed. Thank you for shopping with us!</p>
-        <a href="/ShoppingCart/Index">Back to Shopping Cart</a>
-    </div>
+
+    <h2>Validate information before Checkout</h2>
+    <form action="Checkout" method="post">
+        <div>
+            <label>Email:</label>
+            <input type="text" name="email" value="@Model.Email" />
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div>
+            <label>Phone:</label>
+            <input type="text" name="phone" value="@Model.Phone" />
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+        <div>
+            <label>FullName:</label>
+            <input type="text" name="fullName" value="@Model.FullName" />
+            @Html.ValidationMessageFor(m => m.FullName)
+        </div>
+        <div>
+            <label>Address:</label>
+            <input type="text" name="address" />
+            @if (!string.IsNullOrEmpty(TempData["AddressErrorMessage"] as string))
+            {
+                <div class="alert alert-danger">@TempData["AddressErrorMessage"]</div>
+            }
+        </div>
+
+        <button type="submit">Checkout</button>
+    </form>
+
 </body>
 </html>

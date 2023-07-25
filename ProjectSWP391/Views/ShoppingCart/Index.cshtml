@@ -5,46 +5,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="/cart/css/styles.css" rel="stylesheet">
 
-@*@if (Model.CartItems.Count > 0)
-{
-    <form method="post" action="/ShoppingCart/UpdateCart">
-        <div class="wrapper">
-            <h1>Shopping Cart</h1>
-            <div class="project">
-                <div class="shop">
-                    @foreach (var item in Model.CartItems)
-                    {
-                        <div class="box">
-                            <img href="@item.Image">
-                            <div class="content">
-                                <h5>@item.ProductName</h5>
-                                <span>Price: <b>@item.Price</b></span>
-                                <p class="unit">Quantity: <input type="number" name="quantities[@item.ProductId]" min="1" max="999" value="@item.Quantity"></p>
-                                <p class="btn-area"><i aria-hidden="true" class="fa fa-trash" onclick="removeItem('@item.ProductId')"></i></p>
-                            </div>
-                            <p><span>Subtotal</span> <b>@(item.Price * item.Quantity)</b></p>
-                        </div>
-                    }
-                    @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
-                    {
-                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-                    }
-                </div>
-                <div class="right-bar">
-                    <p><span>Total</span> <b>$@Model.TotalPrice</b></p>
-                    <a href="/ShoppingCart/Checkout"><i class="fa fa-shopping-cart"></i>Checkout</a>
-                </div>
-
-            </div>
-        </div>
-        <button type="submit" class="btn btn-dark edt-button-submit">Edit Cart</button>
-    </form>
-}
-else
-{
-    <p>Your cart is empty.</p>
-}*@
-
 
 @if (Model.CartItems.Count > 0)
 {
@@ -52,16 +12,15 @@ else
         <div class="container-shoppingCart">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-4">
-                    <h2 class="heading-section">Table #06</h2>
+                    <h2 class="heading-section">Shopping Cart</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="h5 mb-4 text-center">Table Accordion</h3>
-                    <form method="post" action="/ShoppingCart/UpdateCart">
+                    <form method="get" action="/ShoppingCart/Checkout">
+                        <button type="button" class="btn btn-danger" onclick="removeSelectedItems()">Remove</button>
+                        <button type="button" class="btn btn-danger" onclick="removeAllItems()">Remove All</button>
                         <div class="table-wrap">
-                            <p><span>Total</span> <b>$@Model.TotalPrice</b></p>
-                            <a href="/ShoppingCart/Checkout"><i class="fa fa-shopping-cart"></i>Checkout</a>
                             <table class="table">
                                 <thead class="thead-primary">
                                     <tr>
@@ -77,10 +36,10 @@ else
                                 <tbody>
                                     @foreach (var item in Model.CartItems)
                                     {
-                                        <tr class="alert" role="alert">
+                                        <tr class="alert" role="alert" data-productid="@item.ProductId">
                                             <td>
                                                 <label class="checkbox-wrap checkbox-primary">
-                                                    <input type="checkbox" checked>
+                                                    <input type="checkbox">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </td>
@@ -93,13 +52,13 @@ else
                                                     <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
                                                 </div>
                                             </td>
-                                            <td>$@(item.Price)</td>
+                                            <td class="price">$@(item.Price.ToString("F2"))</td>
                                             <td class="quantity">
                                                 <div class="input-group">
-                                                    <input type="number" name="quantities[@item.ProductId]" class="quantity form-control input-number" min="1" max="999" value="@item.Quantity">
+                                                    <input type="number" style="width:100px;" onchange="updateQuantity('@item.ProductId')" name="quantities[@item.ProductId]" class="quantity form-control input-number" min="1" max="999" value="@item.Quantity">
                                                 </div>
                                             </td>
-                                            <td>$@(item.Price * item.Quantity)</td>
+                                            <td class="subtotal">$@(item.Price * item.Quantity)</td>
                                             <td>
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true"><i class="fa fa-close" onclick="removeItem('@item.ProductId')"></i></span>
@@ -113,7 +72,8 @@ else
                                     }
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-dark edt-button-submit">Edit Cart</button>
+                            <p style="float:right" class="total">Total: <b>$@Model.TotalPrice</b></p>
+                            <button type="submit" class="btn btn-dark edt-button-submit">Checkout</button>
                         </div>
                     </form>
                 </div>
@@ -123,7 +83,7 @@ else
 }
 else
 {
-    <p>Your cart is empty.</p>
+    <p style="text-align:center">Your cart is empty.</p>
 }
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -136,4 +96,70 @@ else
     function removeItem(productId) {
         window.location.href = "/ShoppingCart/RemoveFromCart?productId=" + productId;
     }
+
+    function removeSelectedItems() {
+        var selectedProductIds = [];
+        $('input[type="checkbox"]:checked').each(function () {
+            var productId = $(this).closest('tr').data('productid');
+            selectedProductIds.push(productId);
+        });
+
+        if (selectedProductIds.length === 0) {
+            alert('Please select at least one item to remove.');
+            return;
+        }
+
+        if (confirm('Are you sure you want to remove the selected items?')) {
+            var url = '/ShoppingCart/RemoveSelectedItems';
+            var data = { productIds: selectedProductIds };
+            $.post(url, data, function (response) {
+                if (response.success) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to remove selected items.');
+                }
+            });
+        }
+    }
+    
+    function removeAllItems() {
+        if (confirm('Are you sure you want to remove all items from your cart?')) {
+            var url = '/ShoppingCart/RemoveAllItems';
+            $.post(url, function (response) {
+                if (response.success) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to remove all items from cart.');
+                }
+            });
+        }
+    }
+
+    function updateQuantity(productId) {
+        var quantityInput = $(`input[name="quantities[${productId}]"]`);
+        var quantity = parseInt(quantityInput.val());
+        var priceCell = $(`tr[data-productid="${productId}"] .price`);
+        var price = parseFloat(priceCell.text().replace('$', ''));
+
+        console.log(productId);
+        console.log('Quantity:', quantity);
+        console.log('Price:', price);
+
+        if (isNaN(quantity) || isNaN(price)) {
+            console.log('Invalid quantity or price');
+            return;
+        }
+
+        var subtotal = quantity * price;
+        $(`tr[data-productid="${productId}"] .subtotal`).text('$' + subtotal.toFixed(2));
+
+        // Update TotalPrice
+        var total = 0;
+        $('td.subtotal').each(function () {
+            total += parseFloat($(this).text().replace('$', ''));
+        });
+        $('p.total b').text('$' + total.toFixed(2));
+    }
+
+
 </script>

@@ -40,6 +40,7 @@ public class ShoppingCartController : Controller
             {
                 ProductId = product.ProductId,
                 ProductName = product.ProductName,
+                Description = product.Description,
                 Price = product.Price,
                 Image = product.Image,
                 Quantity = 1
@@ -128,28 +129,36 @@ public class ShoppingCartController : Controller
     }
 
     [HttpPost]
-    public IActionResult UpdateCart(Dictionary<int, int> quantities)
+    public IActionResult RemoveSelectedItems(List<int> productIds)
     {
-        var cartItemsDict = GetCartItemsDictFromCookie();
-
         int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : -1;
+        var cartItemsDict = GetCartItemsDictFromCookie();
 
         if (cartItemsDict.TryGetValue(accountId, out var cartItems))
         {
-            foreach (var (productId, quantity) in quantities)
-            {
-                var itemToUpdate = cartItems.FirstOrDefault(item => item.ProductId == productId);
-                if (itemToUpdate != null)
-                {
-                    itemToUpdate.Quantity = quantity;
-                }
-            }
-
+            cartItems.RemoveAll(item => productIds.Contains(item.ProductId));
             cartItemsDict[accountId] = cartItems;
             SetCartItemsDictToCookie(cartItemsDict);
+            return Json(new { success = true });
         }
 
-        return RedirectToAction("Index");
+        return Json(new { success = false });
+    }
+
+    [HttpPost]
+    public IActionResult RemoveAllItems()
+    {
+        int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : -1;
+        var cartItemsDict = GetCartItemsDictFromCookie();
+
+        if (cartItemsDict.ContainsKey(accountId))
+        {
+            cartItemsDict.Remove(accountId);
+            SetCartItemsDictToCookie(cartItemsDict);
+            return Json(new { success = true });
+        }
+
+        return Json(new { success = false });
     }
 
     [HttpGet]
@@ -169,7 +178,6 @@ public class ShoppingCartController : Controller
         {
             return RedirectToAction("Registration");
         }
-
         // Check quantity before creating order and order details
         foreach (var item in cartItems)
         {
@@ -187,11 +195,43 @@ public class ShoppingCartController : Controller
                 return RedirectToAction("Index");
             }
         }
+        return View(account);
+    }
+
+    [HttpPost]
+    public IActionResult Checkout(string email, string phone, string fullName, string address)
+    {
+        var cartItems = GetCartItemsForCurrentUser();
+
+        if (cartItems.Count == 0)
+        {
+            return RedirectToAction("Index");
+        }
+
+        int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : -1;
+        var account = context.Accounts.FirstOrDefault(a => a.AccountId == accountId);
+
+        if (account == null)
+        {
+            return RedirectToAction("Registration");
+        }
+
+        if (string.IsNullOrEmpty(address))
+        {
+            TempData["ErrorMessage"] = "Please enter a valid address.";
+            return View("Checkout");
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return View("Checkout");
+        }
 
         var order = new Order
         {
             AccountId = accountId,
             OrderDate = DateTime.Now,
+            Content = $"Email: ${email}, FullName: {fullName}, Phone: {phone}, Address: {address}",
             Account = account
         };
 
@@ -230,10 +270,7 @@ public class ShoppingCartController : Controller
         cartItemsDict[accountId] = new List<ShoppingCartModel>();
         SetCartItemsDictToCookie(cartItemsDict);
 
-        return View();
+        return RedirectToAction("Index");
+
     }
-
-
-
-
 }
