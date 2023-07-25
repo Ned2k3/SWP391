@@ -161,6 +161,28 @@ public class ShoppingCartController : Controller
         return Json(new { success = false });
     }
 
+    [HttpPost]
+    public IActionResult UpdateCartItemQuantity(int productId, int quantity)
+    {
+        int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : -1;
+        var cartItemsDict = GetCartItemsDictFromCookie();
+
+        if (cartItemsDict.TryGetValue(accountId, out var cartItems))
+        {
+            var cartItem = cartItems.FirstOrDefault(item => item.ProductId == productId);
+            if (cartItem != null)
+            {
+                cartItem.Quantity = quantity;
+                cartItemsDict[accountId] = cartItems;
+                SetCartItemsDictToCookie(cartItemsDict);
+                return Json(new { success = true });
+            }
+        }
+
+        return Json(new { success = false });
+    }
+
+
     [HttpGet]
     public IActionResult Checkout()
     {
@@ -191,15 +213,23 @@ public class ShoppingCartController : Controller
 
             if (item.Quantity > product.Quantity)
             {
-                TempData["ErrorMessage"] = $"Invalid quantity for '{item.ProductName}'. Quantity exceeds available stock.";
+                TempData["ErrorMessage"] = $"Invalid quantity for '{item.ProductName}'. Quantity exceeds available stock. Max Quantity: {product.Quantity}";
                 return RedirectToAction("Index");
             }
         }
+
+        // Calculate the subtotal
+        decimal subtotal = cartItems.Sum(item => item.Price * item.Quantity);
+
+        // Set data to ViewBag
+        ViewBag.CartItems = cartItems;
+        ViewBag.Total = cartItems.Sum(item => item.Price * item.Quantity);
+
         return View(account);
     }
 
     [HttpPost]
-    public IActionResult Checkout(string email, string phone, string fullName, string address)
+    public IActionResult Checkout(string email, string phone, string fullName, string address, string addInfo)
     {
         var cartItems = GetCartItemsForCurrentUser();
 
@@ -211,27 +241,11 @@ public class ShoppingCartController : Controller
         int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : -1;
         var account = context.Accounts.FirstOrDefault(a => a.AccountId == accountId);
 
-        if (account == null)
-        {
-            return RedirectToAction("Registration");
-        }
-
-        if (string.IsNullOrEmpty(address))
-        {
-            TempData["ErrorMessage"] = "Please enter a valid address.";
-            return View("Checkout");
-        }
-
-        if (!ModelState.IsValid)
-        {
-            return View("Checkout");
-        }
-
         var order = new Order
         {
             AccountId = accountId,
             OrderDate = DateTime.Now,
-            Content = $"Email: ${email}, FullName: {fullName}, Phone: {phone}, Address: {address}",
+            Content = $"Email: ${email}, FullName: {fullName}, Phone: {phone}, Address: {address}, Description: {addInfo}",
             Account = account
         };
 
@@ -270,7 +284,7 @@ public class ShoppingCartController : Controller
         cartItemsDict[accountId] = new List<ShoppingCartModel>();
         SetCartItemsDictToCookie(cartItemsDict);
 
-        return RedirectToAction("Index");
+        return View("SuccessPayment");
 
     }
 }

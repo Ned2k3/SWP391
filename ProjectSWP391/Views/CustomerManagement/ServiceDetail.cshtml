@@ -3,12 +3,15 @@
 
 @{
     ViewData["Title"] = "Service Details";
-    if(Global.CurrentUser != null && (Global.CurrentUser.Role == 1 || Global.CurrentUser.Role == 2))
+    if (Global.CurrentUser != null && (Global.CurrentUser.Role == 1 || Global.CurrentUser.Role == 2))
     {
         Layout = "_AdminLayout";
     }
 }
-
+@{
+    var accounts = ViewBag.Accounts as List<Account>;
+    var feedbacks = ViewBag.Feedbacks as List<Feedback>;
+}
 <body>
     <div class="container p-2">
         <div class="row">
@@ -53,10 +56,111 @@
             </div>
         </div>
 
-        <!--Comment section here-->
-        <div class="row p-0" style="margin-top: 80px;">
-            <h4>Comments</h4>
-            <div style="text-align: center;">All Comments here</div>
+        <!--Feedback section here-->
+        <div class="row p-0" style="margin-top: 80px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
+            <form method="post" action="/CustomerManagement/PostServiceFeedback" id="postFeedbackForm">
+                <h4 style="padding-bottom:50px">Feedback Service</h4>
+                @if ((Global.CurrentUser != null && Global.CurrentUser.Role == 1) || (Global.CurrentUser != null && Global.CurrentUser.Role != 1))
+                {
+                    <div class="feedback-box">
+                        <div class="comment-avatar">
+                            <img src="@(Global.CurrentUser.Image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png")" alt="Avatar" class="avatar-image">
+                            <input type="hidden" name="accountId" value="@Global.CurrentUser.AccountId" />
+                            <input type="hidden" name="serviceId" value="@Model.ServiceId" />
+                        </div>
+                        <div class="feedback-content">
+                            <textarea class="form-control validate-feedback" id="postFeedbackContent" name="content" placeholder="Enter your feedback"></textarea>
+                            <span class="error-message error-feedback"></span>
+                            @if (ViewData.ModelState["FeedbackError"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @Html.ValidationMessage("FeedbackError")
+                                </div>
+                            }
+                        </div>
+                        <input type="hidden" name="dateTimeNow" value="@(DateTime.Now)">
+                        <div class="comment-button">
+                            <button type="submit">Feedback</button>
+                        </div>
+                    </div>
+                }
+            </form>
+
+            @if (feedbacks != null && accounts != null)
+            {
+                @foreach (var feedback in feedbacks)
+                {
+                    var account = accounts.FirstOrDefault(a => a.AccountId == feedback.AccountId);
+                    if (account != null)
+                    {
+                        <div class="comment">
+                            <div class="comment-avatar">
+                                <img src="@(account.Image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png")" alt="Avatar" class="avatar-image">
+                            </div>
+                            <div class="comment-content">
+                                <h5>@(account.FullName) <a href="/Profile/User-@(feedback.AccountId)">(@account.Email)</a></h5>
+                                <p>@feedback.Content</p>
+                                <span style="display:block; float:right; font-size:14px"><i>Published in <b>@(feedback.Date != null ? feedback.Date.Value.ToString("MM/dd/yyyy, HH:mm tt") : "")</b></i></span>
+                            </div>
+                            <div class="comment-actions">
+                                @if (Global.CurrentUser != null && Global.CurrentUser.AccountId == feedback.AccountId)
+                                {
+                                    <button class="btn btn-blue edt-button-submit edit-button"><i class="fa fa-edit"></i></button>
+                                    <form class="feedback-form" id="editFeedbackForm" method="post" action="/CustomerManagement/EditServiceFeedback" style="display:none">
+                                        <input type="hidden" name="accountId" value="@Global.CurrentUser.AccountId" />
+                                        <input type="hidden" name="serviceId" value="@Model.ServiceId" />
+                                        <input type="hidden" name="feedbackId" value="@feedback.FeedbackId" />
+                                        <input type="hidden" name="dateTimeNow" value="@(DateTime.Now)">
+                                        <textarea name="content" id="editFeedbackContent" placeholder="Enter your feedback" style="display:none; width:500px" class="form-control validate-feedback"></textarea>
+                                        <span class="error-message error-feedback"></span>
+                                        <button type="submit" class="btn btn-dark edt-button-submit">
+                                            Edit
+                                        </button>
+                                        <button type="button" class="btn btn-light cancel-button">Cancel</button>
+                                    </form>
+                                }
+                                @if (Global.CurrentUser != null && (Global.CurrentUser.Role == 1 || feedback.AccountId == Global.CurrentUser.AccountId))
+                                {
+                                    <form id="delete-feedback-form" method="post" action="/CustomerManagement/DeleteServiceFeedback">
+                                        <input type="hidden" name="feedbackId" value="@feedback.FeedbackId" />
+                                        <input type="hidden" name="serviceId" value="@Model.ServiceId" />
+                                        <button type="submit" class="btn btn-blue edt-button-submit" id="delete-button">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                }
+                            </div>
+                        </div>
+                        <hr class="comment-divider" />
+                    }
+                }
+                <!--Paging-->
+                @if (ViewBag.TotalPages > 1)
+                {
+                    <div class="pagination-container">
+                        <ul class="pagination">
+                            @if (ViewBag.CurrentPage != 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("ServiceDetail", new { sId = Model.ServiceId, pageFeedback = ViewBag.CurrentPage - 1 })">Previous</a>
+                                </li>
+                            }
+                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                            {
+                                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("ServiceDetail", new { sId = Model.ServiceId, pageFeedback = i })">@i</a>
+                                </li>
+                            }
+                            @if (ViewBag.CurrentPage != ViewBag.TotalPages)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("ServiceDetail", new { sId = Model.ServiceId, pageFeedback = ViewBag.CurrentPage + 1 })">Next</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
         </div>
 
         <!--Related Service List Here-->
@@ -67,7 +171,7 @@
                 <p style="text-align: center; font-size: 20px;">No item found</p>
             }
             else
-            { 
+            {
                 foreach (var item in ViewBag.relateService)
                 {
                     <div class="col mb-5 rounded-1;">
@@ -102,3 +206,267 @@
     </div>
 </body>
 
+<!--Import JQuery-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('.edit-button').click(function () {
+            var feedbackActions = $(this).closest('.comment-actions');
+            var feedbackForm = feedbackActions.find('.feedback-form');
+            var textarea = feedbackForm.find('textarea');
+
+            feedbackForm.show();
+
+            feedbackActions.find('.edit-button').hide();
+            feedbackActions.find('.delete-button').hide();
+            textarea.show();
+        });
+
+        $('.cancel-button').click(function () {
+            var feedbackForm = $(this).closest('.feedback-form');
+            var feedbackActions = feedbackForm.closest('.comment-actions');
+            var textarea = feedbackForm.find('textarea');
+
+            feedbackForm.hide();
+
+            feedbackActions.find('.edit-button').show();
+            feedbackActions.find('.delete-button').show();
+            textarea.hide();
+        });
+
+        $("#delete-button").click(function () {
+            var result = confirm("Are you sure you want to delete this feedback?");
+
+            if (!result) {
+                return false;
+            }
+        });
+
+        /*Validate
+        $('.feedback-form').submit(function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var textarea = form.find('.validate-feedback');
+            var errorSpan = form.find('.error-feedback');
+
+            // Kiểm tra nội dung của textarea
+            var content = textarea.val().trim();
+            if (content === '') {
+                errorSpan.text('Please enter your feedback.');
+                errorSpan.show();
+                return;
+            }
+
+            // Thực hiện các hành động khác nếu dữ liệu hợp lệ
+            // ...
+
+            // Reset thông báo lỗi nếu dữ liệu hợp lệ
+            errorSpan.text('');
+            errorSpan.hide();
+
+            // Gửi yêu cầu POST nếu dữ liệu hợp lệ
+            form.unbind('submit').submit();
+        });
+        */
+
+        //
+        $('.edit-button').click(function () {
+            var feedbackActions = $(this).closest('.comment-actions');
+            var feedbackForm = feedbackActions.find('.feedback-form');
+            var textarea = feedbackForm.find('textarea');
+
+            feedbackForm.show();
+            feedbackActions.find('.edit-button').hide();
+            feedbackActions.find('.delete-button').hide();
+            textarea.show();
+        });
+
+        $(document).on('submit', '.feedback-form', function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var accountId = form.find('input[name="accountId"]').val();
+            var serviceId = form.find('input[name="serviceId"]').val();
+            var feedbackId = form.find('input[name="feedbackId"]').val();
+            var dateTimeNow = form.find('input[name="dateTimeNow"]').val();
+            var content = form.find('textarea[name="content"]').val();
+
+            $.ajax({
+                url: form.attr('action'),
+                method: 'POST',
+                data: {
+                    accountId: accountId,
+                    serviceId: serviceId,
+                    feedbackId: feedbackId,
+                    content: content,
+                    dateTimeNow: dateTimeNow
+                },
+                success: function (data) {
+                    // Update UI
+                    var feedbackContent = form.closest('.comment').find('.comment-content p');
+                    feedbackContent.text(content);
+
+                    var feedbackDate = form.closest('.comment').find('.comment-content span');
+                    var formattedDateTimeNow = new Date(dateTimeNow).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', day: '2-digit', month: '2-digit', year: 'numeric' });
+                    feedbackDate.html(`<span style="display: block; float: right; font-size: 14px"><i>Published in <b>${formattedDateTimeNow}</b></i></span>`);
+
+                    form.hide();
+                    form.closest('.comment-actions').find('.edit-button').show();
+                    form.closest('.comment-actions').find('.delete-button').show();
+                },
+                error: function (error) {
+
+                }
+            });
+        });
+
+        $('#postFeedbackForm').submit(function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var contentTextarea = form.find('#postFeedbackContent');
+            var content = contentTextarea.val().trim();
+
+            content = content.replace(/^\s+|\s+$/g, '');
+
+            if (content.length < 5) {
+                var errorSpan = form.find('.error-feedback');
+                errorSpan.text('Feedback must be at least 5 characters long (excluding leading and trailing spaces).');
+                errorSpan.show();
+                return;
+            }
+
+            var errorSpan = form.find('.error-feedback');
+            errorSpan.text('');
+            errorSpan.hide();
+
+            // Gửi yêu cầu POST nếu dữ liệu hợp lệ
+            form.unbind('submit').submit();
+        });
+
+        $(document).on('submit', '.feedback-form', function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var accountId = form.find('input[name="accountId"]').val();
+            var serviceId = form.find('input[name="serviceId"]').val();
+            var feedbackId = form.find('input[name="feedbackId"]').val();
+            var dateTimeNow = form.find('input[name="dateTimeNow"]').val();
+            var contentTextarea = form.find('textarea[name="content"]');
+            var content = contentTextarea.val().trim();
+
+            content = content.replace(/^\s+|\s+$/g, '');
+
+            if (content.length < 5) {
+                var errorSpan = form.find('.error-feedback');
+                errorSpan.text('Feedback must be at least 5 characters long (excluding leading and trailing spaces).');
+                errorSpan.show();
+                return;
+            }
+
+            var errorSpan = form.find('.error-feedback');
+            errorSpan.text('');
+            errorSpan.hide();
+
+            form.unbind('submit').submit();
+        });
+    });
+</script>
+
+<style>
+    .image-container {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .feedback-box {
+        display: flex;
+        align-items: center;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 10px;
+    }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .avatar-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .feedback-content {
+        flex: 1;
+    }
+
+        .feedback-content textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+
+    .feedback-form,
+    #delete-feedback-form {
+        display: inline-block;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        display: none;
+    }
+
+    .comment-button {
+        margin-left: 10px;
+    }
+
+        .comment-button button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    .comment {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .comment-avatar {
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+
+    .comment-content {
+        flex-grow: 1;
+    }
+
+    .comment-divider {
+        margin: 10px 0;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+</style>

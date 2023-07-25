@@ -17,19 +17,19 @@
                         @Model.ProductName
                     </div>
                     <div class="item__price">
-                        $@Model.Price
+                        $@Model.Price.ToString("F2")
                     </div>
                     <div class="item__quantity">
-                        Quantity: 
+                        Quantity:
                         <input type="number" min="1" max="@Model.Quantity" name="productQuantity" id="productQuantity" value="1" />
                     </div>
                     <div class="item__description">
                         <ul style="">
-                            <li>Super fast and power efficient</li>
-                            <li>A lot of fast memory</li>
-                            <li>High resolution camera</li>
-                            <li>Smart tools for health and traveling and more</li>
-                            <li>Share your games and achievements with your friends via Group Play</li>
+                            <li>Advanced Skincare Formula</li>
+                            <li>Potent AHA/BHA Blend</li>
+                            <li>Effective Exfoliation</li>
+                            <li>Deep Hydration</li>
+                            <li>Suitable for All Skin Types</li>
                         </ul>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                                         <div class="title">
                                             Total:
                                         </div>
-                                        <input type="number" id="totalAmount" value="@Model.Price" class="input txt text-validated" disabled/>
+                                        <input type="number" id="totalAmount" value="@Model.Price" class="input txt text-validated" disabled />
                                         <span class="error-message" id="totalAmount-error"></span>
                                     </div>
                                 </div>
@@ -244,7 +244,7 @@
     }
 
     .item__title {
-        width:470px;
+        width: 470px;
         font-size: 28px;
         font-weight: 600;
     }
@@ -558,6 +558,12 @@
         const phoneInput = document.getElementsByName('Phone')[0];
         const descriptionInput = document.getElementsByName('addInfo')[0];
 
+        // Remove extra whitespace in the middle of the input fields
+        nameInput.value = nameInput.value.replace(/\s+/g, ' ');
+        addressInput.value = addressInput.value.replace(/\s+/g, ' ');
+        phoneInput.value = phoneInput.value.replace(/\s+/g, ' ');
+        descriptionInput.value = descriptionInput.value.replace(/\s+/g, ' ');
+
         // Reset previous error messages
         document.getElementById('name-error').textContent = '';
         document.getElementById('address-error').textContent = '';
@@ -614,16 +620,6 @@
                 hasErrors = true;
             }
         }
-        /*
-        const maxQuantity = parseInt('@Model.Quantity', 10);
-        const quantityInput = document.getElementById('productQuantity');
-        const enteredQuantity = parseInt(quantityInput.value, 10);
-
-        if (enteredQuantity > maxQuantity) {
-            document.getElementById('quantity-error').textContent = 'Quantity cannot exceed the available stock';
-            hasErrors = true;
-        }
-        */
         updateTotalAmount();
         if (!hasErrors) {
             document.getElementById('orderForm').submit(); // Submit the form if there are no errors
@@ -635,7 +631,7 @@
 
         submitButton.addEventListener('click', function (event) {
             event.preventDefault();
-            validateFormAndSubmit(); 
+            validateFormAndSubmit();
         });
 
         //Oninput Quantity
