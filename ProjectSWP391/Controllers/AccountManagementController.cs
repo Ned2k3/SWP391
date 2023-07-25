@@ -18,10 +18,22 @@ namespace ProjectSWP391.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
-        public IActionResult AccountList()
+        public IActionResult AccountList(string? search)
         {
-            List<Account> accounts = context.Accounts.Where(a => a.AccountId != 0 && a.Role != 1).ToList();
-            return View(accounts);
+            if (string.IsNullOrEmpty(search))
+            {
+                List<Account> accounts = context.Accounts.Where(a => a.AccountId != 0 && a.Role != 1).ToList();
+
+                return View(accounts);
+            }
+            else
+            {
+                search.Trim();
+                var acc = context.Accounts.Where(p => p.FullName.Contains(search)).ToList();
+                ViewData["key"] = search;
+                return View(acc);
+            }
+
 
         }
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
@@ -33,12 +45,12 @@ namespace ProjectSWP391.Controllers
                 return View();
             }
             var a = context.Accounts.Where(ac => ac.AccountId == id).SingleOrDefault();
-            
-            if(a.IsActive == 0)
+
+            if (a.IsActive == 0)
             {
                 a.IsActive = 1;
             }
-            else if(a.IsActive==1)
+            else if (a.IsActive == 1)
             {
                 a.IsActive = 0;
             }
@@ -91,7 +103,7 @@ namespace ProjectSWP391.Controllers
             return View(a);
         }
 
-        
+
         [HttpPost]
         public IActionResult Update(Account account)
         {
@@ -134,7 +146,8 @@ namespace ProjectSWP391.Controllers
             {
                 var a = context.Accounts.Where(c => c.Email == account.Email).SingleOrDefault();
 
-                if (a == null) { 
+                if (a == null)
+                {
 
                     account.Email = account.Email.Trim();
                     account.FullName = account.FullName.Trim();
