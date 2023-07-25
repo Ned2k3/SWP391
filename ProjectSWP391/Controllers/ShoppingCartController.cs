@@ -195,11 +195,20 @@ public class ShoppingCartController : Controller
                 return RedirectToAction("Index");
             }
         }
+
+        // Calculate the subtotal
+        decimal subtotal = cartItems.Sum(item => item.Price * item.Quantity);
+
+        // Set data to ViewBag
+        ViewBag.Account = account;
+        ViewBag.CartItems = cartItems;
+        ViewBag.Subtotal = subtotal;
+
         return View(account);
     }
 
     [HttpPost]
-    public IActionResult Checkout(string email, string phone, string fullName, string address)
+    public IActionResult Checkout(string email, string phone, string fullName, string address, string addInfo)
     {
         var cartItems = GetCartItemsForCurrentUser();
 
@@ -211,27 +220,11 @@ public class ShoppingCartController : Controller
         int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : -1;
         var account = context.Accounts.FirstOrDefault(a => a.AccountId == accountId);
 
-        if (account == null)
-        {
-            return RedirectToAction("Registration");
-        }
-
-        if (string.IsNullOrEmpty(address))
-        {
-            TempData["ErrorMessage"] = "Please enter a valid address.";
-            return View("Checkout");
-        }
-
-        if (!ModelState.IsValid)
-        {
-            return View("Checkout");
-        }
-
         var order = new Order
         {
             AccountId = accountId,
             OrderDate = DateTime.Now,
-            Content = $"Email: ${email}, FullName: {fullName}, Phone: {phone}, Address: {address}",
+            Content = $"Email: ${email}, FullName: {fullName}, Phone: {phone}, Address: {address}, Description: {addInfo}",
             Account = account
         };
 
@@ -270,7 +263,7 @@ public class ShoppingCartController : Controller
         cartItemsDict[accountId] = new List<ShoppingCartModel>();
         SetCartItemsDictToCookie(cartItemsDict);
 
-        return RedirectToAction("Index");
+        return View("SuccessPayment");
 
     }
 }
