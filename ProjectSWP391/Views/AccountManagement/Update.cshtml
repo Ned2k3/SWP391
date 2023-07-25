@@ -72,80 +72,63 @@
         }
 </style>
 
-<div style="width: 100%; display: flex; padding: 30px 0 50px 0; justify-content: center; position: relative;">
-    <a href="/AccountManagement/AccountList" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
-    <h2>Update Account</h2>
-</div>
-
-<form method="post" action="/AccountManagement/Update">
-    <input type="hidden" name="AccountId" value="@Model.AccountId">
-
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="Email" value="@Model.Email" required>
+<head>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div style="width: 100%; display: flex; padding: 30px 0 50px 0; justify-content: center; position: relative;">
+        <a href="/AccountManagement/AccountList" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
+        <h2>Update Account</h2>
     </div>
 
-    <div>
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="Password" value="@(EncryptionHelper.Decrypt(Model.Password))" required>
-    </div>
-    
-    <div>
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="Phone" value="@Model.Phone">
-    </div>
-    
-    <div>
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="FullName" value="@Model.FullName">
-    </div>
-    
-    <div style="display: flex; padding: 10px 0 10px 0">
-        <div style="display: flex;">
-            <label for="role" style="margin-right: 10px;">Role:</label>
-            <select id="role" name="Role">
-                @if (Model.Role == 1)
-                {
-                    <option value="1" selected)>Admin</option>
-                    <option value="2" )>Employee</option>
-                    <option value="3" )>Customer</option>
+    <form asp-action="Update" asp-controller="AccountManagement" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="AccountId" asp-for="AccountId" value="@Model.AccountId">
 
-                }
-                else if (Model.Role == 2)
-                {
-                    <option value="1" )>Admin</option>
-                    <option value="2" selected)>Employee</option>
-                    <option value="3" )>Customer</option>
-
-                }
-                else
-                {
-                    <option value="1" )>Admin</option>
-                    <option value="2" )>Employee</option>
-                    <option value="3" selected )>Customer</option>
-
-                }
-
-            </select>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email" asp-for="Email" value="@Model.Email" required>
         </div>
 
-        <div style="display: flex; align-items: center;">
-            <label for="isActive" style="margin-right: 10px;">Active:</label>
-            @if (Model.IsActive == 1)
-            {
-                <input type="checkbox" id="isActive" name="IsActive" checked value="true">
-            }
-            else
-            {
-                <input type="checkbox" id="isActive" name="IsActive" value="true">
-            }
+        <div>
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="Password" asp-for="Password" value="@(EncryptionHelper.Decrypt(Model.Password))" required>
         </div>
-    </div>
 
-    <div>
-        <label for="image">Image:</label>
-        <input type="text" id="image" name="Image" value="@Model.Image">
-    </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="Phone" asp-for="Phone" value="@Model.Phone">
+        </div>
 
-    <input type="submit" value="Update Account">
-</form>
+        <div>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="FullName" asp-for="FullName" value="@Model.FullName">
+        </div>
+
+        <div>
+            <label for="image">Image:</label>
+            <div style="width: 100%; height: 100%; display: flex; align-items: center">
+                <img id="avatarContainer" style="width: 80px; height: 80px; border-radius: 50%; border: 1px solid black; margin-right: 10px;" src="@Model.Image" />
+                <input type="file" accept="image/*" id="imageInput" />
+            </div>
+        </div>
+
+        <input type="submit" value="Update Account">
+    </form>
+    <script>
+        var fileToUpload = null;
+        $('#imageInput').change(function () {
+            fileToUpload = $(this)[0].files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#avatarContainer').prop('src', e.target.result);
+            };
+
+            if (fileToUpload) {
+                reader.readAsDataURL(fileToUpload);
+            }
+        });
+    </script>
+</body>

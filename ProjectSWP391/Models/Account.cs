@@ -24,7 +24,6 @@ namespace ProjectSWP391.Models
         [StringLength(20)]
         public string Password { get; set; } = null!;
         
-        [StringLength(10)]
         public int? Phone { get; set; }
        
         [StringLength(50)]

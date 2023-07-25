@@ -14,7 +14,7 @@
 <h1>CreateProduct</h1>
 
 <hr />
-<div style="width: 60%; margin-left: 20%;">
+<div style="width: 60%;">
     <form asp-action="CreateProduct" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
        
@@ -47,10 +47,9 @@
             <label asp-for="PcategoryId" class="control-label"></label>
             <select asp-for="PcategoryId" class="form-control" asp-items="ViewBag.PcategoryId"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="margin: 10px 0 10px 0">
             <label asp-for="Image" class="control-label"></label>
-                <input type="file" id="imageInput" name="Image" asp-for="Image" accept="image/*" />
-            
+            <input type="file" id="imageInput" name="Image" asp-for="Image" accept="image/*" />
         </div>
         <div class="form-group">
             <input type="submit" value="Create" class="btn btn-primary" style="margin-top: 10px;" />
