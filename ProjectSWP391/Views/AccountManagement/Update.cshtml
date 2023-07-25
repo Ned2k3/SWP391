@@ -78,6 +78,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    <h1>@ViewBag.ErrorMsg</h1>
     <div style="width: 100%; display: flex; padding: 30px 0 50px 0; justify-content: center; position: relative;">
         <a href="/AccountManagement/AccountList" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
         <h2>Update Account</h2>
@@ -88,7 +89,7 @@
 
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="Email" asp-for="Email" value="@Model.Email" required>
+            <input type="text" id="email" name="Email" asp-for="Email" value="@Model.Email" required>
         </div>
 
         <div>

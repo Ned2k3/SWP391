@@ -141,7 +141,14 @@
                     {
                         <span class="back-button" style="background-color: rgba(0,0,0,0.4); cursor: no-drop;">Update</span>
                     }
-                    <a href="/AccountManagement/Delete?id=@account.AccountId" class="back-button">Deactive</a>
+                    @if(account.IsActive==1)
+                    {
+                        <a href="/AccountManagement/Delete?id=@account.AccountId" class="back-button">Deactive</a>
+                    }
+                    else if(account.IsActive==0){
+                        <a href="/AccountManagement/Delete?id=@account.AccountId" class="back-button">Active</a>
+                    }
+                    
                 </td>
             </tr>
             i++;

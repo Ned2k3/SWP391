@@ -33,9 +33,17 @@ namespace ProjectSWP391.Controllers
                 return View();
             }
             var a = context.Accounts.Where(ac => ac.AccountId == id).SingleOrDefault();
-            a.IsActive = 0;
+            
+            if(a.IsActive == 0)
+            {
+                a.IsActive = 1;
+            }
+            else if(a.IsActive==1)
+            {
+                a.IsActive = 0;
+            }
             //context.Remove(a);
-            context.Add(a);
+            context.Update(a);
             context.SaveChanges();
             return RedirectToAction("AccountList");
         }
@@ -126,11 +134,10 @@ namespace ProjectSWP391.Controllers
             {
                 var a = context.Accounts.Where(c => c.Email == account.Email).SingleOrDefault();
 
-                if (a == null)
+                if (a == null) { 
 
                     account.Email = account.Email.Trim();
-                account.FullName = account.FullName.Trim();
-                {
+                    account.FullName = account.FullName.Trim();
                     account.Password = EncryptionHelper.Encrypt(account.Password);
                     //let choose role
                     if (account.Role == 3)
@@ -140,6 +147,12 @@ namespace ProjectSWP391.Controllers
 
                     context.Add(account);
                     context.SaveChanges();
+
+                }
+                else
+                {
+                    ViewBag.ErrorMsg = "Account have existed please enter a different Account/Email!";
+                    return View();
                 }
                 return RedirectToAction("AccountList");
             }

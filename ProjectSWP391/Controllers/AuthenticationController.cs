@@ -197,9 +197,10 @@ namespace ProjectSWP391.Controllers
                         }
                         else
                         {
-                            ViewBag.SuccessMsg = "Captcha have matched. Reset password successful. Your new password is 1";
+                            ViewBag.SuccessMsg = "New Password have matched. Reset password successfully into new Password";
                             var PasswordChange = context.Accounts.FirstOrDefault(x => x.Email == email);
-                            PasswordChange.Password = EncryptionHelper.Encrypt("1");
+                            //change password
+                            PasswordChange.Password = EncryptionHelper.Encrypt(captchaSession);
                             context.SaveChanges();
                             return View();
                         }
@@ -257,7 +258,7 @@ namespace ProjectSWP391.Controllers
             message.Body = "<html><body style=\"font-family: Arial, sans-serif;\">" +
                             "<h1 style=\"color: #007BFF; font-size: 28px;\">Hi " + email + "</h1>" +
                             "<p style=\"font-size: 18px; color: #333333;\">Congratulations! Your email password has been successfully changed.</p>" +
-                            "<p style=\"font-size: 20px; color: #007BFF;\">This is your captcha for the password change:</p>" +
+                            "<p style=\"font-size: 20px; color: #007BFF;\">This is your new Password for the new password field:</p>" +
                             "<strong style=\"font-size: 36px; color: #FF4500;\">" + captcha + "</strong>" +
                             "<p style=\"font-size: 18px; color: #333333;\">If you did not initiate this password change, please reset your password immediately.</p>" +
                             "<h2 style=\"font-size: 22px; color: #333333;\">Best regards,</h2>" +
@@ -281,7 +282,6 @@ namespace ProjectSWP391.Controllers
 
 
         }
-
 
         public IActionResult ResetPassword()
         {
