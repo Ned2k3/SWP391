@@ -33,26 +33,25 @@
         max-height: 50px;
     }
 
-    .search-container{
+    .search-container {
         margin-left: 20px;
     }
 
-    .search-container input[type="text"] {
-        width: 300px;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px 0 0 4px;
-    }
+        .search-container input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
 
-    .search-container button {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 0 4px 4px 0;
-        background-color: #4CAF50;
-        color: white;
-        cursor: pointer;
-        
-    }
+        .search-container button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
 
     .back-button {
         display: inline-block;
@@ -72,20 +71,20 @@
         }
 </style>
 
-<div style="display: flex; width: 100%; justify-content: space-between; margin: 30px 0 30px 0">
-    <a href="/Authentication/Admin" class="back-button"><i class="fa-solid fa-angle-left"></i> Back</a>
-    <div style="display: flex;">
-        <a href="/AccountManagement/Create" class="back-button" style="display: flex; align-items: center; justify-content: center; color: black;"><i class="fa-solid fa-user-plus fa-xl"></i></a><br />
-        <div class="search-container">
-            <input type="text" id="search" name="search" placeholder="Search Username...">
-            <button type="submit">Search</button>
-        </div>
-    </div>
-</div>
 
+<div class="search-container">
+
+    <form method="get" asp-action="AccountList" id="search-form">
+        <a href="/AccountManagement/Create" class="back-button"><i class="fa-solid fa-user-plus fa-xl"></i></a>
+        <input value="@ViewData["key"]" type="text" placeholder="Search by Account name" name="search" id="search-input" maxlength="20">
+        <input type="hidden" name="isSearch" value="true" />
+        <button type="submit">Search</button>
+    </form>
+</div>
+<h3>@ViewBag.ErrorMsg</h3>
+<h3>@ViewBag.SuccessMsg</h3>
 <table>
-    <h3>@ViewBag.ErrorMsg</h3>
-    <h3>@ViewBag.SuccessMsg</h3>
+
 
 
     <thead>
@@ -123,14 +122,19 @@
                 {
                     <td>Customer</td>
                 }
-                @if (account.IsActive == 1){
+                @if (account.IsActive == 1)
+                {
                     <td style="color:limegreen">Yes</td>
-                }else if(account.IsActive==2){
-                    <td style ="color:red;">Password need to change</td>
-                }else{
+                }
+                else if (account.IsActive == 2)
+                {
+                    <td style="color:red;">Password need to change</td>
+                }
+                else
+                {
                     <td style="color:red;">No</td>
                 }
-               
+
                 <td><img src="@(account.Image==null?"https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png":account.Image)" alt="Account Image" /></td>
                 <td>
                     @if (account.Role == 2)
@@ -141,14 +145,15 @@
                     {
                         <span class="back-button" style="background-color: rgba(0,0,0,0.4); cursor: no-drop;">Update</span>
                     }
-                    @if(account.IsActive==1)
+                    @if (account.IsActive == 1)
                     {
                         <a href="/AccountManagement/Delete?id=@account.AccountId" class="back-button">Deactive</a>
                     }
-                    else if(account.IsActive==0){
+                    else if (account.IsActive == 0)
+                    {
                         <a href="/AccountManagement/Delete?id=@account.AccountId" class="back-button">Active</a>
                     }
-                    
+
                 </td>
             </tr>
             i++;

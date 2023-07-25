@@ -49,10 +49,12 @@ namespace ProjectSWP391.Controllers
                 }
                 //Decryption here
                 a.Email = a.Email.Trim();
+                a.Password = a.Password.Trim();
+
                 string endcrypt = EncryptionHelper.Encrypt(a.Password);
 
                 var account = context.Accounts.Where(b => b.Email == a.Email && b.Password == endcrypt).SingleOrDefault();
-                
+
                 //var account = context.Accounts.ToList();
                 if (account == null)
                 {
@@ -88,8 +90,8 @@ namespace ProjectSWP391.Controllers
                         {
                             return RedirectToAction("CompleteCustomerProfile", "Profile", new { id = account.AccountId });
                         }
-                        string[] msg = { "Welcome Back", $"{Global.CurrentUser.FullName }" };
-                        return RedirectToAction("LandingPage", "CustomerManagement", new { message =  msg });
+                        string[] msg = { "Welcome Back", $"{Global.CurrentUser.FullName}" };
+                        return RedirectToAction("LandingPage", "CustomerManagement", new { message = msg });
                     }
                     //return View();
                 }
@@ -110,7 +112,7 @@ namespace ProjectSWP391.Controllers
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             // Create a Regex object with the email pattern
             Regex regex = new Regex(emailPattern);
-           email = email.Trim();
+            email = email.Trim();
             if (rePassword != password)
             {
                 ViewBag.ErrorMsg = "Re enter password does not match password. Please enter again ";
@@ -289,8 +291,17 @@ namespace ProjectSWP391.Controllers
         }
 
         [HttpPost]
-        public IActionResult ResetPassword(string email, string password, string rePassword, string newRePassword)
+        public IActionResult ResetPassword(string email, string password, string? rePassword, string? newRePassword)
         {
+            email = email.Trim();
+            password = password.Trim();
+
+            if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(rePassword) || string.IsNullOrEmpty(newRePassword))
+            {
+                ViewBag.ErrorMsg = "Fields cannot be null or a space input please try a different password";
+                return View();
+            }
+
             var a = context.Accounts.FirstOrDefault(x => x.Email == email && x.Password == EncryptionHelper.Encrypt(password));
             if (a == null)
             {
@@ -324,7 +335,7 @@ namespace ProjectSWP391.Controllers
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
         public IActionResult Admin()
         {
-            return RedirectToAction("DashBoard","AdminManagement");
+            return RedirectToAction("DashBoard", "AdminManagement");
         }
 
         [Authorize(AuthenticationSchemes = "Auth", Roles = "2")]
@@ -366,7 +377,7 @@ namespace ProjectSWP391.Controllers
         {
             List<RevenueData> productData = new List<RevenueData>();
             List<RevenueData> serviceData = new List<RevenueData>();
-           
+
             if (year != null)
             {
                 ViewBag.Year = year;
@@ -383,9 +394,9 @@ namespace ProjectSWP391.Controllers
                 productData = FillRevenueDataForAllMonths(a);
                 serviceData = FillRevenueDataForAllMonths(b);
             }
-             
+
             var userPurchases = context.Accounts
-                     // Replace with the user email you want to retrieve purchases for
+                    // Replace with the user email you want to retrieve purchases for
                     .Join(context.Orders, account => account.AccountId, order => order.AccountId, (account, order) => new { account, order })
                     .Join(context.OrderDetails, combined => combined.order.OrderId, orderDetail => orderDetail.OrderId, (combined, orderDetail) => new { combined.account, combined.order, orderDetail })
                     .Join(context.Products, combined => combined.orderDetail.ProductId, product => product.ProductId, (combined, product) => new { combined.account, combined.order, combined.orderDetail, product })
@@ -394,7 +405,7 @@ namespace ProjectSWP391.Controllers
                     {
 
                         BuyerEmail = result.account.Email,
-                        OrderId =result.order.OrderId,
+                        OrderId = result.order.OrderId,
                         ProductName = result.product.ProductName,
                         OrderDate = result.order.OrderDate,
                         Amount = result.orderDetail.Amount,
@@ -403,19 +414,19 @@ namespace ProjectSWP391.Controllers
                     })
                     .ToList();
             List<ProductUserData> listUser = new List<ProductUserData>();
-            foreach(var newUser in userPurchases)
+            foreach (var newUser in userPurchases)
             {
-                listUser.Add(new ProductUserData(newUser.BuyerEmail, newUser.ProductName,newUser.OrderId, newUser.OrderDate.Value, newUser.Amount, newUser.Content,newUser.Total));
+                listUser.Add(new ProductUserData(newUser.BuyerEmail, newUser.ProductName, newUser.OrderId, newUser.OrderDate.Value, newUser.Amount, newUser.Content, newUser.Total));
             }
 
             var viewModel = new MyViewModel
             {
                 ProductRevenueByMonth = productData,
                 ServiceRevenueByMonth = serviceData,
-                ProductUserDatas =listUser
+                ProductUserDatas = listUser
             };
 
-            
+
             return View(viewModel);
 
         }
@@ -442,7 +453,7 @@ namespace ProjectSWP391.Controllers
                 serviceData = FillRevenueDataForAllMonths(b);
             }
 
-            var serviceList = context.ServiceLists.Include(c=>c.Booking).OrderBy(c=>c.Booking.BookingDate).Include(c=>c.Service).ToList();
+            var serviceList = context.ServiceLists.Include(c => c.Booking).OrderBy(c => c.Booking.BookingDate).Include(c => c.Service).ToList();
 
 
             var service = context.Services.ToList();
@@ -464,10 +475,10 @@ namespace ProjectSWP391.Controllers
             return View(viewModel);
         }
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
-        public   IActionResult DetailShopList(int order)
+        public IActionResult DetailShopList(int order)
 
         {
-            var getOrder =  context.Orders.SingleOrDefault(or => or.OrderId == order);
+            var getOrder = context.Orders.SingleOrDefault(or => or.OrderId == order);
             Account getAccount = context.Accounts.Where(ac => ac.AccountId == getOrder.AccountId).SingleOrDefault();
             //var a = getOrder;
 
@@ -479,7 +490,7 @@ namespace ProjectSWP391.Controllers
                     .Include(od => od.Product)
                     .Where(od => od.OrderId == order)
                     .ToList();
-            
+
             return View(orderDetails);
         }
         [Authorize(AuthenticationSchemes = "Auth", Roles = "1")]
@@ -487,7 +498,7 @@ namespace ProjectSWP391.Controllers
         {
             var serviceList = context.ServiceLists.Include(c => c.Booking).OrderBy(c => c.Booking.BookingDate)
                 .Include(c => c.Service)
-                .Where(c=>c.BookingId==booking)
+                .Where(c => c.BookingId == booking)
                 .ToList();
             var a = serviceList.First();
             Account customer = getUser(a.Booking.CustomerId);
@@ -626,7 +637,7 @@ namespace ProjectSWP391.Controllers
                 }
                 else
                 {
-                    filledData.Add(new RevenueData (month,0 ));
+                    filledData.Add(new RevenueData(month, 0));
                 }
             }
 
