@@ -82,7 +82,14 @@
                     <td>@a.Product.Price</td>
                 </tr>
             }
+
         </table>
+        @if(string.IsNullOrEmpty(ViewBag.Content)){
+                <p><strong>Content:</strong> N/A</p>
+        }else{
+            <p><strong>Content:</strong> @ViewBag.Content</p>
+        }
+        
 
         <p><strong>Order Date:</strong> @Model.FirstOrDefault()?.Order.OrderDate.ToString()</p>
         <p><strong>Total:</strong> @Model.Sum(o => o.Product.Price * o.Amount)</p>

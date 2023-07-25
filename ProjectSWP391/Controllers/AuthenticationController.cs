@@ -473,6 +473,7 @@ namespace ProjectSWP391.Controllers
 
             ViewBag.Email = "" + getAccount.Email;
             ViewBag.Username = "" + getAccount.FullName;
+            ViewBag.Content = "" + getOrder.Content;
             var orderDetails = context.OrderDetails
                     .Include(od => od.Order)
                     .Include(od => od.Product)
