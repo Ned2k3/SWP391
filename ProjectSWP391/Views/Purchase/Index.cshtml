@@ -1,13 +1,11 @@
 ﻿@model ProjectSWP391.Models.Product
 
-<h2>Complete your Purchase</h2>
 <form action="Index" method="post" id="orderForm">
-    <input type="hidden" name="amount" value="@Model.Price" />
     <input type="hidden" name="productId" value="@Model.ProductId" />
-    <section class="content">
+    <input type="hidden" name="price" value="@Model.Price" />
 
-        <div class="container">
-        </div>
+    <span class="error-message" id="quantity-error"></span>
+    <section class="content">
         <div class="details shadow">
             <div class="details__item">
 
@@ -22,7 +20,8 @@
                         $@Model.Price
                     </div>
                     <div class="item__quantity">
-                        Quantity: 1
+                        Quantity: 
+                        <input type="number" min="1" max="@Model.Quantity" name="productQuantity" id="productQuantity" value="1" />
                     </div>
                     <div class="item__description">
                         <ul style="">
@@ -32,9 +31,7 @@
                             <li>Smart tools for health and traveling and more</li>
                             <li>Share your games and achievements with your friends via Group Play</li>
                         </ul>
-
                     </div>
-
                 </div>
             </div>
 
@@ -48,10 +45,10 @@
                 </div>
                 <div class="payment__types">
                     <div class="payment__type payment__type--cc active" name="actionQRcode">
-                        <i class="icon icon-credit-card"></i>QR Code
+                        <i class="icon icon-credit-card"></i>Pay after Recieve
                     </div>
                     <div class="payment__type payment__type--paypal" name="actionPayAfterReceive">
-                        <i class="icon icon-paypal"></i>Pay after Recieve
+                        <i class="icon icon-paypal"></i>QR Code
                     </div>
                 </div>
 
@@ -97,7 +94,15 @@
                                         <span class="error-message" id="description-error"></span>
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="field">
+                                        <div class="title">
+                                            Total:
+                                        </div>
+                                        <input type="number" id="totalAmount" value="@Model.Price" class="input txt text-validated" disabled/>
+                                        <span class="error-message" id="totalAmount-error"></span>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -239,6 +244,7 @@
     }
 
     .item__title {
+        width:470px;
         font-size: 28px;
         font-weight: 600;
     }
@@ -521,6 +527,31 @@
 </style>
 
 <script>
+    function updateTotalAmount() {
+        const price = parseFloat('@Model.Price');
+        const quantity = parseFloat(document.getElementsByName('productQuantity')[0].value);
+        const totalAmount = price * quantity;
+        document.getElementById('totalAmount').value = totalAmount.toFixed(2);
+    }
+
+    function handleQuantityInputChange() {
+        const quantityInput = document.getElementById('productQuantity');
+        const price = parseFloat('@Model.Price');
+        const maxQuantity = parseInt('@Model.Quantity', 10);
+
+        const enteredQuantity = parseInt(quantityInput.value, 10);
+
+        if (enteredQuantity > maxQuantity) {
+            quantityInput.value = maxQuantity;
+        }
+
+        if (enteredQuantity <= 0) {
+            quantityInput.value = 1;
+        }
+        const totalAmount = price * parseInt(quantityInput.value, 10);
+        document.getElementById('totalAmount').value = totalAmount.toFixed(2);
+    }
+
     function validateFormAndSubmit() {
         const nameInput = document.getElementsByName('Name')[0];
         const addressInput = document.getElementsByName('Address')[0];
@@ -583,7 +614,17 @@
                 hasErrors = true;
             }
         }
+        /*
+        const maxQuantity = parseInt('@Model.Quantity', 10);
+        const quantityInput = document.getElementById('productQuantity');
+        const enteredQuantity = parseInt(quantityInput.value, 10);
 
+        if (enteredQuantity > maxQuantity) {
+            document.getElementById('quantity-error').textContent = 'Quantity cannot exceed the available stock';
+            hasErrors = true;
+        }
+        */
+        updateTotalAmount();
         if (!hasErrors) {
             document.getElementById('orderForm').submit(); // Submit the form if there are no errors
         }
@@ -596,6 +637,13 @@
             event.preventDefault();
             validateFormAndSubmit(); 
         });
+
+        //Oninput Quantity
+        document.getElementById('productQuantity').addEventListener('input', handleQuantityInputChange);
+
+        // Update the total amount when the quantity input changes
+        const quantityInput = document.getElementsByName('productQuantity')[0];
+        quantityInput.addEventListener('input', updateTotalAmount);
     });
 
 </script>

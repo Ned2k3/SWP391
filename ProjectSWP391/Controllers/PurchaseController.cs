@@ -38,7 +38,7 @@ namespace ProjectSWP391.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(decimal amount, int productId, string addInfo)
+        public async Task<IActionResult> Index(string Name, string Address, string Phone, decimal price, int productQuantity, int productId, string addInfo)
         {
             /*
                 {
@@ -55,10 +55,12 @@ namespace ProjectSWP391.Controllers
 
             int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : 0;
             var account = context.Accounts.FirstOrDefault(a => a.AccountId == accountId);
+            int amount = Convert.ToInt32(price) * productQuantity;
             var order = new Order
             {
                 AccountId = accountId,
                 OrderDate = DateTime.Now,
+                Content = $"Name: {Name}, Phone: {Phone}, Address: {Address}, Description: {addInfo}, Quantity: {productQuantity}, Amount paid: {amount}",
                 Account = account
             };
 
@@ -69,16 +71,21 @@ namespace ProjectSWP391.Controllers
             {
                 ProductId = productId,
                 OrderId = order.OrderId,
-                Amount = 1
+                Amount = amount
             };
             var product = context.Products.FirstOrDefault(p => p.ProductId == productId);
 
             // Update the stock in the database
-            product.Quantity -= 1;
+            product.Quantity -= productQuantity;
 
             context.OrderDetails.Add(orderDetail);
             context.SaveChanges();
+            return View("Response");
+        }
 
+        public IActionResult QRCodePayment(string Name, string Address, string Phone, decimal price, int productQuantity, int productId, string addInfo)
+        {
+            int amount = Convert.ToInt32(price) * productQuantity;
             var apiRequest = new APIRequest()
             {
                 acqId = 970422,
@@ -111,6 +118,7 @@ namespace ProjectSWP391.Controllers
             string qrDataKey = SaveQRDataURLToCache(dataResult.data.qrDataURL);
             return RedirectToAction("QRPayment", new { qrDataKey });
         }
+
         private string SaveQRDataURLToCache(string qrDataURL)
         {
             string qrDataKey = Guid.NewGuid().ToString();
