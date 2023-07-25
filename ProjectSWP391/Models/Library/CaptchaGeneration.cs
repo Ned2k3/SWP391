@@ -5,7 +5,7 @@
         public static string GenerateCaptcha()
         {
             string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            int length = 4; // Change this value to set the length of the CAPTCHA
+            int length = 8; // Change this value to set the length of the CAPTCHA
 
             Random random = new Random();
             char[] captchaArray = new char[length];
