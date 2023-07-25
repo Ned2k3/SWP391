@@ -41,6 +41,7 @@
                     <th>Order Id</th>
                     <th>Order Date</th>
                     <th>Amount</th>
+                    <th>Content</th>
                     <th>Total</th>
                     <th></th>
                 </tr>
@@ -56,6 +57,7 @@
                         <td>@b.OrderId</td>
                         <td>@b.OrderDate</td>
                         <td>@b.Amount</td>
+                        <td>@(b.Content == null?"N/A":@b.Content)</td>
                         <td>@b.Total</td>
                         <td><a href="/Authentication/DetailShopList?order=@b.OrderId" class="approve-link"> Detail </a></td>
                     </tr>

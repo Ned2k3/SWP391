@@ -398,13 +398,14 @@ namespace ProjectSWP391.Controllers
                         ProductName = result.product.ProductName,
                         OrderDate = result.order.OrderDate,
                         Amount = result.orderDetail.Amount,
+                        Content = result.order.Content,
                         Total = result.orderDetail.Amount * result.product.Price
                     })
                     .ToList();
             List<ProductUserData> listUser = new List<ProductUserData>();
             foreach(var newUser in userPurchases)
             {
-                listUser.Add(new ProductUserData(newUser.BuyerEmail, newUser.ProductName,newUser.OrderId, newUser.OrderDate.Value, newUser.Amount, newUser.Total));
+                listUser.Add(new ProductUserData(newUser.BuyerEmail, newUser.ProductName,newUser.OrderId, newUser.OrderDate.Value, newUser.Amount, newUser.Content,newUser.Total));
             }
 
             var viewModel = new MyViewModel

@@ -55,12 +55,12 @@ namespace ProjectSWP391.Controllers
 
             int accountId = (Global.CurrentUser != null) ? Global.CurrentUser.AccountId : 0;
             var account = context.Accounts.FirstOrDefault(a => a.AccountId == accountId);
-            int amount = Convert.ToInt32(price) * productQuantity;
+            int totalPrice = Convert.ToInt32(price) * productQuantity;
             var order = new Order
             {
                 AccountId = accountId,
                 OrderDate = DateTime.Now,
-                Content = $"Name: {Name}, Phone: {Phone}, Address: {Address}, Description: {addInfo}, Quantity: {productQuantity}, Amount paid: {amount}",
+                Content = $"Name: {Name}, Phone: {Phone}, Address: {Address}, Description: {addInfo}, Quantity: {productQuantity}, Total price: {totalPrice}",
                 Account = account
             };
 
@@ -71,7 +71,7 @@ namespace ProjectSWP391.Controllers
             {
                 ProductId = productId,
                 OrderId = order.OrderId,
-                Amount = amount
+                Amount = productQuantity
             };
             var product = context.Products.FirstOrDefault(p => p.ProductId == productId);
 
